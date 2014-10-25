@@ -2,10 +2,8 @@
 
 one:
   author: MyString
-  title: MyString
-  description: MyText
+  body: MyText
 
 two:
   author: MyString
-  title: MyString
-  description: MyText
+  body: MyText

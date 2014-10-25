@@ -3,6 +3,9 @@
 <table>
   <thead>
     <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -10,6 +13,9 @@
   <tbody>
     <% @session_proposals.each do |session_proposal| %>
       <tr>
+        <td><%= session_proposal.author %></td>
+        <td><%= session_proposal.title %></td>
+        <td><%= session_proposal.description %></td>
         <td><%= link_to 'Show', session_proposal %></td>
         <td><%= link_to 'Edit', edit_session_proposal_path(session_proposal) %></td>
         <td><%= link_to 'Destroy', session_proposal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

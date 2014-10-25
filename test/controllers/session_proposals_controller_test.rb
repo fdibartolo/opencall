@@ -18,7 +18,7 @@ class SessionProposalsControllerTest < ActionController::TestCase
 
   test "should create session_proposal" do
     assert_difference('SessionProposal.count') do
-      post :create, session_proposal: {  }
+      post :create, session_proposal: { author: @session_proposal.author, description: @session_proposal.description, title: @session_proposal.title }
     end
 
     assert_redirected_to session_proposal_path(assigns(:session_proposal))
@@ -35,7 +35,7 @@ class SessionProposalsControllerTest < ActionController::TestCase
   end
 
   test "should update session_proposal" do
-    patch :update, id: @session_proposal, session_proposal: {  }
+    patch :update, id: @session_proposal, session_proposal: { author: @session_proposal.author, description: @session_proposal.description, title: @session_proposal.title }
     assert_redirected_to session_proposal_path(assigns(:session_proposal))
   end
 

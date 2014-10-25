@@ -69,6 +69,6 @@ class SessionProposalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def session_proposal_params
-      params[:session_proposal]
+      params.require(:session_proposal).permit(:author, :title, :description)
     end
 end

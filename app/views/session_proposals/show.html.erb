@@ -1,4 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Author:</strong>
+  <%= @session_proposal.author %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @session_proposal.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @session_proposal.description %>
+</p>
+
 <%= link_to 'Edit', edit_session_proposal_path(@session_proposal) %> |
 <%= link_to 'Back', session_proposals_path %>
