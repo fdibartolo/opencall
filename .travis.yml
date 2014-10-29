@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.1.1
+
+# config/database.yml in Rails
+test:
+  adapter: sqlite3
+  database: ":memory:"
+  timeout: 500
+  
+before_script:
+  - bundle exec rake db:create RAILS_ENV="test"
+  - bundle exec rake db:migrate RAILS_ENV="test"
