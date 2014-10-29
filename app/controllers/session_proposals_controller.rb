@@ -21,19 +21,12 @@ class SessionProposalsController < ApplicationController
   def edit
   end
 
-  # POST /session_proposals
-  # POST /session_proposals.json
   def create
-    @session_proposal = SessionProposal.new(session_proposal_params)
-
-    respond_to do |format|
-      if @session_proposal.save
-        format.html { redirect_to @session_proposal, notice: 'Session proposal was successfully created.' }
-        format.json { render :show, status: :created, location: @session_proposal }
-      else
-        format.html { render :new }
-        format.json { render json: @session_proposal.errors, status: :unprocessable_entity }
-      end
+    session_proposal = SessionProposal.new(session_proposal_params)
+    if session_proposal.save
+      head :ok
+    else
+      head :unprocessable_entity
     end
   end
 
@@ -60,10 +53,6 @@ class SessionProposalsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def comments
-    
-  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,7 +60,6 @@ class SessionProposalsController < ApplicationController
       @session_proposal = SessionProposal.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def session_proposal_params
       params.require(:session_proposal).permit(:author, :title, :description)
     end
