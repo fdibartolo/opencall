@@ -44,18 +44,7 @@ class SessionProposalsController < ApplicationController
     end
   end
 
-  # DELETE /session_proposals/1
-  # DELETE /session_proposals/1.json
-  def destroy
-    @session_proposal.destroy
-    respond_to do |format|
-      format.html { redirect_to session_proposals_url, notice: 'Session proposal was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-  
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_session_proposal
       @session_proposal = SessionProposal.find(params[:id])
     end
