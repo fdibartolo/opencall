@@ -13,6 +13,19 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
   end
 
+  describe "GET #index" do
+    it "should list all SessionProposals" do
+      session = FactoryGirl.create :session_proposal
+
+      get :index
+
+      body = JSON.parse response.body
+      expect(body.count).to be 1
+      expect(body.first['id']).to eq session.id
+      expect(body.first['author']).to eq session.author
+    end
+  end
+
   describe "POST #create" do
     context "with invalid params" do
       it "should throw exception which ActionController::Base handle it into 400 Bad Request reply" do

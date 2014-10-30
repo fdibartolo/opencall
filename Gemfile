@@ -18,6 +18,10 @@ group :development do
   gem 'spring-commands-rspec', '1.0.2'
 end
 
+group :test do
+  gem 'factory_girl_rails', '4.5.0'
+end
+
 group :development, :test do
   gem 'rspec-rails', '3.1.0'
 end

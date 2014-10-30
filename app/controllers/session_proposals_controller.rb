@@ -1,8 +1,6 @@
 class SessionProposalsController < ApplicationController
   before_action :set_session_proposal, only: [:show, :edit, :update]
 
-  # GET /session_proposals
-  # GET /session_proposals.json
   def index
     @session_proposals = SessionProposal.all
   end
