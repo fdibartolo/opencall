@@ -1,5 +1,5 @@
 class SessionProposalsController < ApplicationController
-  before_action :set_session_proposal, only: [:show, :edit, :update, :destroy]
+  before_action :set_session_proposal, only: [:show, :edit, :update]
 
   # GET /session_proposals
   # GET /session_proposals.json
@@ -12,7 +12,6 @@ class SessionProposalsController < ApplicationController
   def show
   end
 
-  # GET /session_proposals/new
   def new
     @session_proposal = SessionProposal.new
   end

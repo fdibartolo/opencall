@@ -2,6 +2,17 @@ require 'rails_helper'
 
 RSpec.describe SessionProposalsController, :type => :controller do
 
+  describe "GET #new" do
+    it "should return an empty json-serialized SessionProposal" do
+      get :new
+
+      body = JSON.parse response.body
+      expect(body).to include 'author'
+      expect(body).to include 'title'
+      expect(body).to include 'description'
+    end
+  end
+
   describe "POST #create" do
     context "with invalid params" do
       it "should throw exception which ActionController::Base handle it into 400 Bad Request reply" do
