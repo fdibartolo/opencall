@@ -5,8 +5,6 @@ class SessionProposalsController < ApplicationController
     @session_proposals = SessionProposal.all
   end
 
-  # GET /session_proposals/1
-  # GET /session_proposals/1.json
   def show
   end
 
@@ -39,7 +37,8 @@ class SessionProposalsController < ApplicationController
 
   private
     def set_session_proposal
-      @session_proposal = SessionProposal.find(params[:id])
+      @session_proposal = SessionProposal.find_by(params[:id])
+      return head(:bad_request, { message: "Unable to find session proposal with id '#{params[:id]}'"}) unless @session_proposal
     end
 
     def session_proposal_params
