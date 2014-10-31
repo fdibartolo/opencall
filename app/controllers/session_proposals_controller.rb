@@ -1,5 +1,5 @@
 class SessionProposalsController < ApplicationController
-  before_action :set_session_proposal, only: [:show, :edit, :update]
+  before_action :set_session_proposal, only: [:show, :update]
 
   def index
     @session_proposals = SessionProposal.all
@@ -12,10 +12,6 @@ class SessionProposalsController < ApplicationController
 
   def new
     @session_proposal = SessionProposal.new
-  end
-
-  # GET /session_proposals/1/edit
-  def edit
   end
 
   def create

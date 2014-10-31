@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SessionProposalsController, :type => :controller do
 
-  describe "GET #new" do
+  describe "GET new" do
     it "should return an empty json-serialized SessionProposal" do
       get :new
 
@@ -13,7 +13,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
   end
 
-  describe "GET #index" do
+  describe "GET index" do
     it "should list all SessionProposals" do
       session = FactoryGirl.create :session_proposal
 
@@ -26,7 +26,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
   end
 
-  describe "POST #create" do
+  describe "POST create" do
     context "with invalid params" do
       it "should throw exception which ActionController::Base handle it into 400 Bad Request reply" do
         expect{ post(:create, {}) }.to raise_error ActionController::ParameterMissing
