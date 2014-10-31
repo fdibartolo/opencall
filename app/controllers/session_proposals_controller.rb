@@ -21,17 +21,11 @@ class SessionProposalsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /session_proposals/1
-  # PATCH/PUT /session_proposals/1.json
   def update
-    respond_to do |format|
-      if @session_proposal.update(session_proposal_params)
-        format.html { redirect_to @session_proposal, notice: 'Session proposal was successfully updated.' }
-        format.json { render :show, status: :ok, location: @session_proposal }
-      else
-        format.html { render :edit }
-        format.json { render json: @session_proposal.errors, status: :unprocessable_entity }
-      end
+    if @session_proposal.update(session_proposal_params)
+      head :ok
+    else
+      head :unprocessable_entity
     end
   end
 

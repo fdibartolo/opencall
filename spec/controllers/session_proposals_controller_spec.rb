@@ -77,4 +77,30 @@ RSpec.describe SessionProposalsController, :type => :controller do
       end
     end
   end
+
+  describe "PATCH update" do
+    context "with invalid params" do
+      it "should return 400 Bad Request" do
+        allow(SessionProposal).to receive(:find_by).and_return(nil)
+        expect(patch(:update, { id: 9999 })).to have_http_status(400)
+      end
+    end
+
+    context "with valid params" do
+      let(:session) { FactoryGirl.create :session_proposal }
+      let(:payload) { { id: session.id, session_proposal: { author: 'author', title: 'title' } } }
+      
+      it "should return success if can save" do
+        allow_any_instance_of(SessionProposal).to receive(:update).and_return(true)
+        patch :update, payload
+        expect(response).to have_http_status(200)
+      end
+
+      it "should return unprocesable entity if cannot save" do
+        allow_any_instance_of(SessionProposal).to receive(:update).and_return(false)
+        patch :update, payload
+        expect(response).to have_http_status(422)
+      end
+    end
+  end
 end
