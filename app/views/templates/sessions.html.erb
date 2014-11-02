@@ -1,0 +1,8 @@
+<div ng-cloak ng-init="init()">
+  <h1>Sesiones</h1>
+
+  <div ng-repeat="session in sessions">
+    <h3>{{session.title}} <span class="author">{{session.author}}</span></h3>
+    <p>Descripción: {{session.description}}</p>
+  </div>
+</div>
