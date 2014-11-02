@@ -37,6 +37,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colorize (0.7.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -59,6 +60,9 @@ GEM
     mime-types (2.4.3)
     minitest (5.4.2)
     multi_json (1.10.1)
+    protractor-rails (0.0.8)
+      colorize
+      railties
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -136,6 +140,7 @@ DEPENDENCIES
   factory_girl_rails (= 4.5.0)
   jbuilder (~> 2.0)
   jquery-rails (= 3.1.2)
+  protractor-rails (= 0.0.8)
   rails (= 4.1.6)
   rspec-rails (= 3.1.0)
   sass-rails (~> 4.0.3)

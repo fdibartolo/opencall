@@ -2,8 +2,28 @@
 
 Pendiente de agregar:
 
-* info del proyecto
+* Info del proyecto
 
-* como contribuir (preparar entorno local, etc)
+=== Setup de entorno local
 
-* ...
+* Clonar repo
+
+* Instalar dependencias (ruby) via bundle
+
+* Instalar dependencias (node) via rake protractor:install
+Asegurarse que nodejs se encuentra instalado en la máquina
+Se puede verificar que todo instaló correctamente via rake protractor:example
+
+* Correr tests
+
+** $ bin/rspec
+
+** $ rake protractor:spec_and_cleanup (hacer un seed antes si es necesario: rake db:seed RAILS_ENV=test)
+
+=== Cómo contribuir
+
+* Crear branch con nueva feature o bug fix
+
+* Asegurarse de agregar test!
+
+* Crear un pull request

@@ -24,4 +24,5 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '3.1.0'
+  gem 'protractor-rails', '0.0.8'
 end

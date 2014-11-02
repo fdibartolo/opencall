@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# This seed is to be used in test env for the jasmine e2e specs thru 'rake protractor:spec_and_cleanup'
+
+SessionProposal.create!([
+  { author: 'Fowler', title: 'Refactoring smells', description: 'This session is about refactoring' },
+  { author: 'Beck', title: 'Test Driven Development', description: 'This session is about test driven development' },
+  { author: 'Martin', title: 'Craftmanship', description: 'This session is about software craftmanship' }
+])
