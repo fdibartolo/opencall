@@ -15,14 +15,14 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
   describe "GET index" do
     it "should list all SessionProposals" do
+      # create one session propsal to the ones already seeded
       session = FactoryGirl.create :session_proposal
 
       get :index
 
       body = JSON.parse response.body
-      expect(body.count).to be 1
-      expect(body.first['id']).to eq session.id
-      expect(body.first['author']).to eq session.author
+      expect(body.last['id']).to eq session.id
+      expect(body.last['author']).to eq session.author
     end
   end
 
@@ -44,7 +44,8 @@ RSpec.describe SessionProposalsController, :type => :controller do
     context "with valid params" do
       it "should return the SessionProposal for given id" do
         session = FactoryGirl.create :session_proposal
-
+        allow(SessionProposal).to receive(:find_by).and_return(session)
+        
         get :show, { id: session.id }
 
         body = JSON.parse response.body
@@ -67,7 +68,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       it "should return success if can save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
         post :create, payload
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(204)
       end
 
       it "should return unprocesable entity if cannot save" do
@@ -93,7 +94,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       it "should return success if can save" do
         allow_any_instance_of(SessionProposal).to receive(:update).and_return(true)
         patch :update, payload
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(204)
       end
 
       it "should return unprocesable entity if cannot save" do

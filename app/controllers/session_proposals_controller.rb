@@ -15,7 +15,7 @@ class SessionProposalsController < ApplicationController
   def create
     session_proposal = SessionProposal.new(session_proposal_params)
     if session_proposal.save
-      head :ok
+      head :no_content
     else
       head :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class SessionProposalsController < ApplicationController
 
   def update
     if @session_proposal.update(session_proposal_params)
-      head :ok
+      head :no_content
     else
       head :unprocessable_entity
     end

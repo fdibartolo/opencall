@@ -8,9 +8,24 @@ angular.module('openCall.services').factory 'SessionsService',
     .success((data, status) ->
       deferred.resolve data
     ).error (data, status) ->
-      deferred.reject
+      deferred.reject()
+
+    deferred.promise
+
+  create = (session) ->
+    deferred = $q.defer()
+
+    $http.post("/session_proposals", 
+      author: session.author
+      title: session.title
+      description: session.description
+    ).success((data, status) ->
+      deferred.resolve()
+    ).error (data, status) ->
+      deferred.reject()
 
     deferred.promise
 
   all: all
+  create: create
 ]

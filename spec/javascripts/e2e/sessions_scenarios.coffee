@@ -9,4 +9,22 @@ describe "Sessions page", ->
     done()
     return
 
+  it "should be able to create a new session", (done) ->
+    session = 
+      author: 'Some Author'
+      title: 'Some Title'
+      description: 'A very detailed description'
+
+    @sessionsPage.addNewSessionButton.click()
+    @sessionsPage.create session
+
+    expect(@sessionsPage.sessions.count()).toEqual(4)
+
+    @sessionsPage.lastSessionDescription.getText().then (text) ->
+      expect(text).toEqual session.description
+      return
+
+    done()
+    return
+
   return
