@@ -1,4 +1,4 @@
-== OpenCall
+## OpenCall
 
 ---
 
@@ -6,7 +6,7 @@ Pendiente de agregar:
 
 * Info del proyecto
 
-=== Setup de entorno local
+### Setup de entorno local
 
 * Clonar repo
 
@@ -20,7 +20,7 @@ Pendiente de agregar:
 
   `$ rake protractor:spec_and_cleanup` (hacer un seed antes si es necesario: `rake db:seed RAILS_ENV=test`)
 
-=== Cómo contribuir
+### Cómo contribuir
 
 * Crear branch con nueva feature o bug fix
 
