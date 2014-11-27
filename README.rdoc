@@ -1,5 +1,7 @@
 == OpenCall
 
+---
+
 Pendiente de agregar:
 
 * Info del proyecto
@@ -8,17 +10,15 @@ Pendiente de agregar:
 
 * Clonar repo
 
-* Instalar dependencias (ruby) via bundle
+* Instalar dependencias (gemas ruby) via `bundle install`
 
-* Instalar dependencias (node) via rake protractor:install
-Asegurarse que nodejs se encuentra instalado en la máquina
-Se puede verificar que todo instaló correctamente via rake protractor:example
+* Instalar dependencias (módulos node) via `rake protractor:install`. Asegurarse que [nodejs](http://nodejs.org/) se encuentra instalado localmente. Se puede verificar que todo instaló correctamente via `rake protractor:example`
 
 * Correr tests
 
-** $ bin/rspec
+  `$ bin/rspec`
 
-** $ rake protractor:spec_and_cleanup (hacer un seed antes si es necesario: rake db:seed RAILS_ENV=test)
+  `$ rake protractor:spec_and_cleanup` (hacer un seed antes si es necesario: `rake db:seed RAILS_ENV=test`)
 
 === Cómo contribuir
 
