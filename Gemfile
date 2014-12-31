@@ -3,20 +3,20 @@ ruby '2.1.1'
 
 gem 'rails', '4.2.0'
 gem 'thin', '1.6.3'
-gem 'sqlite3', '1.3.9'
+gem 'sqlite3', '1.3.10'
 
 gem 'sass-rails', '5.0.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '4.1.0'
 gem 'angularjs-rails', '1.3.36'
 gem 'jquery-rails', '4.0.3'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '2.2.6'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '1.1.3'
-  gem 'spring-commands-rspec', '1.0.2'
+  gem 'spring', '1.2.0'
+  gem 'spring-commands-rspec', '1.0.4'
 end
 
 group :test do
@@ -25,5 +25,5 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '3.1.0'
-  gem 'protractor-rails', '0.0.8'
+  gem 'protractor-rails', '0.0.12'
 end
