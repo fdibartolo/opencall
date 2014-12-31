@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141025172429) do
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.string   "author"
     t.text     "body"
     t.datetime "created_at"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141025172429) do
     t.integer  "session_proposal_id"
   end
 
-  create_table "session_proposals", force: true do |t|
+  create_table "session_proposals", force: :cascade do |t|
     t.string   "author"
     t.string   "title"
     t.text     "description"
