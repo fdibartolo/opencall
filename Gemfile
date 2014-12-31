@@ -3,7 +3,7 @@ ruby '2.1.1'
 
 gem 'rails', '4.2.0'
 gem 'thin', '1.6.3'
-gem 'sqlite3', '1.3.10'
+gem 'pg', '0.17.1'
 
 gem 'sass-rails', '5.0.1'
 gem 'uglifier', '>= 1.3.0'
@@ -25,5 +25,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '3.1.0'
-  gem 'protractor-rails', '0.0.12'
+  gem 'protractor-rails', :path => '/Users/fdibartolo/Documents/RubyWorkspace/github_cloned_repos/protractor-rails' 
+  # gem 'protractor-rails', '0.0.12'
 end

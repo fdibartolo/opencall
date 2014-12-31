@@ -31,7 +31,7 @@ class SessionProposalsController < ApplicationController
 
   private
     def set_session_proposal
-      @session_proposal = SessionProposal.find_by(params[:id])
+      @session_proposal = SessionProposal.find_by(id: params[:id])
       return head(:bad_request, { message: "Unable to find session proposal with id '#{params[:id]}'"}) unless @session_proposal
     end
 
