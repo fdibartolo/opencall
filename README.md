@@ -22,8 +22,8 @@ Pendiente de agregar:
 
 ### Cómo contribuir
 
-* Crear branch con nueva feature o bug fix
-
-* Asegurarse de agregar test!
-
-* Crear un pull request
+1. Crea tu propio fork
+2. Crea un branch con tu nueva feature o bugfix (`git checkout -b my-new-branch`)
+3. Agrega tus cambios con sus respectivos tests (`git commit -am 'Add some feature'`)
+4. Pushea el branch (`git push origin my-new-branch`)
+5. Crea un pull request
