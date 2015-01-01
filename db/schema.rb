@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20141025172429) do
   create_table "comments", force: :cascade do |t|
     t.string   "author"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "session_proposal_id"
   end
 
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20141025172429) do
     t.string   "author"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
