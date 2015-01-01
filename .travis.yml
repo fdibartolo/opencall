@@ -2,12 +2,15 @@ language: ruby
 rvm:
   - 2.1.1
 
+addons:
+  postgresql: "9.3"
+
 # config/database.yml in Rails
 test:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
-  
+  adapter: postgresql
+  database: open_call_test
+  username: postgres
+
 before_script:
-  - bundle exec rake db:create RAILS_ENV="test"
+  - psql -c 'create database open_call_test;' -U postgres
   - bundle exec rake db:migrate RAILS_ENV="test"
