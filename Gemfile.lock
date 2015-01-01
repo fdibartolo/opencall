@@ -1,5 +1,7 @@
-PATH
-  remote: /Users/fdibartolo/Documents/RubyWorkspace/github_cloned_repos/protractor-rails
+GIT
+  remote: https://github.com/fdibartolo/protractor-rails
+  revision: 5964428035886c4a3beeb729a24499e24e83e133
+  branch: bugfixes
   specs:
     protractor-rails (0.0.12)
       colorize

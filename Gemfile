@@ -25,6 +25,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '3.1.0'
-  gem 'protractor-rails', :path => '/Users/fdibartolo/Documents/RubyWorkspace/github_cloned_repos/protractor-rails' 
-  # gem 'protractor-rails', '0.0.12'
+  # temp pull code from this branch since it has a few bugs fixed (pull requests #23 #24)
+  gem 'protractor-rails', :git => 'https://github.com/fdibartolo/protractor-rails', :branch => 'bugfixes'
 end
