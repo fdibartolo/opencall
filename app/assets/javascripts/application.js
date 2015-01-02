@@ -15,4 +15,5 @@
 //= require angular-route
 //= require angular-mocks
 //= require app/open_call
+//= require bootstrap-sprockets
 //= require_tree .
