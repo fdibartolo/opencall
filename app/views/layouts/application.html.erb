@@ -7,8 +7,54 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar-wrapper">
+    <div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">Call for papers</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <% if false %> <!-- logged in -->
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MI NOMBRE <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/home">Perfil</a></li>
+                    <li><a href="#/home">Cambiar Contraseña</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Administrador</li>
+                    <li><a href="#/home">Puedo ver esto como admin</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Reviewer</li>
+                    <li><a href="#/home">Puedo ver esto como reviewer</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#/home">Cerrar Sesión</a></li>
+                  </ul>
+                </li>
+              <% else %>
+                <li style="padding:0 5px">
+                  <button type="button" class="btn btn-primary btn-sm navbar-btn">Sign up</button>
+                </li>
+                <li style="padding:0 5px">
+                  <button type="button" class="btn btn-inverse btn-sm navbar-btn">Sign in</button>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
 
-<%= yield %>
-
+  <div class="container content">
+    <%= yield %>
+  </div>
 </body>
 </html>
