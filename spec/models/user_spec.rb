@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
   describe "mandatory attributes" do
-    %w[first_name last_name country].each do |attribute|
+    %w[first_name last_name country email].each do |attribute|
       it "should include #{attribute}" do
         user = FactoryGirl.build(:user)
         eval "user.#{attribute} = nil"
