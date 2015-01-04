@@ -1,0 +1,23 @@
+.home-button-container {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-button {
+  color: white; 
+  background: $brand-primary; 
+  display: table-cell; 
+  vertical-align: middle;
+  width: 120px; 
+  height: 120px;
+
+  &:hover { 
+    background-color: $btn-primary-hover-bg;
+    color: white; 
+    text-decoration: none !important;
+  }
+  
+  .icon { font-size: 300%; }
+  .text { font-size: 140%; }
+}
