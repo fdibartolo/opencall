@@ -5,6 +5,9 @@ $btn-primary-hover-bg: #286090;
 @import "home";
 @import "session_proposals";
 
-.content {
-  padding-top: 50px;
+.content { padding-top: 50px; }
+
+.btn a {
+  color: inherit;
+  &:hover { text-decoration: none !important; }
 }

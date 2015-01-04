@@ -16,3 +16,15 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
 
   $routeProvider.otherwise redirectTo: '/home'
 ]
+
+app.factory "httpInterceptor", ['$q', '$location', ($q, $location) ->
+  return (
+    responseError: (response) ->
+      $location.path "/home"  if response.status is 401
+      $q.reject response
+  )
+]
+
+app.config ['$httpProvider', ($httpProvider) ->
+  $httpProvider.interceptors.push "httpInterceptor"
+]

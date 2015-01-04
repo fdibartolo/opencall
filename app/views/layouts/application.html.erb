@@ -18,13 +18,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/home">Call for papers</a>
+            <%= link_to "Call for papers", root_url, class: "navbar-brand" %>
+            <!-- <a class="navbar-brand" href="<%= root_url %>">Call for papers</a> -->
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-              <% if false %> <!-- logged in -->
+              <% if current_user %>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MI NOMBRE <span class="caret"></span></a>
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="#/home">Perfil</a></li>
                     <li><a href="#/home">Cambiar Contraseña</a></li>
@@ -35,15 +36,19 @@
                     <li class="dropdown-header">Reviewer</li>
                     <li><a href="#/home">Puedo ver esto como reviewer</a></li>
                     <li class="divider"></li>
-                    <li><a href="#/home">Cerrar Sesión</a></li>
+                    <li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %></li>
                   </ul>
                 </li>
               <% else %>
                 <li style="padding:0 5px">
-                  <button type="button" class="btn btn-primary btn-sm navbar-btn">Sign up</button>
+                  <div class="btn btn-primary btn-sm navbar-btn">
+                    <a href="<%= new_user_registration_path %>">Sign up</a>                    
+                  </div>
                 </li>
                 <li style="padding:0 5px">
-                  <button type="button" class="btn btn-inverse btn-sm navbar-btn">Sign in</button>
+                  <div class="btn btn-default btn-sm navbar-btn">
+                    <a href="<%= new_user_session_path %>">Sign in</a>                    
+                  </div>
                 </li>
               <% end %>
             </ul>
@@ -54,6 +59,8 @@
   </div>
 
   <div class="container content">
+    <%= render :partial => 'layouts/messages' %>  
+
     <%= yield %>
   </div>
 </body>

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe SessionProposalsController, :type => :controller do
-
+  login_user
+  
   describe "GET new" do
     it "should return an empty json-serialized SessionProposal" do
       get :new

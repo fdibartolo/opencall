@@ -14,6 +14,8 @@ gem 'angularjs-rails', '1.3.36'
 gem 'jquery-rails', '4.0.3'
 gem 'jbuilder', '2.2.6'
 
+gem 'devise'
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '1.2.0'

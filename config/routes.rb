@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 
   resources :session_proposals, except: [:edit, :destroy], defaults: { format: :json } do
