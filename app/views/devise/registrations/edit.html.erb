@@ -22,7 +22,7 @@
 
   <div class="form-group">
     <label for="inputCountry" class="col-sm-2 control-label">Pais</label>
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-top:5px">
       <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"], :selected => f.object.country), class: "form-control", id: "inputCountry" %>
     </div>
   </div>
@@ -69,16 +69,16 @@
     <label for="inputPassword3" class="col-sm-2 control-label">Contraseña Actual</label>
     <div class="col-sm-6">
       <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "inputPassword3", placeholder: "Contraseña" %>
-      <small class="text-muted">necesitas tu contraseña actual para confirmar tus cambios</small>
+      <small class="text-muted">necesitas ingresar tu contraseña actual para poder confirmar algún cambio</small>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">
       <button type="submit" class="btn btn-primary">Guardar</button>
-      <div class="btn btn-default"><%= link_to "Cancelar", :back %></div>
+      <div class="btn btn-default"><%= link_to "Volver", :back %></div>
       <br><hr>
-      <%= link_to "Borrar mi cuenta", registration_path(resource_name), data: { confirm: "Tu cuenta será borrada de forma permanente y no tiene vuelta atrás. Deseas borrarla?" }, method: :delete, class: "btn btn-danger" %>
+      <%= link_to "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span> &nbsp; Borrar mi cuenta".html_safe, registration_path(resource_name), data: { confirm: "Tu cuenta será borrada de forma permanente y no tiene vuelta atrás. Deseas borrarla?" }, method: :delete, class: "btn btn-danger pull-right" %>
     </div>
   </div>
 <% end %>
