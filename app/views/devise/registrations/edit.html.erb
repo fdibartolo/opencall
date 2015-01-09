@@ -7,68 +7,68 @@
   <% end %>
 
   <div class="form-group">
-    <label for="inputFirstName" class="col-sm-2 control-label">Nombre</label>
+    <label for="input-firstname" class="col-sm-2 control-label">Nombre</label>
     <div class="col-sm-6">
-      <%= f.text_field :first_name, class: "form-control", id: "inputFirstName", placeholder: "Nombre" %>
+      <%= f.text_field :first_name, class: "form-control", id: "input-firstname", placeholder: "Nombre" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputLastName" class="col-sm-2 control-label">Apellido</label>
+    <label for="input-lastname" class="col-sm-2 control-label">Apellido</label>
     <div class="col-sm-6">
-      <%= f.text_field :last_name, class: "form-control", id: "inputLastName", placeholder: "Apellido" %>
+      <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: "Apellido" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputCountry" class="col-sm-2 control-label">Pais</label>
+    <label for="input-country" class="col-sm-2 control-label">Pais</label>
     <div class="col-sm-6">
-      <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"], :selected => f.object.country), {}, { class: "form-control selectpicker", id: "inputCountry" } %>
+      <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"], :selected => f.object.country), {}, { class: "form-control selectpicker", id: "input-country" } %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    <label for="input-email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-6">
-      <%= f.email_field :email, class: "form-control", id: "inputEmail", placeholder: "Email" %>
+      <%= f.email_field :email, class: "form-control", id: "input-email", placeholder: "Email" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
+    <label for="input-password" class="col-sm-2 control-label">Contraseña</label>
     <div class="col-sm-6">
-      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "inputPassword", placeholder: "Contraseña" %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
       <small class="text-muted">déjala en blanco si no deseas cambiarla</small>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputPassword2" class="col-sm-2 control-label">Repetir Contraseña</label>
+    <label for="input-password2" class="col-sm-2 control-label">Repetir Contraseña</label>
     <div class="col-sm-6">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "inputPassword2", placeholder: "Contraseña" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: "Contraseña" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputWebsite" class="col-sm-2 control-label">Website</label>
+    <label for="input-website" class="col-sm-2 control-label">Website</label>
     <div class="col-sm-6">
-      <%= f.url_field :website, class: "form-control", id: "inputWebsite", placeholder: "Website" %>
+      <%= f.url_field :website, class: "form-control", id: "input-website", placeholder: "Website" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputBio" class="col-sm-2 control-label">Bio</label>
+    <label for="input-bio" class="col-sm-2 control-label">Bio</label>
     <div class="col-sm-6">
-      <%= f.text_area :bio, class: "form-control", id: "inputBio", placeholder: "Bio", rows: 10 %>
+      <%= f.text_area :bio, class: "form-control", id: "input-bio", placeholder: "Bio", rows: 10 %>
     </div>
   </div>
 
   <div class="row"><div class="col-sm-offset-2 col-sm-6"><hr></div></div>
 
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Contraseña Actual</label>
+    <label for="input-password3" class="col-sm-2 control-label">Contraseña Actual</label>
     <div class="col-sm-6">
-      <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "inputPassword3", placeholder: "Contraseña" %>
+      <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "input-password3", placeholder: "Contraseña" %>
       <small class="text-muted">necesitas ingresar tu contraseña actual para poder confirmar algún cambio</small>
     </div>
   </div>

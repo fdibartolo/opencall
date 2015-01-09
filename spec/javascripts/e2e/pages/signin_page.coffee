@@ -1,6 +1,6 @@
 SigninPage = ->
-  @emailInput = element(By.id('inputEmail'))
-  @passwordInput = element(By.id('inputPassword'))
+  @emailInput = element(By.id('input-email'))
+  @passwordInput = element(By.id('input-password'))
   @signinButton = element(By.id('signin-button'))
 
   @signinAs = (name) ->

@@ -3,7 +3,7 @@ FactoryGirl.define do
     first_name  'Robert'
     last_name   'Martin'
     country     'US'
-    email       'bob@mail.com'
+    email       'unclebob@mail.com'
     password    'unclebob'
   end
 

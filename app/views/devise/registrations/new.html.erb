@@ -4,37 +4,37 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <label for="inputFirstName" class="col-sm-2 control-label">Nombre</label>
+    <label for="input-firstname" class="col-sm-2 control-label">Nombre</label>
     <div class="col-sm-6">
-      <%= f.text_field :first_name, class: "form-control", id: "inputFirstName", placeholder: "Nombre" %>
+      <%= f.text_field :first_name, class: "form-control", id: "input-firstname", placeholder: "Nombre" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputLastName" class="col-sm-2 control-label">Apellido</label>
+    <label for="input-lastname" class="col-sm-2 control-label">Apellido</label>
     <div class="col-sm-6">
-      <%= f.text_field :last_name, class: "form-control", id: "inputLastName", placeholder: "Apellido" %>
+      <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: "Apellido" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputCountry" class="col-sm-2 control-label">Pais</label>
+    <label for="input-country" class="col-sm-2 control-label">Pais</label>
     <div class="col-sm-6">
-      <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"]), {}, { class: "form-control selectpicker", id: "inputCountry" } %>
+      <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"]), {}, { class: "form-control selectpicker", id: "input-country" } %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    <label for="input-email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-6">
-      <%= f.email_field :email, class: "form-control", id: "inputEmail", placeholder: "Email" %>
+      <%= f.email_field :email, class: "form-control", id: "input-email", placeholder: "Email" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
+    <label for="input-password" class="col-sm-2 control-label">Contraseña</label>
     <div class="col-sm-6">
-      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "inputPassword", placeholder: "Contraseña" %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
       <% if @validatable %>
         <small class="text-muted"><%= @minimum_password_length %> caracteres mínimo</small>
       <% end %>
@@ -42,9 +42,9 @@
   </div>
 
   <div class="form-group">
-    <label for="inputPassword2" class="col-sm-2 control-label">Repetir Contraseña</label>
+    <label for="input-password2" class="col-sm-2 control-label">Repetir Contraseña</label>
     <div class="col-sm-6">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "inputPassword2", placeholder: "Contraseña" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: "Contraseña" %>
     </div>
   </div>
 

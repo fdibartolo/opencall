@@ -3,16 +3,16 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
 
   <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    <label for="input-email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-6">
-      <%= f.email_field :email, autofocus: true, class: "form-control", id: "inputEmail", placeholder: "Email" %>
+      <%= f.email_field :email, autofocus: true, class: "form-control", id: "input-email", placeholder: "Email" %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
+    <label for="input-password" class="col-sm-2 control-label">Contraseña</label>
     <div class="col-sm-6">
-      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "inputPassword", placeholder: "Contraseña" %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
     </div>
   </div>
 
