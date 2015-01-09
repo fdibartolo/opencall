@@ -17,4 +17,5 @@
 //= require angular-mocks
 //= require app/open_call
 //= require bootstrap-sprockets
+//= require bootstrap-select
 //= require_tree .

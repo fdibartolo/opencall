@@ -22,8 +22,8 @@
 
   <div class="form-group">
     <label for="inputCountry" class="col-sm-2 control-label">Pais</label>
-    <div class="col-sm-6" style="margin-top:5px">
-      <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"], :selected => f.object.country), class: "form-control", id: "inputCountry" %>
+    <div class="col-sm-6">
+      <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"], :selected => f.object.country), {}, { class: "form-control selectpicker", id: "inputCountry" } %>
     </div>
   </div>
 
