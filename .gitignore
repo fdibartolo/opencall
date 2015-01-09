@@ -7,10 +7,6 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
@@ -18,3 +14,6 @@
 # Local ruby version and gemset
 .ruby-gemset
 .ruby-version
+
+# Local auxiliary notes/reminders/to-do's
+aux_notes.txt
