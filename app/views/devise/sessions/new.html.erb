@@ -1,0 +1,35 @@
+<h2>Bienvenido!</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
+
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-6">
+      <%= f.email_field :email, autofocus: true, class: "form-control", id: "inputEmail", placeholder: "Email" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
+    <div class="col-sm-6">
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "inputPassword", placeholder: "Contraseña" %>
+    </div>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <%= f.check_box :remember_me %>
+        <small><%= f.label 'Recordarme' %></small>
+      </div>
+    </div>
+  <% end -%>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+    </div>
+  </div>
+<% end %>
+
+<!-- <%= render "devise/shared/links" %> -->
