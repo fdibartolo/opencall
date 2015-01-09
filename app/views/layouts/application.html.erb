@@ -27,7 +27,7 @@
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#/home">Perfil</a></li>
+                    <li><%= link_to "Perfil", edit_user_registration_path %></li>
                     <li><a href="#/home">Cambiar Contraseña</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Administrador</li>
@@ -42,12 +42,12 @@
               <% else %>
                 <li style="padding:0 5px">
                   <div class="btn btn-primary btn-sm navbar-btn">
-                    <a href="<%= new_user_registration_path %>">Sign up</a>                    
+                    <%= link_to "Sign up", new_user_registration_path %>
                   </div>
                 </li>
                 <li style="padding:0 5px">
                   <div class="btn btn-default btn-sm navbar-btn">
-                    <a href="<%= new_user_session_path %>">Sign in</a>                    
+                    <%= link_to "Sign in", new_user_session_path %>
                   </div>
                 </li>
               <% end %>
