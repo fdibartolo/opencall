@@ -1,5 +1,8 @@
 describe "Sessions page", ->
   beforeEach ->
+    @signinPage = require './pages/signin_page.coffee'
+    @signinPage.signinAs 'bob@mail.com'
+
     @sessionsPage = require './pages/sessions_page.coffee'
     @sessionsPage.get()
     return

@@ -8,7 +8,7 @@ exports.config = {
   },
 
   specs: [
-    'e2e/pages/sessions_page.coffee',
+    'e2e/**/*.coffee',
     'e2e/*.coffee'
   ],
 
