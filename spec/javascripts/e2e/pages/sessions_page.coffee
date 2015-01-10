@@ -2,7 +2,6 @@ SessionsPage = ->
   @sessions = element.all(By.repeater('session in sessions'))
 
   @addNewSessionButton = element(By.id('add-button'))
-  @newSessionAuthor = element(By.model('newSession.author'))
   @newSessionTitle = element(By.model('newSession.title'))
   @newSessionDescription = element(By.model('newSession.description'))
   @createButton = element(By.id('create-button'))
@@ -14,7 +13,6 @@ SessionsPage = ->
     return
 
   @create = (session) ->
-    @newSessionAuthor.sendKeys session.author
     @newSessionTitle.sendKeys session.title
     @newSessionDescription.sendKeys session.description
     @createButton.click()

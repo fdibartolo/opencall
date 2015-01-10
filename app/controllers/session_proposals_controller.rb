@@ -15,6 +15,7 @@ class SessionProposalsController < ApplicationController
 
   def create
     session_proposal = SessionProposal.new(session_proposal_params)
+    session_proposal.author = current_user.email
     if session_proposal.save
       head :no_content
     else
@@ -37,6 +38,6 @@ class SessionProposalsController < ApplicationController
     end
 
     def session_proposal_params
-      params.require(:session_proposal).permit(:author, :title, :description)
+      params.require(:session_proposal).permit(:title, :description)
     end
 end

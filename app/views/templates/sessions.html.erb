@@ -8,10 +8,28 @@
 
   <button id="add-button" ng-click="showAddNewSession = !showAddNewSession">Agregar Sesión</button>
   <div ng-show="showAddNewSession">
-    <h5>Nueva sesión</h5>
-    <input type="text" placeholder="Autor" ng-model="newSession.author"><br>
-    <input type="text" placeholder="Título" ng-model="newSession.title"><br>
-    <textarea type="text" placeholder="Descripción" ng-model="newSession.description"></textarea><br>
-    <button id="create-button" ng-click="createSession()">Confirmar</button>
+
+    <div class="form-horizontal">
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-6"><h3>Nueva sesión</h3></div>
+      </div>
+      <div class="form-group">
+        <label for="input-title" class="col-sm-2 control-label">Título</label>
+        <div class="col-sm-6">
+          <input type="text" id="input-title" placeholder="Título" ng-model="newSession.title" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="input-description" class="col-sm-2 control-label">Descripción</label>
+        <div class="col-sm-6">
+          <textarea type="text" id="input-description" class="form-control" placeholder="Descripción" ng-model="newSession.description" rows="10"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-6">
+          <button id="create-button" class="btn btn-primary" ng-click="createSession()">Confirmar</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

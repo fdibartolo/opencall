@@ -4,7 +4,6 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.sessions = []
   $scope.showAddNewSession = false
   $scope.newSession = 
-    author: ''
     title: ''
     description: ''
 

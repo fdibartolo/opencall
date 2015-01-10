@@ -16,7 +16,6 @@ angular.module('openCall.services').factory 'SessionsService',
     deferred = $q.defer()
 
     $http.post("/session_proposals", 
-      author: session.author
       title: session.title
       description: session.description
     ).success((data, status) ->

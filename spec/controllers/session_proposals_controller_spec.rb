@@ -64,7 +64,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
 
     context "with valid params" do
-      let(:payload) { { session_proposal: { author: 'author', title: 'title', description: 'description' } } }
+      let(:payload) { { session_proposal: { title: 'title', description: 'description' } } }
       
       it "should return success if can save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
@@ -90,7 +90,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
     context "with valid params" do
       let(:session) { FactoryGirl.create :session_proposal }
-      let(:payload) { { id: session.id, session_proposal: { author: 'author', title: 'title' } } }
+      let(:payload) { { id: session.id, session_proposal: { title: 'title' } } }
       
       it "should return success if can save" do
         allow_any_instance_of(SessionProposal).to receive(:update).and_return(true)
