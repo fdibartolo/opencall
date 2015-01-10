@@ -11,7 +11,7 @@ gem 'autoprefixer-rails', '4.0.2.2'
 gem 'bootstrap-select-rails', '1.6.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '4.1.0'
-gem 'angularjs-rails', '1.3.36'
+gem 'angularjs-rails', '1.3.8'
 gem 'jquery-rails', '4.0.3'
 gem 'jbuilder', '2.2.6'
 
