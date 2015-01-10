@@ -24,8 +24,9 @@ module UserHelper
 
   def validation_details? type, attribute
     return "" if resource.errors.messages[attribute].empty?
-
-    message = resource.errors.messages[attribute].map {|msg| "#{attribute.to_s.camelize} #{msg}"}.join
+    
+    translated_attribute = I18n.t("activerecord.attributes.#{resource.class.model_name.name.downcase}.#{attribute}")
+    message = resource.errors.messages[attribute].map {|msg| "#{translated_attribute} #{msg}"}.join
     icon = type == "danger" ? "glyphicon-remove" : "glyphicon-warning-sign"
     html = <<-HTML
       <span class="glyphicon #{icon} form-control-feedback" aria-hidden="true"></span>

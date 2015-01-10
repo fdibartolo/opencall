@@ -1,0 +1,47 @@
+es:
+  activerecord:
+    models: 
+      user: "Usuario"
+    attributes:
+      user:
+        first_name: "Nombre"
+        last_name: "Apellido"
+        country: "Pais"
+        email: "Email"
+        password: "Contraseña"
+        password_confirmation: "Contraseña de confirmación"
+        current_password: "Contraseña actual"
+  errors:
+    # The default format to use in full error messages.
+    format: "%{attribute} %{message}"
+
+    # The values :model, :attribute and :value are always available for interpolation
+    # The value :count is available when applicable. Can be used for pluralization.
+    messages:
+      inclusion: "no está incluido en la lista"
+      exclusion: "es reservado"
+      invalid: "es inválido"
+      confirmation: "no concuerda con %{attribute}"
+      accepted: "debe ser aceptado"
+      empty: "no puede estar vacío"
+      blank: "no puede estar en blanco"
+      present: "debe estar en blanco"
+      too_long:
+        one: "debe tener como máximo 1 caracter"
+        other: "debe tener como máximo %{count} caracteres"
+      too_short:
+        one: "debe tener al menos 1 caracter"
+        other: "debe tener al menos %{count} caracteres"
+      wrong_length:
+        one: "es de largo incorrecto (debe ser 1 caracter)"
+        other: "es de largo incorrecto (debe ser %{count} caracter)"
+      not_a_number: "no es un número"
+      not_an_integer: "debe ser un número entero"
+      greater_than: "debe ser mayor que %{count}"
+      greater_than_or_equal_to: "debe ser mayor o igual que %{count}"
+      equal_to: "debe ser igual a %{count}"
+      less_than: "debe ser menor que %{count}"
+      less_than_or_equal_to: "debe ser menor o igual que %{count}"
+      other_than: "debe ser distinto a %{count}"
+      odd: "debe ser impar"
+      even: "debe ser par"
