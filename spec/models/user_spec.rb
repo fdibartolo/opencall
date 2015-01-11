@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
+  let(:user) { FactoryGirl.build(:user) }
+
   describe "mandatory attributes" do
     %w[first_name last_name country email].each do |attribute|
       it "should include #{attribute}" do
@@ -19,5 +21,9 @@ RSpec.describe User, :type => :model do
     it { expect(User.attribute_names).to include 'organization' }
     it { expect(User.attribute_names).to include 'website' }
     it { expect(User.attribute_names).to include 'bio' }
-  end  
+  end
+
+  describe ".full_name" do
+    it { expect(user.full_name).to eq 'Robert Martin' }
+  end
 end

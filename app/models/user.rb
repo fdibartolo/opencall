@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   validates :country, presence: true
 
   has_many :session_proposals
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 end
