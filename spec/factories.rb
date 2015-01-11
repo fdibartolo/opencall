@@ -3,13 +3,13 @@ FactoryGirl.define do
     first_name  'Robert'
     last_name   'Martin'
     country     'US'
-    email       'unclebob@mail.com'
+    email       { "#{first_name}.#{last_name}@main.com".downcase }
     password    'unclebob'
   end
 
   factory :session_proposal do
-    author      'Fowler'
     title       'Refactoring'
     description 'A long description for refactoring'
+    association :user, factory: :user, first_name: 'bob'
   end
 end

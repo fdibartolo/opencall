@@ -9,7 +9,7 @@ User.create!({
 })
 
 SessionProposal.create!([
-  { author: 'Fowler', title: 'Refactoring smells', description: 'This session is about refactoring' },
-  { author: 'Beck', title: 'Test Driven Development', description: 'This session is about test driven development' },
-  { author: 'Martin', title: 'Craftmanship', description: 'This session is about software craftmanship' }
+  { user: User.last, title: 'Refactoring smells', description: 'This session is about refactoring' },
+  { user: User.last, title: 'Test Driven Development', description: 'This session is about test driven development' },
+  { user: User.last, title: 'Craftmanship', description: 'This session is about software craftmanship' }
 ])

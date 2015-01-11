@@ -15,7 +15,7 @@ class SessionProposalsController < ApplicationController
 
   def create
     session_proposal = SessionProposal.new(session_proposal_params)
-    session_proposal.author = current_user.email
+    session_proposal.user = current_user
     if session_proposal.save
       head :no_content
     else

@@ -1,1 +1,2 @@
-json.extract! @session_proposal, :id, :author, :title, :description
+json.extract! @session_proposal, :id, :title, :description
+json.author @session_proposal.user.email
