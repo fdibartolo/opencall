@@ -3,12 +3,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  devise :omniauthable, :omniauth_providers => [:github]
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :country, presence: true
+  validates :first_name,  presence: true
+  validates :last_name,   presence: true
+  validates :country,     presence: true
 
   has_many :session_proposals
+  has_many :identities
 
   def full_name
     "#{self.first_name} #{self.last_name}"

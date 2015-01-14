@@ -7,6 +7,12 @@ FactoryGirl.define do
     password    'unclebob'
   end
 
+  factory :identity do
+    association :user, factory: :user
+    provider    'github'
+    uid         '123456'
+  end
+
   factory :session_proposal do
     title       'Refactoring'
     description 'A long description for refactoring'
