@@ -22,8 +22,8 @@ es:
       unlock_instructions:
         subject: "Instrucciones de desbloqueo"
     omniauth_callbacks:
-      failure: "No es posible autenticarse desde %{kind} debido a \"%{reason}\"."
-      success: "Autenticación con éxito desde tu cuenta de %{kind}."
+      failure: "No es posible iniciar sesión desde tu cuenta de %{kind} debido a \"%{reason}\"."
+      success: "Inicio de sesión con éxito desde tu cuenta de %{kind}."
     passwords:
       no_token: "No es posible acceder a esta página sin venir del correo electrónico de reseteo de contraseña. Si de hecho vienes de ahí, por favor asegúrate haber usado la URL provista."
       send_instructions: "Recibirás un correo electrónico con las instrucciones de cómo resetear tu contraseña en unos minutos."
