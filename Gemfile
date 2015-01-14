@@ -32,6 +32,7 @@ group :development, :test do
   gem 'rspec-rails', '3.1.0'
   # temp pull code from this branch since it has a few bugs fixed (pull requests #23 #24)
   gem 'protractor-rails', :git => 'https://github.com/fdibartolo/protractor-rails', :branch => 'bugfixes'
+  gem 'dotenv-rails', '1.0.2'
 end
 
 gem 'sdoc', '~> 0.4.0', group: :doc
