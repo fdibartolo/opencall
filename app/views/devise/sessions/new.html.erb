@@ -1,39 +1,60 @@
 <h2>Bienvenido!</h2>
+<br>
+<div class="col-sm-7">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
-
-  <div class="form-group">
-    <label for="input-email" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-6">
-      <%= f.email_field :email, autofocus: true, class: "form-control", id: "input-email", placeholder: "Email" %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="input-password" class="col-sm-2 control-label">Contraseña</label>
-    <div class="col-sm-6">
-      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
-    </div>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-6">
-        <%= f.check_box :remember_me %>
-        <small><%= f.label 'Recordarme' %></small>
+      <label for="input-email" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-8">
+        <%= f.email_field :email, autofocus: true, class: "form-control", id: "input-email", placeholder: "Email" %>
       </div>
     </div>
-  <% end -%>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-6">
-      <button id="signin-button" type="submit" class="btn btn-primary">Ingresar</button>
+    <div class="form-group">
+      <label for="input-password" class="col-sm-2 control-label">Contraseña</label>
+      <div class="col-sm-8">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
+      </div>
     </div>
-  </div>
-<% end %>
 
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{provider.to_s.titleize}", user_omniauth_authorize_path(provider) %><br />
+    <% if devise_mapping.rememberable? -%>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+          <%= f.check_box :remember_me %>
+          <small><%= f.label 'Recordarme' %></small>
+        </div>
+      </div>
+    <% end -%>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+        <button id="signin-button" type="submit" class="btn btn-primary">Ingresar</button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-sm-5 social-login-container">
+  <%- if devise_mapping.omniauthable? %>
+    <h4>Ingresar con mi cuenta de</h4>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <div class="col-xs-3">
+        <%= link_to content_tag(:span, '', class: "btn-social ion-social-#{provider}"), user_omniauth_authorize_path(provider) %>
+      </div>
+    <% end -%>
+
+    <!-- HACK: Placeholder, just for visual testing! -->
+    <div class="col-xs-3">
+      <%= link_to content_tag(:span, '', class: "btn-social ion-social-twitter"), user_omniauth_authorize_path(:github) %>
+    </div>
+    <div class="col-xs-3">
+      <%= link_to content_tag(:span, '', class: "btn-social ion-social-googleplus"), user_omniauth_authorize_path(:github) %>
+    </div>
+    <div class="col-xs-3">
+      <%= link_to content_tag(:span, '', class: "btn-social ion-social-linkedin"), user_omniauth_authorize_path(:github) %>
+    </div>
+    <!-- ****************************************** -->
+
   <% end -%>
-<% end -%>
+</div>
+
