@@ -1,8 +1,7 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', 'SessionsService', ($scope, SessionsService) ->
+['$scope', '$location', 'SessionsService', ($scope, $location, SessionsService) ->
 
   $scope.sessions = []
-  $scope.showAddNewSession = false
   $scope.newSession = 
     title: ''
     description: ''
@@ -13,7 +12,5 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.createSession = () ->
     SessionsService.create($scope.newSession).then () ->
-      $scope.sessions.push $scope.newSession
-      $scope.showAddNewSession = false
-
+      $location.path '/sessions'
 ]

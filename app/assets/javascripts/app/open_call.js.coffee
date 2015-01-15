@@ -12,7 +12,11 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/home.html'
 
   $routeProvider.when '/sessions',
-    templateUrl: '/templates/sessions.html'
+    templateUrl: '/templates/sessions/index.html'
+    controller: 'SessionsController'
+
+  $routeProvider.when '/sessions/new',
+    templateUrl: '/templates/sessions/new.html'
     controller: 'SessionsController'
 
   $routeProvider.otherwise redirectTo: '/home'

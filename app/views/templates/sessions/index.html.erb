@@ -1,0 +1,19 @@
+<div ng-cloak ng-init="init()" ng-cloak fade-animation="true" class="row">
+  <h2 class="text-center">Y los temas candidatos son...</h2>
+
+  <div class="col-sm-9">
+    <div ng-repeat="session in sessions">
+      <h3>{{session.title}} <span class="author">{{session.author}}</span></h3>
+      <p>{{session.description}}</p>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="home-button-container">
+      <a class="img-circle btn-action" href="<%= root_url + '#/sessions/new' %>">
+        <span class="ion-android-add icon" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+</div>
+

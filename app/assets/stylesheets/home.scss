@@ -21,3 +21,22 @@
   .icon { font-size: 300%; }
   .text { font-size: 140%; }
 }
+
+.btn-action {
+  color: white; 
+  background: $brand-primary; 
+  display: table-cell; 
+  vertical-align: middle;
+  text-align: center;
+  width: 80px; 
+  height: 80px;
+
+  &:hover { 
+    background-color: $btn-primary-hover-bg;
+    color: white; 
+    text-decoration: none !important;
+  }
+  
+  .icon { font-size: 300%; }
+  .text { font-size: 110%; }
+}
