@@ -1,7 +1,8 @@
-app = angular.module('openCall', ['ngRoute', 'openCall.controllers', 'openCall.services'])
+app = angular.module('openCall', ['ngRoute', 'openCall.controllers', 'openCall.services', 'openCall.directives'])
 
 controllers = angular.module('openCall.controllers', [])
 services = angular.module('openCall.services', [])
+directives = angular.module('openCall.directives', [])
 
 app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
