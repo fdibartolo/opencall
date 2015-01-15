@@ -35,4 +35,6 @@ group :development, :test do
   gem 'dotenv-rails', '1.0.2'
 end
 
+gem 'rails_12factor', '0.0.3', group: :production
+
 gem 'sdoc', '~> 0.4.0', group: :doc
