@@ -1,15 +1,18 @@
 SessionsPage = ->
   @sessions = element.all(By.repeater('session in sessions'))
 
-  @addNewSessionButton = element(By.id('add-button'))
   @newSessionTitle = element(By.model('newSession.title'))
   @newSessionDescription = element(By.model('newSession.description'))
   @createButton = element(By.id('create-button'))
 
   @lastSessionDescription = element.all(By.binding('session.description')).last()
 
-  @get = ->
+  @index = ->
     browser.get "#/sessions"
+    return
+
+  @new = ->
+    browser.get "#/sessions/new"
     return
 
   @create = (session) ->

@@ -4,10 +4,10 @@ describe "Sessions page", ->
     @signinPage.signinAs 'bob@mail.com'
 
     @sessionsPage = require './pages/sessions_page.coffee'
-    @sessionsPage.get()
     return
 
   it "should list all sessions", (done) ->
+    @sessionsPage.index()
     expect(@sessionsPage.sessions.count()).toEqual(3)
     done()
     return
@@ -17,9 +17,10 @@ describe "Sessions page", ->
       title: 'Some Title'
       description: 'A very detailed description'
 
-    @sessionsPage.addNewSessionButton.click()
+    @sessionsPage.new()
     @sessionsPage.create session
 
+    @sessionsPage.index()
     expect(@sessionsPage.sessions.count()).toEqual(4)
 
     @sessionsPage.lastSessionDescription.getText().then (text) ->
