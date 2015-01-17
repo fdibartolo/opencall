@@ -1,16 +1,33 @@
 <div ng-cloak ng-init="init()" ng-cloak fade-animation="true" class="row">
   <h2 class="text-center">Y los temas candidatos son...</h2>
 
-  <div class="col-sm-9">
-    <div ng-repeat="session in sessions">
-      <h3>{{session.title}} <span class="author">{{session.author}}</span></h3>
+  <div class="col-md-8"><br>
+    <div ng-repeat="session in sessions" class="session-summary">
+      <h3>
+        {{session.title}} 
+        <span class="actions pull-right">
+          <span ng-click="vote($index)" ng-if="!session.voted" class="ion-android-checkbox-outline-blank text-success"></span>
+          <span ng-click="vote($index)" ng-if="session.voted" class="ion-android-checkbox-outline text-success"></span>
+          <span ng-click="fav($index)" ng-if="!session.faved" class="ion-android-star-outline text-warning"></span>
+          <span ng-click="fav($index)" ng-if="session.faved" class="ion-android-star text-warning"></span>
+        </span>      
+      </h3>
+      <div class="author">{{session.author}}</div>
       <p>{{session.description}}</p>
     </div>
   </div>
 
-  <div class="col-sm-3">
-    <div class="home-button-container">
-      <a class="img-circle btn-action" href="<%= root_url + '#/sessions/new' %>">
+  <div class="col-md-offset-1 col-md-3">
+    <div class="action-button-container">
+      <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes">
+        <span class="text" aria-hidden="true">{{availableVotes}}</span>
+      </a>
+      <div class="divisor"></div>
+      <a class="img-circle btn-action info">
+        <span class="text" aria-hidden="true">?</span>
+      </a>
+      <div class="divisor"></div>
+      <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>">
         <span class="ion-android-add icon" aria-hidden="true"></span>
       </a>
     </div>

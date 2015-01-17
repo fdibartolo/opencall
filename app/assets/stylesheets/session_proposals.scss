@@ -1,6 +1,65 @@
-.author {
-  font-size: 75%;
-  font-weight: 300;
-  font-variant: small-caps;
-  font-style: italic;
+.session-summary {
+  border-bottom: 1px solid gray;
+  padding-bottom: 10px;
+  margin-top: -15px;
+
+  .actions {
+    font-size: 140%;
+    cursor: pointer;
+  }
+
+  .author {
+    font-weight: 300;
+    font-variant: small-caps;
+    font-style: italic;
+    margin: -10px 0 10px;
+  }
 }
+
+.action-button-container {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+
+  @media (max-width: 1199px) { 
+    height: 62px;
+    .divisor { height:62px; border-left:1px solid gray; margin:0 5px }
+  }
+  
+  @media (min-width: 1200px) {
+    height: 80px;
+    .divisor { height:80px; border-left:1px solid gray; margin:0 5px }
+  }
+}
+
+.btn-action {
+  color: white; 
+  display: table-cell; 
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+
+  @media (max-width: 1199px) { 
+    width: 62px; 
+    height: 62px;
+  }
+  
+  @media (min-width: 1200px) { 
+    width: 80px; 
+    height: 80px;
+  }
+
+  &:hover { 
+    background-color: $btn-primary-hover-bg;
+    color: white; 
+    text-decoration: none !important;
+  }
+
+  .icon { font-size: 300%; }
+  .text { font-size: 250%; }
+}
+
+.btn-action.primary { background: $brand-primary; }
+.btn-action.non-clickable { cursor: default !important; }
+.btn-action.info { background: $brand-info; }

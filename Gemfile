@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '4.1.0'
 gem 'angularjs-rails', '1.3.8'
 gem 'jquery-rails', '4.0.3'
+gem 'animate-rails', '1.0.7'
 gem 'jbuilder', '2.2.6'
 
 gem 'devise', '3.4.1'
