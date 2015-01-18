@@ -28,7 +28,7 @@ es:
       no_token: "No es posible acceder a esta página sin venir del correo electrónico de reseteo de contraseña. Si de hecho vienes de ahí, por favor asegúrate haber usado la URL provista."
       send_instructions: "Recibirás un correo electrónico con las instrucciones de cómo resetear tu contraseña en unos minutos."
       send_paranoid_instructions: "Si tu dirección de correo electrónico address existe en nuestra base de datos, recibirás un correo electrónico con un link de recupero de contraseña en unos minutos."
-      updated: "Tu contraseña fue cambiada con éxito. Has iniciado sesión."
+      updated: "Tu contraseña fue cambiada con éxito."
       updated_not_active: "Tu contraseña fue cambiada con éxito."
     registrations:
       destroyed: "Adios! Tu cuenta ha sido borrada con éxito. Esperamos verte nuevamente pronto."
