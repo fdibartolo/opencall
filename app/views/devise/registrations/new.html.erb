@@ -6,7 +6,7 @@
     <div class="<%= validation_error_class? :first_name %>">
       <label for="input-firstname" class="col-sm-3 control-label">Nombre</label>
       <div class="col-sm-7">
-        <%= f.text_field :first_name, class: "form-control", id: "input-firstname", placeholder: "Nombre" %>
+        <%= f.text_field :first_name, , autofocus: true, class: "form-control", id: "input-firstname", placeholder: "Nombre" %>
         <%= validation_error_details? :first_name %>
       </div>
     </div>

@@ -7,7 +7,7 @@
     <div class="<%= validation_error_class? :password %>">
       <label for="input-password" class="col-sm-3 control-label">Contraseña</label>
       <div class="col-sm-7">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
         <%= validation_error_details? :password %>
         <% if @validatable %>
           <small class="text-muted"><%= @minimum_password_length %> caracteres mínimo</small>
