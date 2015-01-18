@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
+  get 'reset_user_password' => 'application#reset_password'  
+  
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 
   resources :session_proposals, except: [:edit, :destroy], defaults: { format: :json } do

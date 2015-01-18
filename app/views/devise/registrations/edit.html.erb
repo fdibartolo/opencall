@@ -36,23 +36,6 @@
     </div>
   </div>
 
-  <div class="<%= validation_error_class? :password %>">
-    <label for="input-password" class="col-sm-2 control-label">Contraseña</label>
-    <div class="col-sm-6">
-      <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
-      <%= validation_error_details? :password %>
-      <small class="text-muted">déjala en blanco si no deseas cambiarla</small>
-    </div>
-  </div>
-
-  <div class="<%= validation_error_class? :password_confirmation %>">
-    <label for="input-password2" class="col-sm-2 control-label">Repetir Contraseña</label>
-    <div class="col-sm-6">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: "Contraseña" %>
-      <%= validation_error_details? :password_confirmation %>
-    </div>
-  </div>
-
   <div class="form-group">
     <label for="input-website" class="col-sm-2 control-label">Website</label>
     <div class="col-sm-6">
