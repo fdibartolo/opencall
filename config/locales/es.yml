@@ -45,3 +45,4 @@ es:
       other_than: "debe ser distinto a %{count}"
       odd: "debe ser impar"
       even: "debe ser par"
+      record_invalid: ! 'La validación falló: %{errors}'
