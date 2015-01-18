@@ -1,0 +1,32 @@
+<h2>Cambio de contraseña</h2><br>
+
+<div class="col-sm-7">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
+
+    <div class="<%= validation_error_class? :password %>">
+      <label for="input-password" class="col-sm-3 control-label">Contraseña</label>
+      <div class="col-sm-7">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
+        <%= validation_error_details? :password %>
+        <% if @validatable %>
+          <small class="text-muted"><%= @minimum_password_length %> caracteres mínimo</small>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="<%= validation_error_class? :password_confirmation %>">
+      <label for="input-password2" class="col-sm-3 control-label">Repetir Contraseña</label>
+      <div class="col-sm-7">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: "Contraseña" %>
+        <%= validation_error_details? :password_confirmation %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-7">
+        <button id="signin-button" type="submit" class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  <% end %>
+</div>

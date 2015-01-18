@@ -22,6 +22,7 @@
         <div class="col-sm-offset-2 col-sm-8">
           <%= f.check_box :remember_me %>
           <small><%= f.label 'Recordarme' %></small>
+          <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name), class: "pull-right" %><br />
         </div>
       </div>
     <% end -%>
