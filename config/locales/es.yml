@@ -26,6 +26,7 @@ es:
       empty: "no puede estar vacío"
       blank: "no puede estar en blanco"
       present: "debe estar en blanco"
+      taken: ya ha sido tomado
       too_long:
         one: "debe tener como máximo 1 caracter"
         other: "debe tener como máximo %{count} caracteres"
