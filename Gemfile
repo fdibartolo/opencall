@@ -18,6 +18,7 @@ gem 'jbuilder', '2.2.6'
 
 gem 'devise', '3.4.1'
 gem 'omniauth-github', '1.1.2'
+gem 'omniauth-google-oauth2', '0.2.6'
 
 group :development, :test do
   gem 'spring', '1.2.0'

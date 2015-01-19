@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable, :omniauth_providers => [:github]
+  devise :omniauthable, :omniauth_providers => [:github, :google_oauth2]
 
   validates :first_name,  presence: true
   validates :last_name,   presence: true
@@ -17,14 +17,23 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth auth
-    joins(:identities).where("identities.provider = ? and identities.uid = ?", auth.provider, auth.uid).first_or_create do |user|
+    identity = Identity.find_by(provider: auth.provider, uid: auth.uid)
+    return identity.user if identity
+
+    user = User.find_by(email: auth.info.email) if auth.info.email
+    unless user
       first, last = auth.info.name.split(' ') 
-      user.first_name = first  || 'whoami'
-      user.last_name  = last || 'whoami'
-      user.country    = '??'
-      user.email      = auth.info.email
-      user.password   = Devise.friendly_token[0,20]
-      Identity.create!(provider: auth.provider, uid: auth.uid, user: user) if user.save!
+      user = User.new(
+        first_name: first  || 'mi nombre',
+        last_name:  last || 'mi apellido',
+        country:    'pais',
+        email:      auth.info.email,
+        password:   Devise.friendly_token[0,20]
+      )
     end
+
+    user.identities.build(provider: auth.provider, uid: auth.uid)
+    user.save!
+    user
   end
 end

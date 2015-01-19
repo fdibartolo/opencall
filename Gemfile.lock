@@ -124,6 +124,9 @@ GEM
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
+    omniauth-google-oauth2 (0.2.6)
+      omniauth (> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-oauth2 (1.2.0)
       faraday (>= 0.8, < 0.10)
       multi_json (~> 1.3)
@@ -237,6 +240,7 @@ DEPENDENCIES
   jbuilder (= 2.2.6)
   jquery-rails (= 4.0.3)
   omniauth-github (= 1.1.2)
+  omniauth-google-oauth2 (= 0.2.6)
   pg (= 0.17.1)
   protractor-rails!
   rails (= 4.2.0)

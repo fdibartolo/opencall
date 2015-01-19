@@ -28,10 +28,9 @@ RSpec.describe User, :type => :model do
   end
 
   describe ".from_omniauth" do
-    let(:auth) { OmniAuth::AuthHash.new({ :provider => 'provider', :uid => '123456', :info => { name: 'First Last', email: 'f@l.com'}})}
+    let(:auth) { OmniAuth::AuthHash.new({ :provider => 'provider', :uid => '123456', :info => { name: 'First Last', email: user.email}})}
 
     it "should create user if no one exist for given omniauth identity" do
-      expect(Identity).to receive(:create!).and_return(true)
       expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
       expect(User.last.email).to eq auth.info.email
     end
@@ -39,6 +38,12 @@ RSpec.describe User, :type => :model do
     it "should return user if omniauth identity exists" do
       identity = FactoryGirl.create(:identity, provider: auth.provider, uid: auth.uid)
       expect(User.from_omniauth(auth)).to eq identity.user
+    end
+
+    it "should add new identity to existing user" do
+      FactoryGirl.create :identity
+      expect { User.from_omniauth(auth) }.to change(Identity, :count).by(1)
+      expect(User.last.identities.count).to eq 2
     end
   end
 end
