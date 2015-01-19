@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
-  get 'reset_user_password' => 'application#reset_password'  
+  get '/users/reset_user_password' => 'users/users#reset_password', as: 'reset_user_password'
   
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 
