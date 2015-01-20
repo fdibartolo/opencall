@@ -22,11 +22,10 @@ class User < ActiveRecord::Base
 
     user = User.find_by(email: auth.info.email) if auth.info.email
     unless user
-      first, last = auth.info.name.split(' ') 
       user = User.new(
-        first_name: first  || 'mi nombre',
-        last_name:  last || 'mi apellido',
-        country:    'pais',
+        first_name: auth.first_name_or_default,
+        last_name:  auth.last_name_or_default,
+        country:    'tbd',
         email:      auth.info.email,
         password:   Devise.friendly_token[0,20]
       )
