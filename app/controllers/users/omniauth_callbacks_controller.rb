@@ -7,6 +7,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     sign_up_or_login_with "Google"
   end
 
+  def linkedin
+    sign_up_or_login_with "Linkedin"
+  end
+
   private
   def sign_up_or_login_with provider
     user = User.from_omniauth(request.env["omniauth.auth"])
