@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114004350) do
+ActiveRecord::Schema.define(version: 20150121162401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(version: 20150114004350) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+  end
+
+  create_table "session_proposals_tags", id: false, force: :cascade do |t|
+    t.integer "session_proposal_id", null: false
+    t.integer "tag_id",              null: false
+  end
+
+  add_index "session_proposals_tags", ["session_proposal_id"], name: "index_session_proposals_tags_on_session_proposal_id", using: :btree
+  add_index "session_proposals_tags", ["tag_id"], name: "index_session_proposals_tags_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

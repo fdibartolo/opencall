@@ -5,6 +5,7 @@ class SessionProposal < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
+  has_and_belongs_to_many :tags
 
   def as_indexed_json options={}
     self.as_json(
