@@ -21,6 +21,9 @@ gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.2.6'
 gem 'omniauth-linkedin', '0.2.0'
 
+gem 'elasticsearch-model', '0.1.6'
+gem 'elasticsearch-rails', '0.1.6'
+
 group :development, :test do
   gem 'spring', '1.2.0'
   gem 'spring-commands-rspec', '1.0.4'
