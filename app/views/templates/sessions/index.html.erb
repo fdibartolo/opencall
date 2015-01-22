@@ -3,10 +3,12 @@
 
   <div class="row" style="padding:0 25px">
     <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group has-feedback">
-      <input type="text" class="form-control" ng-model="searchTerms">
+      <input type="text" class="form-control" 
+        ng-model="searchTerms" 
+        ng-model-options="{ debounce: 1000 }"
+        ng-change="search()">
       <span class="glyphicon glyphicon-search form-control-feedback" style="margin-right:15px" aria-hidden="true"></span>
     </div>
-    <button id="" class="btn btn-primary" ng-click="search()">Buscar</button>
   </div>
 
   <div class="col-md-8 scrollable" style="height:500px"><br>
