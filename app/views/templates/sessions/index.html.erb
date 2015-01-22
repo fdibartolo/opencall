@@ -9,8 +9,8 @@
     <button id="" class="btn btn-primary" ng-click="search()">Buscar</button>
   </div>
 
-  <div class="col-md-8"><br>
-    <div ng-repeat="session in sessions" class="session-summary">
+  <div class="col-md-8 scrollable" style="height:500px"><br>
+    <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
       <h3>
         {{session.title}} 
         <span class="actions pull-right">
@@ -24,7 +24,9 @@
       <div class="author">{{session.author}}</div>
       <p>{{session.description}}</p>
       <div><ul class="list-inline">
-        <li ng-repeat="tag in session.tags track by $index" class="tag bg-primary">{{tag}}</li>
+        <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary" ng-click="search(tag)">
+          {{tag}}
+        </li>
       </ul></div>
     </div>
   </div>
@@ -42,6 +44,15 @@
       <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>">
         <span class="ion-android-add icon" aria-hidden="true"></span>
       </a>
+    </div>
+    <br><br>
+    <div ng-if="matched_tags.length > 0">
+      <h3>Otros tags relevantes</h3>
+      <ul class="list-inline">
+        <li ng-repeat="tag in matched_tags track by $index" class="tag lg bg-primary" ng-click="search(tag.key)">
+          {{tag.key}} <small>({{tag.doc_count}})</small>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
