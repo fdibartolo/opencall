@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 
   resources :session_proposals, except: [:edit, :destroy], defaults: { format: :json } do
+    collection do
+      get 'search'
+    end
     resources :comments
   end
 

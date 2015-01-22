@@ -6,6 +6,10 @@ class SessionProposalsController < ApplicationController
     @session_proposals = SessionProposal.all
   end
 
+  def search
+    @results = SessionProposal.custom_search(params[:q]).results
+  end
+
   def show
   end
 
