@@ -7,7 +7,9 @@ class SessionProposalsController < ApplicationController
   end
 
   def search
-    @results = SessionProposal.custom_search(params[:q]).results
+    response = SessionProposal.custom_search(params[:q])
+    @results = response.results
+    @matched_tags = response.response[:aggregations][:matched_tags][:buckets]
   end
 
   def show
