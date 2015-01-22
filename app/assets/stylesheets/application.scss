@@ -14,3 +14,8 @@ $btn-primary-hover-bg: #286090;
   color: inherit;
   &:hover { text-decoration: none !important; }
 }
+
+.scrollable {
+  overflow-y: scroll;
+  overflow-x: hidden;  
+}
