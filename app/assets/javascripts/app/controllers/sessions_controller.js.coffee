@@ -6,6 +6,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     title: ''
     description: ''
   $scope.availableVotes = 10
+  $scope.searchTerms = ''
 
   $scope.init = () ->
     SessionsService.all().then (sessions) ->
@@ -14,6 +15,10 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.createSession = () ->
     SessionsService.create($scope.newSession).then () ->
       $location.path '/sessions'
+
+  $scope.search = () ->
+    SessionsService.search($scope.searchTerms).then (sessions) ->
+      $scope.sessions = sessions
 
   $scope.vote = (index) ->
     $scope.sessions[index].voted = false  if angular.isUndefined($scope.sessions[index].voted)
