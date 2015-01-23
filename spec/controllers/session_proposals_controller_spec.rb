@@ -21,7 +21,6 @@ RSpec.describe SessionProposalsController, :type => :controller do
       get :index
 
       body = JSON.parse response.body
-      puts body
       expect(body['sessions'].last['id']).to eq session.id
       expect(body['sessions'].last['author']).to eq session.user.full_name
     end
