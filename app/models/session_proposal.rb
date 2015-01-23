@@ -2,7 +2,8 @@ require 'elasticsearch/model'
 
 class SessionProposal < ActiveRecord::Base
   include Elasticsearch::Model
-  # include Elasticsearch::Model::Callbacks TBD!
+  # TBD!! Might need to do manual callbacks because of deprecation warnings
+  # include Elasticsearch::Model::Callbacks
 
   belongs_to :user
   has_many :comments
@@ -18,9 +19,9 @@ class SessionProposal < ActiveRecord::Base
     end)
   end
 
-  def self.custom_search terms
+  def self.custom_search terms='', page_number=1
     query = terms.blank? ? self.match_all_query : self.aggregated_query(terms)
-    search query
+    search(query).page(page_number)
   end
 
   def self.aggregated_query terms
