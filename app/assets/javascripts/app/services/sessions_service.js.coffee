@@ -25,10 +25,10 @@ angular.module('openCall.services').factory 'SessionsService',
 
     deferred.promise
 
-  search = (terms) ->
+  search = (terms, pageNumber) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/search?q=" + terms)
+    $http.get("/session_proposals/search?q=" + terms + "&page=" + pageNumber)
     .success((data, status) ->
       deferred.resolve data
     ).error (data, status) ->
