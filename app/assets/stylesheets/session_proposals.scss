@@ -80,3 +80,10 @@
 .btn-action.primary { background: $brand-primary; }
 .btn-action.non-clickable { cursor: default !important; }
 .btn-action.info { background: $brand-info; }
+
+.no-search-results {
+  margin-top: 100px;
+  
+  h4 { font-weight: 200; }
+  span { font-size: 500%; }
+}
