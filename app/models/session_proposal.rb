@@ -2,8 +2,7 @@ require 'elasticsearch/model'
 
 class SessionProposal < ActiveRecord::Base
   include Elasticsearch::Model
-  # TBD!! Might need to do manual callbacks because of deprecation warnings
-  # include Elasticsearch::Model::Callbacks
+  include Elasticsearch::Model::Callbacks
 
   belongs_to :user
   has_many :comments
