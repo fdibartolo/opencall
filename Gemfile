@@ -21,6 +21,7 @@ gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.2.6'
 gem 'omniauth-linkedin', '0.2.0'
 
+gem 'will_paginate', '3.0.7'
 gem 'elasticsearch-model', '0.1.6'
 gem 'elasticsearch-rails', '0.1.6'
 
