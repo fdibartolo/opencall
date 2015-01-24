@@ -6,6 +6,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.newSession = 
     title: ''
     description: ''
+    tags: []
   $scope.availableVotes = 10
   $scope.searchTerms = ''
   $scope.searchPageNumber = 1
