@@ -9,7 +9,7 @@
   <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
     <h3>
       {{session.title}} 
-      <span class="actions pull-right">
+      <span class="actions pull-right clickable">
         <span ng-click="vote($index)" ng-if="!session.voted" class="ion-android-checkbox-outline-blank text-success"></span>
         <span ng-click="vote($index)" ng-if="session.voted" class="ion-android-checkbox-outline text-success"></span>
         <span class="ion-chatboxes text-muted"></span>
@@ -20,7 +20,7 @@
     <div class="author">{{session.author}}</div>
     <p>{{session.description}}</p>
     <div><ul class="list-inline">
-      <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary" ng-click="search(tag)">
+      <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag)">
         {{tag}}
       </li>
     </ul></div>

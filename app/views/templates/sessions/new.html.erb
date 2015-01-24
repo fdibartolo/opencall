@@ -1,4 +1,4 @@
-<div ng-cloak ng-init="init()" ng-cloak fade-animation="true" class="row">
+<div ng-cloak fade-animation="true" class="row">
   <div class="form-horizontal">
     <div class="form-group">
       <div class="text-center"><h2>¿De qué te gustaría hablar?</h2></div>
@@ -20,7 +20,9 @@
       <div class="col-sm-8">
         <input type="text" id="input-tags" placeholder="Tags" class="form-control" tag-suggestion>
         <ul class="list-inline">
-          <li ng-repeat="tag in newSession.tags track by $index" class="tag lg bg-primary"><span class="ion-android-close" aria-hidden="true" style="padding-right:10px"></span>{{tag}}</li>
+          <li ng-repeat="tag in newSession.tags track by $index" class="tag lg bg-primary" fade-animation="true">
+            <span class="ion-android-close clickable" aria-hidden="true" style="padding-right:10px" ng-click="removeTag($index)"></span>{{tag}}
+          </li>
         </ul>
       </div>
     </div>

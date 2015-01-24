@@ -33,7 +33,7 @@
     <div ng-if="matched_tags.length > 0" class="text-center">
       <h3>Otros tags relevantes</h3>
       <ul class="list-inline">
-        <li ng-repeat="tag in matched_tags track by $index" class="tag lg bg-primary" ng-click="search(tag.key)">
+        <li ng-repeat="tag in matched_tags track by $index" class="tag lg bg-primary clickable" ng-click="search(tag.key)">
           {{tag.key}} <small>({{tag.doc_count}})</small>
         </li>
       </ul>
