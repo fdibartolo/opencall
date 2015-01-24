@@ -2,8 +2,8 @@ class TagsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    tags = [{"text": "Lorem"}, {"text": "labore"}, {"text": "laboris"}, {"text": "laborum"}]
-    render json: tags
+    tags = Tag.search_all
+    render json: tags.results
   end
 
   def suggest
