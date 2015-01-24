@@ -18,4 +18,5 @@
 //= require app/open_call
 //= require bootstrap-sprockets
 //= require bootstrap-select
+//= require twitter/typeahead.min
 //= require_tree .
