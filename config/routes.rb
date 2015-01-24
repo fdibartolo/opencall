@@ -12,6 +12,14 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :tags, only: [:index], defaults: { format: :json } do
+    collection do
+      get 'suggest'
+    end
+  end
+
+  # get '/tags/suggest' => 'tags#suggest'
+
   root 'main#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
