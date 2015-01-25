@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :comments
+    resources :comments, only: [:index, :create]
   end
 
   resources :tags, only: [:index], defaults: { format: :json } do

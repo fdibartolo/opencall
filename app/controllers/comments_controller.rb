@@ -1,13 +1,30 @@
 class CommentsController < ApplicationController
-  def create
-    @session_proposal = SessionProposal.find(params[:session_proposal_id])
-    @session_proposal.comments.create comments_params
+  before_action :authenticate_user!
+  before_action :set_session_proposal
 
-    redirect_to @session_proposal
+  def index
+    comments = []
+    @session_proposal.comments.map {|c| comments << { body: c.body, author: c.user.full_name }}
+    render json: { comments: comments }
+  end
+
+  def create
+    comment = Comment.new comments_params.merge!({ user_id: current_user.id, session_proposal_id: @session_proposal.id })
+
+    if comment.save
+      head :no_content
+    else
+      head :unprocessable_entity
+    end
   end
 
   private
-    def comments_params
-      params.require(:comment).permit(:author, :body)
-    end
+  def set_session_proposal
+    @session_proposal = SessionProposal.find_by(id: params[:session_proposal_id])
+    return head(:bad_request, { message: "Unable to find session proposal with id '#{params[:session_proposal_id]}'"}) unless @session_proposal
+  end
+
+  def comments_params
+    params.require(:comment).permit(:body)
+  end
 end
