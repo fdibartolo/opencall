@@ -18,4 +18,8 @@ FactoryGirl.define do
     description 'A long description for refactoring'
     association :user, factory: :user, first_name: 'bob'
   end
+
+  factory :tag do
+    name 'xp'
+  end
 end
