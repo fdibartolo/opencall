@@ -1,5 +1,5 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', '$location', 'SessionsService', ($scope, $location, SessionsService) ->
+['$scope', '$location', '$routeParams', 'SessionsService', ($scope, $location, $routeParams, SessionsService) ->
 
   $scope.sessions = []
   $scope.matched_tags = []
@@ -43,4 +43,9 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.removeTag = (index) ->
     $scope.newSession.tags.splice index, 1
+
+  $scope.show = () ->
+    SessionsService.show($routeParams.id).then (session) ->
+      $scope.session = session
+
 ]

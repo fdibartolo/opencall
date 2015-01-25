@@ -11,6 +11,16 @@
     font-style: italic;
     margin: -10px 0 10px;
   }
+
+  h3 a { color: black; }
+  h3 a:hover { color: $brand-primary; text-decoration: none !important; }
+}
+
+.session-detail {
+  margin-top: 50px;
+
+  img { margin-top: 32px; }
+  .author { margin-top: 10px; }
 }
 
 .tag {

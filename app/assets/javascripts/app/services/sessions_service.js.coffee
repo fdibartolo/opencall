@@ -44,7 +44,19 @@ angular.module('openCall.services').factory 'SessionsService',
 
     deferred.promise
 
+  show = (id) ->
+    deferred = $q.defer()
+
+    $http.get("/session_proposals/" + id)
+    .success((data, status) ->
+      deferred.resolve data
+    ).error (data, status) ->
+      deferred.reject()
+
+    deferred.promise
+
   all: all
   create: create
   search: search
+  show: show
 ]

@@ -1,0 +1,19 @@
+<div ng-cloak ng-init="show()" fade-animation="true" class="row">
+  <div class="session-detail">
+    <div class="col-sm-2">
+      <img src="https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/73.jpg" class="img-circle center-block">
+      <div class="text-center author">{{session.author}}</div>
+    </div>
+    <div class="col-sm-8">
+      <h2>{{session.title}}</h2>
+      <ul class="list-inline">
+        <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
+      </ul>
+
+      <p>{{session.description}}</p>
+
+      <br><br>
+      <div class="btn btn-default pull-right"><%= link_to "Volver", "#/sessions" %></div>
+    </div>
+  </div>
+</div>
