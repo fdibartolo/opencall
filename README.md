@@ -33,6 +33,14 @@ GOOGLE_KEY, GOOGLE_SECRET | Id de aplicación para google oauth
 LINKEDIN_KEY, LINKEDIN_SECRET | Id de aplicación para linkedin oauth
 BONSAI_URL | host de la api de elasticsearch, generalmente localhost:9200
 
+#### Datos dummy 
+
+A modo de prueba, se pueden crear datos dummy a traves de:
+
+  `$ rake open_call:sessions_with_tags:generate[./db/mocks/mock_sessions_with_tags]`
+
+La creación de los datos automaticamente indexará los índices de ElasticSearch
+
 ### Cómo contribuir
 
 1. Crea tu propio fork
