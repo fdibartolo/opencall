@@ -1,5 +1,5 @@
 <div ng-cloak ng-init="show()" fade-animation="true" class="row">
-  <div class="session-detail">
+  <div class="row session-detail">
     <div class="col-sm-2">
       <img src="https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/73.jpg" class="img-circle center-block">
       <div class="text-center author">{{session.author}}</div>
@@ -11,9 +11,32 @@
       </ul>
 
       <p>{{session.description}}</p>
-
-      <br><br>
-      <div class="btn btn-default pull-right"><%= link_to "Volver", "#/sessions" %></div>
     </div>
+  </div>
+  <br><hr>
+
+  <div class="row session-comment" ng-repeat="comment in session.comments" fade-animation="true">
+    <div class="col-sm-2">
+      <img src="https://s3.amazonaws.com/uifaces/faces/twitter/scottohara/73.jpg" class="img-circle center-block">
+      <div class="text-center author">{{comment.author}}</div>
+    </div>
+    <div class="col-sm-8">
+      <p>{{comment.body}}</p>
+    </div>
+    <div class="col-sm-12"><hr></div>
+  </div>
+
+  <div class="row session-comment" fade-animation="true">
+    <div class="col-sm-2">
+      <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/73.jpg" class="img-circle center-block">
+    </div>
+    <div class="col-sm-8">
+      <textarea type="text" class="form-control" placeholder="Deja tu comentario al autor" ng-model="newSessionComment.body" rows="4"></textarea><br>
+      <button class="btn btn-primary pull-right" ng-click="postComment()">Confirmar</button>
+    </div>
+  </div>
+
+  <div class="col-sm-10" style="padding-right:5px;margin:20px 0"><hr>
+    <div class="btn btn-default pull-right"><%= link_to "Volver", "#/sessions" %></div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', '$location', '$routeParams', 'SessionsService', ($scope, $location, $routeParams, SessionsService) ->
+['$scope', '$location', '$routeParams', 'SessionsService', 'CommentsService', 
+($scope, $location, $routeParams, SessionsService, CommentsService) ->
 
   $scope.sessions = []
   $scope.matched_tags = []
@@ -10,6 +11,8 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.availableVotes = 10
   $scope.searchTerms = ''
   $scope.searchPageNumber = 1
+  $scope.newSessionComment = 
+    body: ''
 
   $scope.init = () ->
     SessionsService.all().then (response) ->
@@ -47,5 +50,14 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.show = () ->
     SessionsService.show($routeParams.id).then (session) ->
       $scope.session = session
+      CommentsService.all($routeParams.id).then (comments) ->
+        $scope.session.comments = comments
+
+  $scope.postComment = () ->
+    CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
+      comment = 
+        body: $scope.newSessionComment.body
+      $scope.session.comments.push comment
+      $scope.newSessionComment.body = ''
 
 ]
