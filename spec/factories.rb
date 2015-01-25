@@ -17,6 +17,17 @@ FactoryGirl.define do
     title       'Refactoring'
     description 'A long description for refactoring'
     association :user, factory: :user, first_name: 'bob'
+
+    factory :session_proposal_with_comment do
+      after(:create) do |session_proposal|
+        create(:comment, session_proposal: session_proposal)
+      end
+    end
+  end
+
+  factory :comment do
+    body 'some comment'
+    association :user, factory: :user, first_name: 'matt'
   end
 
   factory :tag do
