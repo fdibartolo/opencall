@@ -6,7 +6,14 @@ class SessionProposal < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :tags, autosave: true
+  accepts_nested_attributes_for :tags
+
+  def autosave_associated_records_for_tags
+    session_tags = []
+    tags.each { |tag| session_tags << Tag.find_or_create_by(name: tag.name) }
+    self.tags = session_tags
+  end
 
   def as_indexed_json options={}
     JSON.parse(Jbuilder.encode do |json|
