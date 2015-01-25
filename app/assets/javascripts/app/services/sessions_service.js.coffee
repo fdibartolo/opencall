@@ -16,14 +16,22 @@ angular.module('openCall.services').factory 'SessionsService',
     deferred = $q.defer()
 
     $http.post("/session_proposals", 
-      title: session.title
-      description: session.description
+      session_proposal:
+        title: session.title
+        description: session.description
+        tags_attributes: buildNestedAttributesFor(session.tags)
     ).success((data, status) ->
       deferred.resolve()
     ).error (data, status) ->
       deferred.reject()
 
     deferred.promise
+
+  buildNestedAttributesFor = (tags) ->
+    result = []
+    angular.forEach tags, (tag) ->
+      result.push { name: tag }
+    result
 
   search = (terms, pageNumber) ->
     deferred = $q.defer()
