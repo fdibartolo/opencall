@@ -4,6 +4,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.sessions = []
   $scope.matched_tags = []
+  $scope.total = 0
   $scope.newSession = 
     title: ''
     description: ''
@@ -17,6 +18,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.init = () ->
     SessionsService.all().then (response) ->
       $scope.sessions = response.sessions
+      $scope.total = response.total
 
   $scope.createSession = () ->
     SessionsService.create($scope.newSession).then () ->
@@ -26,8 +28,9 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.searchTerms = "#{$scope.searchTerms} #{termToAdd}"  if angular.isDefined(termToAdd)
     $scope.searchPageNumber = 1 # reset page number
     SessionsService.search($scope.searchTerms, $scope.searchPageNumber).then (response) ->
-      $scope.sessions = response.sessions
+      $scope.sessions     = response.sessions
       $scope.matched_tags = response.matched_tags
+      $scope.total        = response.total
 
   $scope.loadMore = () ->
     $scope.searchPageNumber += 1
