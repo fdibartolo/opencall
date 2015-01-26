@@ -15,6 +15,7 @@ gem 'angularjs-rails', '1.3.8'
 gem 'jquery-rails', '4.0.3'
 gem 'animate-rails', '1.0.7'
 gem 'twitter-typeahead-rails', '0.10.5'
+gem 'marked-rails', '0.3.2.0'
 gem 'jbuilder', '2.2.6'
 
 gem 'devise', '3.4.1'

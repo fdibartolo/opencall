@@ -19,4 +19,5 @@
 //= require bootstrap-sprockets
 //= require bootstrap-select
 //= require twitter/typeahead.min
+//= require marked
 //= require_tree .
