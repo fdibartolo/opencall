@@ -25,5 +25,5 @@
       </li>
     </ul></div>
   </div>
-  <button class="btn btn-primary btn-sm center-block" ng-click="loadMore()" style="margin-top:20px;padding:5px 50px">Cargar mas...</button>
+  <button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;padding:5px 50px">Cargar mas...</button>
 </div>
