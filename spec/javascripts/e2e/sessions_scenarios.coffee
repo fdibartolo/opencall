@@ -23,8 +23,8 @@ describe "Sessions page", ->
     @sessionsPage.index()
     expect(@sessionsPage.sessions.count()).toEqual(4)
 
-    @sessionsPage.lastSessionDescription.getText().then (text) ->
-      expect(text).toEqual session.description
+    @sessionsPage.lastSessionTitle.getText().then (text) ->
+      expect(text).toEqual session.title
       return
 
     done()
