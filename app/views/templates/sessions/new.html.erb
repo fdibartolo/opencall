@@ -16,11 +16,11 @@
           <li role="presentation" ng-class="{active: !preview}"><a ng-click="preview = !preview"><small>Texto</small></a></li>
           <li role="presentation" ng-class="{active: preview}"><a ng-click="preview = !preview"><small>Vista previa</small></a></li>
         </ul>
-        <div ng-show="!preview">
+        <div ng-if="!preview" fade-animation="true">
           <textarea type="text" id="input-description" class="form-control" placeholder="Descripción" ng-model="newSession.description" rows="10"></textarea>
-          <small class="text-muted">Tip: podes usar <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">markdown</a> para dar formato a tu texto</small>
+          <small class="text-muted">Tip: podes usar <a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a> para dar formato a tu texto</small>
         </div>
-        <div ng-show="preview">
+        <div ng-if="preview" fade-animation="true">
           <br><p markdown="newSession.description"></p>
         </div>
       </div>
