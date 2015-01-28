@@ -14,6 +14,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.searchPageNumber = 1
   $scope.newSessionComment = 
     body: ''
+    date: null
 
   $scope.init = () ->
     SessionsService.all().then (response) ->
@@ -60,7 +61,9 @@ angular.module('openCall.controllers').controller 'SessionsController',
     CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
       comment = 
         body: $scope.newSessionComment.body
+        date: moment()
       $scope.session.comments.push comment
       $scope.newSessionComment.body = ''
+      $scope.newSessionComment.date = null
 
 ]

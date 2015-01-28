@@ -3,6 +3,7 @@
     <div class="col-sm-2">
       <img src="https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/73.jpg" class="img-circle center-block">
       <div class="text-center author">{{session.author}}</div>
+      <div class="text-center text-muted date" time-from-now="session.date"></div>
     </div>
     <div class="col-sm-8">
       <h2>{{session.title}}</h2>
@@ -19,6 +20,7 @@
     <div class="col-sm-2">
       <img src="https://s3.amazonaws.com/uifaces/faces/twitter/scottohara/73.jpg" class="img-circle center-block">
       <div class="text-center author">{{comment.author}}</div>
+      <div class="text-center text-muted date" time-from-now="comment.date"></div>
     </div>
     <div class="col-sm-8">
       <p>{{comment.body}}</p>
