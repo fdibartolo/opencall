@@ -20,4 +20,5 @@
 //= require bootstrap-select
 //= require twitter/typeahead.min
 //= require marked
+//= require moment
 //= require_tree .
