@@ -11,6 +11,7 @@ FactoryGirl.define do
     association :user, factory: :user
     provider    'github'
     uid         '123456'
+    image_url   'http://some_url'
   end
 
   factory :session_proposal do

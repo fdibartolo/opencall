@@ -31,8 +31,12 @@ class User < ActiveRecord::Base
       )
     end
 
-    user.identities.build(provider: auth.provider, uid: auth.uid)
+    user.identities.build(provider: auth.provider, uid: auth.uid, image_url: auth.info.image)
     user.save!
     user
+  end
+
+  def avatar_url
+    identities.where.not(image_url: nil).pluck(:image_url).first || DefaultAvatarUrl
   end
 end

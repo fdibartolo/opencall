@@ -46,4 +46,21 @@ RSpec.describe User, :type => :model do
       expect(User.last.identities.count).to eq 2
     end
   end
+
+  describe "#avatar_url" do
+    let(:identity) { FactoryGirl.create :identity }
+
+    it "should return identity image_url if present" do
+      expect(identity.user.avatar_url).to eq identity.image_url
+    end
+
+    it "should return default avatar url if identity image_url is not present" do
+      identity.image_url = nil
+      expect(user.avatar_url).to eq DefaultAvatarUrl
+    end
+
+    it "should return default avatar url if user does not have identities" do
+      expect(user.avatar_url).to eq DefaultAvatarUrl
+    end
+  end
 end
