@@ -28,7 +28,7 @@ RSpec.describe CommentsController, :type => :controller do
         body = JSON.parse response.body
         expect(body['comments'].count).to eq 1
         expect(body['comments'].first['body']).to eq session.comments.first.body
-        expect(body['comments'].first['author']).to eq session.comments.first.user.full_name
+        expect(body['comments'].first['author']['name']).to eq session.comments.first.user.full_name
       end
     end
   end

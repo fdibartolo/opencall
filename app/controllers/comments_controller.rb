@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def index
     comments = []
-    @session_proposal.comments.map {|c| comments << { body: c.body, author: c.user.full_name, date: c.created_at }}
+    @session_proposal.comments.map {|c| comments << { body: c.body, author: { name: c.user.full_name, avatar_url: c.user.avatar_url }, date: c.created_at }}
     render json: { comments: comments }
   end
 

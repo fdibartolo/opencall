@@ -61,6 +61,8 @@ angular.module('openCall.controllers').controller 'SessionsController',
     CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
       comment = 
         body: $scope.newSessionComment.body
+        author:
+          avatar_url: CURRENT_USER_AVATAR
         date: moment()
       $scope.session.comments.push comment
       $scope.newSessionComment.body = ''

@@ -50,7 +50,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
         body = JSON.parse response.body
         expect(body['id']).to eq session.id
-        expect(body['author']).to eq session.user.full_name
+        expect(body['author']['name']).to eq session.user.full_name
       end
     end
   end

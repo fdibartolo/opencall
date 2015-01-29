@@ -1,9 +1,9 @@
 <div ng-cloak ng-init="show()" fade-animation="true" class="row">
   <div class="row session-detail">
-    <div class="col-sm-2">
-      <img src="https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/73.jpg" class="img-circle center-block">
-      <div class="text-center author">{{session.author}}</div>
-      <div class="text-center text-muted date" time-from-now="session.date"></div>
+    <div class="col-sm-2 text-center">
+      <img ng-src="{{session.author.avatar_url}}" class="avatar lg img-circle">
+      <div class="author">{{session.author.name}}</div>
+      <div class="text-muted date" time-from-now="session.date"></div>
     </div>
     <div class="col-sm-8">
       <h2>{{session.title}}</h2>
@@ -17,10 +17,10 @@
   <br><hr>
 
   <div class="row session-comment" ng-repeat="comment in session.comments" fade-animation="true">
-    <div class="col-sm-2">
-      <img src="https://s3.amazonaws.com/uifaces/faces/twitter/scottohara/73.jpg" class="img-circle center-block">
-      <div class="text-center author">{{comment.author}}</div>
-      <div class="text-center text-muted date" time-from-now="comment.date"></div>
+    <div class="col-sm-2 text-center ">
+      <img ng-src="{{comment.author.avatar_url}}" class="avatar lg img-circle">
+      <div class="author">{{comment.author.name}}</div>
+      <div class="text-muted date" time-from-now="comment.date"></div>
     </div>
     <div class="col-sm-8">
       <p>{{comment.body}}</p>
@@ -29,10 +29,8 @@
   </div>
 
   <div class="row session-comment" fade-animation="true">
-    <div class="col-sm-2">
-      <div class="text-center">
-        <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
-      </div>
+    <div class="col-sm-2 text-center">
+      <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
     </div>
     <div class="col-sm-8">
       <textarea type="text" class="form-control" placeholder="Deja tu comentario al autor" ng-model="newSessionComment.body" rows="4"></textarea><br>
