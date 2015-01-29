@@ -26,3 +26,14 @@ $btn-primary-hover-bg: #286090;
   background: rgba(250,250,250,0.8) !important;
   p { padding: 0 30px 0 10px; cursor: pointer; }
 }
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  margin: -10px 0;
+
+  &.lg {
+    width: 73px;
+    height: 73px;
+  }
+}

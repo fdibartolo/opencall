@@ -26,7 +26,9 @@
               <% if current_user %>
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="user-menu-link">
-                    <%= current_user.email %> <span class="caret"></span>
+                    <%= current_user.email %> &nbsp;
+                    <%= image_tag(current_user.avatar_url, :class => 'avatar img-circle', :title => current_user.email) %>
+                    <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li><%= link_to "Perfil", edit_user_registration_path %></li>
