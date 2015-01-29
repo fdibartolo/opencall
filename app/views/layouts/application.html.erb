@@ -6,6 +6,10 @@
   <%= stylesheet_link_tag '//code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css', :media => "all" %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+    var CURRENT_USER_AVATAR = "<%= current_user.avatar_url if current_user %>";
+  </script>
 </head>
 <body>
   <div class="navbar-wrapper">
