@@ -1,1 +1,1 @@
-DefaultAvatarUrl = "/assets/default_avatar.png"
+DefaultAvatarUrl = "/assets/default_avatar.jpg"
