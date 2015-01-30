@@ -52,10 +52,12 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.newSession.tags.splice index, 1
 
   $scope.show = () ->
-    SessionsService.show($routeParams.id).then (session) ->
+    SessionsService.show($routeParams.id).then ((session) ->
       $scope.session = session
       CommentsService.all($routeParams.id).then (comments) ->
         $scope.session.comments = comments
+    ), (errorKey) ->
+      $location.path '/error/' + errorKey
 
   $scope.postComment = () ->
     CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
@@ -67,5 +69,4 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $scope.session.comments.push comment
       $scope.newSessionComment.body = ''
       $scope.newSessionComment.date = null
-
 ]
