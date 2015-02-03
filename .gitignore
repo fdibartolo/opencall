@@ -21,3 +21,6 @@ aux_notes.txt
 
 # Local env variables
 .env
+
+# coverage reports
+coverage/
