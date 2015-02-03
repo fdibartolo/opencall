@@ -1,7 +1,7 @@
 <div ng-if="sessions.length == 0" class="no-search-results">
   <h4 class="text-muted text-center">
     No hemos podido encontrar resultados <br> que concuerden con la búsqueda... <br><br>
-    <span class="ion-sad-outline"></span>
+    <span class="ion-sad"></span>
   </h4>
 </div>
 
@@ -10,11 +10,11 @@
     <h3>
       <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
       <span class="actions pull-right clickable">
-        <span ng-click="vote($index)" ng-if="!session.voted" class="ion-android-checkbox-outline-blank text-success"></span>
-        <span ng-click="vote($index)" ng-if="session.voted" class="ion-android-checkbox-outline text-success"></span>
+        <span ng-click="vote($index)" ng-if="!session.voted" class="ion-ios7-circle-outline text-success"></span>
+        <span ng-click="vote($index)" ng-if="session.voted" class="ion-checkmark-circled text-success"></span>
         <span class="ion-chatboxes text-muted"></span>
-        <span ng-click="fav($index)" ng-if="!session.faved" class="ion-android-star-outline text-warning"></span>
-        <span ng-click="fav($index)" ng-if="session.faved" class="ion-android-star text-warning"></span>
+        <span ng-click="fav($index)" ng-if="!session.faved" class="ion-ios7-star-outline text-warning"></span>
+        <span ng-click="fav($index)" ng-if="session.faved" class="ion-ios7-star text-warning"></span>
       </span>      
     </h3>
     <div class="author">{{session.author}}</div>
