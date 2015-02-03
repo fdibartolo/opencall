@@ -1,6 +1,6 @@
 ## OpenCall
-
 [![Build Status](https://travis-ci.org/nicopaez/opencall.svg?branch=master)](https://travis-ci.org/nicopaez/opencall)
+[![Code Climate](https://codeclimate.com/github/nicopaez/opencall/badges/gpa.svg)](https://codeclimate.com/github/nicopaez/opencall)
 ---
 
 Pendiente de agregar:
