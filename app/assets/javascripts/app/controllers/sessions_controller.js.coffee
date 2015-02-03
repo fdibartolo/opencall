@@ -17,21 +17,25 @@ angular.module('openCall.controllers').controller 'SessionsController',
     date: null
 
   $scope.init = () ->
+    $scope.loading = true
     SessionsService.all().then (response) ->
       $scope.sessions = response.sessions
       $scope.total = response.total
+      $scope.loading = false
 
   $scope.createSession = () ->
     SessionsService.create($scope.newSession).then () ->
       $location.path '/sessions'
 
   $scope.search = (termToAdd) ->
+    $scope.loading = true
     $scope.searchTerms = "#{$scope.searchTerms} #{termToAdd}"  if angular.isDefined(termToAdd)
     $scope.searchPageNumber = 1 # reset page number
     SessionsService.search($scope.searchTerms, $scope.searchPageNumber).then (response) ->
       $scope.sessions     = response.sessions
       $scope.matched_tags = response.matched_tags
       $scope.total        = response.total
+      $scope.loading = false
 
   $scope.loadMore = () ->
     $scope.searchPageNumber += 1

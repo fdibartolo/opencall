@@ -45,3 +45,8 @@ $btn-primary-hover-bg: #286090;
     span { font-size: 350%; }
   }
 }
+
+.loading {
+  p { margin-top: 50px; }
+  span { font-size: 300%; color: $brand-primary; }
+}

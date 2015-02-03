@@ -8,14 +8,17 @@
         ng-model-options="{ debounce: 1000 }"
         ng-change="search()">
       <span class="glyphicon glyphicon-search form-control-feedback" style="margin-right:15px" aria-hidden="true"></span>
-      <p ng-if="searchTerms != ''" class="text-muted text-center" fade-animation="true">
+      <p ng-if="searchTerms != '' && total != 0" class="text-muted text-center" fade-animation="true">
         <small><i>hemos encontrado {{total}} resultados relacionados a tu búsqueda</i></small>
       </p>
     </div>
   </div>
 
   <div class="col-md-8">
-    <div ng-include="'templates/sessions/search_result.html'"></div>
+    <div ng-if="loading" class="loading">
+      <p class="text-center"><span class="ion-loading-a"></span></p>
+    </div>
+    <div ng-if="!loading" ng-include="'templates/sessions/search_result.html'"></div>
   </div>
 
   <div class="col-md-offset-1 col-md-3">
@@ -29,7 +32,7 @@
       </a>
       <div class="divisor"></div>
       <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>">
-        <span class="ion-android-add icon" aria-hidden="true"></span>
+        <span class="ion-plus-round icon" aria-hidden="true"></span>
       </a>
     </div>
     <br><br>
