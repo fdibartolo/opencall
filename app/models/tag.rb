@@ -1,6 +1,7 @@
 class Tag < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  index_name [self.base_class.to_s.pluralize.underscore, Rails.env].join('_')
 
   has_and_belongs_to_many :session_proposals
 
@@ -33,7 +34,7 @@ class Tag < ActiveRecord::Base
   end
 
   def self.suggest term
-    response = __elasticsearch__.client.suggest index: 'tags', 
+    response = __elasticsearch__.client.suggest index: index_name, 
                                                 body: { tags: { text: term, completion: { field: 'name_suggest' }}}
     response['tags'][0]['options'].each{|h| h.reject! {|k,v| k == "score"}}
   end
