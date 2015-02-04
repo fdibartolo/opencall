@@ -30,4 +30,30 @@ RSpec.describe SessionProposal, :type => :model do
       expect(session_proposal.as_indexed_json['tags']).to eq %w[xp scrum]
     end
   end
+
+  describe ".custom_search", :elasticsearch do
+    let(:user) { FactoryGirl.create :user }
+    let(:first_session_proposal) { FactoryGirl.create :session_proposal, title: 'Advanced TDD', user: user }
+    let(:second_session_proposal) { FactoryGirl.create :session_proposal, title: 'XP', user: user }
+    let(:third_session_proposal) { FactoryGirl.create :session_proposal, title: 'Scaling Scrum', user: user }
+
+    before :each do
+      first_session_proposal.__elasticsearch__.index_document
+      second_session_proposal.__elasticsearch__.index_document
+      third_session_proposal.__elasticsearch__.index_document
+      SessionProposal.__elasticsearch__.refresh_index!
+    end
+
+    context "with no criteria" do
+      it "should return all documents" do
+        expect(SessionProposal.custom_search.results.total).to eq 3
+      end
+    end
+
+    context "with criteria" do
+      it "should return given matching document" do
+        expect(SessionProposal.custom_search('tdd').results.total).to eq 1
+      end
+    end
+  end
 end

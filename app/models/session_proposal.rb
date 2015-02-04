@@ -3,6 +3,7 @@ require 'elasticsearch/model'
 class SessionProposal < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  index_name [self.base_class.to_s.pluralize.underscore, Rails.env].join('_')
 
   belongs_to :user
   has_many :comments
