@@ -66,7 +66,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorize (0.7.5)
-    coveralls (0.7.8)
+    coveralls (0.7.9)
       multi_json (~> 1.10)
       rest-client (~> 1.7)
       simplecov (~> 0.9.1)
@@ -283,7 +283,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.3.3)
   bootstrap-select-rails (= 1.6.3)
   coffee-rails (= 4.1.0)
-  coveralls (= 0.7.8)
+  coveralls (= 0.7.9)
   devise (= 3.4.1)
   dotenv-rails (= 1.0.2)
   elasticsearch-model (= 0.1.6)
