@@ -3,7 +3,7 @@ ruby '2.2.0'
 
 gem 'rails', '4.2.0'
 gem 'thin', '1.6.3'
-gem 'pg', '0.17.1'
+gem 'pg', '0.18.1'
 
 gem 'sass-rails', '5.0.1'
 gem 'bootstrap-sass', '3.3.3'
