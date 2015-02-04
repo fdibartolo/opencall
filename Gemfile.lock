@@ -48,6 +48,7 @@ GEM
     angularjs-rails (1.3.10)
     animate-rails (1.0.7)
       rails
+    ansi (1.5.0)
     arel (6.0.0)
     autoprefixer-rails (5.1.3)
       execjs
@@ -90,6 +91,9 @@ GEM
       elasticsearch-transport (= 1.0.6)
     elasticsearch-api (1.0.6)
       multi_json
+    elasticsearch-extensions (0.0.17)
+      ansi
+      ruby-prof
     elasticsearch-model (0.1.6)
       activesupport (> 3)
       elasticsearch (> 0.4)
@@ -223,6 +227,7 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.0)
+    ruby-prof (0.15.3)
     sass (3.4.9)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -286,6 +291,7 @@ DEPENDENCIES
   coveralls (= 0.7.9)
   devise (= 3.4.1)
   dotenv-rails (= 1.0.2)
+  elasticsearch-extensions (= 0.0.17)
   elasticsearch-model (= 0.1.6)
   elasticsearch-rails (= 0.1.6)
   factory_girl_rails (= 4.5.0)
