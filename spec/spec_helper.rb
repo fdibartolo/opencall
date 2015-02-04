@@ -87,9 +87,9 @@ RSpec.configure do |config|
 =end
 
   config.before :each, elasticsearch: true do
+    Elasticsearch::Extensions::Test::Cluster.start(port: 9200) unless 
+      Elasticsearch::Extensions::Test::Cluster.running?
     [SessionProposal, Tag].each do |model|
-      Elasticsearch::Extensions::Test::Cluster.start(port: 9200) unless 
-        Elasticsearch::Extensions::Test::Cluster.running?
       model.__elasticsearch__.create_index! force: true
       SessionProposal.__elasticsearch__.refresh_index!
     end
@@ -98,8 +98,8 @@ RSpec.configure do |config|
   config.after :suite do
     [SessionProposal, Tag].each do |model|
       model.__elasticsearch__.client.indices.delete index: model.index_name
-      Elasticsearch::Extensions::Test::Cluster.stop(port: 9200) if 
-        Elasticsearch::Extensions::Test::Cluster.running?
     end
+    Elasticsearch::Extensions::Test::Cluster.stop(port: 9200) if 
+      Elasticsearch::Extensions::Test::Cluster.running?
   end
 end
