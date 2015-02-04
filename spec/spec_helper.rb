@@ -14,6 +14,9 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'rake'
+require 'elasticsearch/extensions/test/cluster/tasks'
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -82,4 +85,21 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.before :each, elasticsearch: true do
+    [SessionProposal, Tag].each do |model|
+      Elasticsearch::Extensions::Test::Cluster.start(port: 9200) unless 
+        Elasticsearch::Extensions::Test::Cluster.running?
+      model.__elasticsearch__.create_index! force: true
+      SessionProposal.__elasticsearch__.refresh_index!
+    end
+  end
+
+  config.after :suite do
+    [SessionProposal, Tag].each do |model|
+      model.__elasticsearch__.client.indices.delete index: model.index_name
+      Elasticsearch::Extensions::Test::Cluster.stop(port: 9200) if 
+        Elasticsearch::Extensions::Test::Cluster.running?
+    end
+  end
 end
