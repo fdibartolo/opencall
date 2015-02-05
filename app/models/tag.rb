@@ -8,19 +8,11 @@ class Tag < ActiveRecord::Base
   validates :name,  presence: true
 
   mapping do
-    indexes :name, type: "string"
-    indexes :name_suggest, type: "completion" #, payloads: true
-  end
-
-  def name_suggest
-    self.name
+    indexes :name, type: "completion" #, payloads: true
   end
 
   def as_indexed_json options={}
-    self.as_json(
-      only: :name,
-      methods: :name_suggest
-    )
+    self.as_json(only: :name)
   end
 
   def self.search_all
@@ -35,7 +27,7 @@ class Tag < ActiveRecord::Base
 
   def self.suggest term
     response = __elasticsearch__.client.suggest index: index_name, 
-                                                body: { tags: { text: term, completion: { field: 'name_suggest' }}}
+                                                body: { tags: { text: term, completion: { field: 'name' }}}
     response['tags'][0]['options'].each{|h| h.reject! {|k,v| k == "score"}}
   end
 end
