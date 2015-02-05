@@ -3,15 +3,9 @@
     <h4>Ingresa con tu cuenta de</h4>
     <%- resource_class.omniauth_providers.each do |provider| %>
       <% provider_icon = provider == :google_oauth2 ? 'googleplus' : provider %>
-      <div class="col-xs-3">
+      <div class="col-xs-4 text-center">
         <%= link_to content_tag(:span, '', class: "btn-social ion-social-#{provider_icon}"), user_omniauth_authorize_path(provider) %>
       </div>
     <% end -%>
-
-    <!-- HACK: Placeholder, just for visual testing! -->
-    <div class="col-xs-3">
-      <%= link_to content_tag(:span, '', class: "btn-social ion-social-twitter"), user_omniauth_authorize_path(:github) %>
-    </div>
-    <!-- ****************************************** -->
   <% end -%>
 </div>
