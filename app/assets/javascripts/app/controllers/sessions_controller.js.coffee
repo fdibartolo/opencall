@@ -46,7 +46,8 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.vote = (index) ->
     $scope.sessions[index].voted = false  if angular.isUndefined($scope.sessions[index].voted)
     $scope.sessions[index].voted = !$scope.sessions[index].voted
-    $scope.availableVotes = if $scope.sessions[index].voted then $scope.availableVotes - 1 else $scope.availableVotes + 1
+    delta = if $scope.sessions[index].voted then -1 else 1
+    $scope.availableVotes += delta  if $scope.availableVotes isnt 0 or delta is 1
 
   $scope.fav = (index) ->
     $scope.sessions[index].faved = false  if angular.isUndefined($scope.sessions[index].faved)
