@@ -14,3 +14,6 @@ test:
 before_script:
   - psql -c 'create database open_call_test;' -U postgres
   - bundle exec rake db:migrate RAILS_ENV="test"
+
+script:
+  - foreman run rake
