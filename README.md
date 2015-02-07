@@ -24,7 +24,7 @@ Pendiente de agregar:
 
 #### Variables de entorno
 
-El proyecto usa la gema [dotenv](https://github.com/bkeepers/dotenv), que al igual que otras, te permite tener un archivo con nombre .env en la raiz, con las variables de entorno necesarias para los entornos de desarrollo y test. A continuación se listan las variables de entorno que el sistema necesitará para una u otra tarea:
+El proyecto usa la gema [dotenv](https://github.com/bkeepers/dotenv), que al igual que otras, te permite tener un archivo `.env` en la raiz, con las variables de entorno necesarias para los entornos de desarrollo y test. A continuación se listan las variables de entorno que el sistema necesitará para una u otra tarea:
 
 Nombre de variable | Razón de ser
 ------------------ | -------------
@@ -33,6 +33,8 @@ GOOGLE_KEY, GOOGLE_SECRET | Id de aplicación para google oauth
 LINKEDIN_KEY, LINKEDIN_SECRET | Id de aplicación para linkedin oauth
 BONSAI_URL | host de la api de elasticsearch, generalmente localhost:9200
 ES_TEST_HOST, ES_HOST_PORT | host de la api de elasticsearch para tests
+
+A modo de ejemplo, se puede referenciar el archivo `.env_sample`
 
 #### Datos dummy 
 
