@@ -32,7 +32,7 @@ Foreman puede instalarse via:
 
   `$ gem install foreman`
 
-Notarán que existen dos Procfiles: ´./Procfile´ y ´./Procfile.local´. El primero es usado por la plataforma de producción, mientras que el segundo de manera local. Para iniciar la app localmente, se puede hacer a través de:
+Notarán que existen dos Procfiles: `./Procfile` y `./Procfile.local`. El primero es usado por la plataforma de producción, mientras que el segundo de manera local. Para iniciar la app localmente, se puede hacer a través de:
 
   `$ bin/start`
 
