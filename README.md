@@ -10,7 +10,7 @@ Pendiente de agregar:
 
 * Clonar repo
 
-* De no estar presente, instalar [ElasticSearch](http://www.elasticsearch.org/) y al momento de iniciarlo, hacerlo en el puerto por defecto (9200)
+* De no estar presente, instalar [ElasticSearch](http://www.elasticsearch.org/)
 
 * Instalar dependencias (gemas ruby) via `bundle install`
 
@@ -22,9 +22,23 @@ Pendiente de agregar:
 
   `$ rake protractor:spec_and_cleanup` (hacer un seed antes si es necesario: `rake db:seed RAILS_ENV=test`)
 
+#### Inicio
+
+El proyecto usa [foreman](https://github.com/ddollar/foreman), para administrar los procesos necesarios (web server y elasticsearch).
+
+Foreman puede instalarse via:
+
+  `$ gem install foreman`
+
+Notarán que existen dos Procfiles: ´./Procfile´ y ´./Procfile.local´. El primero es usado por la plataforma de producción, mientras que el segundo de manera local. Para iniciar la app localmente, se puede hacer a través de:
+
+  `$ bin/start`
+
+Por única vez, será necesario dar permisos necesarios a dicho script: `chmod 777 bin/start`
+
 #### Variables de entorno
 
-El proyecto usa la gema [dotenv](https://github.com/bkeepers/dotenv), que al igual que otras, te permite tener un archivo `.env` en la raiz, con las variables de entorno necesarias para los entornos de desarrollo y test. A continuación se listan las variables de entorno que el sistema necesitará para una u otra tarea:
+Una de las opciones con foreman es que nos permite tener un archivo `.env` en la raiz, de manera tal poder definir las variables de entorno necesarias para los modos desarrollo y test. A continuación se listan las variables de entorno que el sistema necesitará para una u otra necesidad:
 
 Nombre de variable | Razón de ser
 ------------------ | -------------
