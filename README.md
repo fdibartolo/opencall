@@ -18,9 +18,11 @@ Pendiente de agregar:
 
 * Correr tests
 
-  `$ bin/rspec`
+  `$ foreman run bin/rspec`
 
-  `$ rake protractor:spec_and_cleanup` (hacer un seed antes si es necesario: `rake db:seed RAILS_ENV=test`)
+  `$ foreman run rake protractor:spec_and_cleanup`
+
+  Hacer un seed antes si es necesario: `foreman run rake protractor:cleanup`
 
 #### Inicio
 
