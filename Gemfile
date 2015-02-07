@@ -35,7 +35,6 @@ group :development, :test do
   gem 'factory_girl_rails', '4.5.0'
   # temp pull code from this branch since it has a few bugs fixed (pull requests #23 #24)
   gem 'protractor-rails', :git => 'https://github.com/fdibartolo/protractor-rails', :branch => 'bugfixes'
-  gem 'dotenv-rails', '1.0.2'
   gem 'coveralls', '0.7.9', require: false
   gem 'elasticsearch-extensions', '0.0.17'
 end
