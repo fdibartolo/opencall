@@ -1,0 +1,2 @@
+web: rails server
+elasticsearch: elasticsearch --cluster.name opencall
