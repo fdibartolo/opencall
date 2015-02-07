@@ -32,6 +32,7 @@ GITHUB_KEY, GITHUB_SECRET | Id de aplicación para github oauth
 GOOGLE_KEY, GOOGLE_SECRET | Id de aplicación para google oauth
 LINKEDIN_KEY, LINKEDIN_SECRET | Id de aplicación para linkedin oauth
 BONSAI_URL | host de la api de elasticsearch, generalmente localhost:9200
+ES_TEST_HOST, ES_HOST_PORT | host de la api de elasticsearch para tests
 
 #### Datos dummy 
 
