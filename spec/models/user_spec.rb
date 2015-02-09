@@ -63,4 +63,20 @@ RSpec.describe User, :type => :model do
       expect(user.avatar_url).to eq DefaultAvatarUrl
     end
   end
+
+  describe "roles" do
+    context "with admin role" do
+      let(:user) { FactoryGirl.create(:admin) }
+
+      it { expect(user.admin?).to be true }
+      it { expect(user.reviewer?).to be false }
+    end
+
+    context "with reviewer role" do
+      let(:user) { FactoryGirl.create(:reviewer) }
+
+      it { expect(user.reviewer?).to be true }
+      it { expect(user.admin?).to be false }
+    end
+  end
 end
