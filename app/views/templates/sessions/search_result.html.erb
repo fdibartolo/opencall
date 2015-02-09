@@ -12,9 +12,12 @@
       <span class="actions pull-right clickable">
         <span ng-click="vote($index)" ng-if="!session.voted && availableVotes > 0" class="ion-ios7-circle-outline text-success"></span>
         <span ng-click="vote($index)" ng-if="session.voted" class="ion-checkmark-circled text-success"></span>
-        <span class="ion-chatboxes text-muted"></span>
+        <!-- <span class="ion-chatboxes text-muted"></span> -->
         <span ng-click="fav($index)" ng-if="!session.faved" class="ion-ios7-star-outline text-warning"></span>
         <span ng-click="fav($index)" ng-if="session.faved" class="ion-ios7-star text-warning"></span>
+        <% if can? :review, SessionProposal %>
+          <span class="ion-compose text-success"></span>
+        <% end %>
       </span>      
     </h3>
     <div class="author">{{session.author}}</div>

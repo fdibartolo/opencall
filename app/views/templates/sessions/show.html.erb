@@ -38,7 +38,10 @@
     </div>
   </div>
 
-  <div class="col-sm-10" style="padding-right:5px;margin:20px 0"><hr>
-    <div class="btn btn-default pull-right"><%= link_to "Volver", "#/sessions" %></div>
+  <div class="col-sm-10 text-right" style="padding-right:5px;margin:20px 0"><hr>
+    <% if can? :review, SessionProposal %>
+      <div class="btn btn-success"><%= link_to "Iniciar una revisión formal", "" %></div>
+    <% end %>
+    <div class="btn btn-default"><%= link_to "Volver", "#/sessions" %></div>
   </div>
 </div>
