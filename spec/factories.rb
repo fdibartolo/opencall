@@ -5,6 +5,18 @@ FactoryGirl.define do
     country     'US'
     email       { "#{first_name}.#{last_name}@main.com".downcase }
     password    'unclebob'
+
+    factory :admin do
+      after(:create) do |user|
+        user.roles = [create(:role)]
+      end
+    end
+
+    factory :reviewer do
+      after(:create) do |user|
+        user.roles = [create(:role, name: 'reviewer')]
+      end
+    end
   end
 
   factory :identity do
@@ -33,5 +45,9 @@ FactoryGirl.define do
 
   factory :tag do
     name 'xp'
+  end
+
+  factory :role do
+    name  'admin'
   end
 end
