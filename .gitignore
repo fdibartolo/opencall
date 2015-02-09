@@ -24,3 +24,6 @@ aux_notes.txt
 
 # coverage reports
 coverage/
+
+# node modules
+node_modules/
