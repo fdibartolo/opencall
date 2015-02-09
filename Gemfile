@@ -23,6 +23,7 @@ gem 'devise', '3.4.1'
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.2.6'
 gem 'omniauth-linkedin', '0.2.0'
+gem 'cancancan', '1.10.1'
 
 gem 'will_paginate', '3.0.7'
 gem 'elasticsearch-model', '0.1.6'
