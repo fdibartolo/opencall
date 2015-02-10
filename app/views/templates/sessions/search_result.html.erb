@@ -15,7 +15,7 @@
         <!-- <span class="ion-chatboxes text-muted"></span> -->
         <span ng-click="fav($index)" ng-if="!session.faved" class="ion-ios7-star-outline text-warning"></span>
         <span ng-click="fav($index)" ng-if="session.faved" class="ion-ios7-star text-warning"></span>
-        <% if can? :review, SessionProposal %>
+        <% if current_user and can? :review, SessionProposal %>
           <span class="ion-compose text-success"></span>
         <% end %>
       </span>      
