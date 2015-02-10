@@ -41,12 +41,16 @@
                     <li><a href="#/home">Mis propuestas</a></li>
                     <li><a href="#/home">Mis votos</a></li>
                     <li><a href="#/home">Mis favoritas</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Administrador</li>
-                    <li><a href="#/home">Puedo ver esto como admin</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Reviewer</li>
-                    <li><a href="#/home">Puedo ver esto como reviewer</a></li>
+                    <% if current_user.admin? %>
+                      <li class="divider"></li>
+                      <li class="dropdown-header">Administrador</li>
+                      <li><a href="#/home">Puedo ver esto como admin</a></li>
+                    <% end %>
+                    <% if current_user.reviewer? %>
+                      <li class="divider"></li>
+                      <li class="dropdown-header">Reviewer</li>
+                      <li><a href="#/home">Puedo ver esto como reviewer</a></li>
+                    <% end %>
                     <li class="divider"></li>
                     <li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, id: 'signout-link' %></li>
                   </ul>
