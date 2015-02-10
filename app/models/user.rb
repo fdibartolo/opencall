@@ -42,10 +42,10 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    roles.where(name: 'admin').exists?
+    roles.where(name: RoleAdmin).exists?
   end
 
   def reviewer?
-    roles.where(name: 'reviewer').exists?
+    roles.where(name: RoleReviewer).exists?
   end
 end

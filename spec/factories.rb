@@ -14,7 +14,7 @@ FactoryGirl.define do
 
     factory :reviewer do
       after(:create) do |user|
-        user.roles = [create(:role, name: 'reviewer')]
+        user.roles = [create(:role, name: RoleReviewer)]
       end
     end
   end
@@ -48,6 +48,6 @@ FactoryGirl.define do
   end
 
   factory :role do
-    name  'admin'
+    name  RoleAdmin
   end
 end
