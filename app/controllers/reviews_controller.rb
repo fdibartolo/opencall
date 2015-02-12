@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
   before_action :set_session_proposal
 
   def create
+    return head :forbidden if cannot? :review, SessionProposal
+
     review = Review.new review_params.merge!({ user_id: current_user.id, session_proposal_id: @session_proposal.id })
 
     if review.save
