@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Users::UsersController, :type => :controller do
-  login_user
+  login_as :user
 
   describe "GET reset_password" do
     subject { get :reset_password }

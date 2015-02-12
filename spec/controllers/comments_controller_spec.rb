@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, :type => :controller do
-  login_user
+  login_as :user
 
   describe "GET index" do
     context "with invalid params" do
