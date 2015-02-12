@@ -1,6 +1,6 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', '$location', '$routeParams', 'SessionsService', 'CommentsService', 
-($scope, $location, $routeParams, SessionsService, CommentsService) ->
+['$scope', '$location', '$routeParams', 'SessionsService', 'CommentsService', 'ReviewsService', 
+($scope, $location, $routeParams, SessionsService, CommentsService, ReviewsService) ->
 
   $scope.sessions = []
   $scope.matched_tags = []
@@ -15,6 +15,9 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.newSessionComment = 
     body: ''
     date: null
+  $scope.newSessionReview = 
+    body: ''
+    score: 0
 
   $scope.init = () ->
     $scope.loading = true
@@ -64,6 +67,12 @@ angular.module('openCall.controllers').controller 'SessionsController',
     ), (errorKey) ->
       $location.path '/error/' + errorKey
 
+  $scope.review = () ->
+    SessionsService.show($routeParams.id).then ((session) ->
+      $scope.session = session
+    ), (errorKey) ->
+      $location.path '/error/' + errorKey
+
   $scope.postComment = () ->
     CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
       comment = 
@@ -74,4 +83,11 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $scope.session.comments.push comment
       $scope.newSessionComment.body = ''
       $scope.newSessionComment.date = null
+
+  $scope.postReview = () ->
+    ReviewsService.create($routeParams.id, $scope.newSessionReview).then () ->
+      $scope.newSessionReview.body = ''
+      $scope.newSessionReview.score = 0
+      $location.path '/sessions'
+     
 ]

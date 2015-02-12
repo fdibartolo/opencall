@@ -16,7 +16,7 @@
         <span ng-click="fav($index)" ng-if="!session.faved" class="ion-ios7-star-outline text-warning"></span>
         <span ng-click="fav($index)" ng-if="session.faved" class="ion-ios7-star text-warning"></span>
         <% if current_user and can? :review, SessionProposal %>
-          <span class="ion-compose text-success"></span>
+          <a ng-href="#/sessions/review/{{session.id}}"><span class="ion-compose text-success" title="Iniciar una revisión formal"></span></a>
         <% end %>
       </span>      
     </h3>
