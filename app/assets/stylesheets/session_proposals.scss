@@ -93,7 +93,7 @@
 .btn-action.non-clickable { cursor: default !important; }
 .btn-action.info { background: $brand-info; }
 
-.no-search-results {
+.no-search-results, .no-review-access {
   margin-top: 100px;
   
   h4 { font-weight: 200; }
