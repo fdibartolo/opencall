@@ -50,4 +50,10 @@ FactoryGirl.define do
   factory :role do
     name  RoleAdmin
   end
+
+  factory :review do
+    body        'some reviewer comment'
+    score       7
+    association :session_proposal, factory: :session_proposal
+  end
 end
