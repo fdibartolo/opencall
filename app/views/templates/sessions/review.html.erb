@@ -1,0 +1,53 @@
+<% if current_user and can? :review, SessionProposal %>
+  <div ng-cloak ng-init="review()" fade-animation="true" class="row">
+    <div class="row session-detail">
+      <div class="col-sm-2 text-center">
+        <img ng-src="{{session.author.avatar_url}}" class="avatar lg img-circle">
+        <div class="author">{{session.author.name}}</div>
+        <div class="text-muted date" time-from-now="session.date"></div>
+      </div>
+      <div class="col-sm-8">
+        <h2>
+          {{session.title}}
+          <div ng-if="session.editable" class="btn btn-xs btn-success pull-right" style="margin:10px">
+            Editar propuesta &nbsp; <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </div>
+        </h2>
+        <ul class="list-inline">
+          <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
+        </ul>
+
+        <p markdown="session.description"></p>
+      </div>
+    </div>
+    <br><hr>
+
+
+    <div class="row session-comment" fade-animation="true">
+      <div class="col-sm-2 text-center">
+        <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
+      </div>
+      <div class="col-sm-8">
+        <textarea type="text" class="form-control" placeholder="Da tu punto de vista de la sesión" ng-model="newSessionReview.body" rows="4"></textarea><br>
+
+        <label for="input-description" class="control-label">Puntaje: &nbsp;</label>
+        <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
+          <input type="radio" name="inlineScoreOptions" ng-click="newSessionReview.score = i">{{i}}
+        </label>
+
+        <button class="btn btn-primary pull-right" ng-click="postReview()">Enviar Revisión</button>
+      </div>
+    </div>
+
+    <div class="col-sm-10 text-right" style="padding-right:5px;margin:20px 0"><hr>
+      <div class="btn btn-default"><%= link_to "Cancelar", "#/sessions" %></div>
+    </div>
+  </div>
+<% else %>
+  <div class="no-review-access">
+    <h4 class="text-muted text-center">
+      No tienes permiso para hacer revisiones... <br><br>
+      <span class="ion-sad"></span>
+    </h4>
+  </div>
+<% end %>
