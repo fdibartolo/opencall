@@ -9,6 +9,7 @@ class SessionProposal < ActiveRecord::Base
   has_many :comments
   has_and_belongs_to_many :tags, autosave: true
   accepts_nested_attributes_for :tags
+  has_many :reviews
 
   def autosave_associated_records_for_tags
     session_tags = []
