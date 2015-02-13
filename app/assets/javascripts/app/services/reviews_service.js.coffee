@@ -10,8 +10,13 @@ angular.module('openCall.services').factory 'ReviewsService',
         score: review.score
     ).success((data, status) ->
       deferred.resolve()
-    ).error (data, status) ->
-      deferred.reject()
+    ).error (data, status, header, config) ->
+      switch status
+        when 400 then message = "session_not_found"
+        when 403 then message = "access_denied"
+        else message = "generic"
+
+      deferred.reject message
 
     deferred.promise
 

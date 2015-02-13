@@ -85,9 +85,11 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $scope.newSessionComment.date = null
 
   $scope.postReview = () ->
-    ReviewsService.create($routeParams.id, $scope.newSessionReview).then () ->
+    ReviewsService.create($routeParams.id, $scope.newSessionReview).then (() ->
       $scope.newSessionReview.body = ''
       $scope.newSessionReview.score = 0
       $location.path '/sessions'
+   ), (errorKey) ->
+      $location.path '/error/' + errorKey
      
 ]
