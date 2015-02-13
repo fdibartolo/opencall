@@ -45,7 +45,7 @@
 
   <div class="col-sm-10 text-right" style="padding-right:5px;margin:20px 0"><hr>
     <% if can? :review, SessionProposal %>
-      <div class="btn btn-success"><%= link_to "Iniciar una revisión formal", "" %></div>
+      <div class="btn btn-success"><a ng-href="#/sessions/review/{{session.id}}">Iniciar una revisión formal</a></div>
     <% end %>
     <div class="btn btn-default"><%= link_to "Volver", "#/sessions" %></div>
   </div>
