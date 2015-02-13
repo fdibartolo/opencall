@@ -27,10 +27,10 @@
         <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
       </div>
       <div class="col-sm-8">
-        <textarea type="text" class="form-control" placeholder="Da tu punto de vista de la sesión" ng-model="newSessionReview.body" rows="4"></textarea><br>
+        <textarea type="text" class="form-control" placeholder="Da tu punto de vista de la sesión" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}"></textarea><br>
 
-        <label for="input-description" class="control-label">Puntaje: &nbsp;</label>
-        <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
+        <label for="input-description" class="control-label" ng-class="{'text-danger': newSessionReview.invalidScore}">Puntaje: &nbsp;</label>
+        <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" ng-class="{'text-danger': newSessionReview.invalidScore}">
           <input type="radio" name="inlineScoreOptions" ng-click="newSessionReview.score = i">{{i}}
         </label>
 
