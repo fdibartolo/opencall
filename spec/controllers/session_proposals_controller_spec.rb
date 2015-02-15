@@ -80,27 +80,39 @@ RSpec.describe SessionProposalsController, :type => :controller do
   end
 
   describe "PATCH update" do
-    context "with invalid params" do
-      it "should return 400 Bad Request" do
-        allow(SessionProposal).to receive(:find_by).and_return(nil)
-        expect(patch(:update, { id: 9999 })).to have_http_status(400)
+    context "while session author" do
+      context "with invalid params" do
+        it "should return 400 Bad Request" do
+          allow(SessionProposal).to receive(:find_by).and_return(nil)
+          expect(patch(:update, { id: 9999 })).to have_http_status(400)
+        end
+      end
+
+      context "with valid params" do
+        let(:session) { FactoryGirl.create :session_proposal, user: logged_in(:user) }
+        let(:payload) { { id: session.id, session_proposal: { title: 'title' } } }
+        
+        it "should return success if can save" do
+          allow_any_instance_of(SessionProposal).to receive(:update).and_return(true)
+          patch :update, payload
+          expect(response).to have_http_status(204)
+        end
+
+        it "should return unprocesable entity if cannot save" do
+          allow_any_instance_of(SessionProposal).to receive(:update).and_return(false)
+          patch :update, payload
+          expect(response).to have_http_status(422)
+        end
       end
     end
 
-    context "with valid params" do
-      let(:session) { FactoryGirl.create :session_proposal }
-      let(:payload) { { id: session.id, session_proposal: { title: 'title' } } }
-      
-      it "should return success if can save" do
-        allow_any_instance_of(SessionProposal).to receive(:update).and_return(true)
-        patch :update, payload
-        expect(response).to have_http_status(204)
-      end
+    context "while not session author" do
+      it "should return forbidden" do
+        user = FactoryGirl.create :user, first_name: 'jim'
+        session = FactoryGirl.create :session_proposal, user: user
 
-      it "should return unprocesable entity if cannot save" do
-        allow_any_instance_of(SessionProposal).to receive(:update).and_return(false)
-        patch :update, payload
-        expect(response).to have_http_status(422)
+        post :update, { id: session.id, session_proposal: { title: 'title' } }
+        expect(response).to have_http_status(403)
       end
     end
   end

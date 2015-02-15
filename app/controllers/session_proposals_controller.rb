@@ -30,6 +30,8 @@ class SessionProposalsController < ApplicationController
   end
 
   def update
+    return head :forbidden if cannot? :edit, @session_proposal
+
     if @session_proposal.update(session_proposal_params)
       head :no_content
     else
