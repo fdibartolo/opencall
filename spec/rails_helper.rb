@@ -5,6 +5,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'devise'
 require 'support/controller_macros'
+require 'support/controller_helpers'
 require 'coveralls'
 Coveralls.wear!('rails')
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -56,4 +57,5 @@ RSpec.configure do |config|
 
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
+  config.include ControllerHelpers, :type => :controller
 end
