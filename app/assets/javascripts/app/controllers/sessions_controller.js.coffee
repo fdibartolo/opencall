@@ -19,13 +19,6 @@ angular.module('openCall.controllers').controller 'SessionsController',
     body: ''
     score: 0
 
-  $scope.init = () ->
-    $scope.loading = true
-    SessionsService.all().then (response) ->
-      $scope.sessions = response.sessions
-      $scope.total = response.total
-      $scope.loading = false
-
   $scope.initForm = () ->
     if angular.isDefined($routeParams.id)
       SessionsService.get($routeParams.id).then ((session) ->
@@ -52,7 +45,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.searchPageNumber = 1 # reset page number
     SessionsService.search($scope.searchTerms, $scope.searchPageNumber).then (response) ->
       $scope.sessions     = response.sessions
-      $scope.matched_tags = response.matched_tags
+      $scope.matched_tags = response.matched_tags  unless $scope.searchTerms is ''
       $scope.total        = response.total
       $scope.loading = false
 
@@ -111,5 +104,4 @@ angular.module('openCall.controllers').controller 'SessionsController',
         $location.path '/sessions'
      ), (errorKey) ->
         $location.path '/error/' + errorKey
-     
 ]
