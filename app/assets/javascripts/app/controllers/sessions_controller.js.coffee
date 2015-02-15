@@ -26,9 +26,25 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $scope.total = response.total
       $scope.loading = false
 
+  $scope.initForm = () ->
+    if angular.isDefined($routeParams.id)
+      SessionsService.get($routeParams.id).then ((session) ->
+        $scope.newSession = session
+      ), (errorKey) ->
+        $location.path '/error/' + errorKey
+
+  $scope.isNew = () ->
+    angular.isUndefined($scope.newSession.id)
+
   $scope.createSession = () ->
     SessionsService.create($scope.newSession).then () ->
       $location.path '/sessions'
+
+  $scope.updateSession = () ->
+    SessionsService.update($scope.newSession).then (() ->
+      $location.path '/sessions/show/' + $scope.newSession.id
+    ), (errorKey) ->
+      $location.path '/error/' + errorKey
 
   $scope.search = (termToAdd) ->
     $scope.loading = true

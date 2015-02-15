@@ -1,4 +1,4 @@
-<div ng-cloak fade-animation="true" class="row">
+<div ng-cloak ng-init="initForm()" fade-animation="true" class="row">
   <div class="form-horizontal">
     <div class="form-group">
       <div class="text-center"><h2>¿De qué te gustaría hablar?</h2></div>
@@ -38,7 +38,12 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
-        <button id="create-button" class="btn btn-primary pull-right" ng-click="createSession()">Confirmar</button>
+        <button id="create-button" class="btn btn-primary pull-right" ng-click="createSession()" ng-if="isNew()">
+          Crear propuesta
+        </button>
+        <button id="create-button" class="btn btn-primary pull-right" ng-click="updateSession()" ng-if="!isNew()">
+          Actualizar propuesta
+        </button>
       </div>
     </div>
   </div>

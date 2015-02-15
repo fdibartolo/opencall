@@ -23,6 +23,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/sessions/show.html'
     controller: 'SessionsController'
 
+  $routeProvider.when '/sessions/edit/:id',
+    templateUrl: '/templates/sessions/new.html'
+    controller: 'SessionsController'
+
   $routeProvider.when '/sessions/review/:id',
     templateUrl: '/templates/sessions/review.html'
     controller: 'SessionsController'
