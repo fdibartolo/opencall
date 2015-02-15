@@ -1,6 +1,6 @@
 class SessionProposalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_session_proposal, only: [:show, :update]
+  before_action :set_session_proposal, only: [:show, :edit, :update]
 
   def index
     @session_proposals = SessionProposal.all
@@ -13,6 +13,10 @@ class SessionProposalsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    return head :forbidden if cannot? :edit, @session_proposal
   end
 
   def new
