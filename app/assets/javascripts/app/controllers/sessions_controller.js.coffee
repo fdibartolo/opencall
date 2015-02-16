@@ -24,20 +24,20 @@ angular.module('openCall.controllers').controller 'SessionsController',
       SessionsService.get($routeParams.id).then ((session) ->
         $scope.newSession = session
       ), (errorKey) ->
-        $location.path '/error/' + errorKey
+        $location.path "/error/#{errorKey}"
 
   $scope.isNew = () ->
     angular.isUndefined($scope.newSession.id)
 
   $scope.createSession = () ->
     SessionsService.create($scope.newSession).then () ->
-      $location.path '/sessions'
+      $location.path "/sessions"
 
   $scope.updateSession = () ->
     SessionsService.update($scope.newSession).then (() ->
-      $location.path '/sessions/show/' + $scope.newSession.id
+      $location.path "/sessions/show/#{$scope.newSession.id}"
     ), (errorKey) ->
-      $location.path '/error/' + errorKey
+      $location.path "/error/#{errorKey}"
 
   $scope.search = (termToAdd) ->
     $scope.loading = true
@@ -74,13 +74,13 @@ angular.module('openCall.controllers').controller 'SessionsController',
       CommentsService.all($routeParams.id).then (comments) ->
         $scope.session.comments = comments
     ), (errorKey) ->
-      $location.path '/error/' + errorKey
+      $location.path "/error/#{errorKey}"
 
   $scope.review = () ->
     SessionsService.show($routeParams.id).then ((session) ->
       $scope.session = session
     ), (errorKey) ->
-      $location.path '/error/' + errorKey
+      $location.path "/error/#{errorKey}"
 
   $scope.postComment = () ->
     CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
@@ -101,7 +101,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
       ReviewsService.create($routeParams.id, $scope.newSessionReview).then (() ->
         $scope.newSessionReview.body = ''
         $scope.newSessionReview.score = 0
-        $location.path '/sessions'
+        $location.path "/sessions"
      ), (errorKey) ->
-        $location.path '/error/' + errorKey
+       $location.path "/error/#{errorKey}"
 ]

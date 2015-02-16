@@ -15,7 +15,7 @@ angular.module('openCall.services').factory 'CommentsService',
   create = (id, comment) ->
     deferred = $q.defer()
 
-    $http.post("/session_proposals/#{id}/comments"
+    $http.post("/session_proposals/#{id}/comments",
       comment:
         body: comment.body
     ).success((data, status) ->
