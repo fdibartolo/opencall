@@ -7,3 +7,17 @@
   .btn-social { font-size: 400%; }
 }
 
+.social-login-association {
+  h4 { text-align: center; }
+
+  .btn-social { font-size: 400%; }
+
+  div { display: table; }
+  
+  span {
+    display: table-cell;
+    vertical-align:middle;
+    padding-left:20px;
+  }
+}
+

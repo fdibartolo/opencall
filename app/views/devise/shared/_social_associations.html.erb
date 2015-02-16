@@ -1,11 +1,11 @@
-<div class="col-sm-4 social-login-container" style="padding:0 50px; border:none">
+<div class="col-sm-4 social-login-association">
   <%- if devise_mapping.omniauthable? %>
     <h4>Tus cuentas asociados</h4>
     <%- resource_class.omniauth_providers.each do |provider| %>
       <% class_delta, action, message = link_context_for provider %>
-      <div class="center-block" style="display:table">
+      <div class="center-block">
         <%= link_to content_tag(:span, '', class: "btn-social #{class_delta}"), action %>
-        <span style="display:table-cell;vertical-align:middle;padding-left:20px"><%= message %></span>
+        <span><%= message %></span>
       </div>
     <% end -%>
   <% end -%>
