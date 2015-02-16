@@ -32,8 +32,8 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.createSession = () ->
     if validSession()
-      SessionsService.create($scope.newSession).then () ->
-        $location.path "/sessions"
+      SessionsService.create($scope.newSession).then (id) ->
+        $location.path "/sessions/show/#{id}"
 
   $scope.updateSession = () ->
     if validSession()

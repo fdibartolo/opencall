@@ -27,7 +27,7 @@ class SessionProposalsController < ApplicationController
     session_proposal = SessionProposal.new(session_proposal_params)
     session_proposal.user = current_user
     if session_proposal.save
-      head :no_content
+      head :no_content, { id: session_proposal.id }
     else
       head :unprocessable_entity
     end

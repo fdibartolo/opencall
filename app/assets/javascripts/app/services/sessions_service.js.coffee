@@ -21,8 +21,8 @@ angular.module('openCall.services').factory 'SessionsService',
         description: session.description
         video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)
-    ).success((data, status) ->
-      deferred.resolve()
+    ).success((data, status, header, config) ->
+      deferred.resolve header()["id"]
     ).error (data, status) ->
       deferred.reject()
 
