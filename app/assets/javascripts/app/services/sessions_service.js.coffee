@@ -19,6 +19,7 @@ angular.module('openCall.services').factory 'SessionsService',
       session_proposal:
         title: session.title
         description: session.description
+        video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)
     ).success((data, status) ->
       deferred.resolve()
@@ -34,6 +35,7 @@ angular.module('openCall.services').factory 'SessionsService',
       session_proposal:
         title: session.title
         description: session.description
+        video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)
     ).success((data, status) ->
       deferred.resolve()

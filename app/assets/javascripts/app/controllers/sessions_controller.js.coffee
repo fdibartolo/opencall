@@ -8,6 +8,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.newSession = 
     title: ''
     description: ''
+    video_link: ''
     tags: []
   $scope.availableVotes = 10
   $scope.searchTerms = ''

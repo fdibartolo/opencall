@@ -21,6 +21,14 @@
 
   img { margin-top: 32px; }
   .author, .date { margin-top: 10px; }
+
+  .video-link {
+    &:hover { text-decoration: none; }
+    span { 
+      font-size:175%;
+      vertical-align:sub;
+    }
+  }
 }
 
 .session-comment {
