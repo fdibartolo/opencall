@@ -1,1 +1,1 @@
-json.extract! @session_proposal, :title, :description
+json.extract! @session_proposal, :title, :description, :video_link
