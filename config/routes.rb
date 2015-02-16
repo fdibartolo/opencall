@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
   
   get '/users/reset_user_password' => 'users/users#reset_password', as: 'reset_user_password'
   
@@ -18,8 +18,6 @@ Rails.application.routes.draw do
       get 'suggest'
     end
   end
-
-  # get '/tags/suggest' => 'tags#suggest'
 
   root 'main#index'
 
