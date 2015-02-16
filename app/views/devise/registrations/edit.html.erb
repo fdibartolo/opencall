@@ -1,5 +1,5 @@
 <br><br>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal col-sm-8" }) do |f| %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -7,7 +7,7 @@
 
   <div class="<%= validation_error_class? :first_name %>">
     <label for="input-firstname" class="col-sm-2 control-label">Nombre</label>
-    <div class="col-sm-6">
+    <div class="col-sm-10">
       <%= f.text_field :first_name, class: "form-control", id: "input-firstname", placeholder: "Nombre" %>
       <%= validation_error_details? :first_name %>
     </div>
@@ -15,7 +15,7 @@
 
   <div class="<%= validation_error_class? :last_name %>">
     <label for="input-lastname" class="col-sm-2 control-label">Apellido</label>
-    <div class="col-sm-6">
+    <div class="col-sm-10">
       <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: "Apellido" %>
       <%= validation_error_details? :last_name %>
     </div>
@@ -23,14 +23,14 @@
 
   <div class="form-group">
     <label for="input-country" class="col-sm-2 control-label">Pais</label>
-    <div class="col-sm-6">
+    <div class="col-sm-10">
       <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"], :selected => f.object.country), {}, { class: "form-control selectpicker", id: "input-country" } %>
     </div>
   </div>
 
   <div class="<%= validation_error_class? :email %>">
     <label for="input-email" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-6">
+    <div class="col-sm-10">
       <%= f.email_field :email, class: "form-control", id: "input-email", placeholder: "Email" %>
       <%= validation_error_details? :email %>
     </div>
@@ -38,14 +38,14 @@
 
   <div class="form-group">
     <label for="input-website" class="col-sm-2 control-label">Website/Blog</label>
-    <div class="col-sm-6">
+    <div class="col-sm-10">
       <%= f.url_field :website, class: "form-control", id: "input-website", placeholder: "Website" %>
     </div>
   </div>
 
   <div class="form-group">
     <label for="input-bio" class="col-sm-2 control-label">Bio</label>
-    <div class="col-sm-6">
+    <div class="col-sm-10">
       <ul class="nav nav-tabs" ng-init="bio = true">
         <li role="presentation" ng-class="{active: bio}"><a ng-click="bio = !bio"><small>Texto</small></a></li>
         <li role="presentation" ng-class="{active: !bio}"><a ng-click="bio = !bio"><small>Redes sociales</small></a></li>
@@ -88,11 +88,11 @@
     </div>
   </div>
 
-  <div class="row"><div class="col-sm-offset-2 col-sm-6"><hr></div></div>
+  <div class="row"><div class="col-sm-offset-2 col-sm-10"><hr></div></div>
 
   <div class="<%= validation_warning_class? :current_password %>">
     <label for="input-password3" class="col-sm-2 control-label">Contraseña Actual</label>
-    <div class="col-sm-6">
+    <div class="col-sm-10">
       <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "input-password3", placeholder: "Contraseña" %>
       <%= validation_warning_details? :current_password %>
       <small class="text-muted">necesitas ingresar tu contraseña actual para poder confirmar algún cambio</small>
@@ -100,7 +100,7 @@
   </div>
 
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-6">
+    <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">Guardar</button>
       <div class="btn btn-default"><%= link_to "Volver", :back %></div>
       <br><hr>
@@ -108,3 +108,5 @@
     </div>
   </div>
 <% end %>
+
+<%= render "devise/shared/social_associations" %>

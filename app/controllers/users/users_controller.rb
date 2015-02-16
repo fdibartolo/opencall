@@ -12,4 +12,16 @@ class Users::UsersController < ApplicationController
 
     redirect_to edit_user_password_path(reset_password_token: raw)
   end
+
+  def unlink_social
+    identity = current_user.identities.find_by(provider: params[:provider])
+
+    if identity
+      identity.destroy
+      provider = params[:provider] == :google_oauth2 ? 'google' : params[:provider]
+      flash[:notice] = "Has desasociado tu cuenta de #{provider} con éxito"
+    end
+
+    redirect_to edit_user_registration_path(current_user)
+  end
 end

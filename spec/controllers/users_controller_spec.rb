@@ -11,4 +11,16 @@ RSpec.describe Users::UsersController, :type => :controller do
       expect(subject.location).to include edit_user_password_path(reset_password_token: nil)
     end
   end
+
+  describe "GET unlink social" do
+    let(:identity) { FactoryGirl.create :identity, user: logged_in(:user) }
+
+    before :each do
+      get :unlink_social, { provider: identity.provider }
+    end
+
+    it { expect(logged_in(:user).identities).to_not include identity }
+    it { expect(response).to redirect_to(edit_user_registration_path(logged_in(:user))) }
+    it { expect(request.flash[:notice]).to include "Has desasociado tu cuenta de #{identity.provider} con éxito" }
+  end
 end
