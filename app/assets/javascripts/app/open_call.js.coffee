@@ -38,10 +38,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
   $routeProvider.otherwise redirectTo: '/home'
 ]
 
-app.factory "httpInterceptor", ['$q', '$location', ($q, $location) ->
+app.factory "httpInterceptor", ['$q', '$window', ($q, $window) ->
   return (
     responseError: (response) ->
-      $location.path "/home"  if response.status is 401
+      $window.location.href = "#{BASE_URL}users/sign_in"  if response.status is 401
       $q.reject response
   )
 ]
