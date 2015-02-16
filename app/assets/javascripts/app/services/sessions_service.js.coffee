@@ -30,7 +30,7 @@ angular.module('openCall.services').factory 'SessionsService',
   update = (session) ->
     deferred = $q.defer()
 
-    $http.put("/session_proposals/" + session.id, 
+    $http.put("/session_proposals/#{session.id}",
       session_proposal:
         title: session.title
         description: session.description
@@ -56,7 +56,7 @@ angular.module('openCall.services').factory 'SessionsService',
   search = (terms, pageNumber) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/search?q=" + terms + "&page=" + pageNumber)
+    $http.get("/session_proposals/search?q=#{terms}&page=#{pageNumber}")
     .success((data, status) ->
       deferred.resolve data
     ).error (data, status) ->
@@ -67,7 +67,7 @@ angular.module('openCall.services').factory 'SessionsService',
   show = (id) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/" + id)
+    $http.get("/session_proposals/#{id}")
     .success((data, status) ->
       deferred.resolve data
     ).error (data, status, header, config) ->
@@ -79,7 +79,7 @@ angular.module('openCall.services').factory 'SessionsService',
   get = (id) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/" + id + "/edit")
+    $http.get("/session_proposals/#{id}/edit")
     .success((data, status) ->
       deferred.resolve data
     ).error (data, status, header, config) ->
