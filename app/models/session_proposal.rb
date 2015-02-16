@@ -11,6 +11,8 @@ class SessionProposal < ActiveRecord::Base
   accepts_nested_attributes_for :tags
   has_many :reviews
 
+  validates :title, :description, :user_id, presence: true
+
   def autosave_associated_records_for_tags
     session_tags = []
     tags.each { |tag| session_tags << Tag.find_or_create_by(name: tag.name) }

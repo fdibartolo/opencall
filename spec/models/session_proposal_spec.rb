@@ -3,10 +3,18 @@ require "rails_helper"
 RSpec.describe SessionProposal, :type => :model do
   let(:session_proposal) { FactoryGirl.build(:session_proposal) }
 
-  describe "attributes" do
-    it { expect(SessionProposal.attribute_names).to include 'user_id' }
-    it { expect(SessionProposal.attribute_names).to include 'title' }
-    it { expect(SessionProposal.attribute_names).to include 'description' }
+  describe "mandatory attributes" do
+    %w[title description user_id].each do |attribute|
+      it "should include #{attribute}" do
+        eval "session_proposal.#{attribute} = nil"
+        expect(session_proposal.valid?).to be false
+        expect(session_proposal.errors[attribute]).to include "no puede estar en blanco"
+      end
+    end
+  end  
+
+  describe "optional attributes" do
+    it { expect(SessionProposal.attribute_names).to include 'video_link' }
   end
 
   describe "#autosave_associated_records_for_tags" do
