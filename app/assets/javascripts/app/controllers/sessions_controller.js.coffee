@@ -31,14 +31,22 @@ angular.module('openCall.controllers').controller 'SessionsController',
     angular.isUndefined($scope.newSession.id)
 
   $scope.createSession = () ->
-    SessionsService.create($scope.newSession).then () ->
-      $location.path "/sessions"
+    if validSession()
+      SessionsService.create($scope.newSession).then () ->
+        $location.path "/sessions"
 
   $scope.updateSession = () ->
-    SessionsService.update($scope.newSession).then (() ->
-      $location.path "/sessions/show/#{$scope.newSession.id}"
-    ), (errorKey) ->
-      $location.path "/error/#{errorKey}"
+    if validSession()
+      SessionsService.update($scope.newSession).then (() ->
+        $location.path "/sessions/show/#{$scope.newSession.id}"
+      ), (errorKey) ->
+        $location.path "/error/#{errorKey}"
+
+  validSession = () ->
+    $scope.newSession.invalidTitle = $scope.newSession.title is ''
+    $scope.newSession.invalidDescription = $scope.newSession.description is ''
+
+    not ($scope.newSession.invalidTitle or $scope.newSession.invalidDescription)
 
   $scope.search = (termToAdd) ->
     $scope.loading = true
