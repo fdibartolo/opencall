@@ -84,15 +84,16 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $location.path "/error/#{errorKey}"
 
   $scope.postComment = () ->
-    CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
-      comment = 
-        body: $scope.newSessionComment.body
-        author:
-          avatar_url: CURRENT_USER_AVATAR
-        date: moment()
-      $scope.session.comments.push comment
-      $scope.newSessionComment.body = ''
-      $scope.newSessionComment.date = null
+    if $scope.newSessionComment.body isnt ''
+      CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
+        comment = 
+          body: $scope.newSessionComment.body
+          author:
+            avatar_url: CURRENT_USER_AVATAR
+          date: moment()
+        $scope.session.comments.push comment
+        $scope.newSessionComment.body = ''
+        $scope.newSessionComment.date = null
 
   $scope.postReview = () ->
     $scope.newSessionReview.invalidBody = $scope.newSessionReview.body is ''
