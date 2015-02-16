@@ -37,7 +37,7 @@
   </div>
 
   <div class="form-group">
-    <label for="input-website" class="col-sm-2 control-label">Website</label>
+    <label for="input-website" class="col-sm-2 control-label">Website/Blog</label>
     <div class="col-sm-6">
       <%= f.url_field :website, class: "form-control", id: "input-website", placeholder: "Website" %>
     </div>
@@ -46,7 +46,45 @@
   <div class="form-group">
     <label for="input-bio" class="col-sm-2 control-label">Bio</label>
     <div class="col-sm-6">
-      <%= f.text_area :bio, class: "form-control", id: "input-bio", placeholder: "Bio", rows: 10 %>
+      <ul class="nav nav-tabs" ng-init="bio = true">
+        <li role="presentation" ng-class="{active: bio}"><a ng-click="bio = !bio"><small>Texto</small></a></li>
+        <li role="presentation" ng-class="{active: !bio}"><a ng-click="bio = !bio"><small>Redes sociales</small></a></li>
+        <div class="text-right"><small class="text-muted">
+          <i>Puedes describirte o bien <br> referenciar tu perfil en las redes sociales</i>
+        </small></div>
+      </ul>
+      <div ng-if="bio" fade-animation="true">
+        <%= f.text_area :bio, class: "form-control", id: "input-bio", placeholder: "Bio", rows: 10 %>
+      </div>
+      <div ng-if="!bio" fade-animation="true">
+        <br>
+        <div class="form-horizontal">
+          <div class="form-group">
+            <label for="input-linkedin" class="col-sm-2 control-label">LinkedIn</label>
+            <div class="col-sm-10">
+              <%= f.url_field :linkedin, class: "form-control", id: "input-linkedin", placeholder: "i.e.: http://linkedin.com/pub/..." %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="input-aboutme" class="col-sm-2 control-label">AboutMe</label>
+            <div class="col-sm-10">
+              <%= f.url_field :aboutme, class: "form-control", id: "input-aboutme", placeholder: "i.e.: http://about.me/..." %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="input-twitter" class="col-sm-2 control-label">Twitter</label>
+            <div class="col-sm-10">
+              <%= f.url_field :twitter, class: "form-control", id: "input-twitter", placeholder: "i.e.: http://twitter.com/..." %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="input-facebook" class="col-sm-2 control-label">Facebook</label>
+            <div class="col-sm-10">
+              <%= f.url_field :facebook, class: "form-control", id: "input-facebook", placeholder: "i.e.: http://facebook.com/..." %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
