@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
   
-  get '/users/reset_user_password' => 'users/users#reset_password', as: 'reset_user_password'
-  get '/users/unlink_social' => 'users/users#unlink_social', as: 'unlink_social'
-  get '/users/session_proposals' => 'users/users#sessions'
+  namespace :users do
+    get '/reset_password'    => 'users#reset_password'
+    get '/unlink_social'     => 'users#unlink_social'
+    get '/session_proposals' => 'users#sessions', defaults: { format: :json }
+  end
 
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 

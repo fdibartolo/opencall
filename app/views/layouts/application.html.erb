@@ -37,9 +37,9 @@
                   </a>
                   <ul class="dropdown-menu" role="menu">
                     <li><%= link_to "Perfil", edit_user_registration_path %></li>
-                    <li><%= link_to "Cambiar contraseña", reset_user_password_path %></li>
+                    <li><%= link_to "Cambiar contraseña", users_reset_password_path %></li>
                     <li class="divider"></li>
-                    <li><a href="#/users/sessions">Mis propuestas</a></li>
+                    <li><%= link_to 'Mis propuestas', "#{root_url}#/users/sessions" %></li>
                     <li><a href="#/home">Mis votos</a></li>
                     <li><a href="#/home">Mis favoritas</a></li>
                     <% if current_user.admin? %>

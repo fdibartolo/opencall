@@ -40,7 +40,7 @@ module UserHelper
     provider_icon = provider == :google_oauth2 ? 'googleplus' : provider
     color, action, message = current_user.identities.find_by(provider: provider).nil? ? 
       ['text-muted', user_omniauth_authorize_path(provider), 'asociar'] : 
-      ['', unlink_social_path(provider: provider), 'desasociar']
+      ['', users_unlink_social_path(provider: provider), 'desasociar']
     
     ["ion-social-#{provider_icon} #{color}", action, "click para #{message}"]
   end
