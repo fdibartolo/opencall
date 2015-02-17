@@ -21,7 +21,9 @@
 
   img { margin-top: 32px; }
   .author, .date { margin-top: 10px; }
+}
 
+.session-summary, .session-detail {
   .video-link {
     &:hover { text-decoration: none; }
     span { 

@@ -35,6 +35,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/error.html'
     controller: 'ErrorsController'
 
+  $routeProvider.when '/users/sessions',
+    templateUrl: '/templates/users/sessions.html'
+    controller: 'UsersController'
+
   $routeProvider.otherwise redirectTo: '/home'
 ]
 
