@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   has_many :session_proposals
   has_many :identities, :dependent => :delete_all
   has_and_belongs_to_many :roles
-
+  has_many :reviews, :dependent => :delete_all
+  
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
