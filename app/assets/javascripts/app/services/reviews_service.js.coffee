@@ -4,7 +4,7 @@ angular.module('openCall.services').factory 'ReviewsService',
   create = (id, review) ->
     deferred = $q.defer()
 
-    $http.post("/session_proposals/#{id}/reviews"
+    $http.post("/session_proposals/#{id}/reviews",
       review:
         body: review.body
         score: review.score
