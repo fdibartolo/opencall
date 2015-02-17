@@ -21,3 +21,23 @@
   }
 }
 
+.review-score {
+  font-size: 300%;
+  margin-top: 20px;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  display: table;
+
+  span { 
+    display: table-cell; 
+    vertical-align: middle;
+  }
+  
+  span.for-green, span.for-red { color: white; }
+  span.for-yellow { color: black; }
+}
+
+.bg-green { background-color: green; }
+.bg-yellow { background-color: yellow; }
+.bg-red { background-color: red; }

@@ -45,13 +45,13 @@
                     <% if current_user.admin? %>
                       <li class="divider"></li>
                       <li class="dropdown-header">Administrador</li>
-                      <li><a href="#/home">Puedo ver esto como admin</a></li>
-                      <li><a href="#/home">Mis revisiones</a></li>
+                      <li><%= link_to 'Mis revisiones', "#{root_url}#/users/reviews" %></li>
+                      <li><a href="#/home">Asignar revisores</a></li>
                     <% end %>
                     <% if current_user.reviewer? %>
                       <li class="divider"></li>
                       <li class="dropdown-header">Reviewer</li>
-                      <li><a href="#/home">Mis revisiones</a></li>
+                      <li><%= link_to 'Mis revisiones', "#{root_url}#/users/reviews" %></li>
                     <% end %>
                     <li class="divider"></li>
                     <li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, id: 'signout-link' %></li>
