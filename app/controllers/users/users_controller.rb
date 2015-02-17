@@ -18,7 +18,7 @@ class Users::UsersController < ApplicationController
 
     if identity
       identity.destroy
-      provider = params[:provider] == :google_oauth2 ? 'google' : params[:provider]
+      provider = params[:provider] == 'google_oauth2' ? 'google' : params[:provider]
       flash[:notice] = "Has desasociado tu cuenta de #{provider} con éxito"
     end
 
