@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   
   get '/users/reset_user_password' => 'users/users#reset_password', as: 'reset_user_password'
   get '/users/unlink_social' => 'users/users#unlink_social', as: 'unlink_social'
-  
+  get '/users/session_proposals' => 'users/users#sessions'
+
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 
   resources :session_proposals, except: [:destroy], defaults: { format: :json } do
