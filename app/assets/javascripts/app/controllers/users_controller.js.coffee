@@ -4,6 +4,8 @@ angular.module('openCall.controllers').controller 'UsersController',
   $scope.sessions = []
   
   $scope.all = () ->
+    $scope.loading = true
     UsersService.all().then (sessions) ->
       $scope.sessions = sessions
+      $scope.loading = false
 ]
