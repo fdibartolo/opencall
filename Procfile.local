@@ -1,2 +1,2 @@
-web: rails server
+web: bundle exec puma -C config/puma.rb
 elasticsearch: elasticsearch --cluster.name opencall
