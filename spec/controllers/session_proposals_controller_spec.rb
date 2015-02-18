@@ -158,4 +158,18 @@ RSpec.describe SessionProposalsController, :type => :controller do
       end
     end
   end
+
+  describe "GET all for current user" do
+    it "should list only current user ones" do
+      user_session = FactoryGirl.create :session_proposal, user: logged_in(:user)
+      another_session = FactoryGirl.create :session_proposal
+
+      get :for_current_user
+
+      body = JSON.parse response.body
+      session_ids = body['sessions'].collect {|s| s['id']}
+      expect(session_ids).to include user_session.id
+      expect(session_ids).to_not include another_session.id
+    end
+  end
 end

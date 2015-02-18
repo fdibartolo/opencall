@@ -23,18 +23,4 @@ RSpec.describe Users::UsersController, :type => :controller do
     it { expect(response).to redirect_to(edit_user_registration_path(logged_in(:user))) }
     it { expect(request.flash[:notice]).to include "Has desasociado tu cuenta de #{identity.provider} con éxito" }
   end
-
-  describe "GET sessions" do
-    it "should list only current user ones" do
-      user_session = FactoryGirl.create :session_proposal, user: logged_in(:user)
-      another_session = FactoryGirl.create :session_proposal
-
-      get :sessions
-
-      body = JSON.parse response.body
-      session_ids = body['sessions'].collect {|s| s['id']}
-      expect(session_ids).to include user_session.id
-      expect(session_ids).to_not include another_session.id
-    end
-  end
 end

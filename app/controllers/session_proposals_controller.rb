@@ -43,6 +43,10 @@ class SessionProposalsController < ApplicationController
     end
   end
 
+  def for_current_user
+    @session_proposals = current_user.session_proposals
+  end
+
   private
     def set_session_proposal
       @session_proposal = SessionProposal.find_by(id: params[:id])

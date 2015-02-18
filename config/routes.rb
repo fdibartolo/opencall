@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   namespace :users do
     get '/reset_password'    => 'users#reset_password'
     get '/unlink_social'     => 'users#unlink_social'
-    get '/session_proposals' => 'users#sessions', defaults: { format: :json }
   end
-  get '/users/reviews'       => 'reviews#for_current_user', defaults: { format: :json }
+  get '/users/session_proposals' => 'session_proposals#for_current_user', defaults: { format: :json }
+  get '/users/reviews'           => 'reviews#for_current_user', defaults: { format: :json }
 
   resources :session_proposals, except: [:destroy], defaults: { format: :json } do
     collection do

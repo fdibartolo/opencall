@@ -24,16 +24,4 @@ class Users::UsersController < ApplicationController
 
     redirect_to edit_user_registration_path(current_user)
   end
-
-  def sessions
-    sessions = []
-    current_user.session_proposals.map {|s| sessions << { 
-      id: s.id, 
-      title: s.title, 
-      description: s.description, 
-      video_link: s.video_link, 
-      tags: s.tags.map(&:name) }
-    }
-    render json: { sessions: sessions }
-  end
 end
