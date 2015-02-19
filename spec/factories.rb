@@ -1,10 +1,11 @@
 FactoryGirl.define do
   factory :user do
-    first_name  'Robert'
-    last_name   'Martin'
-    country     'US'
-    email       { "#{first_name}.#{last_name}@main.com".downcase }
-    password    'unclebob'
+    first_name                  'Robert'
+    last_name                   'Martin'
+    country                     'US'
+    email                       { "#{first_name}.#{last_name}@main.com".downcase }
+    password                    'unclebob'
+    session_proposal_voted_ids  []
 
     factory :admin do
       after(:create) do |user|

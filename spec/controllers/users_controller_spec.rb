@@ -23,4 +23,16 @@ RSpec.describe Users::UsersController, :type => :controller do
     it { expect(response).to redirect_to(edit_user_registration_path(logged_in(:user))) }
     it { expect(request.flash[:notice]).to include "Has desasociado tu cuenta de #{identity.provider} con éxito" }
   end
+
+  describe "GET session voted ids" do
+    it "should list comments for given SessionProposal" do
+      allow_any_instance_of(User).to receive(:session_proposal_voted_ids).and_return([1,2,3])
+
+      get :session_proposal_voted_ids
+
+      body = JSON.parse response.body
+      expect(body.count).to eq 3
+      expect(body).to eq [1,2,3]
+    end
+  end
 end

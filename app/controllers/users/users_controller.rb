@@ -24,4 +24,8 @@ class Users::UsersController < ApplicationController
 
     redirect_to edit_user_registration_path(current_user)
   end
+
+  def session_proposal_voted_ids
+    render json: current_user.session_proposal_voted_ids
+  end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :users do
     get '/reset_password'    => 'users#reset_password'
     get '/unlink_social'     => 'users#unlink_social'
+    get '/session_voted_ids' => 'users#session_proposal_voted_ids', defaults: { format: :json }
   end
   get '/users/session_proposals' => 'session_proposals#for_current_user', defaults: { format: :json }
   get '/users/reviews'           => 'reviews#for_current_user', defaults: { format: :json }
