@@ -1,6 +1,6 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', '$location', '$routeParams', 'toaster', 'SessionsService', 'CommentsService', 'ReviewsService', 
-($scope, $location, $routeParams, toaster, SessionsService, CommentsService, ReviewsService) ->
+['$scope', '$location', '$routeParams', 'toaster', 'SessionsService', 'CommentsService', 'ReviewsService', 'UsersService'
+($scope, $location, $routeParams, toaster, SessionsService, CommentsService, ReviewsService, UsersService) ->
 
   $scope.sessions = []
   $scope.matched_tags = []
@@ -10,6 +10,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     description: ''
     video_link: ''
     tags: []
+  $scope.sessionVotedIds = []
   $scope.availableVotes = 10
   $scope.searchTerms = ''
   $scope.searchPageNumber = 1
@@ -49,6 +50,11 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.newSession.invalidDescription = $scope.newSession.description is ''
 
     not ($scope.newSession.invalidTitle or $scope.newSession.invalidDescription)
+
+  $scope.getSessionVotedIds = () ->
+    UsersService.user_session_voted_ids().then (ids) ->
+      $scope.sessionVotedIds = ids
+      $scope.availableVotes -= $scope.sessionVotedIds.length
 
   $scope.search = (termToAdd) ->
     $scope.loading = true
