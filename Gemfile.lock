@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/fdibartolo/ng-toaster-rails
+  revision: 01209dc2c5292c3f0b5e06a79ca25c5f698dbe15
+  specs:
+    ng-toaster-rails (0.4.10.0)
+
+GIT
   remote: https://github.com/fdibartolo/protractor-rails
   revision: 5964428035886c4a3beeb729a24499e24e83e133
   branch: bugfixes
@@ -293,6 +299,7 @@ DEPENDENCIES
   jquery-rails (= 4.0.3)
   marked-rails (= 0.3.2.0)
   momentjs-rails (= 2.9.0)
+  ng-toaster-rails!
   omniauth-github (= 1.1.2)
   omniauth-google-oauth2 (= 0.2.6)
   omniauth-linkedin (= 0.2.0)

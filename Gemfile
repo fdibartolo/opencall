@@ -17,6 +17,7 @@ gem 'animate-rails', '1.0.7'
 gem 'twitter-typeahead-rails', '0.10.5'
 gem 'marked-rails', '0.3.2.0'
 gem 'momentjs-rails', '2.9.0'
+gem 'ng-toaster-rails', :git => 'https://github.com/fdibartolo/ng-toaster-rails'
 gem 'jbuilder', '2.2.6'
 
 gem 'devise', '3.4.1'
