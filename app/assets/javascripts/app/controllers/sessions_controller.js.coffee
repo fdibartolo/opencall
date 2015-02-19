@@ -61,10 +61,15 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.searchTerms = "#{$scope.searchTerms} #{termToAdd}"  if angular.isDefined(termToAdd)
     $scope.searchPageNumber = 1 # reset page number
     SessionsService.search($scope.searchTerms, $scope.searchPageNumber).then (response) ->
-      $scope.sessions     = response.sessions
+      $scope.sessions     = addVotedStatusFor(response.sessions)
       $scope.matched_tags = response.matched_tags  unless $scope.searchTerms is ''
       $scope.total        = response.total
-      $scope.loading = false
+      $scope.loading      = false
+
+  addVotedStatusFor = (sessions) ->
+    angular.forEach sessions, (session) ->
+      session.voted = $scope.sessionVotedIds.indexOf(session.id) isnt -1
+    sessions
 
   $scope.loadMore = () ->
     $scope.searchPageNumber += 1
