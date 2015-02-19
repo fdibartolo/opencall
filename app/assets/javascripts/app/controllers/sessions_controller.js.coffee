@@ -40,6 +40,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     if validSession()
       SessionsService.update($scope.newSession).then (() ->
         $location.path "/sessions/show/#{$scope.newSession.id}"
+        toaster.pop 'success', '', 'La sesión propuesta fue editada exitosamente', 5000
       ), (errorKey) ->
         $location.path "/error/#{errorKey}"
 
@@ -113,6 +114,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
         $scope.newSessionReview.body = ''
         $scope.newSessionReview.score = 0
         $location.path "/sessions"
-     ), (errorKey) ->
+        toaster.pop 'success', '', 'La revisión fue creada exitosamente', 5000
+    ), (errorKey) ->
        $location.path "/error/#{errorKey}"
 ]
