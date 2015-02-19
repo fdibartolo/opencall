@@ -1,0 +1,19 @@
+.toast-message {
+  font-weight: normal !important;
+}
+
+#toast-container > .toast-success, #toast-container > .toast-error { 
+  background-image: none !important; 
+}
+
+.toast-success {
+  background: $state-success-bg !important;
+  color: $state-success-text !important;
+  border-color: $state-success-border !important;
+}
+
+.toast-error {
+  background: $state-danger-bg !important;
+  color: $state-danger-text !important;
+  border-color: $state-danger-border !important;
+}

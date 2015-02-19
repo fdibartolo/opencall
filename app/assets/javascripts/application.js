@@ -15,10 +15,12 @@
 //= require angular
 //= require angular-route
 //= require angular-mocks
+//= require angular-animate
 //= require app/open_call
 //= require bootstrap-sprockets
 //= require bootstrap-select
 //= require twitter/typeahead.min
 //= require marked
 //= require moment
+//= require toaster
 //= require_tree .

@@ -7,6 +7,8 @@ $btn-primary-hover-bg: #286090;
 @import "users";
 @import "session_proposals";
 @import "animate";
+@import "toaster";
+@import "ng-toaster-overrides";
 
 .content { padding-top: 50px; }
 

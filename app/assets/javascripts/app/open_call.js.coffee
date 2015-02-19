@@ -1,4 +1,4 @@
-app = angular.module('openCall', ['ngRoute', 'openCall.controllers', 'openCall.services', 'openCall.directives'])
+app = angular.module('openCall', ['ngRoute', 'ngAnimate', 'toaster', 'openCall.controllers', 'openCall.services', 'openCall.directives'])
 
 controllers = angular.module('openCall.controllers', [])
 services = angular.module('openCall.services', [])

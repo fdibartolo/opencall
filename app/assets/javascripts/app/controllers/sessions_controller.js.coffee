@@ -1,6 +1,6 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', '$location', '$routeParams', 'SessionsService', 'CommentsService', 'ReviewsService', 
-($scope, $location, $routeParams, SessionsService, CommentsService, ReviewsService) ->
+['$scope', '$location', '$routeParams', 'toaster', 'SessionsService', 'CommentsService', 'ReviewsService', 
+($scope, $location, $routeParams, toaster, SessionsService, CommentsService, ReviewsService) ->
 
   $scope.sessions = []
   $scope.matched_tags = []
@@ -34,6 +34,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     if validSession()
       SessionsService.create($scope.newSession).then (id) ->
         $location.path "/sessions/show/#{id}"
+        toaster.pop 'success', '', 'La sesión propuesta fue creada exitosamente', 5000
 
   $scope.updateSession = () ->
     if validSession()
