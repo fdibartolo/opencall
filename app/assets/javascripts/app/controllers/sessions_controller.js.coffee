@@ -75,6 +75,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.searchPageNumber += 1
     SessionsService.search($scope.searchTerms, $scope.searchPageNumber).then (response) ->
       angular.forEach response.sessions, (session) ->
+        session.voted = $scope.sessionVotedIds.indexOf(session.id) isnt -1
         $scope.sessions.push session
 
   $scope.vote = (index) ->
