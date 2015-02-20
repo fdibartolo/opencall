@@ -11,7 +11,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     video_link: ''
     tags: []
   $scope.sessionVotedIds = []
-  $scope.availableVotes = 10
+  $scope.availableVotes = MAX_SESSION_PROPOSAL_VOTES
   $scope.searchTerms = ''
   $scope.searchPageNumber = 1
   $scope.newSessionComment = 
@@ -81,8 +81,10 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.vote = (index) ->
     $scope.sessions[index].voted = false  if angular.isUndefined($scope.sessions[index].voted)
     $scope.sessions[index].voted = !$scope.sessions[index].voted
-    delta = if $scope.sessions[index].voted then -1 else 1
-    $scope.availableVotes += delta  if $scope.availableVotes isnt 0 or delta is 1
+
+    UsersService.toggle_vote_session($scope.sessions[index].id, $scope.sessions[index].voted).then () ->
+      delta = if $scope.sessions[index].voted then -1 else 1
+      $scope.availableVotes += delta  if $scope.availableVotes isnt 0 or delta is 1
 
   $scope.fav = (index) ->
     $scope.sessions[index].faved = false  if angular.isUndefined($scope.sessions[index].faved)

@@ -38,7 +38,21 @@ angular.module('openCall.services').factory 'UsersService',
 
     deferred.promise
 
+  toggle_vote_session = (id, vote) ->
+    deferred = $q.defer()
+
+    $http.post("/users/vote_session",
+      id: id
+      vote: vote
+    ).success((data, status) ->
+      deferred.resolve data
+    ).error (data, status) ->
+      deferred.reject()
+
+    deferred.promise
+
   user_sessions: user_sessions
   user_reviews: user_reviews
   user_session_voted_ids: user_session_voted_ids
+  toggle_vote_session: toggle_vote_session
 ]
