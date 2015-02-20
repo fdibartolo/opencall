@@ -49,4 +49,16 @@ class User < ActiveRecord::Base
   def reviewer?
     roles.where(name: RoleReviewer).exists?
   end
+
+  def add_session_vote id
+    unless self.session_proposal_voted_ids.include? id
+      self.session_proposal_voted_ids << id if self.session_proposal_voted_ids.count < MaxSessionProposalVotes
+      save!
+    end
+  end
+
+  def remove_session_vote id
+    self.session_proposal_voted_ids.delete id
+    save!
+  end
 end

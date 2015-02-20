@@ -79,4 +79,29 @@ RSpec.describe User, :type => :model do
       it { expect(user.admin?).to be false }
     end
   end
+
+  describe "#add_session_vote" do
+    it "should add id to the list" do
+      user.add_session_vote 5
+      expect(user.session_proposal_voted_ids).to include 5
+    end
+    it "should not add id again if exists" do
+      user.add_session_vote 5
+      user.add_session_vote 5
+      expect(user.session_proposal_voted_ids).to contain_exactly 5
+    end
+    it "should not add if if max votes limit is reached" do
+      (1..MaxSessionProposalVotes).each { |i| user.session_proposal_voted_ids << i }
+      user.add_session_vote 999
+      expect(user.session_proposal_voted_ids.count).to eq MaxSessionProposalVotes
+    end
+  end
+
+  describe "#remove_session_vote" do
+    it "should remove id from the list" do
+      user.session_proposal_voted_ids = [5]
+      user.remove_session_vote 5
+      expect(user.session_proposal_voted_ids).to_not include 5
+    end
+  end
 end
