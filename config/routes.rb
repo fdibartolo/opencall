@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     get '/session_voted_ids' => 'users#session_proposal_voted_ids', defaults: { format: :json }
     post '/vote_session'     => 'users#toggle_session_vote'
   end
-  get '/users/session_proposals' => 'session_proposals#for_current_user', defaults: { format: :json }
-  get '/users/reviews'           => 'reviews#for_current_user', defaults: { format: :json }
+  get '/users/session_proposals'       => 'session_proposals#for_current_user', defaults: { format: :json }
+  get '/users/session_proposals_voted' => 'session_proposals#voted_for_current_user', defaults: { format: :json }
+  get '/users/reviews'                 => 'reviews#for_current_user', defaults: { format: :json }
 
   resources :session_proposals, except: [:destroy], defaults: { format: :json } do
     collection do

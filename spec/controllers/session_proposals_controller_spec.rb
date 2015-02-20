@@ -172,4 +172,22 @@ RSpec.describe SessionProposalsController, :type => :controller do
       expect(session_ids).to_not include another_session.id
     end
   end
+
+  describe "GET all voted for current user" do
+    it "should list only current user voted ones" do
+      voted_session = FactoryGirl.create :session_proposal
+      not_voted_session = FactoryGirl.create :session_proposal, user: FactoryGirl.create(:user, first_name: 'jim')
+      # HACK :S - why cant do logged_in(:user).session_proposal_voted_ids << voted_session.id 
+      logged_in_user = User.find_by(email: logged_in(:user).email)
+      logged_in_user.session_proposal_voted_ids << voted_session.id
+      logged_in_user.save!
+
+      get :voted_for_current_user
+
+      body = JSON.parse response.body
+      session_ids = body['sessions'].collect {|s| s['id']}
+      expect(session_ids).to include voted_session.id
+      expect(session_ids).to_not include not_voted_session.id
+    end
+  end
 end
