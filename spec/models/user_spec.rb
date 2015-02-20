@@ -90,10 +90,14 @@ RSpec.describe User, :type => :model do
       user.add_session_vote 5
       expect(user.session_proposal_voted_ids).to contain_exactly 5
     end
-    it "should not add if if max votes limit is reached" do
+    it "should not add it if max votes limit is reached" do
       (1..MaxSessionProposalVotes).each { |i| user.session_proposal_voted_ids << i }
       user.add_session_vote 999
       expect(user.session_proposal_voted_ids.count).to eq MaxSessionProposalVotes
+    end
+    it "should not add it if not a number" do
+      user.add_session_vote "3"
+      expect(user.session_proposal_voted_ids).to_not include "3"
     end
   end
 

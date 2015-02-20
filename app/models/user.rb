@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
 
   def add_session_vote id
     unless self.session_proposal_voted_ids.include? id
-      self.session_proposal_voted_ids << id if self.session_proposal_voted_ids.count < MaxSessionProposalVotes
+      self.session_proposal_voted_ids << id if allowed?(id)
       save!
     end
   end
@@ -60,5 +60,10 @@ class User < ActiveRecord::Base
   def remove_session_vote id
     self.session_proposal_voted_ids.delete id
     save!
+  end
+
+  private
+  def allowed? id
+    id.is_a? Numeric and self.session_proposal_voted_ids.count < MaxSessionProposalVotes
   end
 end
