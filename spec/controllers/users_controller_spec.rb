@@ -35,4 +35,32 @@ RSpec.describe Users::UsersController, :type => :controller do
       expect(body).to eq [1,2,3]
     end
   end
+
+  describe "POST toggle session vote" do
+    context "with invalid params" do
+      before :each do
+        post :toggle_session_vote, { invalid: 1, vote: true }
+      end
+
+      it "should return 400 Bad Request" do
+        expect(response).to have_http_status(400)
+      end
+
+      it "should return missing params message" do
+        expect(response.header['Message']).to eq "Missing params either id or vote"
+      end
+    end
+
+    context "with valid params" do
+      it "should add vote when param is true" do
+        post :toggle_session_vote, { id: 1, vote: true }
+        allow(logged_in(:user)).to receive(:add_session_vote).with(1).exactly(1).times
+      end
+
+      it "should remove vote when param is false" do
+        post :toggle_session_vote, { id: 1, vote: false }
+        allow(logged_in(:user)).to receive(:remove_session_vote).with(1).exactly(1).times
+      end
+    end
+  end
 end

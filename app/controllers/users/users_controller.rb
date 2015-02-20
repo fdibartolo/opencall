@@ -28,4 +28,15 @@ class Users::UsersController < ApplicationController
   def session_proposal_voted_ids
     render json: current_user.session_proposal_voted_ids
   end
+
+  def toggle_session_vote
+    return head(:bad_request, { message: "Missing params either id or vote" }) if params[:id].nil? or params[:vote].nil?
+
+    if params[:vote]
+      current_user.add_session_vote params[:id]
+    else
+      current_user.remove_session_vote params[:id]
+    end
+    head :ok
+  end
 end
