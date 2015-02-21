@@ -51,6 +51,10 @@ class SessionProposalsController < ApplicationController
     @session_proposals = SessionProposal.where(id: current_user.session_proposal_voted_ids)
   end
 
+  def faved_for_current_user
+    @session_proposals = SessionProposal.where(id: current_user.session_proposal_faved_ids)
+  end
+
   private
     def set_session_proposal
       @session_proposal = SessionProposal.find_by(id: params[:id])
