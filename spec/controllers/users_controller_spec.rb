@@ -25,7 +25,7 @@ RSpec.describe Users::UsersController, :type => :controller do
   end
 
   describe "GET session voted ids" do
-    it "should list comments for given SessionProposal" do
+    it "should list the ones for current user" do
       allow_any_instance_of(User).to receive(:session_proposal_voted_ids).and_return([1,2,3])
 
       get :session_proposal_voted_ids
@@ -63,4 +63,17 @@ RSpec.describe Users::UsersController, :type => :controller do
       end
     end
   end
+
+  describe "GET session faved ids" do
+    it "should list the ones for current user" do
+      allow_any_instance_of(User).to receive(:session_proposal_faved_ids).and_return([1,2,3])
+
+      get :session_proposal_faved_ids
+
+      body = JSON.parse response.body
+      expect(body.count).to eq 3
+      expect(body).to eq [1,2,3]
+    end
+  end
+
 end

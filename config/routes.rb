@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/reset_password'    => 'users#reset_password'
     get '/unlink_social'     => 'users#unlink_social'
     get '/session_voted_ids' => 'users#session_proposal_voted_ids', defaults: { format: :json }
+    get '/session_faved_ids' => 'users#session_proposal_faved_ids', defaults: { format: :json }
     post '/vote_session'     => 'users#toggle_session_vote'
   end
   get '/users/session_proposals'       => 'session_proposals#for_current_user', defaults: { format: :json }

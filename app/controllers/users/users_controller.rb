@@ -39,4 +39,8 @@ class Users::UsersController < ApplicationController
     end
     head :ok
   end
+
+  def session_proposal_faved_ids
+    render json: current_user.session_proposal_faved_ids
+  end
 end
