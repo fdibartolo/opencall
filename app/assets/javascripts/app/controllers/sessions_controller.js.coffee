@@ -11,6 +11,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     video_link: ''
     tags: []
   $scope.sessionVotedIds = []
+  $scope.sessionFavedIds = []
   $scope.availableVotes = MAX_SESSION_PROPOSAL_VOTES
   $scope.searchTerms = ''
   $scope.searchPageNumber = 1
@@ -51,24 +52,27 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
     not ($scope.newSession.invalidTitle or $scope.newSession.invalidDescription)
 
-  $scope.getSessionVotedIds = () ->
+  $scope.getSessionVotedAndFavedIds = () ->
     UsersService.user_session_voted_ids().then (ids) ->
       $scope.sessionVotedIds = ids
       $scope.availableVotes -= $scope.sessionVotedIds.length
+    UsersService.user_session_faved_ids().then (ids) ->
+      $scope.sessionFavedIds = ids
 
   $scope.search = (termToAdd) ->
     $scope.loading = true
     $scope.searchTerms = "#{$scope.searchTerms} #{termToAdd}"  if angular.isDefined(termToAdd)
     $scope.searchPageNumber = 1 # reset page number
     SessionsService.search($scope.searchTerms, $scope.searchPageNumber).then (response) ->
-      $scope.sessions     = addVotedStatusFor(response.sessions)
+      $scope.sessions     = addVotedAndFavedStatusFor(response.sessions)
       $scope.matched_tags = response.matched_tags  unless $scope.searchTerms is ''
       $scope.total        = response.total
       $scope.loading      = false
 
-  addVotedStatusFor = (sessions) ->
+  addVotedAndFavedStatusFor = (sessions) ->
     angular.forEach sessions, (session) ->
       session.voted = $scope.sessionVotedIds.indexOf(session.id) isnt -1
+      session.faved = $scope.sessionFavedIds.indexOf(session.id) isnt -1
     sessions
 
   $scope.loadMore = () ->
@@ -76,6 +80,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     SessionsService.search($scope.searchTerms, $scope.searchPageNumber).then (response) ->
       angular.forEach response.sessions, (session) ->
         session.voted = $scope.sessionVotedIds.indexOf(session.id) isnt -1
+        session.faved = $scope.sessionFavedIds.indexOf(session.id) isnt -1
         $scope.sessions.push session
 
   $scope.vote = (index) ->
