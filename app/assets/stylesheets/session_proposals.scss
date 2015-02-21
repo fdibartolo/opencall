@@ -90,7 +90,6 @@
   }
 
   &:hover { 
-    background-color: $btn-primary-hover-bg;
     color: white; 
     text-decoration: none !important;
   }
@@ -99,9 +98,27 @@
   .text { font-size: 250%; }
 }
 
-.btn-action.primary { background: $brand-primary; }
-.btn-action.non-clickable { cursor: default !important; }
-.btn-action.info { background: $brand-info; }
+.btn-action.non-clickable { 
+  cursor: default !important;
+}
+
+.btn-action.non-clickable.primary { 
+  &:hover { background-color: $brand-primary !important; }
+}
+
+.btn-action.non-clickable.info { 
+  &:hover { background-color: $brand-info !important; }
+}
+
+.btn-action.primary { 
+  background: $brand-primary;
+  &:hover { background-color: $btn-primary-hover-bg !important; }
+}
+
+.btn-action.info { 
+  background: $brand-info; 
+  &:hover { background-color: $btn-info-hover-bg !important; }
+}
 
 .no-search-results, .no-review-access {
   margin-top: 100px;
