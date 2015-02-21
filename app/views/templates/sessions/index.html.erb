@@ -6,7 +6,8 @@
       <input type="text" class="form-control" 
         ng-model="searchTerms" 
         ng-model-options="{ debounce: 1000 }"
-        ng-change="search()">
+        ng-change="search()"
+        helpable="top|Busca sesiones por autor o bien por palabras clave, tags, etc (i.e. scrum, devops)">
       <span class="glyphicon glyphicon-search form-control-feedback" style="margin-right:15px" aria-hidden="true"></span>
       <p ng-if="searchTerms != '' && total != 0" class="text-muted text-center" fade-animation="true">
         <small><i>hemos encontrado {{total}} resultados relacionados a tu búsqueda</i></small>
@@ -23,15 +24,15 @@
 
   <div class="col-md-offset-1 col-md-3">
     <div class="action-button-container">
-      <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes">
+      <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes" helpable="top|Tus votos disponibles">
         <span class="text" aria-hidden="true">{{availableVotes}}</span>
       </a>
       <div class="divisor"></div>
-      <a class="img-circle btn-action info">
+      <a class="img-circle btn-action info" toggle-help title="Mostrar ayuda">
         <span class="text" aria-hidden="true">?</span>
       </a>
       <div class="divisor"></div>
-      <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>">
+      <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="bottom|Proponé una nueva sesión">
         <span class="ion-plus-round icon" aria-hidden="true"></span>
       </a>
     </div>

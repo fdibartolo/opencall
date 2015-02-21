@@ -1,0 +1,9 @@
+.popover { background-color: $state-info-bg; }
+
+.popover.left > .arrow:after { border-left-color: $state-info-bg; }
+
+.popover.right > .arrow:after { border-right-color: $state-info-bg; }
+
+.popover.top > .arrow:after { border-top-color: $state-info-bg; }
+
+.popover.bottom > .arrow:after { border-bottom-color: $state-info-bg; }
