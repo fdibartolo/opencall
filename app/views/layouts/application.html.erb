@@ -41,7 +41,7 @@
                     <li><%= link_to "Cambiar contraseña", users_reset_password_path %></li>
                     <li class="divider"></li>
                     <li><%= link_to 'Mis propuestas', "#{root_url}#/users/sessions" %></li>
-                    <li><a href="#/home">Mis votos</a></li>
+                    <li><%= link_to 'Mis votos', "#{root_url}#/users/voted_sessions" %></li>
                     <li><a href="#/home">Mis favoritas</a></li>
                     <% if current_user.admin? %>
                       <li class="divider"></li>

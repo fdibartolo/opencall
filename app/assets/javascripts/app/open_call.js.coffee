@@ -39,6 +39,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/users/sessions.html'
     controller: 'UsersController'
 
+  $routeProvider.when '/users/voted_sessions',
+    templateUrl: '/templates/users/voted_sessions.html'
+    controller: 'UsersController'
+
   $routeProvider.when '/users/reviews',
     templateUrl: '/templates/users/reviews.html'
     controller: 'UsersController'
