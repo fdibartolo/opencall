@@ -62,6 +62,15 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def toggle_session_faved id
+    if self.session_proposal_faved_ids.include? id
+      self.session_proposal_faved_ids.delete id
+    else
+      self.session_proposal_faved_ids << id if id.is_a? Numeric
+    end
+    save!
+  end
+
   private
   def allowed? id
     id.is_a? Numeric and self.session_proposal_voted_ids.count < MaxSessionProposalVotes

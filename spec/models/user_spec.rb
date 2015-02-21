@@ -108,4 +108,20 @@ RSpec.describe User, :type => :model do
       expect(user.session_proposal_voted_ids).to_not include 5
     end
   end
+
+  describe "#toggle_session_faved" do
+    it "should add id to the list" do
+      user.toggle_session_faved 5
+      expect(user.session_proposal_faved_ids).to include 5
+    end
+    it "should remove id from the list" do
+      user.session_proposal_faved_ids = [5]
+      user.toggle_session_faved 5
+      expect(user.session_proposal_faved_ids).to_not include 5
+    end
+    it "should not add non-numeric id" do
+      user.toggle_session_faved "5"
+      expect(user.session_proposal_faved_ids).to_not include "5"
+    end
+  end
 end
