@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/session_voted_ids' => 'users#session_proposal_voted_ids', defaults: { format: :json }
     get '/session_faved_ids' => 'users#session_proposal_faved_ids', defaults: { format: :json }
     post '/vote_session'     => 'users#toggle_session_vote'
+    post '/fav_session'      => 'users#toggle_session_fav'
   end
   get '/users/session_proposals'       => 'session_proposals#for_current_user', defaults: { format: :json }
   get '/users/voted_session_proposals' => 'session_proposals#voted_for_current_user', defaults: { format: :json }

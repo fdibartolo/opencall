@@ -43,4 +43,14 @@ class Users::UsersController < ApplicationController
   def session_proposal_faved_ids
     render json: current_user.session_proposal_faved_ids
   end
+
+  def toggle_session_fav
+    current_user.add_session_vote toggle_session_fav_params
+    head :ok
+  end
+
+  private
+  def toggle_session_fav_params
+    params.require(:id)
+  end
 end

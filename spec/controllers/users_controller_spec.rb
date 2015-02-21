@@ -76,4 +76,16 @@ RSpec.describe Users::UsersController, :type => :controller do
     end
   end
 
+  describe "POST toggle session fav" do
+    context "with invalid params" do
+      it { expect{ post :toggle_session_fav, { invalid: 1 } }.to raise_error ActionController::ParameterMissing }
+    end
+
+    context "with valid params" do
+      it "should trigger toggling faved session" do
+        post :toggle_session_fav, { id: 1 }
+        allow(logged_in(:user)).to receive(:toggle_session_faved).with(1).exactly(1).times
+      end
+    end
+  end
 end
