@@ -95,6 +95,8 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.sessions[index].faved = false  if angular.isUndefined($scope.sessions[index].faved)
     $scope.sessions[index].faved = !$scope.sessions[index].faved
 
+    UsersService.toggle_fav_session($scope.sessions[index].id)
+
   $scope.removeTag = (index) ->
     $scope.newSession.tags.splice index, 1
 
