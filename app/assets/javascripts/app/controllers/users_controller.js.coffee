@@ -23,6 +23,19 @@ angular.module('openCall.controllers').controller 'UsersController',
         $scope.sessions.splice index, 1  if id is session.id
         index += 1
 
+  $scope.faved_sessions = () ->
+    $scope.loading = true
+    UsersService.user_faved_sessions().then (sessions) ->
+      $scope.sessions = sessions
+      $scope.loading = false
+
+  $scope.remove_fav = (id) ->
+    UsersService.toggle_fav_session(id).then () ->
+      index = 0
+      angular.forEach $scope.sessions, (session) ->
+        $scope.sessions.splice index, 1  if id is session.id
+        index += 1
+
   $scope.reviews = () ->
     $scope.loading = true
     UsersService.user_reviews().then ((reviews) ->

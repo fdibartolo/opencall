@@ -23,6 +23,17 @@ angular.module('openCall.services').factory 'UsersService',
 
     deferred.promise
 
+  user_faved_sessions = (id) ->
+    deferred = $q.defer()
+
+    $http.get("/users/faved_session_proposals")
+    .success((data, status) ->
+      deferred.resolve data.sessions
+    ).error (data, status) ->
+      deferred.reject()
+
+    deferred.promise
+
   user_reviews = (id) ->
     deferred = $q.defer()
 
@@ -87,6 +98,7 @@ angular.module('openCall.services').factory 'UsersService',
 
   user_sessions: user_sessions
   user_voted_sessions: user_voted_sessions
+  user_faved_sessions: user_faved_sessions
   user_reviews: user_reviews
   user_session_voted_ids: user_session_voted_ids
   user_session_faved_ids: user_session_faved_ids

@@ -1,0 +1,43 @@
+<div ng-cloak ng-init="faved_sessions()" fade-animation="true" class="row">
+  <div ng-if="loading" class="loading">
+    <p class="text-center"><span class="ion-loading-a"></span></p>
+  </div>
+  <div ng-if="!loading">
+    <div ng-if="sessions.length == 0" class="no-search-results">
+      <h2 class="text-center">
+        Aún no has marcado sesiones favoritas!<br><br>
+        <small>Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en el &nbsp;<span class="ion-ios7-star-outline text-warning" style="font-size:150%"></span>&nbsp; a la derecha del título de la misma</small> <br><br>
+      </h2>
+      <div class="home-button-container">
+        <a class="img-circle home-button text-center" href="<%= root_url + '#/sessions' %>">
+          <span class="glyphicon glyphicon-thumbs-up icon" aria-hidden="true"></span><br>
+          <span class="text">Fav!</span>
+        </a>
+      </div>
+    </div>
+
+    <div ng-if="sessions.length > 0" class="col-sm-offset-1 col-sm-10"><br><br>
+      <h2 class="text-center">Mis sesiones propuestas favoritas</h2><br><br>
+
+      <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
+        <h3>
+          <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
+          <a ng-click="remove_fav(session.id)" class="btn btn-xs btn-warning pull-right" style="color:white;margin:5px">
+            Remover fav &nbsp; <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </a>
+        </h3>
+        <p markdown="session.description"></p>
+        <div>
+          <ul class="list-inline">
+            <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
+            <li class="pull-right" ng-if="session.video_link != null && session.video_link != ''" title="{{session.video_link}}">
+              <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
+                <span class="ion-videocamera">&nbsp;</span>Video presentación
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
