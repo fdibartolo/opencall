@@ -8,10 +8,15 @@ namespace :open_call do
     Elasticsearch::Extensions::Test::Cluster.start(port: ENV['ES_TEST_PORT'], nodes: 1) unless
       Elasticsearch::Extensions::Test::Cluster.running?
 
-    Rake::Task["protractor:cleanup"].invoke # drop, create and seed for current run of e2e tests
-    ENV["nolog"] = 'y' # avoid selenium and rails logs on stdout
-    Rake::Task["protractor:spec"].invoke
-    Rake::Task["db:test:prepare"].invoke # drop and create emtpy for next run of unit tests
+    begin
+      Rake::Task["protractor:cleanup"].invoke # drop, create and seed for current run of e2e tests
+      ENV["nolog"] = 'y' # avoid selenium and rails logs on stdout
+      Rake::Task["protractor:spec"].invoke
+    rescue Exception => e
+      puts "Something went wrong: #{e.message}"
+    ensure
+      Rake::Task["db:test:prepare"].invoke # drop and create emtpy for next run of unit tests
+    end
 
     Elasticsearch::Extensions::Test::Cluster.stop(port: ENV['ES_TEST_PORT'])
   end
