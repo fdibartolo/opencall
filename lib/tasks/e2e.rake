@@ -8,9 +8,10 @@ namespace :open_call do
     Elasticsearch::Extensions::Test::Cluster.start(port: ENV['ES_TEST_PORT'], nodes: 1) unless
       Elasticsearch::Extensions::Test::Cluster.running?
 
-    Rake::Task["protractor:cleanup"].invoke
+    Rake::Task["protractor:cleanup"].invoke # drop, create and seed for current run of e2e tests
     ENV["nolog"] = 'y' # avoid selenium and rails logs on stdout
-    Rake::Task["protractor:spec_and_cleanup"].invoke
+    Rake::Task["protractor:spec"].invoke
+    Rake::Task["db:test:prepare"].invoke # drop and create emtpy for next run of unit tests
 
     Elasticsearch::Extensions::Test::Cluster.stop(port: ENV['ES_TEST_PORT'])
   end
