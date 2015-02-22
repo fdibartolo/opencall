@@ -56,7 +56,7 @@ A modo de ejemplo, se puede referenciar el archivo `.env_sample`
 
 A modo de prueba, se pueden crear datos dummy a traves de:
 
-  `$ rake open_call:sessions_with_tags:generate[./db/mocks/mock_sessions_with_tags]`
+  `$ rake open_call:sessions_with_tags:generate[./db/mocks/mock_sessions_with_tags.json]`
 
 La creación de los datos automaticamente indexará los índices de ElasticSearch
 
