@@ -20,11 +20,9 @@ describe "Sessions page", ->
     @sessionsPage.new()
     @sessionsPage.create session
 
-    @sessionsPage.index()
-    expect(@sessionsPage.sessions.count()).toEqual(4)
-
-    @sessionsPage.lastSessionTitle.getText().then (text) ->
-      expect(text).toEqual session.title
+    expect(browser.getCurrentUrl()).toMatch '/sessions\/show/'
+    @sessionsPage.showSessionTitle.getText().then (text) ->
+      expect(text).toMatch session.title
       return
 
     done()

@@ -5,7 +5,7 @@ SessionsPage = ->
   @newSessionDescription = element(By.model('newSession.description'))
   @createButton = element(By.id('create-button'))
 
-  @lastSessionTitle = element.all(By.binding('session.title')).last()
+  @showSessionTitle = element(By.binding('session.title'))
 
   @index = ->
     browser.get "#/sessions"
