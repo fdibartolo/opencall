@@ -20,9 +20,9 @@ Pendiente de agregar:
 
   `$ foreman run bin/rspec`
 
-  `$ foreman run rake protractor:spec_and_cleanup`
+  `$ foreman run rake opencall:e2e`
 
-  Hacer un seed antes si es necesario: `foreman run rake protractor:cleanup`
+  Los tests de integración levantarán un nodo de ElasticSearch en el puerto especificado en la variable de entorno `ES_HOST_PORT` (ver abajo)
 
 #### Inicio
 
