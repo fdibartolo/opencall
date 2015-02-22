@@ -10,7 +10,7 @@ namespace :open_call do
 
     Rake::Task["protractor:cleanup"].invoke
     ENV["nolog"] = 'y' # avoid selenium and rails logs on stdout
-    Rake::Task["protractor:spec"].invoke
+    Rake::Task["protractor:spec_and_cleanup"].invoke
 
     Elasticsearch::Extensions::Test::Cluster.stop(port: ENV['ES_TEST_PORT'])
   end
