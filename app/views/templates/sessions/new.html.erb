@@ -8,7 +8,14 @@
       <div class="col-sm-8">
         <input type="text" id="input-title" placeholder="Título" ng-model="newSession.title" class="form-control">
         <span ng-if="newSession.invalidTitle" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-        <small ng-if="newSession.invalidTitle" class="text-danger">Es necesario que proveas un título</small>
+        <small ng-if="newSession.invalidTitle" class="text-danger">Es necesario que indiques un título</small>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidTrackId}">
+      <label for="select-track" class="col-sm-2 control-label">Track</label>
+      <div class="col-sm-8">
+        <%= select_tag "track", options_from_collection_for_select(Track.all, "id", "name"), { id: "select-track", 'ng-model': "newSession.track_id", class: "form-control selectpicker" } %>
+        <small ng-if="newSession.invalidTrackId" class="text-danger">Es necesario que indiques el track</small>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidDescription}">

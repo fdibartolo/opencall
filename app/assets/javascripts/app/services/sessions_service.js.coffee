@@ -18,6 +18,7 @@ angular.module('openCall.services').factory 'SessionsService',
     $http.post("/session_proposals", 
       session_proposal:
         title: session.title
+        track_id: session.track_id
         description: session.description
         video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)
@@ -34,6 +35,7 @@ angular.module('openCall.services').factory 'SessionsService',
     $http.put("/session_proposals/#{session.id}",
       session_proposal:
         title: session.title
+        track_id: session.track_id
         description: session.description
         video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)
