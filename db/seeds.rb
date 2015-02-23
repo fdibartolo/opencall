@@ -21,8 +21,8 @@ if Rails.env.test?
   })
 
   SessionProposal.create!([
-    { user: User.last, title: 'Refactoring smells', description: 'This session is about refactoring' },
-    { user: User.last, title: 'Test Driven Development', description: 'This session is about test driven development' },
-    { user: User.last, title: 'Craftmanship', description: 'This session is about software craftmanship' }
+    { user: User.last, title: 'Refactoring smells', description: 'This session is about refactoring', track: Track.first },
+    { user: User.last, title: 'Test Driven Development', description: 'This session is about test driven development', track: Track.first },
+    { user: User.last, title: 'Craftmanship', description: 'This session is about software craftmanship', track: Track.first }
   ])
 end
