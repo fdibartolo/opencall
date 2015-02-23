@@ -6,6 +6,10 @@
   Role.create! name: role_name unless Role.exists?(name: role_name)
 end
 
+%w[TrackA TrackB TrackC].each do |track_name|
+  Track.create! name: track_name unless Track.exists?(name: track_name)
+end
+
 # Test-specifif env
 if Rails.env.test?
   User.create!({
