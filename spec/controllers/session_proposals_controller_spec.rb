@@ -15,7 +15,6 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
   describe "GET index" do
     it "should list all SessionProposals" do
-      # create one session propsal to the ones already seeded
       session = FactoryGirl.create :session_proposal
 
       get :index

@@ -31,6 +31,8 @@ FactoryGirl.define do
     title       'Refactoring'
     description 'A long description for refactoring'
     association :user, factory: :user, first_name: 'bob'
+    # association :track, factory: :track
+    track_id    1
 
     factory :session_proposal_with_comment do
       after(:create) do |session_proposal|
@@ -56,5 +58,10 @@ FactoryGirl.define do
     body        'some reviewer comment'
     score       7
     association :session_proposal, factory: :session_proposal
+  end
+
+  factory :track do
+    # sequence(:name) {|n| n}
+    name 'craftmanship'
   end
 end
