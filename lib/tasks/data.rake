@@ -9,10 +9,14 @@ namespace :open_call do
         exit
       end
 
+      min = Track.order(:id).pluck(:id).first
+      max = Track.order(:id).pluck(:id).last
+
       raw_sessions = JSON.parse IO.read(file_name)
       raw_sessions.each do |json_session|
         session = SessionProposal.new json_session
         session.user = User.last
+        session.track = Track.find_by(id: Random.rand(min..max)) || Track.first
         session.save!
       end
     end
@@ -57,6 +61,9 @@ namespace :open_call do
         exit
       end
 
+      min = Track.order(:id).pluck(:id).first
+      max = Track.order(:id).pluck(:id).last
+
       raw_sessions = JSON.parse IO.read(file_name)
       raw_sessions.each do |json_session|
         tags_name = json_session["tags"]
@@ -67,6 +74,7 @@ namespace :open_call do
           session.tags << tag
         end
         session.user = User.last
+        session.track = Track.find_by(id: Random.rand(min..max)) || Track.first
         session.save!
       end
     end
