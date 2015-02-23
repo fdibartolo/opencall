@@ -23,6 +23,7 @@
       </span>      
     </h3>
     <div class="author">{{session.author}}</div>
+    <div class="track">{{session.track}}</div>
     <p markdown="session.description"></p>
     <div><ul class="list-inline">
       <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag)">
