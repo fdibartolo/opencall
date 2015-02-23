@@ -67,4 +67,8 @@ class SessionProposal < ActiveRecord::Base
       end
     end
   end
+
+  after_commit on: [:update] do
+    __elasticsearch__.index_document
+  end
 end
