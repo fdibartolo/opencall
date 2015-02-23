@@ -3,6 +3,7 @@ SessionsPage = ->
 
   @newSessionTitle = element(By.model('newSession.title'))
   @newSessionDescription = element(By.model('newSession.description'))
+  @newSessionLastTrack = element.all(By.tagName('option')).last()
   @createButton = element(By.id('create-button'))
 
   @showSessionTitle = element(By.binding('session.title'))
@@ -16,6 +17,7 @@ SessionsPage = ->
     return
 
   @create = (session) ->
+    @newSessionLastTrack.click()
     @newSessionTitle.sendKeys session.title
     @newSessionDescription.sendKeys session.description
     @createButton.click()
