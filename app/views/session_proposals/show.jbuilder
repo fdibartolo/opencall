@@ -1,4 +1,5 @@
 json.extract! @session_proposal, :id, :title, :description, :video_link
+json.track @session_proposal.track.name
 json.date @session_proposal.created_at
 json.author do
   json.name @session_proposal.user.full_name
