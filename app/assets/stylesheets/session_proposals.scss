@@ -12,6 +12,11 @@
     margin: -10px 0 10px;
   }
 
+  .track {
+    font-weight: 500;
+    margin: 10px 0;
+  }
+
   h3 a { color: black; }
   h3 a:hover { color: $brand-primary; text-decoration: none !important; }
 }
@@ -21,6 +26,10 @@
 
   img { margin-top: 32px; }
   .author, .date { margin-top: 10px; }
+  .track {
+    font-weight: 500;
+    margin: 10px 0;
+  }
 }
 
 .session-summary, .session-detail {
