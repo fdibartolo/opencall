@@ -31,7 +31,12 @@ RSpec.describe SessionProposal, :type => :model do
   end
 
   describe "#as_indexed_json" do
+    before :each do
+      session_proposal.track = FactoryGirl.create :track
+      session_proposal.save!
+    end
     it { expect(session_proposal.as_indexed_json['title']).to eq session_proposal.title }
+    it { expect(session_proposal.as_indexed_json['track']).to eq session_proposal.track.name }
     it { expect(session_proposal.as_indexed_json['author']).to eq session_proposal.user.full_name }
     it "should include tags name" do
       session_proposal.tags << FactoryGirl.create(:tag) << FactoryGirl.create(:tag, name: 'scrum')
@@ -41,9 +46,10 @@ RSpec.describe SessionProposal, :type => :model do
 
   describe ".custom_search", :elasticsearch do
     let(:user) { FactoryGirl.create :user }
-    let(:first_session_proposal) { FactoryGirl.create :session_proposal, title: 'Advanced TDD', user: user }
-    let(:second_session_proposal) { FactoryGirl.create :session_proposal, title: 'XP', user: user }
-    let(:third_session_proposal) { FactoryGirl.create :session_proposal, title: 'Scaling Scrum', user: user }
+    let(:track) { FactoryGirl.create :track }
+    let(:first_session_proposal) { FactoryGirl.create :session_proposal, title: 'Advanced TDD', user: user, track: track }
+    let(:second_session_proposal) { FactoryGirl.create :session_proposal, title: 'XP', user: user, track: track }
+    let(:third_session_proposal) { FactoryGirl.create :session_proposal, title: 'Scaling Scrum', user: user, track: track }
 
     before :each do
       first_session_proposal.__elasticsearch__.index_document
