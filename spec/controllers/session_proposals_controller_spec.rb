@@ -104,7 +104,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
 
     context "with valid params" do
-      let(:payload) { { session_proposal: { title: 'title', description: 'description' } } }
+      let(:payload) { { session_proposal: { title: 'title', description: 'description', track_id: 1 } } }
       
       it "should return success if can save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
