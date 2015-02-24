@@ -15,6 +15,7 @@ describe "Sessions page", ->
   it "should be able to create a new session", (done) ->
     session = 
       title: 'Some Title'
+      summary: 'Some summary'
       description: 'A very detailed description'
 
     @sessionsPage.new()
