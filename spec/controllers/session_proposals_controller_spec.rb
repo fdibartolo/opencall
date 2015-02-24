@@ -9,7 +9,9 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
       body = JSON.parse response.body
       expect(body).to include 'title'
+      expect(body).to include 'summary'
       expect(body).to include 'description'
+      expect(body).to include 'video_link'
     end
   end
 
@@ -104,7 +106,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
 
     context "with valid params" do
-      let(:payload) { { session_proposal: { title: 'title', description: 'description', track_id: 1 } } }
+      let(:payload) { { session_proposal: { title: 'title', summary: 'summary', description: 'description', track_id: 1 } } }
       
       it "should return success if can save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
