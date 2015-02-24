@@ -1,3 +1,4 @@
+require 'rake'
 require 'elasticsearch/extensions/test/cluster/tasks'
 
 namespace :open_call do
