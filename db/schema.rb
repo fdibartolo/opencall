@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223011123) do
+ActiveRecord::Schema.define(version: 20150224201043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150223011123) do
     t.integer  "user_id"
     t.string   "video_link"
     t.integer  "track_id"
+    t.text     "summary"
   end
 
   create_table "session_proposals_tags", id: false, force: :cascade do |t|

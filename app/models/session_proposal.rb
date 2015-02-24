@@ -12,7 +12,7 @@ class SessionProposal < ActiveRecord::Base
   belongs_to :track
   has_many :reviews
 
-  validates :title, :description, :user_id, :track_id, presence: true
+  validates :title, :summary, :description, :user_id, :track_id, presence: true
 
   def autosave_associated_records_for_tags
     session_tags = []
@@ -25,7 +25,7 @@ class SessionProposal < ActiveRecord::Base
       json.id           self.id
       json.title        self.title
       json.track        self.track.name
-      json.description  self.description
+      json.summary      self.summary
       json.author       self.user.full_name
       json.tags         self.tags.map(&:name)
     end)
@@ -40,14 +40,14 @@ class SessionProposal < ActiveRecord::Base
     Jbuilder.encode do |json|
       json.query do
         json.multi_match do
-          json.fields ["tags^10", "track^10", "title^5", "description", "author"]
+          json.fields ["tags^10", "track^10", "title^5", "summary", "author"]
           json.query terms
         end
       end
       json.highlight do
         json.fields do
           json.title "{}"
-          json.description "{}"
+          json.summary "{}"
         end
       end
       json.aggregations do

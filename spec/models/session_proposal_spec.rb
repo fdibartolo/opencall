@@ -4,7 +4,7 @@ RSpec.describe SessionProposal, :type => :model do
   let(:session_proposal) { FactoryGirl.build(:session_proposal) }
 
   describe "mandatory attributes" do
-    %w[title description user_id track_id].each do |attribute|
+    %w[title summary description user_id track_id].each do |attribute|
       it "should include #{attribute}" do
         eval "session_proposal.#{attribute} = nil"
         expect(session_proposal.valid?).to be false

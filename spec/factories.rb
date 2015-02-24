@@ -29,6 +29,7 @@ FactoryGirl.define do
 
   factory :session_proposal do
     title       'Refactoring'
+    summary     'Session summary'
     description 'A long description for refactoring'
     association :user, factory: :user, first_name: 'bob'
     # association :track, factory: :track
