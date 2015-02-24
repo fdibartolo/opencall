@@ -18,19 +18,36 @@
         <small ng-if="newSession.invalidTrackId" class="text-danger">Es necesario que indiques el track</small>
       </div>
     </div>
+    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidSummary}">
+      <label for="input-summary" class="col-sm-2 control-label">Sinopsis</label>
+      <div class="col-sm-8">
+        <ul class="nav nav-tabs" ng-init="previewSummary = false">
+          <li role="presentation" ng-class="{active: !previewSummary}"><a ng-click="previewSummary = !previewSummary"><small>Texto</small></a></li>
+          <li role="presentation" ng-class="{active: previewSummary}"><a ng-click="previewSummary = !previewSummary"><small>Vista previa</small></a></li>
+        </ul>
+        <div ng-if="!previewSummary" fade-animation="true">
+          <textarea type="text" id="input-summary" class="form-control" placeholder="Sinopsis de la sesión" ng-model="newSession.summary" rows="6"></textarea>
+          <small ng-if="newSession.invalidSummary" class="text-danger">Es necesario que proveas una sinopsis</small>
+          <small class="text-muted">Tip: podes usar <a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a> para dar formato a tu texto</small>
+        </div>
+        <div ng-if="previewSummary" fade-animation="true">
+          <br><p markdown="newSession.summary"></p>
+        </div>
+      </div>
+    </div>
     <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidDescription}">
       <label for="input-description" class="col-sm-2 control-label">Descripción</label>
       <div class="col-sm-8">
-        <ul class="nav nav-tabs" ng-init="preview = false">
-          <li role="presentation" ng-class="{active: !preview}"><a ng-click="preview = !preview"><small>Texto</small></a></li>
-          <li role="presentation" ng-class="{active: preview}"><a ng-click="preview = !preview"><small>Vista previa</small></a></li>
+        <ul class="nav nav-tabs" ng-init="previewDescription = false">
+          <li role="presentation" ng-class="{active: !previewDescription}"><a ng-click="previewDescription = !previewDescription"><small>Texto</small></a></li>
+          <li role="presentation" ng-class="{active: previewDescription}"><a ng-click="previewDescription = !previewDescription"><small>Vista previa</small></a></li>
         </ul>
-        <div ng-if="!preview" fade-animation="true">
-          <textarea type="text" id="input-description" class="form-control" placeholder="Descripción" ng-model="newSession.description" rows="10"></textarea>
+        <div ng-if="!previewDescription" fade-animation="true">
+          <textarea type="text" id="input-description" class="form-control" placeholder="Descripción, donde podes incluir el formato, la dinámica a usar, etc" ng-model="newSession.description" rows="10"></textarea>
           <small ng-if="newSession.invalidDescription" class="text-danger">Es necesario que proveas una descripción</small>
           <small class="text-muted">Tip: podes usar <a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a> para dar formato a tu texto</small>
         </div>
-        <div ng-if="preview" fade-animation="true">
+        <div ng-if="previewDescription" fade-animation="true">
           <br><p markdown="newSession.description"></p>
         </div>
       </div>

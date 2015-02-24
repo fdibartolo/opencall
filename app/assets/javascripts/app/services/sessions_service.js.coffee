@@ -19,6 +19,7 @@ angular.module('openCall.services').factory 'SessionsService',
       session_proposal:
         title: session.title
         track_id: session.track_id
+        summary: session.summary
         description: session.description
         video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)
@@ -36,6 +37,7 @@ angular.module('openCall.services').factory 'SessionsService',
       session_proposal:
         title: session.title
         track_id: session.track_id
+        summary: session.summary
         description: session.description
         video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)

@@ -8,6 +8,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.newSession = 
     title: ''
     track_id: ''
+    summary: ''
     description: ''
     video_link: ''
     tags: []
@@ -49,10 +50,12 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   validSession = () ->
     $scope.newSession.invalidTitle = $scope.newSession.title is ''
+    $scope.newSession.invalidSummary = $scope.newSession.summary is ''
     $scope.newSession.invalidDescription = $scope.newSession.description is ''
     $scope.newSession.invalidTrackId = $scope.newSession.track_id is ''
 
-    not ($scope.newSession.invalidTitle or $scope.newSession.invalidDescription or $scope.newSession.invalidTrackId)
+    not ($scope.newSession.invalidTitle or $scope.newSession.invalidSummary or 
+      $scope.newSession.invalidDescription or $scope.newSession.invalidTrackId)
 
   $scope.getSessionVotedAndFavedIds = () ->
     UsersService.user_session_voted_ids().then (ids) ->
