@@ -29,6 +29,7 @@ gem 'cancancan', '1.10.1'
 gem 'will_paginate', '3.0.7'
 gem 'elasticsearch-model', '0.1.6'
 gem 'elasticsearch-rails', '0.1.6'
+gem 'elasticsearch-extensions', '0.0.17'
 
 group :development, :test do
   gem 'spring', '1.2.0'
@@ -38,7 +39,6 @@ group :development, :test do
   # temp pull code from this branch since it has a few bugs fixed (pull requests #23 #24)
   gem 'protractor-rails', :git => 'https://github.com/fdibartolo/protractor-rails', :branch => 'bugfixes'
   gem 'coveralls', '0.7.9', require: false
-  gem 'elasticsearch-extensions', '0.0.17'
 end
 
 gem 'rails_12factor', '0.0.3', group: :production
