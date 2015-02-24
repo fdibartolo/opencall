@@ -2,6 +2,7 @@
   '{{repeat(300)}}',
   {
     title: '{{lorem(integer(4, 10), "words")}}',
+    summary: '{{lorem(integer(15, 30), "words")}}',
     description: '{{lorem(integer(1, 3), "paragraphs")}}',
     tags: [
       '{{repeat(0, 4)}}',
