@@ -32,7 +32,7 @@ gem 'elasticsearch-rails', '0.1.6'
 gem 'elasticsearch-extensions', '0.0.17'
 
 group :development, :test do
-  gem 'spring', '1.2.0'
+  gem 'spring', '1.3.2'
   gem 'spring-commands-rspec', '1.0.4'
   gem 'rspec-rails', '3.2.1'
   gem 'factory_girl_rails', '4.5.0'
