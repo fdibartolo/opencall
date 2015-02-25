@@ -34,7 +34,7 @@ gem 'elasticsearch-extensions', '0.0.17'
 group :development, :test do
   gem 'spring', '1.2.0'
   gem 'spring-commands-rspec', '1.0.4'
-  gem 'rspec-rails', '3.2.0'
+  gem 'rspec-rails', '3.2.1'
   gem 'factory_girl_rails', '4.5.0'
   # temp pull code from this branch since it has a few bugs fixed (pull requests #23 #24)
   gem 'protractor-rails', :git => 'https://github.com/fdibartolo/protractor-rails', :branch => 'bugfixes'
