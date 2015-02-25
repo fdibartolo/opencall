@@ -172,7 +172,7 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.18.1)
-    puma (2.11.0)
+    puma (2.11.1)
       rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-test (0.6.3)
@@ -305,7 +305,7 @@ DEPENDENCIES
   omniauth-linkedin (= 0.2.0)
   pg (= 0.18.1)
   protractor-rails!
-  puma (= 2.11.0)
+  puma (= 2.11.1)
   rails (= 4.2.0)
   rails_12factor (= 0.0.3)
   rspec-rails (= 3.2.1)
