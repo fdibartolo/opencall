@@ -8,7 +8,7 @@ RSpec.describe Comment, :type => :model do
       it "should include #{attribute}" do
         eval "comment.#{attribute} = nil"
         expect(comment.valid?).to be false
-        expect(comment.errors[attribute]).to include "no puede estar en blanco"
+        expect(comment.errors[attribute]).to include "can't be blank"
       end
     end
   end  

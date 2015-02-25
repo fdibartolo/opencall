@@ -9,7 +9,7 @@ RSpec.describe User, :type => :model do
         user = FactoryGirl.build(:user)
         eval "user.#{attribute} = nil"
         expect(user.valid?).to be false
-        expect(user.errors[attribute]).to include "no puede estar en blanco"
+        expect(user.errors[attribute]).to include "can't be blank"
       end
     end
   end  

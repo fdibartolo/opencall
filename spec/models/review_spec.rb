@@ -9,7 +9,7 @@ RSpec.describe Review, :type => :model do
         review = FactoryGirl.build(:review)
         eval "review.#{attribute} = nil"
         expect(review.valid?).to be false
-        expect(review.errors[attribute]).to include "no puede estar en blanco"
+        expect(review.errors[attribute]).to include "can't be blank"
       end
     end
   end  
@@ -18,12 +18,12 @@ RSpec.describe Review, :type => :model do
     it "should be greater than 0" do
       review.score = 0
       expect(review.valid?).to be false
-      expect(review.errors['score']).to include "debe ser mayor que 0"
+      expect(review.errors['score']).to include "must be greater than 0"
     end
     it "should not be greater than 10" do
       review.score = 11
       expect(review.valid?).to be false
-      expect(review.errors['score']).to include "debe ser menor o igual que 10"
+      expect(review.errors['score']).to include "must be less than or equal to 10"
     end
   end
 end

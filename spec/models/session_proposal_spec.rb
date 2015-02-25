@@ -8,7 +8,7 @@ RSpec.describe SessionProposal, :type => :model do
       it "should include #{attribute}" do
         eval "session_proposal.#{attribute} = nil"
         expect(session_proposal.valid?).to be false
-        expect(session_proposal.errors[attribute]).to include "no puede estar en blanco"
+        expect(session_proposal.errors[attribute]).to include "can't be blank"
       end
     end
   end  

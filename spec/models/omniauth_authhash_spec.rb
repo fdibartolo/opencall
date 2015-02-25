@@ -14,7 +14,7 @@ RSpec.describe OmniAuth::AuthHash do
 
     it "should return default if first_name nor name are present" do
       auth = OmniAuth::AuthHash.new({ :info => { name: '', email: 'user@mail.com' }})
-      expect(auth.first_name_or_default).to eq 'nombre'
+      expect(auth.first_name_or_default).to eq 'first name'
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe OmniAuth::AuthHash do
 
     it "should return default if last_name nor name are present" do
       auth = OmniAuth::AuthHash.new({ :info => { name: 'First', email: 'user@mail.com' }})
-      expect(auth.last_name_or_default).to eq 'apellido'
+      expect(auth.last_name_or_default).to eq 'last name'
     end
   end
 end

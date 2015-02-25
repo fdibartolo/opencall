@@ -7,13 +7,13 @@ RSpec.describe Role, :type => :model do
     it "should be mandatory" do
       role.name = nil
       expect(role.valid?).to be false
-      expect(role.errors['name']).to include "no puede estar en blanco"
+      expect(role.errors['name']).to include "can't be blank"
     end
 
     it "should be unique" do
       FactoryGirl.create(:role)
       expect(role.valid?).to be false
-      expect(role.errors['name']).to include "ya ha sido tomado"
+      expect(role.errors['name']).to include "has already been taken"
     end
   end
 end
