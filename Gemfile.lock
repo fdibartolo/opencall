@@ -4,15 +4,6 @@ GIT
   specs:
     ng-toaster-rails (0.4.10.0)
 
-GIT
-  remote: https://github.com/fdibartolo/protractor-rails
-  revision: 5964428035886c4a3beeb729a24499e24e83e133
-  branch: bugfixes
-  specs:
-    protractor-rails (0.0.12)
-      colorize
-      railties
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -172,6 +163,9 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.18.1)
+    protractor-rails (0.0.14)
+      colorize
+      railties
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     rack (1.6.0)
@@ -304,7 +298,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (= 0.2.6)
   omniauth-linkedin (= 0.2.0)
   pg (= 0.18.1)
-  protractor-rails!
+  protractor-rails (= 0.0.14)
   puma (= 2.11.1)
   rails (= 4.2.0)
   rails_12factor (= 0.0.3)

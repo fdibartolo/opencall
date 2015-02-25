@@ -36,8 +36,7 @@ group :development, :test do
   gem 'spring-commands-rspec', '1.0.4'
   gem 'rspec-rails', '3.2.1'
   gem 'factory_girl_rails', '4.5.0'
-  # temp pull code from this branch since it has a few bugs fixed (pull requests #23 #24)
-  gem 'protractor-rails', :git => 'https://github.com/fdibartolo/protractor-rails', :branch => 'bugfixes'
+  gem 'protractor-rails', '0.0.14'
   gem 'coveralls', '0.7.11', require: false
 end
 
