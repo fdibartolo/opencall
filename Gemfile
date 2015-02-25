@@ -38,7 +38,7 @@ group :development, :test do
   gem 'factory_girl_rails', '4.5.0'
   # temp pull code from this branch since it has a few bugs fixed (pull requests #23 #24)
   gem 'protractor-rails', :git => 'https://github.com/fdibartolo/protractor-rails', :branch => 'bugfixes'
-  gem 'coveralls', '0.7.9', require: false
+  gem 'coveralls', '0.7.11', require: false
 end
 
 gem 'rails_12factor', '0.0.3', group: :production
