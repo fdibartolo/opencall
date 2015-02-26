@@ -42,6 +42,18 @@ en:
       video: "Presentation Video"
       tags: "Tags"
       score: "Score"
+      my_sessions: "My session proposals"
+      my_voted_sessions: "My voted session proposals"
+      my_faved_sessions: "My faved session proposals"
+      my_reviewed_sessions: "My reviewed session proposals"
+      no_sessions_yet: "You have no session proposals yet, let's do one!"
+      no_fav_yet:
+        primary: "You have not faved any session yet!"
+        secondary: "To do so, just search among the session proposals and click on the &nbsp;%{span}&nbsp; next to its title"
+      no_vote_yet:
+        primary: "You still have your %{count} available votes!"
+        secondary: "To do so, just search among the session proposals and click on the &nbsp;%{span}&nbsp; next to its title"
+      no_reviews_yet: "You have no reviews done yet!"
     markdown:
       text: "Text"
       preview: "Preview"
@@ -49,12 +61,18 @@ en:
     buttons:
       create_session: "Create proposal"
       update_session: "Update proposal"
+      show_session: "View proposal"
+      edit_session: "Edit proposal"
+      unvote_session: "Remove vote"
+      unfav_session: "Remove fav"
       submit_review: "Submit Review"
       start_review: "Start a formal review"
       cancel: "Cancel"
       load_more: "Load more..."
       comment: "Comment"
       back: "Back"
+      vote: "Vote"
+      fav: "Fav!"
     errors:
       title_cant_be_blank: "You must provide a title"
       summary_cant_be_blank: "You must provide a summary"

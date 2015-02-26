@@ -21,6 +21,18 @@ es:
       video: "Video Presentación"
       tags: "Tags"
       score: "Puntaje"
+      my_sessions: "Mis sesiones propuestas"
+      my_voted_sessions: "Propuestas que tienen mi voto"
+      my_faved_sessions: "Mis propuestas favoritas"
+      my_reviewed_sessions: "Propuestas que he evaluado"
+      no_sessions_yet: "Aún no has propuesto ninguna sesión, animate!"
+      no_fav_yet:
+        primary: "Aún no has marcado sesiones favoritas!"
+        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en el &nbsp;%{span}&nbsp; a la derecha del título de la misma"
+      no_vote_yet:
+        primary: "Aún tienes tus %{count} votos disponibles!"
+        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en el &nbsp;%{span}&nbsp; a la derecha del título de la misma"
+      no_review_yet: "Aún no has hecho ninguna revisión!"
     markdown:
       text: "Texto"
       preview: "Vista Previa"
@@ -28,12 +40,18 @@ es:
     buttons:
       create_session: "Crear propuesta"
       update_session: "Actualizar propuesta"
+      show_session: "Ver propuesta"
+      edit_session: "Editar propuesta"
+      unvote_session: "Remover voto"
+      unfav_session: "Remover fav"
       submit_review: "Enviar Revisión"
       start_review: "Iniciar una revisión formal"
       cancel: "Cancelar"
       load_more: "Cargar mas..."
       comment: "Comentar"
       back: "Volver"
+      vote: "Votá"
+      fav: "Fav!"
     errors:
       title_cant_be_blank: "Es necesarion que indiques el título"
       summary_cant_be_blank: "Es necesarion que indiques la sinopsis"
