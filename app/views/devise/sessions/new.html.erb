@@ -1,4 +1,4 @@
-<h2 class="text-center">Bienvenido!</h2><br>
+<h2 class="text-center">Welcome!</h2><br>
 
 <div class="col-sm-7">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
@@ -11,9 +11,9 @@
     </div>
 
     <div class="form-group">
-      <label for="input-password" class="col-sm-2 control-label">Contraseña</label>
+      <label for="input-password" class="col-sm-2 control-label">Password</label>
       <div class="col-sm-8">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Password" %>
       </div>
     </div>
 
@@ -21,15 +21,15 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-8">
           <%= f.check_box :remember_me %>
-          <small><%= f.label 'Recordarme' %></small>
-          <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name), class: "pull-right" %><br />
+          <small><%= f.label 'Remember me' %></small>
+          <%= link_to "Forgot your password?", new_password_path(resource_name), class: "pull-right" %><br />
         </div>
       </div>
     <% end -%>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
-        <button id="signin-button" type="submit" class="btn btn-primary">Ingresar</button>
+        <button id="signin-button" type="submit" class="btn btn-primary">Login</button>
       </div>
     </div>
   <% end %>

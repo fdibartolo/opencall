@@ -1,6 +1,6 @@
 <div class="col-sm-4 social-login-association">
   <%- if devise_mapping.omniauthable? %>
-    <h4>Tus cuentas asociadas</h4>
+    <h4>Your linked accounts</h4>
     <%- resource_class.omniauth_providers.each do |provider| %>
       <% class_delta, action, message = link_context_for provider %>
       <div class="center-block">
