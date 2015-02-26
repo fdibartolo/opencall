@@ -37,25 +37,27 @@
                     <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><%= link_to "Perfil", edit_user_registration_path %></li>
-                    <li><%= link_to "Cambiar contraseña", users_reset_password_path %></li>
+                    <li><%= link_to "Profile", edit_user_registration_path %></li>
+                    <li><%= link_to "Change password", users_reset_password_path %></li>
                     <li class="divider"></li>
-                    <li><%= link_to 'Mis propuestas', "#{root_url}#/users/sessions" %></li>
-                    <li><%= link_to 'Mis votos', "#{root_url}#/users/voted_sessions" %></li>
-                    <li><%= link_to 'Mis favoritas', "#{root_url}#/users/faved_sessions" %></li>
+                    <li><%= link_to 'My proposals', "#{root_url}#/users/sessions" %></li>
+                    <li><%= link_to 'My voted proposals', "#{root_url}#/users/voted_sessions" %></li>
+                    <li><%= link_to 'My fav proposals', "#{root_url}#/users/faved_sessions" %></li>
                     <% if current_user.admin? %>
                       <li class="divider"></li>
-                      <li class="dropdown-header">Administrador</li>
-                      <li><%= link_to 'Mis revisiones', "#{root_url}#/users/reviews" %></li>
-                      <li><a href="#/home">Asignar revisores</a></li>
+                      <li class="dropdown-header">Administrator</li>
+                      <li><%= link_to 'My reviews', "#{root_url}#/users/reviews" %></li>
+                      <li><a href="#/home">Manage reviewers</a></li>
                     <% end %>
                     <% if current_user.reviewer? %>
                       <li class="divider"></li>
                       <li class="dropdown-header">Reviewer</li>
-                      <li><%= link_to 'Mis revisiones', "#{root_url}#/users/reviews" %></li>
+                      <li><%= link_to 'My reviews', "#{root_url}#/users/reviews" %></li>
                     <% end %>
                     <li class="divider"></li>
-                    <li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, id: 'signout-link' %></li>
+                    <li>
+                      <%= link_to "Sign out", destroy_user_session_path, method: :delete, id: 'signout-link' %>
+                    </li>
                   </ul>
                 </li>
               <% else %>
