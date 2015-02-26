@@ -12,6 +12,7 @@ es:
       paragraph: "Ayudá a generar la grilla de charlas con tu feedback! Podés hacer comentarios a los autores de las mismas, marcar tus favoritas, y mas!"
   sessions:
     labels:
+      no_search_results: "No hemos podido encontrar resultados <br> que concuerden con la búsqueda... "
       matching_tags: "Otros tags relevantes"
       new: "¿De qué te gustaría hablar?"
       title: "Título"
@@ -28,7 +29,11 @@ es:
       create_session: "Crear propuesta"
       update_session: "Actualizar propuesta"
       submit_review: "Enviar Revisión"
+      start_review: "Iniciar una revisión formal"
       cancel: "Cancelar"
+      load_more: "Cargar mas..."
+      comment: "Comentar"
+      back: "Volver"
     errors:
       title_cant_be_blank: "Es necesarion que indiques el título"
       summary_cant_be_blank: "Es necesarion que indiques la sinopsis"
@@ -38,6 +43,9 @@ es:
       search: "top|Busca sesiones por autor o bien por palabras clave, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Tus votos disponibles"
       create_session: "bottom|Proponé una nueva sesión"
+      session_title: "top|Hacé click en el título de la sesión para ver sus detalles"
+      vote: "left|Votá la sesión"
+      fav: "right|Marcá la sesión como favorita"
     placeholders:
       comment: "Dejar un comentario al autor"
       review: "Da tu punto de vista de la sesión"

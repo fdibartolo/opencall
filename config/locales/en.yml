@@ -33,6 +33,7 @@ en:
       paragraph: "Help to build the session grid with your feedback! You can add comments to the proposals, fav the ones you like, and more!"
   sessions:
     labels:
+      no_search_results: "We couldn't find anything that <br> matches the criteria... "
       matching_tags: "Other relevant tags"
       new: "What would you like to talk about?"
       title: "Title"
@@ -49,7 +50,11 @@ en:
       create_session: "Create proposal"
       update_session: "Update proposal"
       submit_review: "Submit Review"
+      start_review: "Start a formal review"
       cancel: "Cancel"
+      load_more: "Load more..."
+      comment: "Comment"
+      back: "Back"
     errors:
       title_cant_be_blank: "You must provide a title"
       summary_cant_be_blank: "You must provide a summary"
@@ -59,6 +64,9 @@ en:
       search: "top|Find session proposals by author or key words, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Your available votes"
       create_session: "bottom|Propose a session"
+      session_title: "top|Click on the title to navigate to session details"
+      vote: "left|Vote the session"
+      fav: "right|Fav the session"
     placeholders:
       comment: "Leave a comment to the author"
       review: "Give your point of view about the session proposal"
