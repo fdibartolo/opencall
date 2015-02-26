@@ -1,4 +1,6 @@
 es:
+  flash:
+    unlink_social_ok:  "Has desasociado tu cuenta de %{provider} con éxito"
   activerecord:
     models: 
       user: "Usuario"

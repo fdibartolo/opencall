@@ -20,4 +20,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  flash:
+    unlink_social_ok:  "You have succesfully unlinked your %{provider} account"

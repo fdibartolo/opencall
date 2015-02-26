@@ -19,7 +19,7 @@ class Users::UsersController < ApplicationController
     if identity
       identity.destroy
       provider = params[:provider] == 'google_oauth2' ? 'google' : params[:provider]
-      flash[:notice] = "Has desasociado tu cuenta de #{provider} con éxito"
+      flash[:notice] = I18n.t 'flash.unlink_social_ok', provider: provider
     end
 
     redirect_to edit_user_registration_path(current_user)
