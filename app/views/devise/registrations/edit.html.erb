@@ -6,25 +6,25 @@
   <% end %>
 
   <div class="<%= validation_error_class? :first_name %>">
-    <label for="input-firstname" class="col-sm-2 control-label">Nombre</label>
+    <label for="input-firstname" class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-10">
-      <%= f.text_field :first_name, class: "form-control", id: "input-firstname", placeholder: "Nombre" %>
+      <%= f.text_field :first_name, class: "form-control", id: "input-firstname", placeholder: "First Name" %>
       <%= validation_error_details? :first_name %>
     </div>
   </div>
 
   <div class="<%= validation_error_class? :last_name %>">
-    <label for="input-lastname" class="col-sm-2 control-label">Apellido</label>
+    <label for="input-lastname" class="col-sm-2 control-label">Last Name</label>
     <div class="col-sm-10">
-      <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: "Apellido" %>
+      <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: "Last Name" %>
       <%= validation_error_details? :last_name %>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="input-country" class="col-sm-2 control-label">Pais</label>
+    <label for="input-country" class="col-sm-2 control-label">Country</label>
     <div class="col-sm-10">
-      <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"], :selected => f.object.country), {}, { class: "form-control selectpicker", id: "input-country" } %>
+      <%= f.select :country, options_for_select(%w[Argentina Bolivia Brazil Chile Colombia CostaRica Cuba Ecuador ElSalvador Honduras Mexico Nicaragua Panama Paraguay Peru Uruguay Venezuela], :selected => f.object.country), {}, { class: "form-control selectpicker", id: "input-country" } %>
     </div>
   </div>
 
@@ -47,10 +47,10 @@
     <label for="input-bio" class="col-sm-2 control-label">Bio</label>
     <div class="col-sm-10">
       <ul class="nav nav-tabs" ng-init="bio = true">
-        <li role="presentation" ng-class="{active: bio}"><a ng-click="bio = !bio"><small>Texto</small></a></li>
-        <li role="presentation" ng-class="{active: !bio}"><a ng-click="bio = !bio"><small>Redes sociales</small></a></li>
+        <li role="presentation" ng-class="{active: bio}"><a ng-click="bio = !bio"><small>Text</small></a></li>
+        <li role="presentation" ng-class="{active: !bio}"><a ng-click="bio = !bio"><small>Social Networks</small></a></li>
         <div class="text-right"><small class="text-muted">
-          <i>Puedes describirte o bien <br> referenciar tu perfil en las redes sociales</i>
+          <i>You may describe yourself, and/or <br> reference your social network profiles</i>
         </small></div>
       </ul>
       <div ng-if="bio" fade-animation="true">
@@ -91,20 +91,20 @@
   <div class="row"><div class="col-sm-offset-2 col-sm-10"><hr></div></div>
 
   <div class="<%= validation_warning_class? :current_password %>">
-    <label for="input-password3" class="col-sm-2 control-label">Contraseña Actual</label>
+    <label for="input-password3" class="col-sm-2 control-label">Current Password</label>
     <div class="col-sm-10">
-      <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "input-password3", placeholder: "Contraseña" %>
+      <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "input-password3", placeholder: "Current Password" %>
       <%= validation_warning_details? :current_password %>
-      <small class="text-muted">necesitas ingresar tu contraseña actual para poder confirmar algún cambio</small>
+      <small class="text-muted">You need your current password to make changes to your profile</small>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-primary">Guardar</button>
-      <div class="btn btn-default"><%= link_to "Volver", :back %></div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <div class="btn btn-default"><%= link_to "Back", :back %></div>
       <br><hr>
-      <%= link_to "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span> &nbsp; Borrar mi cuenta".html_safe, registration_path(resource_name), data: { confirm: "Tu cuenta será borrada de forma permanente y no tiene vuelta atrás. Deseas borrarla?" }, method: :delete, class: "btn btn-danger pull-right" %>
+      <%= link_to "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span> &nbsp; Delete my account".html_safe, registration_path(resource_name), data: { confirm: "Your account will be deleted and this action cannot be reversed. Do you confirm?" }, method: :delete, class: "btn btn-danger pull-right" %>
     </div>
   </div>
 <% end %>

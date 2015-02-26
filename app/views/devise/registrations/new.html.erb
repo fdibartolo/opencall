@@ -1,28 +1,28 @@
-<h2 class="text-center">Bienvenido!</h2><br>
+<h2 class="text-center">Welcome!</h2><br>
 
 <div class="col-sm-7">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
 
     <div class="<%= validation_error_class? :first_name %>">
-      <label for="input-firstname" class="col-sm-3 control-label">Nombre</label>
+      <label for="input-firstname" class="col-sm-3 control-label">First Name</label>
       <div class="col-sm-7">
-        <%= f.text_field :first_name, autofocus: true, class: "form-control", id: "input-firstname", placeholder: "Nombre" %>
+        <%= f.text_field :first_name, autofocus: true, class: "form-control", id: "input-firstname", placeholder: "First Name" %>
         <%= validation_error_details? :first_name %>
       </div>
     </div>
 
     <div class="<%= validation_error_class? :last_name %>">
-      <label for="input-lastname" class="col-sm-3 control-label">Apellido</label>
+      <label for="input-lastname" class="col-sm-3 control-label">Last Name</label>
       <div class="col-sm-7">
-        <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: "Apellido" %>
+        <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: "Last Name" %>
         <%= validation_error_details? :last_name %>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="input-country" class="col-sm-3 control-label">Pais</label>
+      <label for="input-country" class="col-sm-3 control-label">Country</label>
       <div class="col-sm-7">
-        <%= f.select :country, options_for_select(["Argentina", "Bolivia", "Colombia", "Ecuador"]), {}, { class: "form-control selectpicker", id: "input-country" } %>
+        <%= f.select :country, options_for_select(%w[Argentina Bolivia Brazil Chile Colombia CostaRica Cuba Ecuador ElSalvador Honduras Mexico Nicaragua Panama Paraguay Peru Uruguay Venezuela]), {}, { class: "form-control selectpicker", id: "input-country" } %>
       </div>
     </div>
 
@@ -35,20 +35,20 @@
     </div>
 
     <div class="<%= validation_error_class? :password %>">
-      <label for="input-password" class="col-sm-3 control-label">Contraseña</label>
+      <label for="input-password" class="col-sm-3 control-label">Password</label>
       <div class="col-sm-7">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Contraseña" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Password" %>
         <%= validation_error_details? :password %>
         <% if @validatable %>
-          <small class="text-muted"><%= @minimum_password_length %> caracteres mínimo</small>
+          <small class="text-muted"><%= @minimum_password_length %> min characters</small>
         <% end %>
       </div>
     </div>
 
     <div class="<%= validation_error_class? :password_confirmation %>">
-      <label for="input-password2" class="col-sm-3 control-label">Repetir Contraseña</label>
+      <label for="input-password2" class="col-sm-3 control-label">Repeat Password</label>
       <div class="col-sm-7">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: "Contraseña" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: "Password Confirmation" %>
         <%= validation_error_details? :password_confirmation %>
       </div>
     </div>
