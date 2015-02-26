@@ -1,16 +1,15 @@
 <div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row">
-  <h2 class="text-center">Los candidatos son...</h2>
-
+  <br><br>
   <div class="row" ng-cloak ng-init="search()" style="padding:0 25px">
     <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group has-feedback">
       <input type="text" class="form-control" 
         ng-model="searchTerms" 
         ng-model-options="{ debounce: 1000 }"
         ng-change="search()"
-        helpable="top|Busca sesiones por autor o bien por palabras clave, tags, etc (i.e. scrum, devops)">
+        helpable="<%= t('sessions.help.search') %>">
       <span class="glyphicon glyphicon-search form-control-feedback" style="margin-right:15px" aria-hidden="true"></span>
       <p ng-if="searchTerms != '' && total != 0" class="text-muted text-center" fade-animation="true">
-        <small><i>hemos encontrado {{total}} resultados relacionados a tu búsqueda</i></small>
+        <small><i>{{total}} matching results</i></small>
       </p>
     </div>
   </div>
@@ -24,7 +23,7 @@
 
   <div class="col-md-offset-1 col-md-3">
     <div class="action-button-container">
-      <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes" helpable="top|Tus votos disponibles">
+      <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes" helpable="<%= t('sessions.help.vote_count') %>">
         <span class="text" aria-hidden="true">{{availableVotes}}</span>
       </a>
       <div class="divisor"></div>
@@ -32,13 +31,13 @@
         <span class="text" aria-hidden="true">?</span>
       </a>
       <div class="divisor"></div>
-      <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="bottom|Proponé una nueva sesión">
+      <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="<%= t('sessions.help.create_session') %>">
         <span class="ion-plus-round icon" aria-hidden="true"></span>
       </a>
     </div>
     <br><br>
     <div ng-if="matched_tags.length > 0" class="text-center">
-      <h3>Otros tags relevantes</h3>
+      <h3><%= t('sessions.labels.matching_tags') %></h3>
       <ul class="list-inline">
         <li ng-repeat="tag in matched_tags track by $index" class="tag lg bg-primary clickable" ng-click="search(tag.key)">
           {{tag.key}} <small>({{tag.doc_count}})</small>
