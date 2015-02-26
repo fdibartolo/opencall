@@ -1,6 +1,15 @@
 es:
   flash:
     unlink_social_ok:  "Has desasociado tu cuenta de %{provider} con éxito"
+  home:
+    announcement:
+      title: "Anuncios"
+    propose:
+      title: "Proponé"
+      paragraph: "Compartí con la comunidad sobre qué te gustaría hablar, qué te gustaría compartir, y recibí feedback temprano que te permitan refinar tu idea!"
+    vote:
+      title: "Votá"
+      paragraph: "Ayudá a generar la grilla de charlas con tu feedback! Podés hacer comentarios a los autores de las mismas, marcar tus favoritas, y mas!"
   activerecord:
     models: 
       user: "Usuario"

@@ -1,7 +1,7 @@
 <div class="container marketing" ng-cloak fade-animation="true">
   <div class="row featurette">
     <div class="col-sm-12">
-      <h2 class="featurette-heading">Anuncios <!-- <span class="text-muted">fechas importantes</span> --></h2>
+      <h2 class="featurette-heading"><%= t('home.announcement.title') %> <!-- <span class="text-muted">fechas importantes</span> --></h2>
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -18,19 +18,19 @@
         <div class="home-button-container">
           <a class="img-circle home-button" href="<%= root_url + '#/sessions/new' %>">
             <span class="glyphicon glyphicon-pencil icon" aria-hidden="true"></span><br>
-            <span class="text">Proponé</span>
+            <span class="text"><%= t('home.propose.title') %></span>
           </a>
         </div>
-        <p class="home-button-text hidden-xs">Compartí con la comunidad sobre qué te gustaría hablar, qué te gustaría compartir, y recibí feedback temprano que te permitan refinar tu idea!</p>
+        <p class="home-button-text hidden-xs"><%= t('home.propose.paragraph') %></p>
       </div>
       <div class="col-xs-6">
         <div class="home-button-container">
           <a class="img-circle home-button" href="<%= root_url + '#/sessions' %>">
             <span class="glyphicon glyphicon-thumbs-up icon" aria-hidden="true"></span><br>
-            <span class="text">Votá</span>
+            <span class="text"><%= t('home.vote.title') %></span>
           </a>
         </div>
-        <p class="home-button-text hidden-xs">Ayudá a generar la grilla de charlas con tu feedback! Podés hacer comentarios a los autores de las mismas, marcar tus favoritas, y mas!</p>
+        <p class="home-button-text hidden-xs"><%= t('home.vote.paragraph') %></p>
       </div>
     </div>
   <% end %>
