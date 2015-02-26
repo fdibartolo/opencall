@@ -40,6 +40,7 @@ en:
       description: "Description"
       video: "Presentation Video"
       tags: "Tags"
+      score: "Score"
     markdown:
       text: "Text"
       preview: "Preview"
@@ -47,6 +48,8 @@ en:
     buttons:
       create_session: "Create proposal"
       update_session: "Update proposal"
+      submit_review: "Submit Review"
+      cancel: "Cancel"
     errors:
       title_cant_be_blank: "You must provide a title"
       summary_cant_be_blank: "You must provide a summary"
@@ -56,3 +59,10 @@ en:
       search: "top|Find session proposals by author or key words, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Your available votes"
       create_session: "bottom|Propose a session"
+    placeholders:
+      comment: "Leave a comment to the author"
+      review: "Give your point of view about the session proposal"
+      summary: "Summary that highlights the session"
+      description: "Details about the session, such as the dynamic to be used, target audience, etc"
+    no_access:
+      reviews: "You have no access to perform reviews..."

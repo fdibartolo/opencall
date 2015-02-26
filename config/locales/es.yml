@@ -19,6 +19,7 @@ es:
       description: "Descripción"
       video: "Video Presentación"
       tags: "Tags"
+      score: "Puntaje"
     markdown:
       text: "Texto"
       preview: "Vista Previa"
@@ -26,6 +27,8 @@ es:
     buttons:
       create_session: "Crear propuesta"
       update_session: "Actualizar propuesta"
+      submit_review: "Enviar Revisión"
+      cancel: "Cancelar"
     errors:
       title_cant_be_blank: "Es necesarion que indiques el título"
       summary_cant_be_blank: "Es necesarion que indiques la sinopsis"
@@ -35,6 +38,13 @@ es:
       search: "top|Busca sesiones por autor o bien por palabras clave, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Tus votos disponibles"
       create_session: "bottom|Proponé una nueva sesión"
+    placeholders:
+      comment: "Dejar un comentario al autor"
+      review: "Da tu punto de vista de la sesión"
+      summary: "Sinopsis que resume la sesión"
+      description: "Detalles sobre la sesión, como ser la dinámica a utilizar, el tipo de audiencia, etc"
+    no_access:
+      reviews: "No tienes permiso para hacer revisiones..."
   activerecord:
     models: 
       user: "Usuario"
