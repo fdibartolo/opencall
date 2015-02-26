@@ -8,7 +8,9 @@
       <div class="col-sm-8">
         <input type="text" id="input-title" placeholder="<%= t('sessions.labels.title') %>" ng-model="newSession.title" class="form-control">
         <span ng-if="newSession.invalidTitle" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-        <small ng-if="newSession.invalidTitle" class="text-danger"><%= t('sessions.errors.title_cant_be_blank') %></small>
+        <small ng-if="newSession.invalidTitle" class="text-danger">
+          <%= t('sessions.errors.title_cant_be_blank') %>
+        </small>
       </div>
     </div>
     <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidTrackId}">
@@ -22,13 +24,25 @@
       <label for="input-summary" class="col-sm-2 control-label"><%= t('sessions.labels.summary') %></label>
       <div class="col-sm-8">
         <ul class="nav nav-tabs" ng-init="previewSummary = false">
-          <li role="presentation" ng-class="{active: !previewSummary}"><a ng-click="previewSummary = !previewSummary"><small><%= t('sessions.markdown.text') %></small></a></li>
-          <li role="presentation" ng-class="{active: previewSummary}"><a ng-click="previewSummary = !previewSummary"><small><%= t('sessions.markdown.preview') %></small></a></li>
+          <li role="presentation" ng-class="{active: !previewSummary}">
+            <a ng-click="previewSummary = !previewSummary">
+              <small><%= t('sessions.markdown.text') %></small>
+            </a>
+          </li>
+          <li role="presentation" ng-class="{active: previewSummary}">
+            <a ng-click="previewSummary = !previewSummary">
+              <small><%= t('sessions.markdown.preview') %></small>
+            </a>
+          </li>
         </ul>
         <div ng-if="!previewSummary" fade-animation="true">
-          <textarea type="text" id="input-summary" class="form-control" placeholder="<%= t('sessions.labels.summary') %>" ng-model="newSession.summary" rows="6"></textarea>
-          <small ng-if="newSession.invalidSummary" class="text-danger"><%= t('sessions.errors.summary_cant_be_blank') %></small>
-          <small class="text-muted"><%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %></small>
+          <textarea type="text" id="input-summary" class="form-control" placeholder="<%= t('sessions.placeholders.summary') %>" ng-model="newSession.summary" rows="6"></textarea>
+          <small ng-if="newSession.invalidSummary" class="text-danger">
+            <%= t('sessions.errors.summary_cant_be_blank') %>
+          </small>
+          <small class="text-muted">
+            <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+          </small>
         </div>
         <div ng-if="previewSummary" fade-animation="true">
           <br><p markdown="newSession.summary"></p>
@@ -39,13 +53,25 @@
       <label for="input-description" class="col-sm-2 control-label"><%= t('sessions.labels.description') %></label>
       <div class="col-sm-8">
         <ul class="nav nav-tabs" ng-init="previewDescription = false">
-          <li role="presentation" ng-class="{active: !previewDescription}"><a ng-click="previewDescription = !previewDescription"><small><%= t('sessions.markdown.text') %></small></a></li>
-          <li role="presentation" ng-class="{active: previewDescription}"><a ng-click="previewDescription = !previewDescription"><small><%= t('sessions.markdown.preview') %></small></a></li>
+          <li role="presentation" ng-class="{active: !previewDescription}">
+            <a ng-click="previewDescription = !previewDescription">
+              <small><%= t('sessions.markdown.text') %></small>
+            </a>
+          </li>
+          <li role="presentation" ng-class="{active: previewDescription}">
+            <a ng-click="previewDescription = !previewDescription">
+              <small><%= t('sessions.markdown.preview') %></small>
+            </a>
+          </li>
         </ul>
         <div ng-if="!previewDescription" fade-animation="true">
-          <textarea type="text" id="input-description" class="form-control" placeholder="<%= t('sessions.labels.description') %>" ng-model="newSession.description" rows="10"></textarea>
-          <small ng-if="newSession.invalidDescription" class="text-danger"><%= t('sessions.errors.description_cant_be_blank') %></small>
-          <small class="text-muted"><%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %></small>
+          <textarea type="text" id="input-description" class="form-control" placeholder="<%= t('sessions.placeholders.description') %>" ng-model="newSession.description" rows="10"></textarea>
+          <small ng-if="newSession.invalidDescription" class="text-danger">
+            <%= t('sessions.errors.description_cant_be_blank') %>
+          </small>
+          <small class="text-muted">
+            <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+          </small>
         </div>
         <div ng-if="previewDescription" fade-animation="true">
           <br><p markdown="newSession.description"></p>

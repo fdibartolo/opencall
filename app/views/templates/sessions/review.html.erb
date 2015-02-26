@@ -13,14 +13,14 @@
           <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
           <li class="pull-right" ng-if="session.video_link != null && session.video_link != ''" title="{{session.video_link}}">
             <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
-              <span class="ion-videocamera">&nbsp;</span>Video presentación
+              <span class="ion-videocamera">&nbsp;</span><%= t('sessions.labels.video') %>
             </a>
           </li>
         </ul>
 
         <p markdown="session.summary"></p>
 
-        <label>Descripción detallada:</label>
+        <label><%= t('sessions.labels.description') %></label>
         <p markdown="session.description"></p>
       </div>
     </div>
@@ -31,25 +31,27 @@
         <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
       </div>
       <div class="col-sm-8">
-        <textarea type="text" class="form-control" placeholder="Da tu punto de vista de la sesión" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}"></textarea><br>
+        <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}"></textarea><br>
 
-        <label for="input-description" class="control-label" ng-class="{'text-danger': newSessionReview.invalidScore}">Puntaje: &nbsp;</label>
+        <label for="input-description" class="control-label" ng-class="{'text-danger': newSessionReview.invalidScore}"><%= t('sessions.labels.score') %>: &nbsp;</label>
         <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" ng-class="{'text-danger': newSessionReview.invalidScore}">
           <input type="radio" name="inlineScoreOptions" ng-click="newSessionReview.score = i">{{i}}
         </label>
 
-        <button class="btn btn-primary pull-right" ng-click="postReview()">Enviar Revisión</button>
+        <button class="btn btn-primary pull-right" ng-click="postReview()">
+          <%= t('sessions.buttons.submit_review') %>
+        </button>
       </div>
     </div>
 
     <div class="col-sm-10 text-right" style="padding-right:5px;margin:20px 0"><hr>
-      <div class="btn btn-default"><%= link_to "Cancelar", "#/sessions" %></div>
+      <div class="btn btn-default"><%= link_to t('sessions.buttons.cancel'), "#/sessions/show/{{session.id}}" %></div>
     </div>
   </div>
 <% else %>
   <div class="no-review-access">
     <h4 class="text-muted text-center">
-      No tienes permiso para hacer revisiones... <br><br>
+      <%= t('sessions.no_access.reviews') %> <br><br>
       <span class="ion-sad"></span>
     </h4>
   </div>
