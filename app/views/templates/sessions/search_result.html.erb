@@ -1,24 +1,24 @@
 <div ng-if="sessions.length == 0" class="no-search-results">
   <h4 class="text-muted text-center">
-    No hemos podido encontrar resultados <br> que concuerden con la búsqueda... <br><br>
-    <span class="ion-sad"></span>
+    <%= t('sessions.labels.no_search_results').html_safe %>
+    <br><br><span class="ion-sad"></span>
   </h4>
 </div>
 
 <div ng-if="sessions.length > 0" class="scrollable" style="height:500px"><br>
   <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
     <h3>
-      <a ng-href="#/sessions/show/{{session.id}}" helpable="top|Hacé click en el título de la sesión para ver sus detalles" data-index="{{$index}}">
+      <a ng-href="#/sessions/show/{{session.id}}" helpable="<%= t('sessions.help.session_title') %>" data-index="{{$index}}">
         {{session.title}}
       </a>
       <span class="actions pull-right clickable">
-        <span ng-click="vote($index)" ng-if="!session.voted && availableVotes > 0" class="ion-ios7-circle-outline text-success" helpable="left|Votá la sesión" data-index="{{$index}}"></span>
-        <span ng-click="vote($index)" ng-if="session.voted" class="ion-checkmark-circled text-success" helpable="left|Votá la sesión" data-index="{{$index}}"></span>
+        <span ng-click="vote($index)" ng-if="!session.voted && availableVotes > 0" class="ion-ios7-circle-outline text-success" helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}"></span>
+        <span ng-click="vote($index)" ng-if="session.voted" class="ion-checkmark-circled text-success" helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}"></span>
         <!-- <span class="ion-chatboxes text-muted"></span> -->
-        <span ng-click="fav($index)" ng-if="!session.faved" class="ion-ios7-star-outline text-warning" helpable="right|Marcá la sesión como favorita" data-index="{{$index}}"></span>
-        <span ng-click="fav($index)" ng-if="session.faved" class="ion-ios7-star text-warning" helpable="right|Marcá la sesión como favorita" data-index="{{$index}}"></span>
+        <span ng-click="fav($index)" ng-if="!session.faved" class="ion-ios7-star-outline text-warning" helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}"></span>
+        <span ng-click="fav($index)" ng-if="session.faved" class="ion-ios7-star text-warning" helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}"></span>
         <% if current_user and can? :review, SessionProposal %>
-          <a ng-href="#/sessions/review/{{session.id}}"><span class="ion-compose text-success" title="Iniciar una revisión formal"></span></a>
+          <a ng-href="#/sessions/review/{{session.id}}"><span class="ion-compose text-success" title="<%= t('sessions.buttons.start_review') %>"></span></a>
         <% end %>
       </span>      
     </h3>
@@ -31,5 +31,7 @@
       </li>
     </ul></div>
   </div>
-  <button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;padding:5px 50px">Cargar mas...</button>
+  <button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;padding:5px 50px">
+    <%= t('sessions.buttons.load_more') %>
+  </button>
 </div>
