@@ -33,7 +33,9 @@
       <div class="col-sm-8">
         <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}"></textarea><br>
 
-        <label for="input-description" class="control-label" ng-class="{'text-danger': newSessionReview.invalidScore}"><%= t('sessions.labels.score') %>: &nbsp;</label>
+        <label for="input-description" class="control-label" ng-class="{'text-danger': newSessionReview.invalidScore}">
+          <%= t('sessions.labels.score') %>: &nbsp;
+        </label>
         <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" ng-class="{'text-danger': newSessionReview.invalidScore}">
           <input type="radio" name="inlineScoreOptions" ng-click="newSessionReview.score = i">{{i}}
         </label>
@@ -45,7 +47,9 @@
     </div>
 
     <div class="col-sm-10 text-right" style="padding-right:5px;margin:20px 0"><hr>
-      <div class="btn btn-default"><%= link_to t('sessions.buttons.cancel'), "#/sessions/show/{{session.id}}" %></div>
+      <div class="btn btn-default">
+        <%= link_to t('sessions.buttons.cancel'), "#/sessions/show/{{session.id}}" %>
+      </div>
     </div>
   </div>
 <% else %>
