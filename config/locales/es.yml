@@ -10,6 +10,31 @@ es:
     vote:
       title: "Votá"
       paragraph: "Ayudá a generar la grilla de charlas con tu feedback! Podés hacer comentarios a los autores de las mismas, marcar tus favoritas, y mas!"
+  sessions:
+    labels:
+      matching_tags: "Otros tags relevantes"
+      new: "¿De qué te gustaría hablar?"
+      title: "Título"
+      summary: "Sinopsis"
+      description: "Descripción"
+      video: "Video Presentación"
+      tags: "Tags"
+    markdown:
+      text: "Texto"
+      preview: "Vista Previa"
+      tip: "Tip: podes usar %{link} para dar formato a tu texto"
+    buttons:
+      create_session: "Crear propuesta"
+      update_session: "Actualizar propuesta"
+    errors:
+      title_cant_be_blank: "Es necesarion que indiques el título"
+      summary_cant_be_blank: "Es necesarion que indiques la sinopsis"
+      track_cant_be_blank: "Es necesarion que indiques el track"
+      description_cant_be_blank: "Es necesarion que indiques la descripción"
+    help:
+      search: "top|Busca sesiones por autor o bien por palabras clave, tags, etc (i.e. scrum, devops)"
+      vote_count: "top|Tus votos disponibles"
+      create_session: "bottom|Proponé una nueva sesión"
   activerecord:
     models: 
       user: "Usuario"

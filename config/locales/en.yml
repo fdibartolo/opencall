@@ -31,3 +31,28 @@ en:
     vote:
       title: "Vote"
       paragraph: "Help to build the session grid with your feedback! You can add comments to the proposals, fav the ones you like, and more!"
+  sessions:
+    labels:
+      matching_tags: "Other relevant tags"
+      new: "What would you like to talk about?"
+      title: "Title"
+      summary: "Summary"
+      description: "Description"
+      video: "Presentation Video"
+      tags: "Tags"
+    markdown:
+      text: "Text"
+      preview: "Preview"
+      tip: "Tip: you can use %{link} to format your text"
+    buttons:
+      create_session: "Create proposal"
+      update_session: "Update proposal"
+    errors:
+      title_cant_be_blank: "You must provide a title"
+      summary_cant_be_blank: "You must provide a summary"
+      track_cant_be_blank: "You must provide a track"
+      description_cant_be_blank: "You must provide a description"
+    help:
+      search: "top|Find session proposals by author or key words, tags, etc (i.e. scrum, devops)"
+      vote_count: "top|Your available votes"
+      create_session: "bottom|Propose a session"
