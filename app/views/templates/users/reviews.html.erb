@@ -5,11 +5,11 @@
     </div>
     <div ng-if="!loading">
       <div ng-if="reviews.length == 0" class="no-search-results">
-        <h2 class="text-center">Aún no has hecho ninguna revisión!</h2>
+        <h2 class="text-center"><%= t('sessions.labels.no_reviews_yet') %></h2>
       </div>
 
       <div ng-if="reviews.length > 0" fade-animation="true">
-        <h2 class="text-center">Mis revisiones</h2><br><br>
+        <h2 class="text-center"><%= t('sessions.labels.my_reviewed_sessions') %></h2><br><br>
 
         <div ng-repeat="review in reviews" class="row session-summary">
           <div class="col-sm-2 text-center">
@@ -21,7 +21,8 @@
             <h3>
               <a ng-href="#/sessions/show/{{review.session_proposal_id}}">{{review.session_proposal_title}}</a>
               <a ng-href="#/sessions/show/{{review.session_proposal_id}}" class="btn btn-xs btn-primary pull-right" style="color:white">
-                Ver propuesta &nbsp; <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                <%= t('sessions.buttons.show_session') %> &nbsp; 
+                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
               </a>
             </h3>
             <div class="author">{{review.session_proposal_author}}</div>
@@ -34,7 +35,7 @@
 <% else %>
   <div class="no-review-access">
     <h4 class="text-muted text-center">
-      No tienes permiso para hacer revisiones... <br><br>
+      <%= t('sessions.no_access.reviews') %> <br><br>
       <span class="ion-sad"></span>
     </h4>
   </div>

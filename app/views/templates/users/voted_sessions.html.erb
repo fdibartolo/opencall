@@ -5,25 +5,28 @@
   <div ng-if="!loading">
     <div ng-if="sessions.length == 0" class="no-search-results">
       <h2 class="text-center">
-        Aún tienes tus <%= MaxSessionProposalVotes %> votos disponibles!<br><br>
-        <small>Para votar, puedes simplemente buscar entre las sesiones y hacer click en el &nbsp;<span class="ion-ios7-circle-outline text-success" style="font-size:150%"></span>&nbsp; a la derecha del título de la misma</small> <br><br>
+        <%= t('sessions.labels.no_vote_yet.primary', count: MaxSessionProposalVotes) %><br><br>
+        <small>
+          <%= t('sessions.labels.no_fav_yet.secondary', span: '<span class="ion-ios7-circle-outline text-success" style="font-size:150%"></span>').html_safe %>
+        </small> <br><br>
       </h2>
       <div class="home-button-container">
         <a class="img-circle home-button text-center" href="<%= root_url + '#/sessions' %>">
           <span class="glyphicon glyphicon-thumbs-up icon" aria-hidden="true"></span><br>
-          <span class="text">Votá</span>
+          <span class="text"><%= t('sessions.buttons.vote') %></span>
         </a>
       </div>
     </div>
 
     <div ng-if="sessions.length > 0" class="col-sm-offset-1 col-sm-10"><br><br>
-      <h2 class="text-center">Sesiones propuestas que tienen mi voto</h2><br><br>
+      <h2 class="text-center"><%= t('sessions.labels.my_voted_sessions') %></h2><br><br>
 
       <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
         <h3>
           <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
           <a ng-click="remove_vote(session.id)" class="btn btn-xs btn-danger pull-right" style="color:white;margin:5px">
-            Remover voto &nbsp; <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <%= t('sessions.buttons.unvote_session') %> &nbsp; 
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </a>
         </h3>
         <div class="track">{{session.track}}</div>
@@ -33,7 +36,7 @@
             <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
             <li class="pull-right" ng-if="session.video_link != null && session.video_link != ''" title="{{session.video_link}}">
               <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
-                <span class="ion-videocamera">&nbsp;</span>Video presentación
+                <span class="ion-videocamera">&nbsp;</span><%= t('sessions.labels.video') %>
               </a>
             </li>
           </ul>
