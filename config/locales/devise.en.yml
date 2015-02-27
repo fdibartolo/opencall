@@ -55,6 +55,8 @@ en:
         secondary: "We can email you some instructions so you can reset it"
       new_sessions: "Welcome!"
       new_registrations: "Welcome!"
+      social_login: "Login with your social account"
+      social_linked: "Your linked accounts"
     labels:
       first_name: "First Name"
       last_name: "Last Name"

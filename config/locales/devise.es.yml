@@ -53,6 +53,8 @@ es:
         secondary: "Te podemos enviar instrucciones para que puedas resetearla"
       new_sessions: "Bienvenido!"
       new_registrations: "Bienvenido!"
+      social_login: "Ingresa con tu cuenta de"
+      social_linked: "Tus cuentas asociadas"
     labels:
       first_name: "Nombre"
       last_name: "Apellido"
