@@ -48,6 +48,34 @@ en:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+    title:
+      edit_password: "Password reset"
+      new_password:
+        primary: "Forgot your password?"
+        secondary: "We can email you some instructions so you can reset it"
+    labels:
+      first_name: "First Name"
+      last_name: "Last Name"
+      country: "Country"
+      email: "Email"
+      password: "Password"
+      new_password: "New password"
+      password_confirmation: "Confirmation"
+      current_password: "Current Password"
+      current_password_hint: "You need your current password to make changes to your profile"
+      password_length: "%{length} min characters"
+      bio_text: "Text"
+      bio_social_network: "Social Networks"
+      bio_hint: "You may describe yourself, and/or <br> reference your social network profiles"
+    buttons:
+      send: "Send"
+      confirm: "Confirm"
+      save: "Save"
+      back: "Back"
+      signup: "Sign Up"
+      delete:
+        label: "Delete my account"
+        confirmation: "Your account will be deleted and this action cannot be reversed. Do you confirm?"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

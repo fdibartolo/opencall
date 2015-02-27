@@ -46,6 +46,34 @@ es:
       send_instructions: "Recibirás un correo electrónico con las instrucciones de cómo desbloquear tu cuenta en unos minutos."
       send_paranoid_instructions: "Si tu cuenta existe, recibirás un correo electrónico con las instrucciones de cómo desbloquearla en unos minutos."
       unlocked: "Tu cuenta ha sido desbloqueada con éxito. Por favor inicia sesión para continuar."
+    title:
+      edit_password: "Cambio de contraseña"
+      new_password:
+        primary: "¿Olvidaste tu contraseña?"
+        secondary: "Te podemos enviar instrucciones para que puedas resetearla"
+    labels:
+      first_name: "Nombre"
+      last_name: "Apellido"
+      country: "País"
+      email: "Email"
+      password: "Contraseña"
+      new_password: "Nueva contraseña"
+      password_confirmation: "Confirmación"
+      current_password: "Contraseña actual"
+      current_password_hint: "Necesitas ingresar tu contraseña actual para poder confirmar algún cambio en tu perfil"
+      password_length: "%{length} caracteres mínimo"
+      bio_text: "Texto"
+      bio_social_network: "Redes Sociales"
+      bio_hint: "Puedes describirte o bien <br> referenciar tu perfil en las redes sociales"
+    buttons:
+      send: "Enviar"
+      confirm: "Confirmar"
+      save: "Guardar"
+      back: "Volver"
+      signup: "Registrarme"
+      delete:
+        label: "Borrar mi cuenta"
+        confirmation: "Tu cuenta será borrada de forma permanente y no tiene vuelta atrás. Deseas borrarla?"
   errors:
     messages:
       already_confirmed: "ya fue confirmada, por favor intenta iniciando sesión"
