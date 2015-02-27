@@ -4,10 +4,11 @@
 <div class="col-sm-7">
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-horizontal" }) do |f| %>
 
-    <div class="form-group">
+    <div class="<%= validation_error_class? :email %>">
       <label for="input-email" class="col-sm-2 control-label">Email</label>
       <div class="col-sm-8">
         <%= f.email_field :email, autofocus: true, class: "form-control", id: "input-email", placeholder: "Email" %>
+        <%= validation_error_details? :email %>
       </div>
     </div>
 
