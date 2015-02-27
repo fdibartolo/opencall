@@ -92,3 +92,15 @@ en:
       description: "Details about the session, such as the dynamic to be used, target audience, etc"
     no_access:
       reviews: "You have no access to perform reviews..."
+  activerecord:
+    models: 
+      user: "User"
+    attributes:
+      user:
+        first_name: "First Name"
+        last_name: "Last Name"
+        country: "Country"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        current_password: "Current password"
