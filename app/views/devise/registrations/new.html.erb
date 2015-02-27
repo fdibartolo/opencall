@@ -4,58 +4,62 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
 
     <div class="<%= validation_error_class? :first_name %>">
-      <label for="input-firstname" class="col-sm-3 control-label">First Name</label>
+      <label for="input-firstname" class="col-sm-3 control-label"><%= t('devise.labels.first_name') %></label>
       <div class="col-sm-7">
-        <%= f.text_field :first_name, autofocus: true, class: "form-control", id: "input-firstname", placeholder: "First Name" %>
+        <%= f.text_field :first_name, autofocus: true, class: "form-control", id: "input-firstname", placeholder: t('devise.labels.first_name') %>
         <%= validation_error_details? :first_name %>
       </div>
     </div>
 
     <div class="<%= validation_error_class? :last_name %>">
-      <label for="input-lastname" class="col-sm-3 control-label">Last Name</label>
+      <label for="input-lastname" class="col-sm-3 control-label"><%= t('devise.labels.last_name') %></label>
       <div class="col-sm-7">
-        <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: "Last Name" %>
+        <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: t('devise.labels.last_name') %>
         <%= validation_error_details? :last_name %>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="input-country" class="col-sm-3 control-label">Country</label>
+      <label for="input-country" class="col-sm-3 control-label"><%= t('devise.labels.country') %></label>
       <div class="col-sm-7">
         <%= f.select :country, options_for_select(%w[Argentina Bolivia Brazil Chile Colombia CostaRica Cuba Ecuador ElSalvador Honduras Mexico Nicaragua Panama Paraguay Peru Uruguay Venezuela]), {}, { class: "form-control selectpicker", id: "input-country" } %>
       </div>
     </div>
 
     <div class="<%= validation_error_class? :email %>">
-      <label for="input-email" class="col-sm-3 control-label">Email</label>
+      <label for="input-email" class="col-sm-3 control-label"><%= t('devise.labels.email') %></label>
       <div class="col-sm-7">
-        <%= f.email_field :email, class: "form-control", id: "input-email", placeholder: "Email" %>
+        <%= f.email_field :email, class: "form-control", id: "input-email", placeholder: t('devise.labels.email') %>
         <%= validation_error_details? :email %>
       </div>
     </div>
 
     <div class="<%= validation_error_class? :password %>">
-      <label for="input-password" class="col-sm-3 control-label">Password</label>
+      <label for="input-password" class="col-sm-3 control-label"><%= t('devise.labels.password') %></label>
       <div class="col-sm-7">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Password" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: t('devise.labels.password') %>
         <%= validation_error_details? :password %>
         <% if @validatable %>
-          <small class="text-muted"><%= @minimum_password_length %> min characters</small>
+          <small class="text-muted">
+            <%= t('devise.labels.password_length', length: @minimum_password_length) %>
+          </small>
         <% end %>
       </div>
     </div>
 
     <div class="<%= validation_error_class? :password_confirmation %>">
-      <label for="input-password2" class="col-sm-3 control-label">Repeat Password</label>
+      <label for="input-password2" class="col-sm-3 control-label">
+        <%= t('devise.labels.password_confirmation') %>
+      </label>
       <div class="col-sm-7">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: "Password Confirmation" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: t('devise.labels.password_confirmation') %>
         <%= validation_error_details? :password_confirmation %>
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-7">
-        <button type="submit" class="btn btn-primary">Sign up</button>
+        <button type="submit" class="btn btn-primary"><%= t('devise.buttons.signup') %></button>
       </div>
     </div>
   <% end %>

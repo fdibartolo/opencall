@@ -1,31 +1,37 @@
-<h2>Password reset</h2><br>
+<h2><%= t('devise.title.edit_password') %></h2><br>
 
 <div class="col-sm-7">
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f| %>
     <%= f.hidden_field :reset_password_token %>
 
     <div class="<%= validation_error_class? :password %>">
-      <label for="input-password" class="col-sm-3 control-label">New password</label>
+      <label for="input-password" class="col-sm-3 control-label">
+        <%= t('devise.labels.new_password') %>
+      </label>
       <div class="col-sm-7">
-        <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Password" %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control", id: "input-password", placeholder: t('devise.labels.new_password') %>
         <%= validation_error_details? :password %>
         <% if @validatable %>
-          <small class="text-muted"><%= @minimum_password_length %> min characters</small>
+          <small class="text-muted">
+            <%= t('devise.labels.password_length', length: @minimum_password_length) %>
+          </small>
         <% end %>
       </div>
     </div>
 
     <div class="<%= validation_error_class? :password_confirmation %>">
-      <label for="input-password2" class="col-sm-3 control-label">Confirmation</label>
+      <label for="input-password2" class="col-sm-3 control-label">
+        <%= t('devise.labels.password_confirmation') %>
+      </label>
       <div class="col-sm-7">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: "Password confirmation" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "input-password2", placeholder: t('devise.labels.password_confirmation') %>
         <%= validation_error_details? :password_confirmation %>
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-7">
-        <button id="signin-button" type="submit" class="btn btn-primary">Confirm</button>
+        <button id="signin-button" type="submit" class="btn btn-primary"><%= t('devise.buttons.confirm') %></button>
       </div>
     </div>
   <% end %>
