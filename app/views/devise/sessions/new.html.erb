@@ -1,19 +1,19 @@
-<h2 class="text-center">Welcome!</h2><br>
+<h2 class="text-center"><%= t('devise.title.new_sessions') %></h2><br>
 
 <div class="col-sm-7">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
 
     <div class="form-group">
-      <label for="input-email" class="col-sm-2 control-label">Email</label>
+      <label for="input-email" class="col-sm-2 control-label"><%= t('devise.labels.email') %></label>
       <div class="col-sm-8">
-        <%= f.email_field :email, autofocus: true, class: "form-control", id: "input-email", placeholder: "Email" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control", id: "input-email", placeholder: t('devise.labels.email') %>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="input-password" class="col-sm-2 control-label">Password</label>
+      <label for="input-password" class="col-sm-2 control-label"><%= t('devise.labels.password') %></label>
       <div class="col-sm-8">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: "Password" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "input-password", placeholder: t('devise.labels.password') %>
       </div>
     </div>
 
@@ -21,15 +21,16 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-8">
           <%= f.check_box :remember_me %>
-          <small><%= f.label 'Remember me' %></small>
-          <%= link_to "Forgot your password?", new_password_path(resource_name), class: "pull-right" %><br />
+          <small><%= f.label t('devise.labels.remember_me') %></small>
+          <%= link_to t('devise.labels.forgot_password'), new_password_path(resource_name), class: "pull-right" %>
+          <br>
         </div>
       </div>
     <% end -%>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-8">
-        <button id="signin-button" type="submit" class="btn btn-primary">Login</button>
+        <button id="signin-button" type="submit" class="btn btn-primary"><%= t('devise.buttons.login') %></button>
       </div>
     </div>
   <% end %>
