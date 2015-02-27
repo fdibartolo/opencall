@@ -53,6 +53,8 @@ en:
       new_password:
         primary: "Forgot your password?"
         secondary: "We can email you some instructions so you can reset it"
+      new_sessions: "Welcome!"
+      new_registrations: "Welcome!"
     labels:
       first_name: "First Name"
       last_name: "Last Name"
@@ -64,6 +66,8 @@ en:
       current_password: "Current Password"
       current_password_hint: "You need your current password to make changes to your profile"
       password_length: "%{length} min characters"
+      remember_me: "Remember me"
+      forgot_password: "Forgot your password?"
       bio_text: "Text"
       bio_social_network: "Social Networks"
       bio_hint: "You may describe yourself, and/or <br> reference your social network profiles"
@@ -73,6 +77,7 @@ en:
       save: "Save"
       back: "Back"
       signup: "Sign Up"
+      login: "Login"
       delete:
         label: "Delete my account"
         confirmation: "Your account will be deleted and this action cannot be reversed. Do you confirm?"

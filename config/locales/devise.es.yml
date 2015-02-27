@@ -51,6 +51,8 @@ es:
       new_password:
         primary: "¿Olvidaste tu contraseña?"
         secondary: "Te podemos enviar instrucciones para que puedas resetearla"
+      new_sessions: "Bienvenido!"
+      new_registrations: "Bienvenido!"
     labels:
       first_name: "Nombre"
       last_name: "Apellido"
@@ -62,6 +64,8 @@ es:
       current_password: "Contraseña actual"
       current_password_hint: "Necesitas ingresar tu contraseña actual para poder confirmar algún cambio en tu perfil"
       password_length: "%{length} caracteres mínimo"
+      remember_me: "Recordarme"
+      forgot_password: "¿Olvidaste tu contraseña?"
       bio_text: "Texto"
       bio_social_network: "Redes Sociales"
       bio_hint: "Puedes describirte o bien <br> referenciar tu perfil en las redes sociales"
@@ -71,6 +75,7 @@ es:
       save: "Guardar"
       back: "Volver"
       signup: "Registrarme"
+      login: "Ingresar"
       delete:
         label: "Borrar mi cuenta"
         confirmation: "Tu cuenta será borrada de forma permanente y no tiene vuelta atrás. Deseas borrarla?"
