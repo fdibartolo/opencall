@@ -21,7 +21,7 @@ RSpec.describe Users::UsersController, :type => :controller do
 
     it { expect(logged_in(:user).identities).to_not include identity }
     it { expect(response).to redirect_to(edit_user_registration_path(logged_in(:user))) }
-    it { expect(request.flash[:notice]).to include "Has desasociado tu cuenta de #{identity.provider} con éxito" }
+    it { expect(request.flash[:notice]).to include I18n.t('flash.unlink_social_ok', provider: identity.provider) }
   end
 
   describe "GET session voted ids" do
