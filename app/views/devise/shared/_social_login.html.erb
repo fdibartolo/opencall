@@ -1,6 +1,6 @@
 <div class="col-sm-5 social-login-container">
   <%- if devise_mapping.omniauthable? %>
-    <h4>Login with your social account</h4>
+    <h4><%= t('devise.title.social_login') %></h4>
     <%- resource_class.omniauth_providers.each do |provider| %>
       <% provider_icon = provider == :google_oauth2 ? 'googleplus' : provider %>
       <div class="col-xs-4 text-center">
