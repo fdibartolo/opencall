@@ -8,7 +8,13 @@
       </div>
       <div class="col-sm-8">
         <h2>{{session.title}}</h2>
-        <div class="track">{{session.track}}</div>
+        <!-- <div class="track">{{session.track}}</div> -->
+        <div class="row">
+          <div class="track col-sm-6">{{session.track}}</div>
+          <div class="audience col-sm-6 text-right">
+            <span class="glyphicon glyphicon-tag"></span>&nbsp;{{session.audience}}
+          </div>
+        </div>
         <ul class="list-inline">
           <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
           <li class="pull-right" ng-if="session.video_link != null && session.video_link != ''" title="{{session.video_link}}">
