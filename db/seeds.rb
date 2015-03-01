@@ -6,7 +6,7 @@
   Role.create! name: role_name unless Role.exists?(name: role_name)
 end
 
-%w[TrackA TrackB TrackC].each do |track_name|
+["Lecture", "Reporte de experiencia", "Workshop"].each do |track_name|
   Track.create! name: track_name unless Track.exists?(name: track_name)
 end
 
