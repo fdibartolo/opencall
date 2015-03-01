@@ -15,6 +15,7 @@ RSpec.describe SessionProposal, :type => :model do
 
   describe "optional attributes" do
     it { expect(SessionProposal.attribute_names).to include 'video_link' }
+    it { expect(SessionProposal.attribute_names).to include 'audience_count' }
   end
 
   describe "#autosave_associated_records_for_tags" do

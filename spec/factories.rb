@@ -28,13 +28,14 @@ FactoryGirl.define do
   end
 
   factory :session_proposal do
-    title       'Refactoring'
-    summary     'Session summary'
-    description 'A long description for refactoring'
-    association :user, factory: :user, first_name: 'bob'
-    # association :track, factory: :track
-    track_id    1
-    audience_id 1
+    title          'Refactoring'
+    summary        'Session summary'
+    description    'A long description for refactoring'
+    association    :user, factory: :user, first_name: 'bob'
+    # association    :track, factory: :track
+    track_id       1
+    audience_id    1
+    audience_count 30
     factory :session_proposal_with_comment do
       after(:create) do |session_proposal|
         create(:comment, session_proposal: session_proposal)
