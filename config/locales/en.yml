@@ -37,6 +37,8 @@ en:
       matching_tags: "Other relevant tags"
       new: "What would you like to talk about?"
       title: "Title"
+      track: "Track"
+      audience: "Audience"
       summary: "Summary"
       description: "Description"
       video: "Presentation Video"
@@ -77,6 +79,7 @@ en:
       title_cant_be_blank: "You must provide a title"
       summary_cant_be_blank: "You must provide a summary"
       track_cant_be_blank: "You must provide a track"
+      audience_cant_be_blank: "You must provide targeted audience"
       description_cant_be_blank: "You must provide a description"
     help:
       search: "top|Find session proposals by author or key words, tags, etc (i.e. scrum, devops)"
