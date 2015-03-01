@@ -39,6 +39,7 @@ en:
       title: "Title"
       track: "Session Type"
       audience: "Audience"
+      audience_count: "Participants limit"
       summary: "Summary"
       description: "Description"
       video: "Presentation Video"
@@ -93,6 +94,7 @@ en:
       review: "Give your point of view about the session proposal"
       summary: "Summary that highlights the session"
       description: "Details about the session, such as the dynamic to be used, target audience, etc"
+      audience_count: "Max number of participants the session is limited to"
     no_access:
       reviews: "You have no access to perform reviews..."
   activerecord:

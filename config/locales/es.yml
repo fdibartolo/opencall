@@ -18,6 +18,7 @@ es:
       title: "Título"
       track: "Tipo de sesión"
       audience: "Audiencia"
+      audience_count: "Límite participantes"
       summary: "Sinopsis"
       description: "Descripción"
       video: "Video Presentación"
@@ -72,6 +73,7 @@ es:
       review: "Da tu punto de vista de la sesión"
       summary: "Sinopsis que resume la sesión"
       description: "Detalles sobre la sesión, como ser la dinámica a utilizar, el tipo de audiencia, etc"
+      audience_count: "Máximo númbero de participantes que puede tener la sesión"
     no_access:
       reviews: "No tienes permiso para hacer revisiones..."
   activerecord:
