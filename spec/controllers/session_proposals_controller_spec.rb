@@ -17,7 +17,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
   describe "GET index" do
     it "should list all SessionProposals" do
-      session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track)
+      session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track), audience: FactoryGirl.create(:audience)
 
       get :index
 
@@ -44,7 +44,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
     context "with valid params" do
       it "should return the SessionProposal for given id" do
-        session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track)
+        session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track), audience: FactoryGirl.create(:audience)
         allow(SessionProposal).to receive(:find_by).and_return(session)
         
         get :show, { id: session.id }
