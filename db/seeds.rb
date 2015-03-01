@@ -10,6 +10,10 @@ end
   Track.create! name: track_name unless Track.exists?(name: track_name)
 end
 
+%w[Principiantes Practicantes Expertos].each do |audience_name|
+  Audience.create! name: audience_name unless Audience.exists?(name: audience_name)
+end
+
 # Test-specifif env
 if Rails.env.test?
   User.create!({
