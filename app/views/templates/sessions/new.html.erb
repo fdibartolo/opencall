@@ -20,6 +20,15 @@
         <small ng-if="newSession.invalidTrackId" class="text-danger"><%= t('sessions.errors.track_cant_be_blank') %></small>
       </div>
     </div>
+
+    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidAudienceId}">
+      <label for="select-audience" class="col-sm-2 control-label"><%= t('sessions.labels.audience') %></label>
+      <div class="col-sm-8">
+        <%= select_tag "audience", options_from_collection_for_select(Audience.all, "id", "name"), { id: "select-audience", 'ng-model': "newSession.audience_id", class: "form-control selectpicker" } %>
+        <small ng-if="newSession.invalidAudienceId" class="text-danger"><%= t('sessions.errors.audience_cant_be_blank') %></small>
+      </div>
+    </div>
+
     <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidSummary}">
       <label for="input-summary" class="col-sm-2 control-label"><%= t('sessions.labels.summary') %></label>
       <div class="col-sm-8">

@@ -56,12 +56,12 @@ class SessionProposalsController < ApplicationController
   end
 
   private
-    def set_session_proposal
-      @session_proposal = SessionProposal.find_by(id: params[:id])
-      return head(:bad_request, { message: "Unable to find session proposal with id '#{params[:id]}'"}) unless @session_proposal
-    end
+  def set_session_proposal
+    @session_proposal = SessionProposal.find_by(id: params[:id])
+    return head(:bad_request, { message: "Unable to find session proposal with id '#{params[:id]}'"}) unless @session_proposal
+  end
 
-    def session_proposal_params
-      params.require(:session_proposal).permit(:title, :summary, :description, :video_link, :track_id, :tags_attributes => [ :name ])
-    end
+  def session_proposal_params
+    params.require(:session_proposal).permit(:title, :summary, :description, :video_link, :track_id, :audience_id, :tags_attributes => [ :name ])
+  end
 end

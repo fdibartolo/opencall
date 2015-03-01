@@ -19,6 +19,7 @@ angular.module('openCall.services').factory 'SessionsService',
       session_proposal:
         title: session.title
         track_id: session.track_id
+        audience_id: session.audience_id
         summary: session.summary
         description: session.description
         video_link: session.video_link
@@ -37,6 +38,7 @@ angular.module('openCall.services').factory 'SessionsService',
       session_proposal:
         title: session.title
         track_id: session.track_id
+        audience_id: session.audience_id
         summary: session.summary
         description: session.description
         video_link: session.video_link
