@@ -15,7 +15,8 @@
       </h2>
       <div class="row">
         <div class="track col-sm-6">{{session.track}}</div>
-        <div class="audience col-sm-6 text-right">
+        <div class="col-sm-6 audience text-right">
+          <span class="count ion-person-stalker"></span>&nbsp;{{session.audience_count || "-"}} &nbsp;&nbsp;
           <span class="glyphicon glyphicon-tag"></span>&nbsp;{{session.audience}}
         </div>
       </div>

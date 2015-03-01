@@ -9,6 +9,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     title: ''
     track_id: ''
     audience_id: ''
+    audience_count: ''
     summary: ''
     description: ''
     video_link: ''

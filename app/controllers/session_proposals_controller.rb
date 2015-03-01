@@ -62,6 +62,6 @@ class SessionProposalsController < ApplicationController
   end
 
   def session_proposal_params
-    params.require(:session_proposal).permit(:title, :summary, :description, :video_link, :track_id, :audience_id, :tags_attributes => [ :name ])
+    params.require(:session_proposal).permit(:title, :summary, :description, :video_link, :track_id, :audience_id, :audience_count, :tags_attributes => [ :name ])
   end
 end
