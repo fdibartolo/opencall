@@ -34,7 +34,7 @@ FactoryGirl.define do
     association :user, factory: :user, first_name: 'bob'
     # association :track, factory: :track
     track_id    1
-
+    audience_id 1
     factory :session_proposal_with_comment do
       after(:create) do |session_proposal|
         create(:comment, session_proposal: session_proposal)
@@ -64,5 +64,9 @@ FactoryGirl.define do
   factory :track do
     # sequence(:name) {|n| n}
     name 'craftmanship'
+  end
+
+  factory :audience do
+    name 'expert'
   end
 end
