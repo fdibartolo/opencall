@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable, :omniauth_providers => [:github, :google_oauth2, :linkedin]
+  devise :omniauthable, :omniauth_providers => [:linkedin]
 
   validates :first_name,  presence: true
   validates :last_name,   presence: true

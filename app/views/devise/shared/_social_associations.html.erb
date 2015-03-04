@@ -5,7 +5,7 @@
       <% class_delta, action, message = link_context_for provider %>
       <div class="center-block">
         <%= link_to content_tag(:span, '', class: "btn-social #{class_delta}"), action %>
-        <span><%= message %></span>
+        <span class="text-muted"><em><%= message %></em></span>
       </div>
     <% end -%>
   <% end -%>
