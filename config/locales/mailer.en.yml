@@ -1,0 +1,5 @@
+en:
+  session_proposal_mailer:
+    session_proposal_created_email:
+      subject: "Agiles 2015 - Session proposal submitted"
+      body: "Dear %{user},\n\nThank you for submitting the session proposal '%{title}' to the Agiles 2015 conference. \nYou can access and amend the proposal until the session submission deadline by following the link: \n\n%{show_link}\n\nRegards,\nProgram Committee of Agiles 2015 Conference\n\n[Please do not reply to this e-mail. It was sent from an unmonitored email address]"

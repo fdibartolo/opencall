@@ -1,0 +1,5 @@
+es:
+  session_proposal_mailer:
+    session_proposal_created_email:
+      subject: "Agiles 2015 - Propuesta recibida"
+      body: "Estimado %{user},\n\nGracias por enviar la propuesta '%{title}' para la conferencia Agiles 2015. \nUsted puede acceder a ella y/o hacer cambios hasta la fecha límite de envío, a traves del siguiente link: \n\n%{show_link}\n\nMuchas gracias,\nPrograma Commité Conferencia Agiles 2015\n\n[Por favor no responda a este correo electrónico. Ha sido enviado desde una casilla no monitoreada]"
