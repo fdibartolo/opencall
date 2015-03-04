@@ -118,7 +118,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
         post :create, payload
         email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq 'Agiles 2015 - Session proposal submitted'
+        expect(email.subject).to eq I18n.t('session_proposal_mailer.session_proposal_created_email.subject')
       end
 
       it "should return unprocesable entity if cannot save" do
