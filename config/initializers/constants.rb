@@ -4,3 +4,5 @@ RoleAdmin     = 'admin'
 RoleReviewer  = 'reviewer'
 
 MaxSessionProposalVotes = 10
+
+MailerAccount = "agiles@opencall.com"
