@@ -114,6 +114,13 @@ RSpec.describe SessionProposalsController, :type => :controller do
         expect(response).to have_http_status(204)
       end
 
+      it "should fire email if can save" do
+        allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
+        post :create, payload
+        email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq 'Agiles 2015 - Session proposal submitted'
+      end
+
       it "should return unprocesable entity if cannot save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(false)
         post :create, payload
