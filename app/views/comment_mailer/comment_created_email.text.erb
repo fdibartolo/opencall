@@ -1,0 +1,5 @@
+<%= I18n.t('comment_mailer.comment_created_email.body', 
+  user: @user.full_name, 
+  title: @session_proposal.title, 
+  body: @comment.body, 
+  show_link: "#{root_url}#/sessions/show/#{@session_proposal.id}") %>
