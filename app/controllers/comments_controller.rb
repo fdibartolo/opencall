@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     comment = Comment.new comments_params.merge!({ user_id: current_user.id, session_proposal_id: @session_proposal.id })
 
     if comment.save
+      CommentMailer.comment_created_email(comment).deliver_now
       head :no_content
     else
       head :unprocessable_entity

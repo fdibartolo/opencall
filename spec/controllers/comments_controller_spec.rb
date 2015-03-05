@@ -38,11 +38,18 @@ RSpec.describe CommentsController, :type => :controller do
       let(:session) { FactoryGirl.create :session_proposal_with_comment }
       let(:payload) { { session_proposal_id: session.id, comment: { body: 'new comment' }}}
 
-      it "should add commento to given SessionProposal" do
+      it "should add comment to given SessionProposal" do
         post :create, payload
         expect(response).to have_http_status(204)
         expect(session.comments.count).to eq 2
         expect(session.comments.last.body).to eq 'new comment'
+      end
+
+      it "should fire email" do
+        allow_any_instance_of(Comment).to receive(:save).and_return(true)
+        post :create, payload
+        email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq I18n.t('comment_mailer.comment_created_email.subject')
       end
     end
   end
