@@ -1,4 +1,5 @@
-angular.module('openCall.controllers').controller 'ErrorsController', ['$scope', '$routeParams', ($scope, $routeParams) ->
+angular.module('openCall.controllers').controller 'ErrorsController', 
+['$scope', '$routeParams', ($scope, $routeParams) ->
   
   $scope.error = ''
 
