@@ -76,5 +76,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'TBD' }
+  config.action_mailer.default_url_options = { host: 'opencall.herokuapp.com' }
 end
