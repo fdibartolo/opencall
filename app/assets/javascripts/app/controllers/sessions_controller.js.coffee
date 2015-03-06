@@ -38,8 +38,10 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.createSession = () ->
     if validSession()
+      $scope.$emit 'showLoadingSpinner', 'Creating...'
       SessionsService.create($scope.newSession).then (id) ->
         $location.path "/sessions/show/#{id}"
+        $scope.$emit 'hideLoadingSpinner'
         toaster.pop 'success', '', 'La sesión propuesta fue creada exitosamente', 5000
 
   $scope.updateSession = () ->
@@ -125,6 +127,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.postComment = () ->
     if $scope.newSessionComment.body isnt ''
+      $scope.$emit 'showLoadingSpinner', 'Commenting...'
       CommentsService.create($routeParams.id, $scope.newSessionComment).then () ->
         comment = 
           body: $scope.newSessionComment.body
@@ -134,6 +137,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
         $scope.session.comments.push comment
         $scope.newSessionComment.body = ''
         $scope.newSessionComment.date = null
+        $scope.$emit 'hideLoadingSpinner'
 
   $scope.postReview = () ->
     $scope.newSessionReview.invalidBody = $scope.newSessionReview.body is ''
