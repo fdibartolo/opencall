@@ -38,17 +38,17 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.createSession = () ->
     if validSession()
-      $scope.$emit 'showLoadingSpinner', 'Creating...'
+      $scope.$emit 'showLoadingSpinner', 'Submitting...'
       SessionsService.create($scope.newSession).then (id) ->
         $location.path "/sessions/show/#{id}"
         $scope.$emit 'hideLoadingSpinner'
-        toaster.pop 'success', '', 'La sesión propuesta fue creada exitosamente', 5000
+        toaster.pop 'success', '', 'Session proposal submitted successfully', 5000
 
   $scope.updateSession = () ->
     if validSession()
       SessionsService.update($scope.newSession).then (() ->
         $location.path "/sessions/show/#{$scope.newSession.id}"
-        toaster.pop 'success', '', 'La sesión propuesta fue editada exitosamente', 5000
+        toaster.pop 'success', '', 'Session proposal updated  successfully', 5000
       ), (errorKey) ->
         $location.path "/error/#{errorKey}"
 
@@ -148,7 +148,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
         $scope.newSessionReview.body = ''
         $scope.newSessionReview.score = 0
         $location.path "/sessions"
-        toaster.pop 'success', '', 'La revisión fue creada exitosamente', 5000
+        toaster.pop 'success', '', 'Review submitted successfully', 5000
     ), (errorKey) ->
        $location.path "/error/#{errorKey}"
 ]
