@@ -14,7 +14,6 @@
       <span class="actions pull-right clickable">
         <span ng-click="vote($index)" ng-if="!session.voted && availableVotes > 0" class="ion-ios7-circle-outline text-success" helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}"></span>
         <span ng-click="vote($index)" ng-if="session.voted" class="ion-checkmark-circled text-success" helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}"></span>
-        <!-- <span class="ion-chatboxes text-muted"></span> -->
         <span ng-click="fav($index)" ng-if="!session.faved" class="ion-ios7-star-outline text-warning" helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}"></span>
         <span ng-click="fav($index)" ng-if="session.faved" class="ion-ios7-star text-warning" helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}"></span>
         <% if current_user and can? :review, SessionProposal %>
@@ -23,13 +22,13 @@
       </span>      
     </h3>
     <div class="author">{{session.author}}</div>
-    <div class="track">{{session.track}}</div>
-    <p markdown="session.summary"></p>
-    <div><ul class="list-inline">
-      <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag)">
-        {{tag}}
-      </li>
-    </ul></div>
+    <!-- <div class="track">{{session.track}}</div> -->
+    <div>
+      <ul class="list-inline">
+        <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" 
+          ng-click="search(tag)">{{tag}}</li>
+      </ul>
+    </div>
   </div>
   <button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;padding:5px 50px">
     <%= t('sessions.buttons.load_more') %>
