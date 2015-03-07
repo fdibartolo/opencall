@@ -12,12 +12,17 @@ angular.module("openCall.directives").directive "helpable", ->
       )
     return
 
-angular.module("openCall.directives").directive "toggleHelp", ->
+angular.module("openCall.directives").directive "toggleHelp", 
+['$location', '$anchorScroll', ($location, $anchorScroll) -> 
   link: (scope, element, attrs) ->
     helpVisible = false
     element.bind "click", ->
       helpVisible = !helpVisible
       action = if helpVisible then 'show' else 'hide'
+
+      $location.hash('scroll-to-top'); $anchorScroll()  if action is 'show'
       $('.helpable').popover action
+
       return
     return
+]
