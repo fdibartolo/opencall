@@ -73,7 +73,7 @@ en:
       cancel: "Cancel"
       load_more: "Load more..."
       comment: "Comment"
-      back: "Back"
+      back: "Back to all sessions"
       vote: "Vote"
       fav: "Fav!"
     errors:

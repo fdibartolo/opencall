@@ -52,7 +52,7 @@ es:
       cancel: "Cancelar"
       load_more: "Cargar mas..."
       comment: "Comentar"
-      back: "Volver"
+      back: "Volver a todas las propuestas"
       vote: "Votá"
       fav: "Fav!"
     errors:
