@@ -1,14 +1,12 @@
 .search-unsticked {
-  padding:0 50px;
+  padding:0 100px;
   z-index:1040;
   position:relative;
 }
 
 .search-sticked {
-  left: 55px !important;
+  margin-left: 10px !important;
   p { display: none !important; }
 }
 
-.buttons-sticked {
-  margin-left: 0px !important;
-}
+.buttons-sticked { margin-left: 0px !important; }
