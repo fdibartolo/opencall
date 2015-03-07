@@ -23,4 +23,5 @@
 //= require marked
 //= require moment
 //= require toaster
+//= require sticky
 //= require_tree .

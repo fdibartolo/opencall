@@ -1,6 +1,5 @@
-<div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row">
-  <br><br>
-  <div class="row" ng-cloak ng-init="search()" style="padding:0 25px">
+<div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row"><br><br>
+  <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="search()">
     <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group has-feedback">
       <input type="text" class="form-control" 
         ng-model="searchTerms" 
@@ -21,7 +20,7 @@
     <div ng-if="!loading" ng-include="'templates/sessions/search_result.html'"></div>
   </div>
 
-  <div class="col-md-offset-1 col-md-3">
+  <div sticky offset="60" sticky-class="buttons-sticked" class="col-md-offset-1 col-md-3">
     <div class="action-button-container">
       <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes" helpable="<%= t('sessions.help.vote_count') %>">
         <span class="text" aria-hidden="true">{{availableVotes}}</span>
