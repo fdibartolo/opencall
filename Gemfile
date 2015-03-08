@@ -30,7 +30,7 @@ gem 'cancancan', '1.10.1'
 gem 'will_paginate', '3.0.7'
 gem 'elasticsearch-model', '0.1.6'
 gem 'elasticsearch-rails', '0.1.6'
-gem 'elasticsearch-extensions', '0.0.17'
+gem 'elasticsearch-extensions', '0.0.18'
 
 group :development, :test do
   gem 'spring', '1.3.2'
