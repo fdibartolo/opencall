@@ -12,8 +12,8 @@
   </div>
   <hr class="featurette-divider">
 
-  <% if current_user %>
-    <div class="row text-center">
+  <div class="row text-center">
+    <% if current_user %>
       <div class="col-xs-6">
         <div class="home-button-container">
           <a class="img-circle home-button" href="<%= root_url + '#/sessions/new' %>">
@@ -32,6 +32,16 @@
         </div>
         <p class="home-button-text hidden-xs"><%= t('home.vote.paragraph') %></p>
       </div>
-    </div>
-  <% end %>
+    <% else %>
+      <div class="col-xs-12">
+        <div class="home-button-container">
+          <a class="img-circle home-button" href="<%= root_url + '#/sessions' %>">
+            <span class="ion-cube icon" aria-hidden="true"></span><br>
+            <span class="text"><%= t('home.explore.title') %></span>
+          </a>
+        </div>
+        <p class="home-button-text hidden-xs"><%= t('home.explore.paragraph') %></p>
+      </div>
+    <% end %>
+  </div>
 </div>

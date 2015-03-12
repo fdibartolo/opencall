@@ -21,19 +21,7 @@
   </div>
 
   <div sticky offset="60" sticky-class="buttons-sticked" class="col-md-offset-1 col-md-3">
-    <div class="action-button-container">
-      <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes" helpable="<%= t('sessions.help.vote_count') %>">
-        <span class="text" aria-hidden="true">{{availableVotes}}</span>
-      </a>
-      <div class="divisor"></div>
-      <a class="img-circle btn-action info" toggle-help title="Mostrar ayuda">
-        <span class="text" aria-hidden="true">?</span>
-      </a>
-      <div class="divisor"></div>
-      <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="<%= t('sessions.help.create_session') %>">
-        <span class="ion-plus-round icon" aria-hidden="true"></span>
-      </a>
-    </div>
+    <div ng-include="'templates/sessions/search_side_bar.html'"></div>
     <br><br>
     <div ng-if="matched_tags.length > 0" class="text-center">
       <h3><%= t('sessions.labels.matching_tags') %></h3>

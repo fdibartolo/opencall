@@ -64,11 +64,12 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $scope.newSession.invalidAudienceId)
 
   $scope.getSessionVotedAndFavedIds = () ->
-    UsersService.user_session_voted_ids().then (ids) ->
-      $scope.sessionVotedIds = ids
-      $scope.availableVotes -= $scope.sessionVotedIds.length
-    UsersService.user_session_faved_ids().then (ids) ->
-      $scope.sessionFavedIds = ids
+    if CURRENT_USER_EMAIL isnt ''
+      UsersService.user_session_voted_ids().then (ids) ->
+        $scope.sessionVotedIds = ids
+        $scope.availableVotes -= $scope.sessionVotedIds.length
+      UsersService.user_session_faved_ids().then (ids) ->
+        $scope.sessionFavedIds = ids
 
   $scope.search = (termToAdd) ->
     $scope.loading = true

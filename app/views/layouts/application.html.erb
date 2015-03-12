@@ -9,6 +9,7 @@
 
   <script type="text/javascript">
     var BASE_URL = "<%= root_url %>";
+    var CURRENT_USER_EMAIL = "<%= current_user.email if current_user %>";
     var CURRENT_USER_AVATAR = "<%= current_user.avatar_url if current_user %>";
     var MAX_SESSION_PROPOSAL_VOTES = parseInt("<%= MaxSessionProposalVotes %>");
   </script>
@@ -61,14 +62,14 @@
                   </ul>
                 </li>
               <% else %>
-                <li style="padding:0 5px">
-                  <div class="btn btn-primary btn-sm navbar-btn">
-                    <%= link_to "Sign up", new_user_registration_path %>
+                <li style="padding:2px 5px">
+                  <div class="navbar-btn">
+                    <%= link_to t('sessions.buttons.sign_up'), new_user_registration_path, class: "btn btn-primary btn-sm" %>
                   </div>
                 </li>
-                <li style="padding:0 5px">
-                  <div class="btn btn-default btn-sm navbar-btn">
-                    <%= link_to "Sign in", new_user_session_path %>
+                <li style="padding:2px 5px">
+                  <div class="navbar-btn">
+                    <%= link_to t('sessions.buttons.sign_in'), new_user_session_path, class: "btn btn-default btn-sm" %>
                   </div>
                 </li>
               <% end %>

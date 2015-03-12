@@ -1,0 +1,20 @@
+<% if current_user %>
+  <div class="action-button-container">
+    <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes" helpable="<%= t('sessions.help.vote_count') %>">
+      <span class="text" aria-hidden="true">{{availableVotes}}</span>
+    </a>
+    <div class="divisor"></div>
+    <a class="img-circle btn-action info" toggle-help title="Mostrar ayuda">
+      <span class="text" aria-hidden="true">?</span>
+    </a>
+    <div class="divisor"></div>
+    <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="<%= t('sessions.help.create_session') %>">
+      <span class="ion-plus-round icon" aria-hidden="true"></span>
+    </a>
+  </div>
+<% else %>
+  <div class="social-login-container text-center" style="padding:10px;margin-top:50px">
+    <p><%= t('sessions.labels.sign_in_to_all') %></p><br>
+    <%= link_to t('sessions.buttons.sign_in'), new_user_session_path, class: "btn btn-primary" %>
+  </div>
+<% end %>

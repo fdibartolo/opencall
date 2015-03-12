@@ -1,5 +1,5 @@
 class SessionProposalsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:search, :show]
   before_action :set_session_proposal, only: [:show, :edit, :update]
 
   def index
