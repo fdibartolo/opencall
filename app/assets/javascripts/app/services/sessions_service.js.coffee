@@ -105,10 +105,22 @@ angular.module('openCall.services').factory 'SessionsService',
   sanitize = (message) ->
     return "session_not_found"  if message.indexOf("Unable to find session proposal with id") is 0
 
+  new_session = () ->
+    deferred = $q.defer()
+
+    $http.get("/session_proposals/new")
+    .success((data, status) ->
+      deferred.resolve data
+    ).error (data, status) ->
+      deferred.reject()
+
+    deferred.promise
+
   all: all
   create: create
   update: update
   search: search
   show: show
   get: get
+  new: new_session
 ]

@@ -14,7 +14,7 @@
   </div>
 <% else %>
   <div class="social-login-container text-center" style="padding:10px;margin-top:50px">
-    <p><%= t('sessions.labels.sign_in_to_all') %></p><br>
+    <p class="text-muted"><%= t('sessions.labels.sign_in_to_all') %></p><br>
     <%= link_to t('sessions.buttons.sign_in'), new_user_session_path, class: "btn btn-primary" %>
   </div>
 <% end %>

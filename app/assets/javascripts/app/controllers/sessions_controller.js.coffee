@@ -32,6 +32,8 @@ angular.module('openCall.controllers').controller 'SessionsController',
         $scope.newSession = session
       ), (errorKey) ->
         $location.path "/error/#{errorKey}"
+    else
+      SessionsService.new()
 
   $scope.isNew = () ->
     angular.isUndefined($scope.newSession.id)
