@@ -10,8 +10,13 @@ es:
     vote:
       title: "Votá"
       paragraph: "Ayudá a generar la grilla de charlas con tu feedback! Podés hacer comentarios a los autores de las mismas, marcar tus favoritas, y mas!"
+    explore:
+      title: "Explorar"
+      paragraph: "Mirá los temas de los que habla la comunidad"
   sessions:
     labels:
+      sign_in_to_post: "Inicia sesión y dejale un comentario al autor"
+      sign_in_to_all: "Inicia sesión y propone tu charla, vota las de otros, marca tus favoritas, y mas!"
       no_search_results: "No hemos podido encontrar resultados <br> que concuerden con la búsqueda... "
       matching_tags: "Otros tags relevantes"
       new: "¿De qué te gustaría hablar?"
@@ -41,6 +46,8 @@ es:
       preview: "Vista Previa"
       tip: "Tip: podes usar %{link} para dar formato a tu texto"
     buttons:
+      sign_up: "Sign up"
+      sign_in: "Sign in"
       create_session: "Crear propuesta"
       update_session: "Actualizar propuesta"
       show_session: "Ver propuesta"
