@@ -24,4 +24,5 @@
 //= require moment
 //= require toaster
 //= require sticky
+//= require analytics
 //= require_tree .
