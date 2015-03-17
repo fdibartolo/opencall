@@ -16,6 +16,12 @@ angular.module("openCall.directives").directive "tagSuggestion", ->
           return
         return
 
+      elem.popover(
+        trigger: 'focus'
+        content: 'Use the suggested ones, or write a new tag and press enter if not listed'
+        placement: 'top'
+      )
+
       engine = new Bloodhound(
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name")
         queryTokenizer: Bloodhound.tokenizers.whitespace
