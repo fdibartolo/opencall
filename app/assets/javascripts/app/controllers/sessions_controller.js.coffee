@@ -112,7 +112,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     UsersService.toggle_fav_session($scope.sessions[index].id)
 
   $scope.removeTag = (index) ->
-    $scope.newSession.tags.splice index, 1
+    $scope.newSession.tags[index]._destroy = true
 
   $scope.show = () ->
     SessionsService.show($routeParams.id).then ((session) ->

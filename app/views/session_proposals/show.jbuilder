@@ -6,5 +6,5 @@ json.author do
   json.name @session_proposal.user.full_name
   json.avatar_url @session_proposal.user.avatar_url
 end
-json.tags @session_proposal.tags.map(&:name)
+json.tags @session_proposal.tags.select(:name)
 json.editable true if current_user and can? :edit, @session_proposal

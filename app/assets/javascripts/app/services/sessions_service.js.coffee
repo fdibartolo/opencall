@@ -60,7 +60,7 @@ angular.module('openCall.services').factory 'SessionsService',
   buildNestedAttributesFor = (tags) ->
     result = []
     angular.forEach tags, (tag) ->
-      result.push { name: tag }
+      result.push { id: tag.id, name: tag.name, _destroy: tag._destroy }
     result
 
   search = (terms, pageNumber) ->

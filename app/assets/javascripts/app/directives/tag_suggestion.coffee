@@ -7,11 +7,12 @@ angular.module("openCall.directives").directive "tagSuggestion", ->
     link: (scope, elem, attrs) ->
 
       canBeAdded = (tag) ->
-        tag isnt '' and scope.newSession.tags.indexOf(tag) is -1
+        matchingItem = item for item in scope.newSession.tags when item.name is tag
+        tag isnt '' and angular.isUndefined(matchingItem)
 
       updateModel = (object, suggestion, dataset) ->
         scope.$apply ->
-          scope.newSession.tags.push suggestion.text  if canBeAdded(suggestion.text)
+          scope.newSession.tags.push({name: suggestion.text})  if canBeAdded(suggestion.text)
           return
         return
 

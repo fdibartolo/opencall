@@ -8,7 +8,7 @@ class SessionProposal < ActiveRecord::Base
   belongs_to :user
   has_many :comments
   has_and_belongs_to_many :tags, autosave: true
-  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :tags, allow_destroy: true
   belongs_to :track
   belongs_to :audience
   has_many :reviews
@@ -17,7 +17,7 @@ class SessionProposal < ActiveRecord::Base
 
   def autosave_associated_records_for_tags
     session_tags = []
-    tags.each { |tag| session_tags << Tag.find_or_create_by(name: tag.name) }
+    self.tags.each { |tag| session_tags << Tag.find_or_create_by(name: tag.name) unless tag.marked_for_destruction? }
     self.tags = session_tags
   end
 
