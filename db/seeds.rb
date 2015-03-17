@@ -14,6 +14,10 @@ end
   Audience.create! name: audience_name unless Audience.exists?(name: audience_name)
 end
 
+%w[Gestión Técnico Complementario].each do |theme_name|
+  Theme.create! name: theme_name unless Theme.exists?(name: theme_name)
+end
+
 # Test-specifif env
 if Rails.env.test?
   User.create!({

@@ -70,4 +70,8 @@ FactoryGirl.define do
   factory :audience do
     name 'expert'
   end
+
+  factory :theme do
+    name 'technical'
+  end
 end
