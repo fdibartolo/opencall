@@ -7,6 +7,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.total = 0
   $scope.newSession = 
     title: ''
+    theme_id: ''
     track_id: ''
     audience_id: ''
     audience_count: ''
@@ -59,11 +60,12 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.newSession.invalidSummary = $scope.newSession.summary is ''
     $scope.newSession.invalidDescription = $scope.newSession.description is ''
     $scope.newSession.invalidTrackId = $scope.newSession.track_id is ''
+    $scope.newSession.invalidThemeId = $scope.newSession.theme_id is ''
     $scope.newSession.invalidAudienceId = $scope.newSession.audience_id is ''
 
     not ($scope.newSession.invalidTitle or $scope.newSession.invalidSummary or 
       $scope.newSession.invalidDescription or $scope.newSession.invalidTrackId or
-      $scope.newSession.invalidAudienceId)
+      $scope.newSession.invalidAudienceId or $scope.newSession.invalidThemeId)
 
   $scope.getSessionVotedAndFavedIds = () ->
     if CURRENT_USER_EMAIL isnt ''

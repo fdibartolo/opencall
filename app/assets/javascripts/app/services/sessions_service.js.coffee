@@ -18,6 +18,7 @@ angular.module('openCall.services').factory 'SessionsService',
     $http.post("/session_proposals", 
       session_proposal:
         title: session.title
+        theme_id: session.theme_id
         track_id: session.track_id
         audience_id: session.audience_id
         audience_count: session.audience_count
@@ -38,6 +39,7 @@ angular.module('openCall.services').factory 'SessionsService',
     $http.put("/session_proposals/#{session.id}",
       session_proposal:
         title: session.title
+        theme_id: session.theme_id
         track_id: session.track_id
         audience_id: session.audience_id
         audience_count: session.audience_count
