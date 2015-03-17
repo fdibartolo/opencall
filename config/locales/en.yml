@@ -24,7 +24,8 @@ en:
     unlink_social_ok:  "You have succesfully unlinked your %{provider} account"
   home:
     announcement:
-      title: "Announcements"
+      title: "Welcome"
+      body: "This is the Call for Papers application for <a href='http://agiles2015.agiles.org' target='_blank'>Agiles 2015</a> conference. Here you can explore submitted sessions proposal and also create your own session proposal. For instructions and recommendations about how to submit your proposal please check the <a href='http://agiles2015.agiles.org' target='_blank'>Call for Papers</a> page."
     propose:
       title: "Propose"
       paragraph: "Share with the community what you would like to talk about, and gather valuable early feedback that will help you refine your idea!"
