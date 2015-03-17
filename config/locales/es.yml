@@ -23,6 +23,7 @@ es:
       matching_tags: "Otros tags relevantes"
       new: "¿De qué te gustaría hablar?"
       title: "Título"
+      theme: "Temática"
       track: "Tipo de sesión"
       audience: "Audiencia"
       audience_count: "Límite participantes"
@@ -67,6 +68,7 @@ es:
     errors:
       title_cant_be_blank: "Es necesario que indiques el título"
       summary_cant_be_blank: "Es necesario que indiques la sinopsis"
+      theme_cant_be_blank: "Es necesario que indiques la temática"
       track_cant_be_blank: "Es necesario que indiques el track"
       audience_cant_be_blank: "Es necesario que indiques el nivel de audiencia"
       description_cant_be_blank: "Es necesario que indiques la descripción"

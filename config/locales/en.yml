@@ -43,6 +43,7 @@ en:
       matching_tags: "Other relevant tags"
       new: "What would you like to talk about?"
       title: "Title"
+      theme: "Theme"
       track: "Session Type"
       audience: "Audience"
       audience_count: "Participants limit"
@@ -87,6 +88,7 @@ en:
     errors:
       title_cant_be_blank: "You must provide a title"
       summary_cant_be_blank: "You must provide a summary"
+      theme_cant_be_blank: "You must provide a theme"
       track_cant_be_blank: "You must provide a track"
       audience_cant_be_blank: "You must provide targeted audience"
       description_cant_be_blank: "You must provide a description"
