@@ -17,7 +17,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
   describe "GET index" do
     it "should list all SessionProposals" do
-      session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track), audience: FactoryGirl.create(:audience)
+      session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme), audience: FactoryGirl.create(:audience)
 
       get :index
 
@@ -44,7 +44,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
     context "with valid params" do
       it "should return the SessionProposal for given id" do
-        session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track), audience: FactoryGirl.create(:audience)
+        session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme), audience: FactoryGirl.create(:audience)
         allow(SessionProposal).to receive(:find_by).and_return(session)
         
         get :show, { id: session.id }
@@ -169,7 +169,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
   describe "GET all for current user" do
     it "should list only current user ones" do
-      user_session = FactoryGirl.create :session_proposal, user: logged_in(:user), track: FactoryGirl.create(:track)
+      user_session = FactoryGirl.create :session_proposal, user: logged_in(:user), track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme)
       another_session = FactoryGirl.create :session_proposal
 
       get :for_current_user
@@ -184,7 +184,8 @@ RSpec.describe SessionProposalsController, :type => :controller do
   describe "GET all voted for current user" do
     it "should list only current user voted ones" do
       track = FactoryGirl.create(:track)
-      voted_session = FactoryGirl.create :session_proposal, track: track
+      theme = FactoryGirl.create(:theme)
+      voted_session = FactoryGirl.create :session_proposal, theme: theme, track: track
       not_voted_session = FactoryGirl.create :session_proposal, user: FactoryGirl.create(:user, first_name: 'jim'), track: track
       # HACK :S - why cant do logged_in(:user).session_proposal_voted_ids << voted_session.id 
       logged_in_user = User.find_by(email: logged_in(:user).email)
@@ -203,7 +204,8 @@ RSpec.describe SessionProposalsController, :type => :controller do
   describe "GET all faved for current user" do
     it "should list only current user faved ones" do
       track = FactoryGirl.create(:track)
-      faved_session = FactoryGirl.create :session_proposal, track: track
+      theme = FactoryGirl.create(:theme)
+      faved_session = FactoryGirl.create :session_proposal, theme: theme, track: track
       not_faved_session = FactoryGirl.create :session_proposal, user: FactoryGirl.create(:user, first_name: 'jim'), track: track
       # HACK :S - why cant do logged_in(:user).session_proposal_faved_ids << faved_session.id 
       logged_in_user = User.find_by(email: logged_in(:user).email)

@@ -1,4 +1,5 @@
 json.extract! @session_proposal, :id, :title, :summary, :description, :video_link, :audience_count
+json.theme @session_proposal.theme.name
 json.track @session_proposal.track.name
 json.audience @session_proposal.audience.name
 json.date @session_proposal.created_at

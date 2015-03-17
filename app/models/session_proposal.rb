@@ -26,6 +26,7 @@ class SessionProposal < ActiveRecord::Base
     JSON.parse(Jbuilder.encode do |json|
       json.id           self.id
       json.title        self.title
+      json.theme        self.theme.name
       json.track        self.track.name
       json.summary      self.summary
       json.author       self.user.full_name
