@@ -35,6 +35,7 @@ FactoryGirl.define do
     # association    :track, factory: :track
     track_id       1
     audience_id    1
+    theme_id       1
     audience_count 30
     factory :session_proposal_with_comment do
       after(:create) do |session_proposal|

@@ -11,6 +11,7 @@ class SessionProposal < ActiveRecord::Base
   accepts_nested_attributes_for :tags, allow_destroy: true
   belongs_to :track
   belongs_to :audience
+  belongs_to :theme
   has_many :reviews
 
   validates :title, :summary, :description, :user_id, :track_id, :audience_id, presence: true
