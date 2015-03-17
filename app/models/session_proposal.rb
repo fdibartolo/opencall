@@ -43,7 +43,7 @@ class SessionProposal < ActiveRecord::Base
     Jbuilder.encode do |json|
       json.query do
         json.multi_match do
-          json.fields ["tags^10", "track^10", "title^5", "summary", "author"]
+          json.fields ["tags^10", "theme^10", "track^10", "title^5", "summary", "author"]
           json.query terms
         end
       end
