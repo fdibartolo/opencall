@@ -5,6 +5,7 @@ SessionsPage = ->
   @newSessionSummary = element(By.model('newSession.summary'))
   @newSessionDescription = element(By.model('newSession.description'))
   @newSessionLastTrack = element.all(By.css('#select-track > option')).last()
+  @newSessionLastTheme = element.all(By.css('#select-theme > option')).last()
   @newSessionAudienceTrack = element.all(By.css('#select-audience > option')).last()
   @createButton = element(By.id('create-button'))
 
@@ -19,9 +20,10 @@ SessionsPage = ->
     return
 
   @create = (session) ->
+    @newSessionTitle.sendKeys session.title
+    @newSessionLastTheme.click()
     @newSessionLastTrack.click()
     @newSessionAudienceTrack.click()
-    @newSessionTitle.sendKeys session.title
     @newSessionSummary.sendKeys session.summary
     @newSessionDescription.sendKeys session.description
     @createButton.click()

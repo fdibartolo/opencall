@@ -13,7 +13,6 @@
         </small>
       </div>
     </div>
-
     <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidThemeId}">
       <label for="select-theme" class="col-sm-2 control-label"><%= t('sessions.labels.theme') %></label>
       <div class="col-sm-8">
@@ -21,7 +20,6 @@
         <small ng-if="newSession.invalidThemeId" class="text-danger"><%= t('sessions.errors.theme_cant_be_blank') %></small>
       </div>
     </div>
-
     <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidTrackId}">
       <label for="select-track" class="col-sm-2 control-label"><%= t('sessions.labels.track') %></label>
       <div class="col-sm-8">
