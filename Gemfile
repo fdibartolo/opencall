@@ -32,6 +32,8 @@ gem 'elasticsearch-model', '0.1.6'
 gem 'elasticsearch-rails', '0.1.6'
 gem 'elasticsearch-extensions', '0.0.18'
 
+gem 'newrelic_rpm', '3.10.0.279'
+
 group :development, :test do
   gem 'spring', '1.3.2'
   gem 'spring-commands-rspec', '1.0.4'
