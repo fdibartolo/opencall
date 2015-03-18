@@ -21,8 +21,9 @@
       </ul>
     </div>
   </div>
-  <button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;margin-bottom:20px;padding:5px 50px">
+  <button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;margin-bottom:100px;padding:5px 50px">
     <%= t('sessions.buttons.load_more') %>
   </button>
-  <div ng-if="sessions.length >= total" style="margin-bottom:50px"></div>
+  <div ng-if="sessions.length >= total" style="margin-bottom:100px"></div>
+  <div id="bottom-fade"></div>
 </div>
