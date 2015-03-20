@@ -1,14 +1,14 @@
 <br>
 <div class="col-sm-12">
   <% @roles.each do |role| %>
-    <h3><%= "Current #{role.name.pluralize(2).titlecase}" %></h3><br>
+    <h3><%= t('roles.labels.current', role: role.name.pluralize(2).titlecase) %></h3><br>
 
     <div class="row col-sm-8">
       <table class="table table-hover table-condensed">
         <thead>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
+          <th><%= t('devise.labels.first_name') %></th>
+          <th><%= t('devise.labels.last_name') %></th>
+          <th><%= t('devise.labels.email') %></th>
           <th></th>
         </thead>
         <% role.users.each do |user| %>
@@ -16,7 +16,7 @@
             <td><%= user.first_name %></td>
             <td><%= user.last_name %></td>
             <td><%= user.email %></td>
-            <td><div class="btn btn-danger btn-sm pull-right">Revoke role</div></td>
+            <td><div class="btn btn-danger btn-sm pull-right disabled"><%= t('roles.buttons.revoke') %></div></td>
           </tr>
         <% end %>
       </table>
@@ -24,15 +24,16 @@
 
     <br>
     <div class="row col-sm-5">
-      <h4><%= "Assign a new #{role.name.titlecase}" %></h4>
+      <h4><%= t('roles.labels.assign_new', role: role.name.titlecase) %></h4>
 
       <%= form_tag(role_path(role), method: :patch) do -%>
         <div class="form-group">
           <div class="input-group">
             <div class="input-group-addon"><%= t('devise.labels.email') %></div>
-            <%= email_field_tag :email, nil, class: 'form-control', autofocus: true %>
+            <!-- <%= email_field_tag :email, nil, class: 'form-control', autofocus: true %> -->
+            <input type="email" autofocus="autofocus" class="form-control" id="email" name="email" disable-if-empty="#<%= "assign-#{role.name}-btn" %>">
             <span class="input-group-btn">
-              <%= submit_tag 'Assign', class: "btn btn-primary" %>
+              <%= submit_tag t('roles.buttons.assign'), id: "assign-#{role.name}-btn", class: "btn btn-primary disabled" %>
             </span>
           </div>
         </div>

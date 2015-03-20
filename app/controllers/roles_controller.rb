@@ -11,9 +11,9 @@ class RolesController < ApplicationController
     if user
       role = Role.find_by(id: role_id_param)
       user.roles << role unless user.roles.include?(role)
-      message = { notice: "#{email_param} was assigned succesfully"}
+      message = { notice: I18n.t('flash.role_assign_ok', email: email_param) }
     else
-      message = { alert: "Unable to find user with email '#{email_param}'"}
+      message = { alert: I18n.t('flash.role_assign_error', email: email_param) }
     end
     redirect_to roles_path, message
   end
