@@ -18,6 +18,17 @@ class RolesController < ApplicationController
     redirect_to roles_path, message
   end
 
+  def destroy
+    user = User.find_by(id: user_id_param)
+    if user
+      user.roles.delete Role.find_by(id: role_id_param)
+      message = { notice: I18n.t('flash.role_revoke_ok') }
+    else
+      message = { alert: I18n.t('flash.role_revoke_error') }
+    end
+    redirect_to roles_path, message
+  end
+
   private
   def forbid_if_no_access
     raise CanCan::AccessDenied unless current_user.admin?
@@ -29,5 +40,9 @@ class RolesController < ApplicationController
 
   def email_param
     params.require(:email)
+  end
+
+  def user_id_param
+    params.require(:user_id)
   end
 end

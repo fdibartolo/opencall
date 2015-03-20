@@ -42,4 +42,21 @@ RSpec.describe RolesController, type: :controller do
       end
     end
   end
+
+  describe "DELETE #destroy" do
+    context "with invalid params" do
+      it { expect{ delete :destroy, { id: 1, missing_user_id: '1' } }.to raise_error ActionController::ParameterMissing }
+    end
+
+    context "with valid params" do
+      let(:user) { FactoryGirl.create :user, first_name: 'Bob' }
+      let(:role) { FactoryGirl.create :role, name: RoleReviewer }
+
+      it "should remove role to given user" do
+        user.roles << role
+        delete :destroy, { id: role.id, user_id: user.id }
+        expect(user.reload.roles).to_not include role
+      end
+    end
+  end
 end

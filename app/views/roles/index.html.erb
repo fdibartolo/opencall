@@ -16,12 +16,13 @@
             <td><%= user.first_name %></td>
             <td><%= user.last_name %></td>
             <td><%= user.email %></td>
-            <td><div class="btn btn-danger btn-sm pull-right disabled"><%= t('roles.buttons.revoke') %></div></td>
+            <td>
+              <%= link_to t('roles.buttons.revoke.text'), role_path(role, user_id: user.id), data: { confirm: t('roles.buttons.revoke.confirmation', name: user.full_name) }, method: :delete, class: "btn btn-danger btn-sm pull-right" %>
+            </td>
           </tr>
         <% end %>
       </table>
     </div>
-
     <br>
     <div class="row col-sm-5">
       <h4><%= t('roles.labels.assign_new', role: role.name.titlecase) %></h4>
