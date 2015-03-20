@@ -1,0 +1,43 @@
+<br>
+<div class="col-sm-12">
+  <% @roles.each do |role| %>
+    <h3><%= "Current #{role.name.pluralize(2).titlecase}" %></h3><br>
+
+    <div class="row col-sm-8">
+      <table class="table table-hover table-condensed">
+        <thead>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th></th>
+        </thead>
+        <% role.users.each do |user| %>
+          <tr>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+            <td><div class="btn btn-danger btn-sm pull-right">Revoke role</div></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <br>
+    <div class="row col-sm-5">
+      <h4><%= "Assign a new #{role.name.titlecase}" %></h4>
+
+      <%= form_tag(role_path(role), method: :patch) do -%>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><%= t('devise.labels.email') %></div>
+            <%= email_field_tag :email, nil, class: 'form-control', autofocus: true %>
+            <span class="input-group-btn">
+              <%= submit_tag 'Assign', class: "btn btn-primary" %>
+            </span>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+    <div class="row col-sm-12"><hr></div>
+  <% end %>
+</div>

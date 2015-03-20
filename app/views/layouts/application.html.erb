@@ -48,7 +48,7 @@
                       <li class="divider"></li>
                       <li class="dropdown-header">Administrator</li>
                       <li><%= link_to 'My reviews', "#{root_url}#/users/reviews" %></li>
-                      <li><a href="#/home">Manage reviewers</a></li>
+                      <li><%= link_to 'Manage reviewers', roles_url %></li>
                     <% end %>
                     <% if current_user.reviewer? %>
                       <li class="divider"></li>
