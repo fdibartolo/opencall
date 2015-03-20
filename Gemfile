@@ -35,7 +35,7 @@ gem 'elasticsearch-extensions', '0.0.18'
 gem 'newrelic_rpm', '3.11.0.283'
 
 group :development, :test do
-  gem 'spring', '1.3.2'
+  gem 'spring', '1.3.3'
   gem 'spring-commands-rspec', '1.0.4'
   gem 'rspec-rails', '3.2.1'
   gem 'factory_girl_rails', '4.5.0'
