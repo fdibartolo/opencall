@@ -19,7 +19,7 @@ gem 'marked-rails', '0.3.2.0'
 gem 'momentjs-rails', '2.9.0'
 gem 'ng-toaster-rails', '0.4.10.0'
 gem 'ng-sticky-rails', '1.7.9.0'
-gem 'jbuilder', '2.2.8'
+gem 'jbuilder', '2.2.12'
 
 gem 'devise', '3.4.1'
 gem 'omniauth-github', '1.1.2'
