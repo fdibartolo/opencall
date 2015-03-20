@@ -24,6 +24,8 @@ en:
     unlink_social_ok:  "You have succesfully unlinked your %{provider} account"
     role_assign_ok: "%{email} was assigned succesfully"
     role_assign_error: "Unable to find user with email '%{email}'"
+    role_revoke_ok: "Role was revoked succesfully"
+    role_revoke_error: "Unable to revoke role, user cannot be found"
   home:
     announcement:
       title: "Welcome"
@@ -114,8 +116,10 @@ en:
       current: "Current %{role}"
       assign_new: "Assign a new %{role}"
     buttons:
-      revoke: "Revoke Role"
       assign: "Assign"
+      revoke: 
+        text: "Revoke Role"
+        confirmation: "Are you sure to revoke role to %{name}?"
   activerecord:
     models: 
       user: "User"

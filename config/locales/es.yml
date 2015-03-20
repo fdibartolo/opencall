@@ -3,6 +3,8 @@ es:
     unlink_social_ok:  "Has desasociado tu cuenta de %{provider} con éxito"
     role_assign_ok: "%{email} fue asignado exitosamente"
     role_assign_error: "No hemos podido encontrar ningún usuario cuyo correo electrónico sea '%{email}'"
+    role_revoke_ok: "Rol fue revocado exitosamente"
+    role_revoke_error: "No se pudo revocar el rol, usuario no encontrado"
   home:
     announcement:
       title: "Bienvenidos"
@@ -94,8 +96,10 @@ es:
       current: "Actuales %{role}"
       assign_new: "Asignar un nuevo %{role}"
     buttons:
-      revoke: "Revocar Rol"
       assign: "Asignar"
+      revoke: 
+        text: "Revocar Rol"
+        confirmation: "Está seguro de revocar el rol a %{name}?"
   activerecord:
     models: 
       user: "Usuario"
