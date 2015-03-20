@@ -1,6 +1,8 @@
 es:
   flash:
     unlink_social_ok:  "Has desasociado tu cuenta de %{provider} con éxito"
+    role_assign_ok: "%{email} fue asignado exitosamente"
+    role_assign_error: "No hemos podido encontrar ningún usuario cuyo correo electrónico sea '%{email}'"
   home:
     announcement:
       title: "Bienvenidos"
@@ -87,6 +89,13 @@ es:
       audience_count: "Máximo númbero de participantes que puede tener la sesión"
     no_access:
       reviews: "No tienes permiso para hacer revisiones..."
+  roles:
+    labels:
+      current: "Actuales %{role}"
+      assign_new: "Asignar un nuevo %{role}"
+    buttons:
+      revoke: "Revocar Rol"
+      assign: "Asignar"
   activerecord:
     models: 
       user: "Usuario"

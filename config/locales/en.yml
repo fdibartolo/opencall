@@ -22,6 +22,8 @@
 en:
   flash:
     unlink_social_ok:  "You have succesfully unlinked your %{provider} account"
+    role_assign_ok: "%{email} was assigned succesfully"
+    role_assign_error: "Unable to find user with email '%{email}'"
   home:
     announcement:
       title: "Welcome"
@@ -107,6 +109,13 @@ en:
       audience_count: "Max number of participants the session is limited to"
     no_access:
       reviews: "You have no access to perform reviews..."
+  roles:
+    labels:
+      current: "Current %{role}"
+      assign_new: "Assign a new %{role}"
+    buttons:
+      revoke: "Revoke Role"
+      assign: "Assign"
   activerecord:
     models: 
       user: "User"
