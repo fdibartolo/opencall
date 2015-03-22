@@ -7,3 +7,7 @@ es:
     comment_created_email:
       subject: "Agiles 2015 - Nuevo comentario en tu propuesta"
       body: "Estimado %{user},\n\nUn nuevo comentario fue hecho a tu propuesta '%{title}':\n\n'%{body}' \n\n.Puedes contestar al mismo desde el sitio web a traves del siguiente link: \n\n%{show_link}\n\nMuchas gracias,\nPrograma Commité Conferencia Agiles 2015\n\n[Por favor no responda a este correo electrónico. Ha sido enviado desde una casilla no monitoreada]"
+  role_mailer:
+    role_created_email:
+      subject: "Agiles 2015 - Nuevo rol asignado a ti"
+      body: "Estimado %{user},\n\nEl siguiente rol ha sido asignado a ti dentro de la aplicación OpenCall:\n\n%{role_name}\n\nMuchas gracias,\nPrograma Commité Conferencia Agiles 2015\n\n[Por favor no responda a este correo electrónico. Ha sido enviado desde una casilla no monitoreada]"

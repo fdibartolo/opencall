@@ -7,3 +7,7 @@ en:
     comment_created_email:
       subject: "Agiles 2015 - New comment on your session proposal"
       body: "Dear %{user},\n\nA new comment was added to your session proposal '%{title}':\n\n'%{body}' \n\nYou can reply to it within the site by following the link: \n\n%{show_link}\n\nRegards,\nProgram Committee of Agiles 2015 Conference\n\n[Please do not reply to this e-mail. It was sent from an unmonitored email address]"
+  role_mailer:
+    role_created_email:
+      subject: "Agiles 2015 - New role assigned to you"
+      body: "Dear %{user},\n\nThe following role was assigned to you within the OpenCall application:\n\n%{role_name}\n\nRegards,\nProgram Committee of Agiles 2015 Conference\n\n[Please do not reply to this e-mail. It was sent from an unmonitored email address]"

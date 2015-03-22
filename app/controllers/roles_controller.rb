@@ -11,6 +11,7 @@ class RolesController < ApplicationController
     if user
       role = Role.find_by(id: role_id_param)
       user.roles << role unless user.roles.include?(role)
+      RoleMailer.role_created_email(user, role.name).deliver_now
       message = { notice: I18n.t('flash.role_assign_ok', email: email_param) }
     else
       message = { alert: I18n.t('flash.role_assign_error', email: email_param) }

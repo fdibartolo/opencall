@@ -35,6 +35,12 @@ RSpec.describe RolesController, type: :controller do
         expect(user.roles).to include role
       end
 
+      it "should fire email to given user" do
+        patch :update, { id: role.id, email: user.email }
+        email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq I18n.t('role_mailer.role_created_email.subject')
+      end
+
       it "should not assign role if alredy present" do
         user.roles << role
         patch :update, { id: role.id, email: user.email }
