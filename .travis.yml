@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.2.0
+  - 2.2.1
 
 env:
   - ES_TEST_HOST=localhost ES_TEST_PORT=9250
