@@ -13,6 +13,7 @@ $btn-info-hover-bg: #31b0d5;
 @import "popover_overrides";
 @import "spinner";
 @import "sticky";
+@import "preprocessed";
 
 .content { padding-top: 50px; }
 
@@ -69,13 +70,4 @@ $btn-info-hover-bg: #31b0d5;
     border-color: #843534;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
   }
-}
-
-#bottom-fade {
-  z-index: 99;
-  position: fixed;
-  bottom: 0%;
-  background-image: url("bottom-fade.png");
-  width: 100%;
-  height: 100px;
 }
