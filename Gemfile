@@ -40,7 +40,7 @@ group :development, :test do
   gem 'rspec-rails', '3.2.1'
   gem 'factory_girl_rails', '4.5.0'
   gem 'protractor-rails', '0.0.14'
-  gem 'coveralls', '0.7.11', require: false
+  gem 'coveralls', '0.7.12', require: false
 end
 
 gem 'rails_12factor', '0.0.3', group: :production
