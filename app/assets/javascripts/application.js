@@ -24,5 +24,7 @@
 //= require moment
 //= require toaster
 //= require sticky
+//= require highcharts
+//= require highcharts-ng
 //= require analytics
 //= require_tree .

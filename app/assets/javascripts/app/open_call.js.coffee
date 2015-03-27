@@ -1,4 +1,4 @@
-app = angular.module('openCall', ['ngRoute', 'ngAnimate', 'toaster', 'sticky', 'openCall.controllers', 'openCall.services', 'openCall.directives'])
+app = angular.module('openCall', ['ngRoute', 'ngAnimate', 'toaster', 'sticky', 'highcharts-ng', 'openCall.controllers', 'openCall.services', 'openCall.directives'])
 
 controllers = angular.module('openCall.controllers', [])
 services = angular.module('openCall.services', [])
@@ -50,6 +50,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
   $routeProvider.when '/users/reviews',
     templateUrl: '/templates/users/reviews.html'
     controller: 'UsersController'
+
+  $routeProvider.when '/stats',
+    templateUrl: '/templates/stats.html'
+    controller: 'StatsController'
 
   $routeProvider.otherwise redirectTo: '/home'
 ]
