@@ -1,12 +1,17 @@
 <div class="container" ng-cloak ng-init="init()" fade-animation="true"><br>
-  <div class="col-sm-12 text-center">
+  <div class="col-sm-10">
+    <div class="col-sm-12 chart-container">
+      <highchart config="byThemeChartConfig" ng-if="byThemeChartConfig != undefined"></highchart>
+    </div>
+    <div class="col-sm-12 chart-container">
+      <highchart config="byReviewsChartConfig" ng-if="byReviewsChartConfig != undefined"></highchart>
+    </div>
+  </div>
+  <div class="col-sm-2 text-center" sticky offset="60">
+    <span><small><em>click a theme to enable/disable</em></small></span><br><br>
     <ul class="list-inline">
       <li ng-repeat="theme in themes" class="tag lg bg-primary clickable" ng-class="{'bg-primary': theme.active, 'bg-info text-muted': !theme.active}" ng-click="toggleTheme(theme)">{{theme.name}}</li>
-      <br><span><small><em>click a theme to enable/disable</em></small></span>
     </ul>
     <br>
-  </div>
-  <div class="col-sm-12">
-    <highchart config="byThemeChartConfig"></highchart>
   </div>
 </div>
