@@ -6,6 +6,10 @@
     <div class="col-sm-12 chart-container">
       <highchart config="byReviewsChartConfig" ng-if="byReviewsChartConfig != undefined"></highchart>
     </div>
+    <div class="col-sm-12 chart-container" ng-if="themeDetailChartVisible">
+      <highchart config="themeDetailsChartConfig"></highchart>
+      <a id="scroll-to-bottom" style="visibility:hidden"></a>
+    </div>
   </div>
   <div class="col-sm-2 text-center" sticky offset="60">
     <span><small><em>click a theme to enable/disable</em></small></span><br><br>
