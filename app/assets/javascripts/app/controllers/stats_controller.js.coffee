@@ -243,8 +243,8 @@ angular.module('openCall.controllers').controller 'StatsController',
     data = []
     angular.forEach proposals, (proposal) ->
       count = proposal.reviews.length
-      sum = proposal.reviews.reduce (t, s) -> t + s
-      data.push sum/count
+      average = if count is 0 then 0 else (proposal.reviews.reduce (t, s) -> t + s)/count
+      data.push average
     data
 
 ]

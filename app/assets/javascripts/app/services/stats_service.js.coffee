@@ -75,11 +75,11 @@ angular.module('openCall.services').factory 'StatsService',
         proposals: [
           {
             name: 'proposal 2asd asd asdasd asd asdasdasd asd asd asdasd'
-            reviews: [10,9,8,9,8]
+            reviews: [10,9,8]
           }
           {
             name: 'proposal 3'
-            reviews: [4,1,3,2]
+            reviews: [4,1,3]
           }
           {
             name: 'proposal 1'
@@ -87,7 +87,7 @@ angular.module('openCall.services').factory 'StatsService',
           }
           {
             name: 'proposal 10'
-            reviews: [10]
+            reviews: []
           }
         ]
       }
