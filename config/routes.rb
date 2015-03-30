@@ -32,5 +32,7 @@ Rails.application.routes.draw do
 
   resources :roles, only: [:index, :update, :destroy]
 
+  resources :stats, only: [:index, :show], defaults: { format: :json }
+
   root 'main#index'
 end
