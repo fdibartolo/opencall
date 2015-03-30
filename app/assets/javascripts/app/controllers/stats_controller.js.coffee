@@ -125,7 +125,8 @@ angular.module('openCall.controllers').controller 'StatsController',
             point:
               events:
                 select: () ->
-                  StatsService.get(this.category).then (theme) ->
+                  themeId = theme.id for theme in $scope.themes when theme.name is this.category
+                  StatsService.get(themeId).then (theme) ->
                     $scope.buildThemeDetailsChart theme
                     $scope.themeDetailChartVisible = true
                     $timeout (->
@@ -215,7 +216,7 @@ angular.module('openCall.controllers').controller 'StatsController',
       xAxis:
         title:
           style: $scope.customStyle
-        categories: proposal.name for proposal in theme.proposals
+        categories: proposal.title for proposal in theme.proposals
         labels:
           style:
             color: 'black'

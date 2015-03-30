@@ -12,72 +12,27 @@ angular.module('openCall.services').factory 'StatsService',
 
     deferred.promise
 
-  get = (theme) ->
+  get = (id) ->
     deferred = $q.defer()
 
-    data = [
-      {
-        name: 'Enterprise Agile'
-        proposals: [
-          {
-            name: 'proposal 2asd asd asdasd asd asdasdasd asd asd asdasd'
-            reviews: [10,9,8]
-          }
-          {
-            name: 'proposal 3'
-            reviews: [4,1,3]
-          }
-          {
-            name: 'proposal 1'
-            reviews: [4,8]
-          }
-          {
-            name: 'proposal 10'
-            reviews: []
-          }
-        ]
-      }
-      {
-        name: 'Liderazgo y aprendizaje'
-        proposals: [
-          {
-            name: 'proposal 4'
-            reviews: [4,8,6]
-          }
-          {
-            name: 'proposal 5'
-            reviews: [10,8,9]
-          }
-          {
-            name: 'proposal 6'
-            reviews: [4,1,3]
-          }
-        ]
-      }
-      {
-        name: 'Cultura y colaboración'
-        proposals: [
-          {
-            name: 'proposal 7'
-            reviews: [4,8,6]
-          }
-          {
-            name: 'proposal 8'
-            reviews: [10,8,9]
-          }
-          {
-            name: 'proposal 9'
-            reviews: [4,1,3]
-          }
-        ]
-      }
-    ]
+    $http.get("/stats/#{id}")
+    .success((data, status) ->
+      data.proposals.sort sortByReviewsCount
+      deferred.resolve data
+    ).error (data, status, header, config) ->
+      switch status
+        when 400 then message = "theme_not_found"
+        when 403 then message = "access_denied"
+        else message = "generic"
 
-    # MUST be sort by number of reviews!!!!!
-    result = d for d in data when d.name is theme
-    deferred.resolve result
+      deferred.reject message
 
     deferred.promise
+
+  sortByReviewsCount = (a, b) ->
+    return -1  if a.reviews.length > b.reviews.length
+    return 1  if a.reviews.length < b.reviews.length
+    return 0
 
   all: all
   get: get

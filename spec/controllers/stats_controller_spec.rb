@@ -33,4 +33,44 @@ RSpec.describe StatsController, type: :controller do
       expect(body['themes'][1]['reviewed']).to eq 0
     end
   end
+
+  describe "GET #show for given theme" do
+    context "with invalid params id" do
+      before :each do
+        allow(Theme).to receive(:find_by).and_return(nil)
+        get :show, { id: 9999 }
+      end
+
+      it "should return 400 Bad Request" do
+        expect(response).to have_http_status(400)
+      end
+
+      it "should return 'cannot find' message" do
+        expect(response.header['Message']).to eq "Unable to find theme with id '9999'"
+      end
+    end
+
+    context "with valid params" do
+      it "should return proposals list" do
+        get :show, { id: first_theme.id }
+
+        body = JSON.parse response.body
+        expect(body['name']).to eq first_theme.name
+        expect(body['proposals'].count).to eq 2
+        expect(body['proposals'][0]['title']).to eq first_session.title
+        expect(body['proposals'][1]['title']).to eq second_session.title
+      end
+
+      it "should include reviews score for each proposal" do
+        FactoryGirl.create :review, score: 9, session_proposal: first_session, user: logged_in(:admin)
+
+        get :show, { id: first_theme.id }
+
+        body = JSON.parse response.body
+        expect(body['proposals'].count).to eq 2
+        expect(body['proposals'][0]['reviews']).to eq [9]
+        expect(body['proposals'][1]['reviews']).to eq []
+      end
+    end
+  end
 end
