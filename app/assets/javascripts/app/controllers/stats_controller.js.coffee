@@ -180,6 +180,7 @@ angular.module('openCall.controllers').controller 'StatsController',
 
         chart:
           type: 'bar'
+          height: (theme.proposals.length * 25) + 100
           backgroundColor: '#fafafa'
           borderColor: '#337ab7'
           borderRadius: 8
