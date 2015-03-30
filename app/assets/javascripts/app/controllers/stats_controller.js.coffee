@@ -9,13 +9,15 @@ angular.module('openCall.controllers').controller 'StatsController',
   $scope.init = () ->
     $scope.themes = []
     colors = buildColors()
-    StatsService.all().then (themes) ->
+    StatsService.all().then ((themes) ->
       angular.forEach themes, (theme, i) ->
         theme.active = true
         theme.color = colors[i]
         $scope.themes.push theme
       $scope.buildByThemeChart()
       $scope.buildByReviewsChart()
+    ), (errorKey) ->
+      $location.path "/error/#{errorKey}"
 
   buildColors = () ->
     colors = []
@@ -126,13 +128,15 @@ angular.module('openCall.controllers').controller 'StatsController',
               events:
                 select: () ->
                   themeId = theme.id for theme in $scope.themes when theme.name is this.category
-                  StatsService.get(themeId).then (theme) ->
+                  StatsService.get(themeId).then ((theme) ->
                     $scope.buildThemeDetailsChart theme
                     $scope.themeDetailChartVisible = true
                     $timeout (->
                       $location.hash('scroll-to-bottom'); $anchorScroll()
                       return
                     ), 200
+                  ), (errorKey) ->
+                    $location.path "/error/#{errorKey}"
 
         style: $scope.customStyle
 

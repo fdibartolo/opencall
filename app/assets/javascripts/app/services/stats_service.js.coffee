@@ -7,8 +7,13 @@ angular.module('openCall.services').factory 'StatsService',
     $http.get("/stats")
     .success((data, status) ->
       deferred.resolve data.themes
-    ).error (data, status) ->
-      deferred.reject()
+    ).error (data, status, header, config) ->
+      switch status
+        when 400 then message = "theme_not_found"
+        when 403 then message = "access_denied"
+        else message = "generic"
+
+      deferred.reject message
 
     deferred.promise
 
