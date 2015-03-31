@@ -120,6 +120,13 @@ en:
       revoke: 
         text: "Revoke Role"
         confirmation: "Are you sure to revoke role to %{name}?"
+  reviews:
+    labels:
+      current: "Current Reviews"
+      score: "Score"
+      reviewer: "Reviewer"
+      feedback: "Feedback"
+      no_reviews: "No reviews so far..."
   activerecord:
     models: 
       user: "User"

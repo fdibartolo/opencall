@@ -100,6 +100,13 @@ es:
       revoke: 
         text: "Revocar Rol"
         confirmation: "Está seguro de revocar el rol a %{name}?"
+  reviews:
+    labels:
+      current: "Actuales Revisiones"
+      score: "Puntaje"
+      reviewer: "Revisor"
+      feedback: "Devolución"
+      no_reviews: "No hay revisiones a la fecha..."
   activerecord:
     models: 
       user: "Usuario"
