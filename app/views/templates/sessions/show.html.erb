@@ -49,5 +49,5 @@
     <div class="btn btn-default"><%= link_to t('sessions.buttons.back'), "#/sessions" %></div>
   </div>
 
-  <div ng-include="'templates/sessions/reviews_summary.html'"></div>
+  <div ng-include="'templates/sessions/reviews_summary.html'" ng-if="session != undefined"></div>
 </div>
