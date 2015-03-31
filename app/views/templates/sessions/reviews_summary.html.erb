@@ -1,0 +1,23 @@
+<% if current_user and current_user.admin? %>
+  <div class="row col-sm-offset-1 col-sm-10" ng-init="loadReviews()">
+    <hr><h3><%= t('reviews.labels.current') %></h3>
+
+    <table class="table table-hover table-condensed" ng-if="session.reviews.length > 0">
+      <thead>
+        <th width="15%" class="text-center"><%= t('reviews.labels.score') %></th>
+        <th width="25%" class="text-center"><%= t('reviews.labels.reviewer') %></th>
+        <th width="60%"><%= t('reviews.labels.feedback') %></th>
+      </thead>
+      <tr ng-repeat="review in session.reviews">
+        <td class="text-center" ng-class="{'text-success': goodReview(review.score), 'text-warning': poorReview(review.score), 'text-danger': badReview(review.score)}" style="font-size:130%">
+          <strong>{{review.score}}</strong>
+        </td>
+        <td class="text-center">{{review.reviewer}}</td>
+        <td>{{review.body}}</td>
+      </tr>
+    </table>
+
+    <h5 ng-if="session.reviews.length == 0"><%= t('reviews.labels.no_reviews') %></h5>
+    <br><br><br>
+  </div>
+<% end %>

@@ -43,11 +43,11 @@
   <div class="col-sm-10 text-right" style="padding-right:5px;margin:20px 0"><hr>
     <% if current_user and can? :review, SessionProposal %>
       <div class="btn btn-success">
-        <a ng-href="#/sessions/review/{{session.id}}">
-          <%= t('sessions.buttons.start_review') %>
-        </a>
-    </div>
+        <a ng-href="#/sessions/review/{{session.id}}"><%= t('sessions.buttons.start_review') %></a>
+      </div>
     <% end %>
     <div class="btn btn-default"><%= link_to t('sessions.buttons.back'), "#/sessions" %></div>
   </div>
+
+  <div ng-include="'templates/sessions/reviews_summary.html'"></div>
 </div>

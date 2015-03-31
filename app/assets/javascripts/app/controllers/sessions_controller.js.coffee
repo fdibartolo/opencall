@@ -124,6 +124,12 @@ angular.module('openCall.controllers').controller 'SessionsController',
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
 
+  $scope.loadReviews = () ->
+    ReviewsService.all($routeParams.id).then ((reviews) ->
+      $scope.session.reviews = reviews
+    ), (errorKey) ->
+      $location.path "/error/#{errorKey}"
+
   $scope.review = () ->
     SessionsService.show($routeParams.id).then ((session) ->
       $scope.session = session
@@ -156,4 +162,13 @@ angular.module('openCall.controllers').controller 'SessionsController',
         toaster.pop 'success', '', 'Review submitted successfully', 5000
     ), (errorKey) ->
        $location.path "/error/#{errorKey}"
+
+  $scope.goodReview = (score) ->
+    score >= 7
+
+  $scope.poorReview = (score) ->
+    score > 3 and score < 7
+
+  $scope.badReview = (score) ->
+    score <= 3
 ]
