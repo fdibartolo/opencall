@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     resources :comments, only: [:index, :create]
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:index, :create]
   end
 
   resources :tags, only: [:index], defaults: { format: :json } do

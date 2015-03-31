@@ -1,7 +1,10 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_session_proposal, only: :create
+  before_action :set_session_proposal, only: [:index, :create]
   before_action :forbid_if_no_access
+
+  def index
+  end
 
   def create
     review = Review.new review_params.merge!({ user_id: current_user.id, session_proposal_id: @session_proposal.id })

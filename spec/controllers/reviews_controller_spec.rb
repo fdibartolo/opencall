@@ -1,6 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe ReviewsController, :type => :controller do
+  describe "GET all for given session proposal" do
+    let(:session) { FactoryGirl.create :session_proposal }
+
+    context "while user" do
+      login_as :user
+
+      it "should return forbidden" do
+        get :index, { session_proposal_id: session.id }
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context "while reviewer" do
+      login_as :reviewer
+
+      it "should return all reviews" do
+        reviewers_review = FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer)
+        admins_review = FactoryGirl.create :review, session_proposal: session, user: FactoryGirl.create(:admin, first_name: 'admin')
+
+        get :index, { session_proposal_id: session.id }
+
+        body = JSON.parse response.body
+        expect(body['reviews'].count).to eq 2
+        expect(body['reviews'].first['reviewer']).to eq reviewers_review.user.full_name
+        expect(body['reviews'].last['reviewer']).to eq admins_review.user.full_name
+      end
+    end
+  end
+
   describe "POST create" do
     let(:session) { FactoryGirl.create :session_proposal }
     let(:payload) { { session_proposal_id: session.id, review: { body: 'new review', score: 8 }}}
