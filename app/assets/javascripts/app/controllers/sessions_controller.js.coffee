@@ -176,4 +176,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     if angular.isUndefined($scope.session.profile)
       SessionsService.authorsProfile($routeParams.id).then (profile) ->
         $scope.session.profile = profile
+
+  $scope.isEmpty = (value) ->
+    (value is null) or (value is '')
 ]

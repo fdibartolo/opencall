@@ -136,8 +136,9 @@
 
 .session-profile-links {
   font-size: 300%;
-  text-decoration: none !important;
   
+  a { text-decoration: none !important; margin: 0 15px; }
+
   a.disabled {
     cursor: default;
     &:hover { text-decoration: none !important; color: #777777 !important; }

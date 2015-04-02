@@ -2,19 +2,19 @@
   <br><div class="text-left">{{session.profile.bio}}</div><br>
 
   <div class="row session-profile-links text-center">
-    <a ng-href="{{session.profile.website}}" target="_blank" ng-class="{'text-muted disabled': session.profile.website == ''}">
+    <a ng-href="{{session.profile.website}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.website)}">
       <span class="ion-social-wordpress"></span>
-    </a>&nbsp;&nbsp;
-    <a ng-href="{{session.profile.linkedin}}" target="_blank" ng-class="{'text-muted disabled': session.profile.linkedin == ''}">
+    </a>
+    <a ng-href="{{session.profile.linkedin}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.linkedin)}">
       <span class="ion-social-linkedin"></span>
-    </a>&nbsp;&nbsp;
-    <a ng-href="{{session.profile.facebook}}" target="_blank" ng-class="{'text-muted disabled': session.profile.facebook == ''}">
+    </a>
+    <a ng-href="{{session.profile.facebook}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.facebook)}">
       <span class="ion-social-facebook"></span>
-    </a>&nbsp;&nbsp;
-    <a ng-href="{{session.profile.twitter}}" target="_blank" ng-class="{'text-muted disabled': session.profile.twitter == ''}">
+    </a>
+    <a ng-href="{{session.profile.twitter}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.twitter)}">
       <span class="ion-social-twitter"></span>
-    </a>&nbsp;&nbsp;
-    <a ng-href="{{session.profile.aboutme}}" target="_blank" ng-class="{'text-muted disabled': session.profile.aboutme == ''}">
+    </a>
+    <a ng-href="{{session.profile.aboutme}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.aboutme)}">
       <span class="ion-earth"></span>
     </a>
   </div>
