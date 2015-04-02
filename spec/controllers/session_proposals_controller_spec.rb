@@ -167,6 +167,31 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
   end
 
+  describe "GET author" do
+    let(:author) { FactoryGirl.create :user, first_name: 'author', bio: 'my bio', twitter: '@author' }
+    let(:session) { FactoryGirl.create :session_proposal, user: author }
+
+    context "while user" do
+      it "should return forbidden" do
+        get :author, { id: session.id }
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context "while reviewer" do
+      login_as :reviewer, 'Reviewer'
+
+      it "should return profile info" do
+        get :author, { id: session.id }
+
+        body = JSON.parse response.body
+        expect(body['bio']).to eq author.bio
+        expect(body['twitter']).to eq author.twitter
+        expect(body['facebook']).to be_nil
+      end
+    end
+  end
+
   describe "GET all for current user" do
     it "should list only current user ones" do
       user_session = FactoryGirl.create :session_proposal, user: logged_in(:user), track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme)

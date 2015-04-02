@@ -1,6 +1,7 @@
 class SessionProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:search, :show]
-  before_action :set_session_proposal, only: [:show, :edit, :update]
+  before_action :forbid_if_no_access, only: :author
+  before_action :set_session_proposal, only: [:show, :edit, :update, :author]
 
   def index
     @session_proposals = SessionProposal.all
@@ -44,6 +45,10 @@ class SessionProposalsController < ApplicationController
     end
   end
 
+  def author
+    @user = @session_proposal.user
+  end
+
   def for_current_user
     @session_proposals = current_user.session_proposals
   end
@@ -64,5 +69,9 @@ class SessionProposalsController < ApplicationController
 
   def session_proposal_params
     params.require(:session_proposal).permit(:title, :summary, :description, :video_link, :track_id, :audience_id, :theme_id, :audience_count, :tags_attributes => [ :id, :name, :_destroy ])
+  end
+
+  def forbid_if_no_access
+    return head :forbidden if cannot? :review, SessionProposal
   end
 end

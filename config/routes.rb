@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    member do
+      get 'author'
+    end
     resources :comments, only: [:index, :create]
     resources :reviews, only: [:index, :create]
   end

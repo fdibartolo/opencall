@@ -1,0 +1,1 @@
+json.extract! @user, :bio, :website, :linkedin, :aboutme, :twitter, :facebook
