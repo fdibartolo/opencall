@@ -171,4 +171,9 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.badReview = (score) ->
     score <= 3
+
+  $scope.loadProfileSummary = () ->
+    if angular.isUndefined($scope.session.profile)
+      SessionsService.authorsProfile($routeParams.id).then (profile) ->
+        $scope.session.profile = profile
 ]

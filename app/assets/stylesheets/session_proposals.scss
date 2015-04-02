@@ -133,3 +133,13 @@
   h4 { font-weight: 200; }
   span { font-size: 500%; }
 }
+
+.session-profile-links {
+  font-size: 300%;
+  text-decoration: none !important;
+  
+  a.disabled {
+    cursor: default;
+    &:hover { text-decoration: none !important; color: #777777 !important; }
+  }
+}

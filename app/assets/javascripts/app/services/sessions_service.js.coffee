@@ -118,6 +118,17 @@ angular.module('openCall.services').factory 'SessionsService',
 
     deferred.promise
 
+  authorsProfile = (id) ->
+    deferred = $q.defer()
+
+    $http.get("/session_proposals/#{id}/author")
+    .success((data, status) ->
+      deferred.resolve data
+    ).error (data, status) ->
+      deferred.reject()
+
+    deferred.promise
+
   all: all
   create: create
   update: update
@@ -125,4 +136,5 @@ angular.module('openCall.services').factory 'SessionsService',
   show: show
   get: get
   new: new_session
+  authorsProfile: authorsProfile
 ]

@@ -33,6 +33,14 @@
     </div>
     <br><hr>
 
+    <div class="row text-center" ng-init="showProfile = false">
+      <div class="btn btn-default btn-sm" ng-click="showProfile = !showProfile">
+        {{ showProfile ? 'Hide' : 'Show'}} {{session.author.name}}'s profile
+      </div>
+      <div ng-include="'templates/users/profile_summary.html'" ng-if="showProfile"></div>
+    </div>
+    <hr>
+
     <div class="row session-comment" fade-animation="true">
       <div class="col-sm-2 text-center">
         <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
