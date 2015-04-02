@@ -57,10 +57,10 @@
           <i><%= t('devise.labels.bio_hint').html_safe %></i>
         </small></div>
       </ul>
-      <div ng-if="bio" fade-animation="true">
+      <div ng-show="bio" fade-animation="true">
         <%= f.text_area :bio, class: "form-control", id: "input-bio", placeholder: "Bio", rows: 10 %>
       </div>
-      <div ng-if="!bio" fade-animation="true">
+      <div ng-show="!bio" fade-animation="true">
         <br>
         <div class="form-horizontal">
           <div class="form-group">
@@ -93,15 +93,6 @@
   </div>
 
   <div class="row"><div class="col-sm-offset-2 col-sm-10"><hr></div></div>
-
-  <div class="<%= validation_warning_class? :current_password %>">
-    <label for="input-password3" class="col-sm-2 control-label"><%= t('devise.labels.current_password') %></label>
-    <div class="col-sm-10">
-      <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "input-password3", placeholder: t('devise.labels.current_password') %>
-      <%= validation_warning_details? :current_password %>
-      <small class="text-muted"><%= t('devise.labels.current_password_hint') %></small>
-    </div>
-  </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
