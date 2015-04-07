@@ -107,6 +107,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
     context "with valid params" do
       let(:payload) { { session_proposal: { title: 'title', summary: 'summary', description: 'description', track_id: 1 } } }
+      let!(:role_admin) { FactoryGirl.create :role }
       
       it "should return success if can save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
