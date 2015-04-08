@@ -10,6 +10,11 @@ RSpec.describe Ability, :type => :model do
     it { expect(ability).to be_able_to :edit, session_proposal }
     it { expect(ability).to_not be_able_to :edit, SessionProposal.new(user: FactoryGirl.create(:user)) }
     it { expect(ability).to_not be_able_to :review, SessionProposal }
+
+    it "but submission is past due, should not be able to edit session proposal" do
+      travel_to SubmissionDueDate + 1.day
+      expect(ability).to_not be_able_to :edit, session_proposal
+    end
   end
 
   context "when having reviewer role" do
