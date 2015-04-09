@@ -1,6 +1,6 @@
 <% if current_user %>
   <span class="actions pull-right clickable">
-    <span ng-click="vote($index)" ng-if="!session.voted && availableVotes > 0" data-index="{{$index}}"
+    <span id="vote-btn" ng-click="vote($index)" ng-if="!session.voted && availableVotes > 0" data-index="{{$index}}"
       class="ion-ios7-circle-outline text-success" helpable="<%= t('sessions.help.vote') %>">
     </span>
     <span ng-click="vote($index)" ng-if="session.voted" class="ion-checkmark-circled text-success" 

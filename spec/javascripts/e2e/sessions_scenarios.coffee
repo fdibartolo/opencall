@@ -29,4 +29,21 @@ describe "Sessions page", ->
     done()
     return
 
+  it "should be able to vote", (done) ->
+    @sessionsPage.index()
+
+    currentAvailableVotes = 0
+    @sessionsPage.availableVotes.getText().then (text) ->
+      currentAvailableVotes = text
+
+    sessionIndex = 1
+    @sessionsPage.vote sessionIndex
+
+    @sessionsPage.availableVotes.getText().then (text) ->
+      expect(parseInt(text)).toEqual currentAvailableVotes - 1
+      return
+
+    done()
+    return
+
   return

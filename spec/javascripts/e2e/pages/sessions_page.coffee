@@ -11,6 +11,8 @@ SessionsPage = ->
 
   @showSessionTitle = element(By.binding('session.title'))
 
+  @availableVotes = element(By.binding('availableVotes'))
+
   @index = ->
     browser.get "#/sessions"
     return
@@ -27,6 +29,10 @@ SessionsPage = ->
     @newSessionSummary.sendKeys session.summary
     @newSessionDescription.sendKeys session.description
     @createButton.click()
+    return
+
+  @vote = (index) ->
+    element.all(By.id('vote-btn')).get(index).click()
     return
 
   return
