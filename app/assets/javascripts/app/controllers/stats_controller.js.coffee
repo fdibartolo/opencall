@@ -14,6 +14,7 @@ angular.module('openCall.controllers').controller 'StatsController',
         theme.active = true
         theme.color = colors[i]
         $scope.themes.push theme
+      $scope.totalProposals = (themes.map (t) -> t.count).reduce (x,y) -> x + y
       $scope.buildByThemeChart()
       $scope.buildByReviewsChart()
     ), (errorKey) ->
