@@ -61,8 +61,9 @@ namespace :open_call do
         exit
       end
 
-      min = Track.order(:id).pluck(:id).first
-      max = Track.order(:id).pluck(:id).last
+      track_ids = Track.order(:id).pluck(:id)
+      theme_ids = Theme.order(:id).pluck(:id)
+      audience_ids = Audience.order(:id).pluck(:id)
 
       raw_sessions = JSON.parse IO.read(file_name)
       raw_sessions.each do |json_session|
@@ -74,7 +75,9 @@ namespace :open_call do
           session.tags << tag
         end
         session.user = User.last
-        session.track = Track.find_by(id: Random.rand(min..max)) || Track.first
+        session.track = Track.find_by(id: Random.rand(Range.new(track_ids.first, track_ids.last))) || Track.first
+        session.theme = Theme.find_by(id: Random.rand(Range.new(theme_ids.first, track_ids.last))) || Theme.first
+        session.audience = Audience.find_by(id: Random.rand(Range.new(audience_ids.first, audience_ids.last))) || Audience.first
         session.save!
       end
     end
