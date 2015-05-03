@@ -56,16 +56,21 @@ angular.module('openCall.controllers').controller 'SessionsController',
         $location.path "/error/#{errorKey}"
 
   validSession = () ->
-    $scope.newSession.invalidTitle = $scope.newSession.title is ''
-    $scope.newSession.invalidSummary = $scope.newSession.summary is ''
+    $scope.newSession.invalidTitle       = $scope.newSession.title is ''
+    $scope.newSession.invalidSummary     = $scope.newSession.summary is ''
     $scope.newSession.invalidDescription = $scope.newSession.description is ''
-    $scope.newSession.invalidTrackId = $scope.newSession.track_id is ''
-    $scope.newSession.invalidThemeId = $scope.newSession.theme_id is ''
-    $scope.newSession.invalidAudienceId = $scope.newSession.audience_id is ''
+    $scope.newSession.invalidTrackId     = $scope.newSession.track_id is ''
+    $scope.newSession.invalidThemeId     = $scope.newSession.theme_id is ''
+    $scope.newSession.invalidAudienceId  = $scope.newSession.audience_id is ''
+    $scope.newSession.invalidVideo       = not validUrl($scope.newSession.video_link)
 
     not ($scope.newSession.invalidTitle or $scope.newSession.invalidSummary or 
       $scope.newSession.invalidDescription or $scope.newSession.invalidTrackId or
-      $scope.newSession.invalidAudienceId or $scope.newSession.invalidThemeId)
+      $scope.newSession.invalidAudienceId or $scope.newSession.invalidThemeId or
+      $scope.newSession.invalidVideo)
+
+  validUrl = (url) ->
+    url.match(/^(http(|s):\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-\?]*)*\/?$/) isnt null
 
   $scope.getSessionVotedAndFavedIds = () ->
     if CURRENT_USER_EMAIL isnt ''

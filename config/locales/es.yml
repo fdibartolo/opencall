@@ -76,6 +76,7 @@ es:
       track_cant_be_blank: "Es necesario que indiques el track"
       audience_cant_be_blank: "Es necesario que indiques el nivel de audiencia"
       description_cant_be_blank: "Es necesario que indiques la descripción"
+      video_cant_be_blank: "Es necesario que indiques una url válida a tu video (asegurate que empiece con http)"
     help:
       search: "top|Busca sesiones por autor o bien por palabras clave, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Tus votos disponibles"

@@ -37,6 +37,7 @@ FactoryGirl.define do
     audience_id    1
     theme_id       1
     audience_count 30
+    video_link     'http://youtube.com/video_link'
     factory :session_proposal_with_comment do
       after(:create) do |session_proposal|
         create(:comment, session_proposal: session_proposal)

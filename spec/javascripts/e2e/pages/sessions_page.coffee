@@ -1,12 +1,14 @@
 SessionsPage = ->
   @sessions = element.all(By.repeater('session in sessions'))
 
-  @newSessionTitle = element(By.model('newSession.title'))
-  @newSessionSummary = element(By.model('newSession.summary'))
-  @newSessionDescription = element(By.model('newSession.description'))
-  @newSessionLastTrack = element.all(By.css('#select-track > option')).last()
-  @newSessionLastTheme = element.all(By.css('#select-theme > option')).last()
+  @newSessionTitle         = element(By.model('newSession.title'))
+  @newSessionSummary       = element(By.model('newSession.summary'))
+  @newSessionDescription   = element(By.model('newSession.description'))
+  @newSessionLastTrack     = element.all(By.css('#select-track > option')).last()
+  @newSessionLastTheme     = element.all(By.css('#select-theme > option')).last()
   @newSessionAudienceTrack = element.all(By.css('#select-audience > option')).last()
+  @newSessionVideoLink     = element(By.model('newSession.video_link'))
+  
   @createButton = element(By.id('create-button'))
 
   @showSessionTitle = element(By.binding('session.title'))
@@ -28,6 +30,8 @@ SessionsPage = ->
     @newSessionAudienceTrack.click()
     @newSessionSummary.sendKeys session.summary
     @newSessionDescription.sendKeys session.description
+    @newSessionVideoLink.sendKeys session.videoLink
+
     @createButton.click()
     return
 

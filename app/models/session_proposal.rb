@@ -14,7 +14,7 @@ class SessionProposal < ActiveRecord::Base
   belongs_to :theme
   has_many :reviews
 
-  validates :title, :summary, :description, :user_id, :track_id, :audience_id, presence: true
+  validates :title, :summary, :description, :user_id, :track_id, :audience_id, :video_link, presence: true
 
   def autosave_associated_records_for_tags
     session_tags = []

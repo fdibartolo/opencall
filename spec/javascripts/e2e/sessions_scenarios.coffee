@@ -17,6 +17,7 @@ describe "Sessions page", ->
       title: 'Some Title'
       summary: 'Some summary'
       description: 'A very detailed description'
+      videoLink: 'http://youtube.com/video_link'
 
     @sessionsPage.new()
     @sessionsPage.create session

@@ -96,6 +96,7 @@ en:
       track_cant_be_blank: "You must provide a track"
       audience_cant_be_blank: "You must provide targeted audience"
       description_cant_be_blank: "You must provide a description"
+      video_cant_be_blank: "You must provide a valid video url (make sure it starts with http)"
     help:
       search: "top|Find session proposals by author or key words, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Your available votes"
