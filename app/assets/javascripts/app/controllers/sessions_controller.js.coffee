@@ -70,7 +70,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $scope.newSession.invalidVideo)
 
   validUrl = (url) ->
-    url.match(/^(http(|s):\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-\?]*)*\/?$/) isnt null
+    url.match(/^(http(|s):\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-\?\&]*)\/?$/) isnt null
 
   $scope.getSessionVotedAndFavedIds = () ->
     if CURRENT_USER_EMAIL isnt ''
