@@ -76,20 +76,20 @@ GEM
     docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
-    elasticsearch (1.0.6)
-      elasticsearch-api (= 1.0.6)
-      elasticsearch-transport (= 1.0.6)
-    elasticsearch-api (1.0.6)
+    elasticsearch (1.0.8)
+      elasticsearch-api (= 1.0.7)
+      elasticsearch-transport (= 1.0.7)
+    elasticsearch-api (1.0.7)
       multi_json
     elasticsearch-extensions (0.0.18)
       ansi
       ruby-prof
-    elasticsearch-model (0.1.6)
+    elasticsearch-model (0.1.7)
       activesupport (> 3)
       elasticsearch (> 0.4)
       hashie
-    elasticsearch-rails (0.1.6)
-    elasticsearch-transport (1.0.6)
+    elasticsearch-rails (0.1.7)
+    elasticsearch-transport (1.0.7)
       faraday
       multi_json
     erubis (2.7.0)
@@ -291,8 +291,8 @@ DEPENDENCIES
   coveralls (= 0.8.1)
   devise (= 3.4.1)
   elasticsearch-extensions (= 0.0.18)
-  elasticsearch-model (= 0.1.6)
-  elasticsearch-rails (= 0.1.6)
+  elasticsearch-model (= 0.1.7)
+  elasticsearch-rails (= 0.1.7)
   factory_girl_rails (= 4.5.0)
   highcharts-ng-rails (= 0.0.7)
   highcharts-rails (= 4.1.5)
