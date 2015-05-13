@@ -58,7 +58,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    colorize (0.7.5)
+    colorize (0.7.7)
     coveralls (0.8.1)
       json (~> 1.8)
       rest-client (>= 1.6.8, < 2)
@@ -168,7 +168,7 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.18.1)
-    protractor-rails (0.0.14)
+    protractor-rails (0.0.15)
       colorize
       railties
     puma (2.11.1)
@@ -311,7 +311,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (= 0.2.6)
   omniauth-linkedin (= 0.2.0)
   pg (= 0.18.1)
-  protractor-rails (= 0.0.14)
+  protractor-rails (= 0.0.15)
   puma (= 2.11.1)
   rails (= 4.2.1)
   rails_12factor (= 0.0.3)

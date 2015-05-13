@@ -41,7 +41,7 @@ group :development, :test do
   gem 'spring-commands-rspec', '1.0.4'
   gem 'rspec-rails', '3.2.1'
   gem 'factory_girl_rails', '4.5.0'
-  gem 'protractor-rails', '0.0.14'
+  gem 'protractor-rails', '0.0.15'
   gem 'coveralls', '0.8.1', require: false
 end
 
