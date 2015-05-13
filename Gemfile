@@ -5,7 +5,7 @@ gem 'rails', '4.2.1'
 gem 'puma', '2.11.2'
 gem 'pg', '0.18.1'
 
-gem 'jbuilder', '2.2.12'
+gem 'jbuilder', '2.2.13'
 gem 'sass-rails', '5.0.3'
 gem 'bootstrap-sass', '3.3.4.1'
 gem 'autoprefixer-rails', '5.1.11'
@@ -34,7 +34,7 @@ gem 'elasticsearch-model', '0.1.6'
 gem 'elasticsearch-rails', '0.1.6'
 gem 'elasticsearch-extensions', '0.0.18'
 
-gem 'newrelic_rpm', '3.11.1.284'
+gem 'newrelic_rpm', '3.12.0.288'
 
 group :development, :test do
   gem 'spring', '1.3.6'
