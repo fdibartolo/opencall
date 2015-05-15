@@ -124,6 +124,7 @@ en:
   reviews:
     labels:
       current: "Current Reviews"
+      status: "Status"
       score: "Score"
       reviewer: "Reviewer"
       feedback: "Feedback"

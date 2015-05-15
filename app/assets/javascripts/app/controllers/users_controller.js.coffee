@@ -52,4 +52,13 @@ angular.module('openCall.controllers').controller 'UsersController',
 
   $scope.badReview = (score) ->
     score <= 3
+
+  $scope.isAcceptedReview = (status) ->
+    status is 'accepted'
+
+  $scope.isRejectedReview = (status) ->
+    status is 'rejected'
+
+  $scope.isPendingReview = (status) ->
+    status is 'pending'
 ]

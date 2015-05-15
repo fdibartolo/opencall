@@ -184,4 +184,13 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
   $scope.isEmpty = (value) ->
     (value is null) or (value is '')
+
+  $scope.isAcceptedReview = (status) ->
+    status is 'accepted'
+
+  $scope.isRejectedReview = (status) ->
+    status is 'rejected'
+
+  $scope.isPendingReview = (status) ->
+    status is 'pending'
 ]

@@ -18,15 +18,22 @@
             </div>
           </div>
           <div class="col-sm-10">
-            <h3>
-              <a ng-href="#/sessions/show/{{review.session_proposal_id}}">{{review.session_proposal_title}}</a>
-              <a ng-href="#/sessions/show/{{review.session_proposal_id}}" class="btn btn-xs btn-primary pull-right" style="color:white">
+            <div class="col-sm-10">
+              <h3>
+                <a ng-href="#/sessions/show/{{review.session_proposal_id}}">{{review.session_proposal_title}}</a>
+              </h3>
+              <div class="author">{{review.session_proposal_author}}</div>
+              <p>{{review.body}}</p>
+            </div>
+            <div class="col-sm-2 text-right" style="margin-top:25px">
+              <p ng-class="{'text-success': isAcceptedReview(review.status), 'text-danger': isRejectedReview(review.status), 'text-warning': isPendingReview(review.status)}">
+                {{review.status | uppercase}} <span ng-class="{'glyphicon glyphicon-ok': isAcceptedReview(review.status), 'glyphicon glyphicon-remove': isRejectedReview(review.status), 'glyphicon glyphicon-refresh': isPendingReview(review.status)}"></span>
+              </p>
+              <a ng-href="#/sessions/show/{{review.session_proposal_id}}" class="btn btn-xs btn-primary" style="color:white">
                 <%= t('sessions.buttons.show_session') %> &nbsp; 
                 <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
               </a>
-            </h3>
-            <div class="author">{{review.session_proposal_author}}</div>
-            <p>{{review.body}}</p>
+            </div>
           </div>
         </div>
       </div>

@@ -104,6 +104,7 @@ es:
   reviews:
     labels:
       current: "Actuales Revisiones"
+      status: "Estado"
       score: "Puntaje"
       reviewer: "Revisor"
       feedback: "Devolución"
