@@ -8,7 +8,7 @@ class Review < ActiveRecord::Base
   validates :score, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 10 }
 
   workflow do
-    state :awaiting_confirmation do
+    state :pending do
       event :accept, :transitions_to => :accepted
       event :reject, :transitions_to => :rejected
     end

@@ -33,8 +33,8 @@ RSpec.describe Review, :type => :model do
       review.save!
     end
     context "while in initial state" do
-      it "should be 'awaiting_confirmation'" do
-        expect(review.awaiting_confirmation?).to be true
+      it "should be 'pending'" do
+        expect(review.pending?).to be true
       end
       it "can transition to accepted" do
         expect(review.can_accept?).to be true
