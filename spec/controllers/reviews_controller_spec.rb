@@ -86,4 +86,52 @@ RSpec.describe ReviewsController, :type => :controller do
       end
     end
   end
+
+  {
+    'accept' => 'accepted',
+    'reject' => 'rejected'
+  }.each do |action, status|
+    describe "POST #{action}" do
+      let(:session) { FactoryGirl.create :session_proposal }
+      let(:review) { FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer) }
+      let(:payload) { { session_proposal_id: session.id, id: review.id } }
+
+      context "while reviewer" do
+        login_as :reviewer
+
+        it "should return forbidden" do
+          post action, payload
+          expect(response).to have_http_status(403)
+        end
+      end
+
+      context "while admin" do
+        login_as :admin
+
+        context "with invalid param id" do
+          before :each do
+            allow(Review).to receive(:find_by).and_return(nil)
+            payload[:id] = 0
+            post action, payload
+          end
+
+          it "should return 400 Bad Request" do
+            expect(response).to have_http_status(400)
+          end
+
+          it "should return 'cannot find' message" do
+            expect(response.header['Message']).to eq "Unable to find review with id '0'"
+          end
+        end
+
+        context "with valid params" do
+          it "should update review to '#{status}' status" do
+            post action, payload
+            expect(eval("review.reload.#{status}?")).to be true
+            # expect(review).to receive(:accept!).exactly(1).times
+          end
+        end
+      end
+    end
+  end
 end

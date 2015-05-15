@@ -18,18 +18,23 @@ Rails.application.routes.draw do
 
   resources :session_proposals, except: [:destroy], defaults: { format: :json } do
     collection do
-      get 'search'
+      get :search
     end
     member do
-      get 'author'
+      get :author
     end
     resources :comments, only: [:index, :create]
-    resources :reviews, only: [:index, :create]
+    resources :reviews, only: [:index, :create] do
+      member do
+        post :accept
+        post :reject
+      end
+    end
   end
 
   resources :tags, only: [:index], defaults: { format: :json } do
     collection do
-      get 'suggest'
+      get :suggest
     end
   end
 
