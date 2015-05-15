@@ -88,6 +88,61 @@ RSpec.describe ReviewsController, :type => :controller do
     end
   end
 
+  describe "GET single for current user" do
+    let(:session) { FactoryGirl.create :session_proposal }
+
+    context "while user" do
+      login_as :user
+
+      it "should return forbidden" do
+        get :single_for_current_user, { session_proposal_id: session.id }
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context "while reviewer" do
+      login_as :reviewer
+
+      context "with invalid param id" do
+        before :each do
+          allow(SessionProposal).to receive(:find_by).and_return(nil)
+          get :single_for_current_user, { session_proposal_id: 0 }
+        end
+
+        it "should return 400 Bad Request" do
+          expect(response).to have_http_status(400)
+        end
+
+        it "should return 'cannot find' message" do
+          expect(response.header['Message']).to eq "Unable to find session proposal with id '0'"
+        end
+      end
+
+      context "with valid params" do
+        let(:second_session) { FactoryGirl.create :session_proposal, user: session.user }
+        let(:second_review) { FactoryGirl.create :review, session_proposal: second_session, user: logged_in(:reviewer) }
+
+        it "should return review info when one exists" do
+          review = FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer)
+
+          get :single_for_current_user, { session_proposal_id: session.id }
+
+          body = JSON.parse response.body
+          expect(body['body']).to eq review.body
+          expect(body['score']).to eq review.score
+          expect(body['status']).to eq review.workflow_state
+        end
+
+        it "should return empty when no one exists" do
+          get :single_for_current_user, { session_proposal_id: session.id }
+
+          body = JSON.parse response.body
+          expect(body).to be_empty
+        end
+      end
+    end
+  end
+
   {
     'accept' => 'accepted',
     'reject' => 'rejected'

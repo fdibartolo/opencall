@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/users/voted_session_proposals' => 'session_proposals#voted_for_current_user', defaults: { format: :json }
   get '/users/faved_session_proposals' => 'session_proposals#faved_for_current_user', defaults: { format: :json }
   get '/users/reviews'                 => 'reviews#for_current_user', defaults: { format: :json }
+  get '/users/review'                  => 'reviews#single_for_current_user', defaults: { format: :json }
 
   resources :session_proposals, except: [:destroy], defaults: { format: :json } do
     collection do

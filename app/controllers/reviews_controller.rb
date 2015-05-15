@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_session_proposal, only: [:index, :create]
+  before_action :set_session_proposal, only: [:index, :single_for_current_user, :create]
   before_action :forbid_if_cannot_create, except: [:accept, :reject]
   before_action :forbid_if_cannot_manage, only: [:accept, :reject]
   before_action :set_review, only: [:accept, :reject]
@@ -20,6 +20,10 @@ class ReviewsController < ApplicationController
 
   def for_current_user
     @reviews = current_user.reviews
+  end
+
+  def single_for_current_user
+    @review = current_user.reviews.find_by(session_proposal_id: @session_proposal.id)
   end
 
   def accept
