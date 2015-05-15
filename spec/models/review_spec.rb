@@ -26,4 +26,28 @@ RSpec.describe Review, :type => :model do
       expect(review.errors['score']).to include "must be less than or equal to 10"
     end
   end
+
+  describe "workflow" do
+    before :each do
+      review.user = FactoryGirl.create :reviewer
+      review.save!
+    end
+    context "while in initial state" do
+      it "should be 'awaiting_confirmation'" do
+        expect(review.awaiting_confirmation?).to be true
+      end
+      it "can transition to accepted" do
+        expect(review.can_accept?).to be true
+      end
+      it "can transition to rejected" do
+        expect(review.can_reject?).to be true
+      end
+    end
+    context "while accepted" do
+      it "cannot transition to rejected" do
+        review.accept!
+        expect(review.can_reject?).to be false
+      end
+    end
+  end
 end
