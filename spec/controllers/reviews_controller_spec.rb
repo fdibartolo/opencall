@@ -83,6 +83,7 @@ RSpec.describe ReviewsController, :type => :controller do
         expect(body['reviews'].first['session_proposal_title']).to eq first_session.title
         expect(body['reviews'].first['body']).to eq reviewers_review.body
         expect(body['reviews'].first['score']).to eq reviewers_review.score
+        expect(body['reviews'].first['status']).to eq reviewers_review.workflow_state
       end
     end
   end
