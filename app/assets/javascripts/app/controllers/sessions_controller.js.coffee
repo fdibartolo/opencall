@@ -63,7 +63,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     $scope.newSession.invalidTrackId     = $scope.newSession.track_id is ''
     $scope.newSession.invalidThemeId     = $scope.newSession.theme_id is ''
     $scope.newSession.invalidAudienceId  = $scope.newSession.audience_id is ''
-    $scope.newSession.invalidVideo       = not validUrl($scope.newSession.video_link)
+    $scope.newSession.invalidVideo       = $scope.newSession.video_link is ''
 
     not ($scope.newSession.invalidTitle or $scope.newSession.invalidSummary or 
       $scope.newSession.invalidDescription or $scope.newSession.invalidTrackId or
