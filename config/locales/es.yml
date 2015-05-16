@@ -112,6 +112,12 @@ es:
       has_already_been: "Esta revisión ya ha sido "
     buttons:
       edit: "Editar revisión"
+      accept:
+        text: "Aceptar"
+        confirmation: "Está seguro que desea acepter esta revisión?"
+      reject:
+        text: "Rechazar"
+        confirmation: "Está seguro que desea rechazar esta revisión?"
   activerecord:
     models: 
       user: "Usuario"
