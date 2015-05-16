@@ -129,6 +129,9 @@ en:
       reviewer: "Reviewer"
       feedback: "Feedback"
       no_reviews: "No reviews so far..."
+      has_already_been: "This review has already been "
+    buttons:
+      edit: "Edit review"
   activerecord:
     models: 
       user: "User"

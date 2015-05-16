@@ -109,6 +109,9 @@ es:
       reviewer: "Revisor"
       feedback: "Devolución"
       no_reviews: "No hay revisiones a la fecha..."
+      has_already_been: "Esta revisión ya ha sido "
+    buttons:
+      edit: "Editar revisión"
   activerecord:
     models: 
       user: "Usuario"
