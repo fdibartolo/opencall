@@ -26,6 +26,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.newSessionReview = 
     body: ''
     score: 0
+    status: ''
 
   $scope.initForm = () ->
     if angular.isDefined($routeParams.id)
@@ -138,6 +139,10 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.review = () ->
     SessionsService.show($routeParams.id).then ((session) ->
       $scope.session = session
+    ), (errorKey) ->
+      $location.path "/error/#{errorKey}"
+    UsersService.user_review_for($routeParams.id).then ((review) ->
+      $scope.newSessionReview = review  if review
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
 

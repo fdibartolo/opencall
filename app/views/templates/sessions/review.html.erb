@@ -46,16 +46,19 @@
         <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
       </div>
       <div class="col-sm-8">
-        <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}"></textarea><br>
+        <p ng-if="!isPendingReview(newSessionReview.status)" ng-class="{'text-success': isAcceptedReview(newSessionReview.status), 'text-danger': isRejectedReview(newSessionReview.status)}">
+          <%= t('reviews.labels.has_already_been') %> {{newSessionReview.status}}
+        </p>
+        <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}" ng-disabled="!isPendingReview(newSessionReview.status)"></textarea><br>
 
         <label for="input-description" class="control-label" ng-class="{'text-danger': newSessionReview.invalidScore}">
           <%= t('sessions.labels.score') %>: &nbsp;
         </label>
         <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" ng-class="{'text-danger': newSessionReview.invalidScore}">
-          <input type="radio" name="inlineScoreOptions" ng-click="newSessionReview.score = i">{{i}}
+          <input type="radio" name="inlineScoreOptions" ng-model="newSessionReview.score" value="{{i}}" ng-disabled="!isPendingReview(newSessionReview.status)">{{i}}
         </label>
 
-        <button class="btn btn-primary pull-right" ng-click="postReview()">
+        <button class="btn btn-primary pull-right" ng-click="postReview()" ng-disabled="!isPendingReview(newSessionReview.status)">
           <%= t('sessions.buttons.submit_review') %>
         </button>
       </div>
