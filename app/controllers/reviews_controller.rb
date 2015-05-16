@@ -9,7 +9,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.new review_params.merge!({ user_id: current_user.id, session_proposal_id: @session_proposal.id })
+    review = Review.find_or_initialize_by(user_id: current_user.id, session_proposal_id: @session_proposal.id)
+    review.assign_attributes review_params
 
     if review.save
       head :no_content
