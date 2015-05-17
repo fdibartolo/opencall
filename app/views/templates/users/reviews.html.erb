@@ -13,7 +13,7 @@
 
         <div ng-repeat="review in reviews" class="row session-summary">
           <div class="col-sm-2 text-center">
-            <div class="review-score center-block" ng-class="{'bg-green': goodReview(review.score), 'bg-yellow': poorReview(review.score), 'bg-red': badReview(review.score)}">
+            <div class="review-big-score center-block" ng-class="{'bg-green': goodReview(review.score), 'bg-yellow': poorReview(review.score), 'bg-red': badReview(review.score)}">
               <span ng-class="{'for-green': goodReview(review.score), 'for-yellow': poorReview(review.score), 'for-red': badReview(review.score)}">{{review.score}}</span>
             </div>
           </div>

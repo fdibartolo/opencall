@@ -36,6 +36,30 @@ angular.module('openCall.services').factory 'ReviewsService',
 
     deferred.promise
 
+  accept = (sessionProposalId, reviewId) ->
+    postAction "/session_proposals/#{sessionProposalId}/reviews/#{reviewId}/accept"
+
+  reject = (sessionProposalId, reviewId) ->
+    postAction "/session_proposals/#{sessionProposalId}/reviews/#{reviewId}/reject"
+
+  postAction = (url) ->
+    deferred = $q.defer()
+
+    $http.post(url)
+    .success((data, status) ->
+      deferred.resolve()
+    ).error (data, status, header, config) ->
+      switch status
+        when 400 then message = "session_not_found"
+        when 403 then message = "access_denied"
+        else message = "generic"
+
+      deferred.reject message
+
+    deferred.promise
+
   all: all
   create: create
+  accept: accept
+  reject: reject
 ]

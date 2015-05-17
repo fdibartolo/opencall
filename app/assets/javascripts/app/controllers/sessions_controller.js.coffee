@@ -170,9 +170,25 @@ angular.module('openCall.controllers').controller 'SessionsController',
         $scope.newSessionReview.score = 0
         $location.path "/sessions"
         toaster.pop 'success', '', 'Review submitted successfully', 5000
-    ), (errorKey) ->
-       $location.path "/error/#{errorKey}"
+      ), (errorKey) ->
+        $location.path "/error/#{errorKey}"
 
+  $scope.acceptReview = (review) ->
+    $scope.$emit 'showLoadingSpinner', 'Accepting...'
+    ReviewsService.accept($routeParams.id, review.id).then (() ->
+      review.status = 'accepted'
+      $scope.$emit 'hideLoadingSpinner'
+    ), (errorKey) ->
+      $location.path "/error/#{errorKey}"
+    
+  $scope.rejectReview = (review) ->
+    $scope.$emit 'showLoadingSpinner', 'Rejecting...'
+    ReviewsService.reject($routeParams.id, review.id).then (() ->
+      review.status = 'rejected'
+      $scope.$emit 'hideLoadingSpinner'
+    ), (errorKey) ->
+      $location.path "/error/#{errorKey}"
+    
   $scope.goodReview = (score) ->
     score >= 7
 

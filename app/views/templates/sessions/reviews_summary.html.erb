@@ -9,15 +9,25 @@
         <th width="25%" class="text-center"><%= t('reviews.labels.reviewer') %></th>
         <th width="55%"><%= t('reviews.labels.feedback') %></th>
       </thead>
-      <tr ng-repeat="review in session.reviews">
-        <td class="text-center" style="vertical-align:middle" title="{{review.status}}">
+      <tr ng-repeat="review in session.reviews" class="review-summary">
+        <td class="status text-center" title="{{review.status}}">
           <span ng-class="{'glyphicon glyphicon-ok text-success': isAcceptedReview(review.status), 'glyphicon glyphicon-remove text-danger': isRejectedReview(review.status), 'glyphicon glyphicon-refresh text-warning': isPendingReview(review.status)}" style="font-size:120%"></span>
         </td>
-        <td class="text-center" ng-class="{'text-success': goodReview(review.score), 'text-warning': poorReview(review.score), 'text-danger': badReview(review.score)}" style="font-size:130%">
+        <td class="score text-center" ng-class="{'text-success': goodReview(review.score), 'text-warning': poorReview(review.score), 'text-danger': badReview(review.score)}" style="font-size:130%">
           <strong>{{review.score}}</strong>
         </td>
-        <td class="text-center">{{review.reviewer}}</td>
-        <td>{{review.body}}</td>
+        <td class="reviewer text-center">{{review.reviewer}}</td>
+        <td>
+          {{review.body}}
+          <div ng-if="isPendingReview(review.status)" class="actions">
+            <button class="btn btn-xs btn-success" confirmed-action="acceptReview(review)" confirm-click="<%= t('reviews.buttons.accept.confirmation') %>">
+              <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= t('reviews.buttons.accept.text') %>
+            </button>
+            <button class="btn btn-xs btn-danger" confirmed-action="rejectReview(review)" confirm-click="<%= t('reviews.buttons.reject.confirmation') %>">
+              <span class="glyphicon glyphicon-remove"></span>&nbsp;<%= t('reviews.buttons.reject.text') %>
+            </button>
+          </div>
+        </td>
       </tr>
     </table>
 
