@@ -1,5 +1,5 @@
 <% if current_user and current_user.admin? %>
-  <div class="row col-sm-offset-1 col-sm-10" ng-init="loadReviews()">
+  <div class="row col-sm-offset-1 col-sm-10" ng-controller="ReviewsController" ng-init="loadSessionReviews()">
     <hr><h3><%= t('reviews.labels.current') %></h3>
 
     <table class="table table-hover table-condensed" ng-if="session.reviews.length > 0">

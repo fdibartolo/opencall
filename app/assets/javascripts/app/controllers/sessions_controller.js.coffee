@@ -1,6 +1,6 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', '$location', '$routeParams', 'toaster', 'SessionsService', 'CommentsService', 'ReviewsService', 'UsersService'
-($scope, $location, $routeParams, toaster, SessionsService, CommentsService, ReviewsService, UsersService) ->
+['$scope', '$location', '$routeParams', 'toaster', 'SessionsService', 'CommentsService', 'UsersService'
+($scope, $location, $routeParams, toaster, SessionsService, CommentsService, UsersService) ->
 
   $scope.sessions = []
   $scope.matched_tags = []
@@ -23,10 +23,6 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.newSessionComment = 
     body: ''
     date: null
-  $scope.newSessionReview = 
-    body: ''
-    score: 0
-    status: ''
 
   $scope.initForm = () ->
     if angular.isDefined($routeParams.id)
@@ -130,22 +126,6 @@ angular.module('openCall.controllers').controller 'SessionsController',
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
 
-  $scope.loadReviews = () ->
-    ReviewsService.all($routeParams.id).then ((reviews) ->
-      $scope.session.reviews = reviews
-    ), (errorKey) ->
-      $location.path "/error/#{errorKey}"
-
-  $scope.review = () ->
-    SessionsService.show($routeParams.id).then ((session) ->
-      $scope.session = session
-    ), (errorKey) ->
-      $location.path "/error/#{errorKey}"
-    UsersService.user_review_for($routeParams.id).then ((review) ->
-      $scope.newSessionReview = review  if review
-    ), (errorKey) ->
-      $location.path "/error/#{errorKey}"
-
   $scope.postComment = () ->
     if $scope.newSessionComment.body isnt ''
       $scope.$emit 'showLoadingSpinner', 'Commenting...'
@@ -159,59 +139,4 @@ angular.module('openCall.controllers').controller 'SessionsController',
         $scope.newSessionComment.body = ''
         $scope.newSessionComment.date = null
         $scope.$emit 'hideLoadingSpinner'
-
-  $scope.postReview = () ->
-    $scope.newSessionReview.invalidBody = $scope.newSessionReview.body is ''
-    $scope.newSessionReview.invalidScore = $scope.newSessionReview.score is 0
-
-    unless $scope.newSessionReview.invalidBody or $scope.newSessionReview.invalidScore
-      ReviewsService.create($routeParams.id, $scope.newSessionReview).then (() ->
-        $scope.newSessionReview.body = ''
-        $scope.newSessionReview.score = 0
-        $location.path "/sessions"
-        toaster.pop 'success', '', 'Review submitted successfully', 5000
-      ), (errorKey) ->
-        $location.path "/error/#{errorKey}"
-
-  $scope.acceptReview = (review) ->
-    $scope.$emit 'showLoadingSpinner', 'Accepting...'
-    ReviewsService.accept($routeParams.id, review.id).then (() ->
-      review.status = 'accepted'
-      $scope.$emit 'hideLoadingSpinner'
-    ), (errorKey) ->
-      $location.path "/error/#{errorKey}"
-    
-  $scope.rejectReview = (review) ->
-    $scope.$emit 'showLoadingSpinner', 'Rejecting...'
-    ReviewsService.reject($routeParams.id, review.id).then (() ->
-      review.status = 'rejected'
-      $scope.$emit 'hideLoadingSpinner'
-    ), (errorKey) ->
-      $location.path "/error/#{errorKey}"
-    
-  $scope.goodReview = (score) ->
-    score >= 7
-
-  $scope.poorReview = (score) ->
-    score > 3 and score < 7
-
-  $scope.badReview = (score) ->
-    score <= 3
-
-  $scope.loadProfileSummary = () ->
-    if angular.isUndefined($scope.session.profile)
-      SessionsService.authorsProfile($routeParams.id).then (profile) ->
-        $scope.session.profile = profile
-
-  $scope.isEmpty = (value) ->
-    (value is null) or (value is '')
-
-  $scope.isAcceptedReview = (status) ->
-    status is 'accepted'
-
-  $scope.isRejectedReview = (status) ->
-    status is 'rejected'
-
-  $scope.isPendingReview = (status) ->
-    status is 'pending'
 ]
