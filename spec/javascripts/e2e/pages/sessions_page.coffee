@@ -39,6 +39,10 @@ SessionsPage = ->
     element.all(By.id('vote-btn')).get(index).click()
     return
 
+  @review = (index) ->
+    element.all(By.id('review-btn')).get(index).click()
+    return
+
   return
 
 module.exports = new SessionsPage()
