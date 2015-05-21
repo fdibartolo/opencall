@@ -33,6 +33,7 @@ RSpec.describe ReviewsController, :type => :controller do
   describe "POST create" do
     let(:session) { FactoryGirl.create :session_proposal }
     let(:payload) { { session_proposal_id: session.id, review: { body: 'new review', score: 8 }}}
+    let!(:admin) { FactoryGirl.create :admin, first_name: 'admin' }
 
     context "while user" do
       login_as :user
@@ -63,6 +64,13 @@ RSpec.describe ReviewsController, :type => :controller do
         expect(session.reviews.count).to eq 1
         expect(session.reviews.last.body).to eq 'updated'
         expect(session.reviews.last.score).to eq 10
+      end
+
+      it "should fire email on create" do
+        allow_any_instance_of(Review).to receive(:save).and_return(true)
+        post :create, payload
+        email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq I18n.t('review_mailer.review_created_email.subject')
       end
     end
   end

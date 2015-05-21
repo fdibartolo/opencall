@@ -11,8 +11,10 @@ class ReviewsController < ApplicationController
   def create
     review = Review.find_or_initialize_by(user_id: current_user.id, session_proposal_id: @session_proposal.id)
     review.assign_attributes review_params
+    exists = review.id?
 
     if review.save
+      ReviewMailer.review_created_email(review).deliver_now unless exists
       head :no_content
     else
       head :unprocessable_entity
