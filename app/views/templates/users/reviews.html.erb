@@ -1,5 +1,5 @@
 <% if current_user and can? :review, SessionProposal %>
-  <div ng-cloak ng-init="reviews()" fade-animation="true" class="row">
+  <div ng-cloak ng-controller="ReviewsController" ng-init="loadUserReviews()" fade-animation="true" class="row">
     <div ng-if="loading" class="loading">
       <p class="text-center"><span class="ion-loading-a"></span></p>
     </div>
@@ -13,20 +13,29 @@
 
         <div ng-repeat="review in reviews" class="row session-summary">
           <div class="col-sm-2 text-center">
-            <div class="review-score center-block" ng-class="{'bg-green': goodReview(review.score), 'bg-yellow': poorReview(review.score), 'bg-red': badReview(review.score)}">
+            <div class="review-big-score center-block" ng-class="{'bg-green': goodReview(review.score), 'bg-yellow': poorReview(review.score), 'bg-red': badReview(review.score)}">
               <span ng-class="{'for-green': goodReview(review.score), 'for-yellow': poorReview(review.score), 'for-red': badReview(review.score)}">{{review.score}}</span>
             </div>
           </div>
           <div class="col-sm-10">
-            <h3>
-              <a ng-href="#/sessions/show/{{review.session_proposal_id}}">{{review.session_proposal_title}}</a>
-              <a ng-href="#/sessions/show/{{review.session_proposal_id}}" class="btn btn-xs btn-primary pull-right" style="color:white">
-                <%= t('sessions.buttons.show_session') %> &nbsp; 
+            <div class="col-sm-10">
+              <h3>{{review.session_proposal_title}}</h3>
+              <div class="author">{{review.session_proposal_author}}</div>
+              <p>{{review.body}}</p>
+            </div>
+            <div class="col-sm-2 text-right" style="margin-top:25px">
+              <p ng-class="{'text-success': isAcceptedReview(review.status), 'text-danger': isRejectedReview(review.status), 'text-warning': isPendingReview(review.status)}">
+                {{review.status | uppercase}} <span ng-class="{'glyphicon glyphicon-ok': isAcceptedReview(review.status), 'glyphicon glyphicon-remove': isRejectedReview(review.status), 'glyphicon glyphicon-refresh': isPendingReview(review.status)}"></span>
+              </p>
+              <a ng-href="#/sessions/review/{{review.session_proposal_id}}" class="btn btn-xs btn-success" style="color:white" ng-disabled="!isPendingReview(review.status)">
+                <%= t('reviews.buttons.edit') %> &nbsp; 
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+              </a>
+              <a ng-href="#/sessions/show/{{review.session_proposal_id}}" class="btn btn-xs btn-primary" style="margin-top:15px">
+                <%= t('sessions.buttons.show_session') %> &nbsp;
                 <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
               </a>
-            </h3>
-            <div class="author">{{review.session_proposal_author}}</div>
-            <p>{{review.body}}</p>
+            </div>
           </div>
         </div>
       </div>

@@ -46,12 +46,23 @@ RSpec.describe ReviewsController, :type => :controller do
     context "while reviewer" do
       login_as :reviewer
 
-      it "should add review to given SessionProposal" do
+      it "should create review to given SessionProposal when no one exists" do
         post :create, payload
         expect(response).to have_http_status(204)
         expect(session.reviews.count).to eq 1
         expect(session.reviews.last.body).to eq 'new review'
         expect(session.reviews.last.score).to eq 8
+      end
+
+      it "should update review to given SessionProposal when one exists" do
+        FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer)
+        payload[:review][:body] = 'updated'
+        payload[:review][:score] = 10
+        post :create, payload
+        expect(response).to have_http_status(204)
+        expect(session.reviews.count).to eq 1
+        expect(session.reviews.last.body).to eq 'updated'
+        expect(session.reviews.last.score).to eq 10
       end
     end
   end
@@ -83,6 +94,110 @@ RSpec.describe ReviewsController, :type => :controller do
         expect(body['reviews'].first['session_proposal_title']).to eq first_session.title
         expect(body['reviews'].first['body']).to eq reviewers_review.body
         expect(body['reviews'].first['score']).to eq reviewers_review.score
+        expect(body['reviews'].first['status']).to eq reviewers_review.workflow_state
+      end
+    end
+  end
+
+  describe "GET single for current user" do
+    let(:session) { FactoryGirl.create :session_proposal }
+
+    context "while user" do
+      login_as :user
+
+      it "should return forbidden" do
+        get :single_for_current_user, { session_proposal_id: session.id }
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context "while reviewer" do
+      login_as :reviewer
+
+      context "with invalid param id" do
+        before :each do
+          allow(SessionProposal).to receive(:find_by).and_return(nil)
+          get :single_for_current_user, { session_proposal_id: 0 }
+        end
+
+        it "should return 400 Bad Request" do
+          expect(response).to have_http_status(400)
+        end
+
+        it "should return 'cannot find' message" do
+          expect(response.header['Message']).to eq "Unable to find session proposal with id '0'"
+        end
+      end
+
+      context "with valid params" do
+        let(:second_session) { FactoryGirl.create :session_proposal, user: session.user }
+        let(:second_review) { FactoryGirl.create :review, session_proposal: second_session, user: logged_in(:reviewer) }
+
+        it "should return review info when one exists" do
+          review = FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer)
+
+          get :single_for_current_user, { session_proposal_id: session.id }
+
+          body = JSON.parse response.body
+          expect(body['body']).to eq review.body
+          expect(body['score']).to eq review.score
+          expect(body['status']).to eq review.workflow_state
+        end
+
+        it "should return empty when no one exists" do
+          get :single_for_current_user, { session_proposal_id: session.id }
+
+          body = JSON.parse response.body
+          expect(body).to be_empty
+        end
+      end
+    end
+  end
+
+  {
+    'accept' => 'accepted',
+    'reject' => 'rejected'
+  }.each do |action, status|
+    describe "POST #{action}" do
+      let(:session) { FactoryGirl.create :session_proposal }
+      let(:review) { FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer) }
+      let(:payload) { { session_proposal_id: session.id, id: review.id } }
+
+      context "while reviewer" do
+        login_as :reviewer
+
+        it "should return forbidden" do
+          post action, payload
+          expect(response).to have_http_status(403)
+        end
+      end
+
+      context "while admin" do
+        login_as :admin
+
+        context "with invalid param id" do
+          before :each do
+            allow(Review).to receive(:find_by).and_return(nil)
+            payload[:id] = 0
+            post action, payload
+          end
+
+          it "should return 400 Bad Request" do
+            expect(response).to have_http_status(400)
+          end
+
+          it "should return 'cannot find' message" do
+            expect(response.header['Message']).to eq "Unable to find review with id '0'"
+          end
+        end
+
+        context "with valid params" do
+          it "should update review to '#{status}' status" do
+            post action, payload
+            expect(eval("review.reload.#{status}?")).to be true
+            # expect(review).to receive(:accept!).exactly(1).times
+          end
+        end
       end
     end
   end

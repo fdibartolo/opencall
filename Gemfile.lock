@@ -276,6 +276,7 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.7)
+    workflow (1.2.0)
 
 PLATFORMS
   ruby
@@ -319,3 +320,4 @@ DEPENDENCIES
   twitter-typeahead-rails (= 0.10.5)
   uglifier (= 2.7.1)
   will_paginate (= 3.0.7)
+  workflow (= 1.2.0)

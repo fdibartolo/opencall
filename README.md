@@ -22,7 +22,7 @@ Pendiente de agregar:
 
   `$ foreman run rake open_call:e2e`
 
-  Los tests de integración levantarán un nodo de ElasticSearch en el puerto especificado en la variable de entorno `ES_HOST_PORT` (ver abajo)
+  Los tests de integración levantarán un nodo de ElasticSearch en el puerto especificado en la variable de entorno `ES_TEST_PORT` (ver abajo)
 
 #### Inicio
 
