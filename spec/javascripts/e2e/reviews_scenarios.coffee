@@ -19,7 +19,7 @@ describe "Reviews page", ->
     done()
     return
 
-  iit "should be able to submit a review", (done) ->
+  it "should be able to submit a review", (done) ->
     @sessionsPage.index()
 
     sessionIndex = 1
