@@ -1,6 +1,6 @@
 angular.module('openCall.controllers').controller 'ReviewsController', 
-['$scope', '$location', '$routeParams', 'toaster', 'ReviewsService', 'SessionsService', 'UsersService', 
-($scope, $location, $routeParams, toaster, ReviewsService, SessionsService, UsersService) ->
+['$scope', '$location', '$routeParams', 'toaster', 'constants', 'ReviewsService', 'SessionsService', 'UsersService', 
+($scope, $location, $routeParams, toaster, constants, ReviewsService, SessionsService, UsersService) ->
 
   $scope.reviews = []
   $scope.newSessionReview = 
@@ -62,22 +62,22 @@ angular.module('openCall.controllers').controller 'ReviewsController',
       $location.path "/error/#{errorKey}"
     
   $scope.goodReview = (score) ->
-    score >= 7
+    score >= constants.reviews.score.goodThreshold
 
   $scope.poorReview = (score) ->
-    score > 3 and score < 7
+    score > constants.reviews.score.poorThreshold and score < constants.reviews.score.goodThreshold
 
   $scope.badReview = (score) ->
-    score <= 3
+    score <= constants.reviews.score.poorThreshold
 
   $scope.isAcceptedReview = (status) ->
-    status is 'accepted'
+    status is constants.reviews.status.accepted
 
   $scope.isRejectedReview = (status) ->
-    status is 'rejected'
+    status is constants.reviews.status.rejected
 
   $scope.isPendingReview = (status) ->
-    status is 'pending'
+    status is constants.reviews.status.pending
 
   $scope.isPendingOrNewReview = (status) ->
     $scope.isPendingReview(status) or $scope.isEmpty(status) or angular.isUndefined(status)
