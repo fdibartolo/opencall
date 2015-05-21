@@ -22,11 +22,15 @@ end
 if Rails.env.test?
   User.create!([
     { first_name: 'Robert', last_name: 'Martin', country: 'US', email: 'bob@mail.com', password: '12345678' },
-    { first_name: 'Reviewer', last_name: 'Last', country: 'US', email: 'reviewer@mail.com', password: '12345678' }
+    { first_name: 'Reviewer', last_name: 'Last', country: 'US', email: 'reviewer@mail.com', password: '12345678' },
+    { first_name: 'Admin', last_name: 'Last', country: 'US', email: 'admin@mail.com', password: '12345678' }
   ])
 
   reviewer = User.find_by(email: 'reviewer@mail.com')
   reviewer.roles << Role.find_by(name: RoleReviewer)
+
+  admin = User.find_by(email: 'admin@mail.com')
+  admin.roles << Role.find_by(name: RoleAdmin)
 
   SessionProposal.create!([
     { user: User.last, title: 'Refactoring smells', summary: 'About refactoring', description: 'This session is about refactoring', theme: Theme.first, track: Track.first, audience: Audience.first, video_link: 'http://youtube.com/video_link' },
