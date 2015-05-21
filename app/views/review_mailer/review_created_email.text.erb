@@ -1,0 +1,6 @@
+<%= I18n.t('review_mailer.review_created_email.body', 
+  reviewer_name: @review.user.full_name,
+  session_title: @review.session_proposal.title,
+  score: @review.score, 
+  body: @review.body,
+  link: "#{root_url}#/sessions/show/#{@review.session_proposal.id}") %>
