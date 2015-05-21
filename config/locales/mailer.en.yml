@@ -11,3 +11,7 @@ en:
     role_created_email:
       subject: "Agiles 2015 - New role assigned to you"
       body: "Dear %{user},\n\nThe following role was assigned to you within the OpenCall application:\n\n%{role_name}\n\nRegards,\nProgram Committee of Agiles 2015 Conference\n\n[Please do not reply to this e-mail. It was sent from an unmonitored email address]"
+  review_mailer:
+    review_created_email:
+      subject: "Agiles 2015 - Session review has been submitted"
+      body: "Dear Chairs,\n\nThe reviewer %{reviewer_name} has submitted feedback to the session '%{session_title}':\n\nScore: %{score}\nDetails: %{body}\n\nFollow the link to access it online: %{link}\n\nRegards,\nProgram Committee of Agiles 2015 Conference\n\n[Please do not reply to this e-mail. It was sent from an unmonitored email address]"
