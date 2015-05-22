@@ -92,6 +92,20 @@ RSpec.describe SessionProposal, :type => :model do
         expect(session_proposal.can_decline?).to be true
       end
     end
+
+    context "while accepting" do
+      it "should set notified_on" do
+        session_proposal.accept!
+        expect(session_proposal.notified_on).to be_within(2.seconds).of DateTime.now
+      end
+    end
+    
+    context "while declining" do
+      it "should set notified_on" do
+        session_proposal.decline!
+        expect(session_proposal.notified_on).to be_within(2.seconds).of DateTime.now
+      end
+    end
     
     context "while accepted" do
       it "cannot transition to declined" do

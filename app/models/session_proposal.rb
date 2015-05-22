@@ -84,4 +84,12 @@ class SessionProposal < ActiveRecord::Base
   after_commit on: [:update] do
     __elasticsearch__.index_document
   end
+
+  private
+  def accept
+    self.notified_on = DateTime.now    
+  end  
+  def decline
+    self.notified_on = DateTime.now    
+  end  
 end
