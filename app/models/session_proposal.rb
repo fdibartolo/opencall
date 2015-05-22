@@ -87,9 +87,11 @@ class SessionProposal < ActiveRecord::Base
 
   private
   def accept
-    self.notified_on = DateTime.now    
+    self.notified_on = DateTime.now
+    save!
   end  
   def decline
-    self.notified_on = DateTime.now    
+    self.notified_on = DateTime.now
+    save!
   end  
 end
