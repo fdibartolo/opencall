@@ -1,0 +1,17 @@
+.notifications-summary {
+  .session a { color: black; }
+
+  .reviews {
+    list-style: none;
+    margin-left: -15px;
+  }
+
+  .status {
+    vertical-align: middle;
+    font-style: italic;    
+  }
+  .actions {
+    vertical-align: middle;
+    button { margin: 3px 0; }
+  }
+}
