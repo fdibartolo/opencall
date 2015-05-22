@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513232720) do
+ActiveRecord::Schema.define(version: 20150522144134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 20150513232720) do
     t.integer  "audience_id"
     t.integer  "audience_count"
     t.integer  "theme_id"
+    t.string   "workflow_state"
+    t.datetime "notified_on"
   end
 
   create_table "session_proposals_tags", id: false, force: :cascade do |t|

@@ -73,4 +73,31 @@ RSpec.describe SessionProposal, :type => :model do
       end
     end
   end
+
+  describe "workflow" do
+    before :each do
+      session_proposal.track = FactoryGirl.create :track
+      session_proposal.theme = FactoryGirl.create :theme
+      session_proposal.save!
+    end
+
+    context "while in initial state" do
+      it "should be 'new'" do
+        expect(session_proposal.new?).to be true
+      end
+      it "can transition to accepted" do
+        expect(session_proposal.can_accept?).to be true
+      end
+      it "can transition to declined" do
+        expect(session_proposal.can_decline?).to be true
+      end
+    end
+    
+    context "while accepted" do
+      it "cannot transition to declined" do
+        session_proposal.accept!
+        expect(session_proposal.can_decline?).to be false
+      end
+    end
+  end
 end
