@@ -2,13 +2,33 @@ angular.module('openCall.controllers').controller 'NotificationsController',
 ['$scope', 'constants', 'NotificationsService', ($scope, constants, NotificationsService) ->
 
   $scope.init = () ->
-
     $scope.$emit 'showLoadingSpinner', 'Loading...'
     NotificationsService.sessions().then ((sessions) ->
       $scope.sessions = sessions
       $scope.$emit 'hideLoadingSpinner'
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
+      $scope.$emit 'hideLoadingSpinner'
+
+  $scope.acceptSession = (session) ->
+    $scope.$emit 'showLoadingSpinner', 'Accepting and notifying...'
+    NotificationsService.accept(session.id).then (() ->
+      session.status      = constants.sessions.status.accepted
+      session.notified_on = moment().format()
+      $scope.$emit 'hideLoadingSpinner'
+    ), (errorKey) ->
+      $location.path "/error/#{errorKey}"
+      $scope.$emit 'hideLoadingSpinner'
+
+  $scope.declineSession = (session) ->
+    $scope.$emit 'showLoadingSpinner', 'Declining and notifying...'
+    NotificationsService.decline(session.id).then (() ->
+      session.status      = constants.sessions.status.declined
+      session.notified_on = moment().format()
+      $scope.$emit 'hideLoadingSpinner'
+    ), (errorKey) ->
+      $location.path "/error/#{errorKey}"
+      $scope.$emit 'hideLoadingSpinner'
 
   $scope.goodReview = (score) ->
     score >= constants.reviews.score.goodThreshold
