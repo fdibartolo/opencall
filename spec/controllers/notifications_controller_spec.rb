@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe NotificationsController, type: :controller do
-  describe "GET #index for session/reviews notification status" do
+  describe "GET #index for reviews by session" do
 
     context "while user" do
       login_as :user
@@ -24,7 +24,7 @@ RSpec.describe NotificationsController, type: :controller do
       let!(:second_session) { FactoryGirl.create :session_proposal, user: logged_in(:admin), theme: theme, track: track }
       let!(:third_review) { FactoryGirl.create :review, session_proposal: second_session, user: reviewer }
 
-      it "should include all reviews by session" do
+      it "should include reviews info" do
         get :index
 
         body = JSON.parse response.body
@@ -35,6 +35,17 @@ RSpec.describe NotificationsController, type: :controller do
         expect(body['sessions'].last['reviews'].count).to eq 1
         expect(body['sessions'].last['reviews'].first['reviewer']).to eq third_review.user.full_name
         expect(body['sessions'].last['reviews'].first['status']).to eq third_review.workflow_state
+      end
+
+      it "should include session status" do
+        second_session.accept!
+        get :index
+
+        body = JSON.parse response.body
+        expect(body['sessions'].count).to eq 2
+        expect(body['sessions'].first['status']).to eq first_session.workflow_state
+        expect(body['sessions'].first['notified_on']).to be nil
+        expect(body['sessions'].last['status']).to eq 'accepted'
       end
     end
   end
