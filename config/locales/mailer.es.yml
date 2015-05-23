@@ -15,3 +15,10 @@ es:
     review_created_email:
       subject: "Agiles 2015 - Nueva revisión recibida"
       body: "Estimados Chairs,\n\nEl revisor %{reviewer_name} ha dado feedback sobre la sesión '%{session_title}':\n\Puntaje: %{score}\nDetalle: %{body}\n\nLink para verla online: %{link}\n\nMuchas gracias,\nPrograma Commité Conferencia Agiles 2015\n\n[Por favor no responda a este correo electrónico. Ha sido enviado desde una casilla no monitoreada]"
+  notification_mailer:
+    session_accepted_email:
+      subject: "Agiles 2015 - Tu sesión ha sido aceptada"
+      body: "Estimado %{user},\n\nFelicitaciones!, tu propuesta '%{title}' para la conferencia Agiles 2015 ha sido aceptada por el commité organizador"
+    session_declined_email:
+      subject: "Agiles 2015 - Tu sesión ha sido declinada"
+      body: "Estimado %{user},\n\nGracias por enviar la propuesta '%{title}' para la conferencia Agiles 2015. Desafortunadamente..."
