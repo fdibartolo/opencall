@@ -2,6 +2,10 @@ angular.module('openCall.controllers').controller 'NotificationsController',
 ['$scope', '$location', 'constants', 'NotificationsService', ($scope, $location, constants, NotificationsService) ->
 
   $scope.init = () ->
+    $scope.sort = 
+      type: 'top'
+      expression: 'reviews.length'
+
     $scope.$emit 'showLoadingSpinner', 'Loading...'
     NotificationsService.sessions().then ((response) ->
       $scope.sessions = response.sessions
@@ -39,9 +43,17 @@ angular.module('openCall.controllers').controller 'NotificationsController',
   $scope.toggleTheme = (theme) ->
     theme.active = !theme.active
     
-  $scope.visibleTheme = (themeName) ->
+  $scope.isVisibleTheme = (themeName) ->
     t = theme for theme in $scope.themes when theme.name is themeName
     t.active
+
+  $scope.toggleSort = () ->
+    if $scope.sort.type is 'top'
+      $scope.sort.type = 'bottom'
+      $scope.sort.expression = '-reviews.length'
+    else
+      $scope.sort.type = 'top'
+      $scope.sort.expression = 'reviews.length'
 
   $scope.goodReview = (score) ->
     score >= constants.reviews.score.goodThreshold

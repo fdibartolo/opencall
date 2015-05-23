@@ -5,11 +5,15 @@
     <table class="table table-hover table-condensed" ng-if="sessions.length > 0">
       <thead>
         <th width="40%"><%= t('notifications.labels.session') %></th>
-        <th width="30%"><%= t('notifications.labels.reviews') %></th>
+        <th width="30%">
+          <%= t('notifications.labels.reviews') %>
+          <span class="clickable text-primary glyphicon glyphicon-triangle-top" ng-click="toggleSort()" ng-if="sort.type == 'top'"></span>
+          <span class="clickable text-primary glyphicon glyphicon-triangle-bottom" ng-click="toggleSort()" ng-if="sort.type == 'bottom'"></span>
+        </th>
         <th width="20%"></th>
         <th width="10%"></th>
       </thead>
-      <tr ng-repeat="session in sessions" class="notifications-summary" ng-class="{'success': isAcceptedSession(session.status), 'danger': isDeclinedSession(session.status)}" ng-show="visibleTheme(session.theme)">
+      <tr ng-repeat="session in sessions | orderBy:sort.expression" class="notifications-summary" ng-class="{'success': isAcceptedSession(session.status), 'danger': isDeclinedSession(session.status)}" ng-show="isVisibleTheme(session.theme)">
         <td class="session">
           <h4>
             <a ng-href="#/sessions/show/{{session.id}}" target="_blank">
