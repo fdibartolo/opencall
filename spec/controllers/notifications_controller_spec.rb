@@ -47,6 +47,16 @@ RSpec.describe NotificationsController, type: :controller do
         expect(body['sessions'].first['notified_on']).to be nil
         expect(body['sessions'].last['status']).to eq 'accepted'
       end
+
+      it "should include themes list" do
+        another_theme = FactoryGirl.create :theme, name: 'Another theme'
+        get :index
+
+        body = JSON.parse response.body
+        expect(body['themes'].count).to eq 2
+        expect(body['themes'].first).to eq theme.name
+        expect(body['themes'].last).to eq another_theme.name
+      end
     end
   end
 

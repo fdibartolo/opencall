@@ -1,3 +1,4 @@
+json.themes Theme.all.map(&:name)
 json.sessions @session_proposals do |session_proposal|
   json.extract! session_proposal, :id, :title, :notified_on
   json.status session_proposal.workflow_state
