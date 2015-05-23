@@ -91,6 +91,13 @@ RSpec.describe NotificationsController, type: :controller do
             post action, payload
             expect(eval("session.reload.#{status}?")).to be true
           end
+
+          it "should fire '#{status}' email" do
+            allow_any_instance_of(SessionProposal).to receive(action).and_return(true)
+            post action, payload
+            email = ActionMailer::Base.deliveries.last
+            expect(email.subject).to eq I18n.t("notification_mailer.session_#{status}_email.subject")
+          end
         end
       end
     end
