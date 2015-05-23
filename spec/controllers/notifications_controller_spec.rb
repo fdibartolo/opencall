@@ -66,7 +66,7 @@ RSpec.describe NotificationsController, type: :controller do
   }.each do |action, status|
     describe "POST #{action}" do
       let(:session) { FactoryGirl.create :session_proposal }
-      let(:payload) { { id: session.id } }
+      let(:payload) { { session_proposal_id: session.id } }
 
       context "while reviewer" do
         login_as :reviewer
@@ -83,7 +83,7 @@ RSpec.describe NotificationsController, type: :controller do
         context "with invalid param id" do
           before :each do
             allow(Review).to receive(:find_by).and_return(nil)
-            payload[:id] = 0
+            payload[:session_proposal_id] = 0
             post action, payload
           end
 

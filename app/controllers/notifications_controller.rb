@@ -23,9 +23,4 @@ class NotificationsController < ApplicationController
   def forbid_if_no_access
     return head :forbidden unless current_user.admin?
   end
-
-  def set_session_proposal
-    @session_proposal = SessionProposal.find_by(id: params[:id])
-    return head(:bad_request, { message: "Unable to find session proposal with id '#{params[:id]}'"}) unless @session_proposal
-  end
 end

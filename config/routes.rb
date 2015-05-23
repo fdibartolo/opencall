@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   resources :stats, only: [:index, :show], defaults: { format: :json }
 
-  resources :notifications, only: [:index], defaults: { format: :json } do
+  resources :notifications, param: :session_proposal_id, only: [:index], defaults: { format: :json } do
     member do
       post :accept
       post :decline
