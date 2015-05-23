@@ -9,7 +9,7 @@
         <th width="20%"></th>
         <th width="10%"></th>
       </thead>
-      <tr ng-repeat="session in sessions" class="notifications-summary">
+      <tr ng-repeat="session in sessions" class="notifications-summary" ng-class="{'success': isAcceptedSession(session.status), 'danger': isDeclinedSession(session.status)}">
         <td class="session">
           <h4>
             <a ng-href="#/sessions/show/{{session.id}}" target="_blank">
@@ -29,15 +29,15 @@
         </td>
         <td class="status">
           <div ng-if="!isNewSession(session.status)" ng-class="{'text-success': isAcceptedSession(session.status), 'text-danger': isDeclinedSession(session.status)}">
-            {{session.status}} on {{session.notified_on | date: 'mediumDate'}}
+            <strong>{{session.status}}</strong> on {{session.notified_on | date: 'mediumDate'}}
           </div>
         </td>
         <td class="actions">
           <div class="pull-right">
-            <button class="btn btn-xs btn-success" confirmed-action="acceptSession(session)" confirm-click="<%= t('notifications.buttons.accept.confirmation') %>">
+            <button class="btn btn-xs btn-success" confirmed-action="acceptSession(session)" confirm-click="<%= t('notifications.buttons.accept.confirmation') %>" ng-disabled="isDeclinedSession(session.status)">
               <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= t('notifications.buttons.accept.text') %>
             </button><br>
-            <button class="btn btn-xs btn-danger" confirmed-action="declineSession(session)" confirm-click="<%= t('notifications.buttons.decline.confirmation') %>">
+            <button class="btn btn-xs btn-danger" confirmed-action="declineSession(session)" confirm-click="<%= t('notifications.buttons.decline.confirmation') %>" ng-disabled="isAcceptedSession(session.status)">
               <span class="glyphicon glyphicon-remove"></span>&nbsp;<%= t('notifications.buttons.decline.text') %>
             </button>
           </div>

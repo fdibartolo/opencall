@@ -1,5 +1,5 @@
 angular.module('openCall.controllers').controller 'NotificationsController', 
-['$scope', 'constants', 'NotificationsService', ($scope, constants, NotificationsService) ->
+['$scope', '$location', 'constants', 'NotificationsService', ($scope, $location, constants, NotificationsService) ->
 
   $scope.init = () ->
     $scope.$emit 'showLoadingSpinner', 'Loading...'
