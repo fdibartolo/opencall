@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TemplatesController, :type => :controller do
-  %w[home error loading_spinner stats
+  %w[home error loading_spinner stats themes_list
     sessions/index sessions/new sessions/search_result sessions/search_side_bar sessions/review
     sessions/comments sessions/actions sessions/reviews_summary sessions/show users/faved_sessions
     users/reviews users/sessions users/voted_sessions users/profile_summary
