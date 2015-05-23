@@ -3,8 +3,14 @@ angular.module('openCall.controllers').controller 'NotificationsController',
 
   $scope.init = () ->
     $scope.$emit 'showLoadingSpinner', 'Loading...'
-    NotificationsService.sessions().then ((sessions) ->
-      $scope.sessions = sessions
+    NotificationsService.sessions().then ((response) ->
+      $scope.sessions = response.sessions
+      $scope.themes = []
+      angular.forEach response.themes, (themeName) ->
+        theme =
+          name: themeName
+          active: true
+        $scope.themes.push theme
       $scope.$emit 'hideLoadingSpinner'
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
@@ -29,6 +35,10 @@ angular.module('openCall.controllers').controller 'NotificationsController',
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
       $scope.$emit 'hideLoadingSpinner'
+
+  $scope.visibleTheme = (themeName) ->
+    t = theme for theme in $scope.themes when theme.name is themeName
+    t.active
 
   $scope.goodReview = (score) ->
     score >= constants.reviews.score.goodThreshold

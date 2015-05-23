@@ -6,7 +6,7 @@ angular.module('openCall.services').factory 'NotificationsService',
 
     $http.get("/notifications")
     .success((data, status) ->
-      deferred.resolve data.sessions
+      deferred.resolve data
     ).error (data, status, header, config) ->
       switch status
         when 403 then message = "access_denied"
