@@ -56,6 +56,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/stats.html'
     controller: 'StatsController'
 
+  $routeProvider.when '/notifications',
+    templateUrl: '/templates/notifications.html'
+    controller: 'NotificationsController'
+
   $routeProvider.otherwise redirectTo: '/home'
 ]
 

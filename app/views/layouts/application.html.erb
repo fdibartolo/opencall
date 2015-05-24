@@ -50,6 +50,7 @@
                       <li><%= link_to 'My reviews', "#{root_url}#/users/reviews" %></li>
                       <li><%= link_to 'Manage reviewers', roles_url %></li>
                       <li><%= link_to 'Proposals status', "#{root_url}#/stats" %></li>
+                      <li><%= link_to 'Notifications', "#{root_url}#/notifications" %></li>
                     <% end %>
                     <% if current_user.reviewer? %>
                       <li class="divider"></li>

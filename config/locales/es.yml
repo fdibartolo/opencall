@@ -114,10 +114,23 @@ es:
       edit: "Editar revisión"
       accept:
         text: "Aceptar"
-        confirmation: "Está seguro que desea acepter esta revisión?"
+        confirmation: "¿Está seguro que desea acepter esta revisión?"
       reject:
         text: "Rechazar"
-        confirmation: "Está seguro que desea rechazar esta revisión?"
+        confirmation: "¿Está seguro que desea rechazar esta revisión?"
+  notifications:
+    labels:
+      title: "Seguimiento de notificaciones sobre propuestas"
+      session: "Sesión"
+      reviews: "Revisiones por"
+      status: "Estado"
+    buttons:
+      accept:
+        text: "Aceptar y Notificar"
+        confirmation: "¿Está seguro que desea aceptar esta propuesta y notificar a su autor?"
+      decline:
+        text: "Declinar y Notificar"
+        confirmation: "¿Está seguro que desea declinar esta propuesta y notificar a su autor?"
   activerecord:
     models: 
       user: "Usuario"

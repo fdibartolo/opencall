@@ -48,7 +48,7 @@ angular.module('openCall.controllers').controller 'ReviewsController',
   $scope.acceptReview = (review) ->
     $scope.$emit 'showLoadingSpinner', 'Accepting...'
     ReviewsService.accept($routeParams.id, review.id).then (() ->
-      review.status = 'accepted'
+      review.status = constants.reviews.status.accepted
       $scope.$emit 'hideLoadingSpinner'
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
@@ -56,7 +56,7 @@ angular.module('openCall.controllers').controller 'ReviewsController',
   $scope.rejectReview = (review) ->
     $scope.$emit 'showLoadingSpinner', 'Rejecting...'
     ReviewsService.reject($routeParams.id, review.id).then (() ->
-      review.status = 'rejected'
+      review.status = constants.reviews.status.rejected
       $scope.$emit 'hideLoadingSpinner'
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
