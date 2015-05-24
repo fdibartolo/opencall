@@ -2,9 +2,7 @@ angular.module('openCall.controllers').controller 'NotificationsController',
 ['$scope', '$location', 'constants', 'NotificationsService', ($scope, $location, constants, NotificationsService) ->
 
   $scope.init = () ->
-    $scope.sort = 
-      type: 'top'
-      expression: 'reviews.length'
+    $scope.sort = constants.notifications.sort.top
 
     $scope.$emit 'showLoadingSpinner', 'Loading...'
     NotificationsService.sessions().then ((response) ->
@@ -48,13 +46,17 @@ angular.module('openCall.controllers').controller 'NotificationsController',
     t.active
 
   $scope.toggleSort = () ->
-    if $scope.sort.type is 'top'
-      $scope.sort.type = 'bottom'
-      $scope.sort.expression = '-reviews.length'
+    if $scope.isTopSort()
+      $scope.sort = constants.notifications.sort.bottom
     else
-      $scope.sort.type = 'top'
-      $scope.sort.expression = 'reviews.length'
+      $scope.sort = constants.notifications.sort.top
 
+  $scope.isTopSort = () ->
+    $scope.sort.type is constants.notifications.sort.top.type
+    
+  $scope.isBottomSort = () ->
+    $scope.sort.type is constants.notifications.sort.bottom.type
+    
   $scope.goodReview = (score) ->
     score >= constants.reviews.score.goodThreshold
 

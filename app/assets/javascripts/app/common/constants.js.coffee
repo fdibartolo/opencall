@@ -12,4 +12,12 @@ angular.module('openCall.constants').constant 'constants',
       pending: 'pending'
       accepted: 'accepted'
       rejected: 'rejected'
+  notifications:
+    sort:
+      top:
+        type: 'top'
+        expression: 'reviews.length'
+      bottom:
+        type: 'bottom'
+        expression: '-reviews.length'
 
