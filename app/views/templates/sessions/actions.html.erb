@@ -11,7 +11,7 @@
       helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}">
     </span>
     <% if current_user and can? :review, SessionProposal %>
-      <a ng-href="#/sessions/review/{{session.id}}">
+      <a id="review-btn" ng-href="#/sessions/review/{{session.id}}">
         <span class="ion-compose text-success" title="<%= t('sessions.buttons.start_review') %>"></span>
       </a>
     <% end %>

@@ -34,7 +34,7 @@ angular.module('openCall.services').factory 'UsersService',
 
     deferred.promise
 
-  user_reviews = (id) ->
+  user_reviews = () ->
     deferred = $q.defer()
 
     $http.get("/users/reviews")
@@ -42,6 +42,22 @@ angular.module('openCall.services').factory 'UsersService',
       deferred.resolve data.reviews
     ).error (data, status, header, config) ->
       switch status
+        when 403 then message = "access_denied"
+        else message = "generic"
+
+      deferred.reject message
+
+    deferred.promise
+
+  user_review_for = (session_proposal_id) ->
+    deferred = $q.defer()
+
+    $http.get("/users/review/#{session_proposal_id}")
+    .success((data, status) ->
+      deferred.resolve data
+    ).error (data, status, header, config) ->
+      switch status
+        when 400 then message = "session_not_found"
         when 403 then message = "access_denied"
         else message = "generic"
 
@@ -100,6 +116,7 @@ angular.module('openCall.services').factory 'UsersService',
   user_voted_sessions: user_voted_sessions
   user_faved_sessions: user_faved_sessions
   user_reviews: user_reviews
+  user_review_for: user_review_for
   user_session_voted_ids: user_session_voted_ids
   user_session_faved_ids: user_session_faved_ids
   toggle_vote_session: toggle_vote_session

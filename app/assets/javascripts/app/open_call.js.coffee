@@ -1,8 +1,9 @@
-app = angular.module('openCall', ['ngRoute', 'ngAnimate', 'toaster', 'sticky', 'highcharts-ng', 'openCall.controllers', 'openCall.services', 'openCall.directives'])
+app = angular.module('openCall', ['ngRoute', 'ngAnimate', 'toaster', 'sticky', 'highcharts-ng', 'openCall.controllers', 'openCall.services', 'openCall.directives', 'openCall.constants'])
 
 controllers = angular.module('openCall.controllers', [])
 services = angular.module('openCall.services', [])
 directives = angular.module('openCall.directives', [])
+constants = angular.module('openCall.constants', [])
 
 app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
@@ -54,6 +55,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
   $routeProvider.when '/stats',
     templateUrl: '/templates/stats.html'
     controller: 'StatsController'
+
+  $routeProvider.when '/notifications',
+    templateUrl: '/templates/notifications.html'
+    controller: 'NotificationsController'
 
   $routeProvider.otherwise redirectTo: '/home'
 ]

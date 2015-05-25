@@ -11,31 +11,44 @@ Rails.application.routes.draw do
     post '/vote_session'     => 'users#toggle_session_vote'
     post '/fav_session'      => 'users#toggle_session_fav'
   end
-  get '/users/session_proposals'       => 'session_proposals#for_current_user', defaults: { format: :json }
-  get '/users/voted_session_proposals' => 'session_proposals#voted_for_current_user', defaults: { format: :json }
-  get '/users/faved_session_proposals' => 'session_proposals#faved_for_current_user', defaults: { format: :json }
-  get '/users/reviews'                 => 'reviews#for_current_user', defaults: { format: :json }
+  get '/users/session_proposals'           => 'session_proposals#for_current_user', defaults: { format: :json }
+  get '/users/voted_session_proposals'     => 'session_proposals#voted_for_current_user', defaults: { format: :json }
+  get '/users/faved_session_proposals'     => 'session_proposals#faved_for_current_user', defaults: { format: :json }
+  get '/users/reviews'                     => 'reviews#for_current_user', defaults: { format: :json }
+  get '/users/review/:session_proposal_id' => 'reviews#single_for_current_user', defaults: { format: :json }
 
   resources :session_proposals, except: [:destroy], defaults: { format: :json } do
     collection do
-      get 'search'
+      get :search
     end
     member do
-      get 'author'
+      get :author
     end
     resources :comments, only: [:index, :create]
-    resources :reviews, only: [:index, :create]
+    resources :reviews, only: [:index, :create] do
+      member do
+        post :accept
+        post :reject
+      end
+    end
   end
 
   resources :tags, only: [:index], defaults: { format: :json } do
     collection do
-      get 'suggest'
+      get :suggest
     end
   end
 
   resources :roles, only: [:index, :update, :destroy]
 
   resources :stats, only: [:index, :show], defaults: { format: :json }
+
+  resources :notifications, param: :session_proposal_id, only: [:index], defaults: { format: :json } do
+    member do
+      post :accept
+      post :decline
+    end
+  end
 
   root 'main#index'
 end

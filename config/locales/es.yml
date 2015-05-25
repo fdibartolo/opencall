@@ -104,10 +104,33 @@ es:
   reviews:
     labels:
       current: "Actuales Revisiones"
+      status: "Estado"
       score: "Puntaje"
       reviewer: "Revisor"
       feedback: "Devolución"
       no_reviews: "No hay revisiones a la fecha..."
+      has_already_been: "Esta revisión ya ha sido "
+    buttons:
+      edit: "Editar revisión"
+      accept:
+        text: "Aceptar"
+        confirmation: "¿Está seguro que desea acepter esta revisión?"
+      reject:
+        text: "Rechazar"
+        confirmation: "¿Está seguro que desea rechazar esta revisión?"
+  notifications:
+    labels:
+      title: "Seguimiento de notificaciones sobre propuestas"
+      session: "Sesión"
+      reviews: "Revisiones por"
+      status: "Estado"
+    buttons:
+      accept:
+        text: "Aceptar y Notificar"
+        confirmation: "¿Está seguro que desea aceptar esta propuesta y notificar a su autor?"
+      decline:
+        text: "Declinar y Notificar"
+        confirmation: "¿Está seguro que desea declinar esta propuesta y notificar a su autor?"
   activerecord:
     models: 
       user: "Usuario"

@@ -35,6 +35,7 @@ gem 'elasticsearch-rails', '0.1.7'
 gem 'elasticsearch-extensions', '0.0.18'
 
 gem 'newrelic_rpm', '3.12.0.288'
+gem 'workflow', '1.2.0'
 
 group :development, :test do
   gem 'spring', '1.3.6'

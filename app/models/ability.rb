@@ -12,6 +12,7 @@ class Ability
 
     if user.admin?
       can [:manage], SessionProposal
+      can [:accept, :reject], Review
     end
   end
 end

@@ -1,5 +1,5 @@
 <% if current_user and can? :review, SessionProposal %>
-  <div ng-cloak ng-init="review()" fade-animation="true" class="row">
+  <div ng-cloak ng-controller="ReviewsController" ng-init="initReviewForm()" fade-animation="true">
     <div class="row session-detail">
       <div class="col-sm-2 text-center">
         <img ng-src="{{session.author.avatar_url}}" class="avatar lg img-circle">
@@ -17,7 +17,7 @@
         </div>
         <ul class="list-inline">
           <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag.name}}</li>
-          <li class="pull-right" ng-if="session.video_link != null && session.video_link != ''" title="{{session.video_link}}">
+          <li class="pull-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
             <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
               <span class="ion-videocamera">&nbsp;</span><%= t('sessions.labels.video') %>
             </a>
@@ -46,16 +46,19 @@
         <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
       </div>
       <div class="col-sm-8">
-        <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}"></textarea><br>
+        <p ng-if="!isPendingOrNewReview(newSessionReview.status)" ng-class="{'text-success': isAcceptedReview(newSessionReview.status), 'text-danger': isRejectedReview(newSessionReview.status)}">
+          <%= t('reviews.labels.has_already_been') %> {{newSessionReview.status}}
+        </p>
+        <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></textarea><br>
 
         <label for="input-description" class="control-label" ng-class="{'text-danger': newSessionReview.invalidScore}">
           <%= t('sessions.labels.score') %>: &nbsp;
         </label>
         <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" ng-class="{'text-danger': newSessionReview.invalidScore}">
-          <input type="radio" name="inlineScoreOptions" ng-click="newSessionReview.score = i">{{i}}
+          <input type="radio" name="inlineScoreOptions" ng-model="newSessionReview.score" value="{{i}}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)">{{i}}
         </label>
 
-        <button class="btn btn-primary pull-right" ng-click="postReview()">
+        <button class="btn btn-primary pull-right" ng-click="postReview()" ng-disabled="!isPendingOrNewReview(newSessionReview.status)">
           <%= t('sessions.buttons.submit_review') %>
         </button>
       </div>

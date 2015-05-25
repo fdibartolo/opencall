@@ -3,6 +3,7 @@ require 'elasticsearch/model'
 class SessionProposal < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  include Workflow
   index_name [self.base_class.to_s.pluralize.underscore, Rails.env].join('_')
 
   belongs_to :user
@@ -15,6 +16,15 @@ class SessionProposal < ActiveRecord::Base
   has_many :reviews
 
   validates :title, :summary, :description, :user_id, :track_id, :audience_id, :video_link, presence: true
+
+  workflow do
+    state :new do
+      event :accept, :transitions_to => :accepted
+      event :decline, :transitions_to => :declined
+    end
+    state :accepted
+    state :declined
+  end
 
   def autosave_associated_records_for_tags
     session_tags = []
@@ -74,4 +84,14 @@ class SessionProposal < ActiveRecord::Base
   after_commit on: [:update] do
     __elasticsearch__.index_document
   end
+
+  private
+  def accept
+    self.notified_on = DateTime.now
+    save!
+  end  
+  def decline
+    self.notified_on = DateTime.now
+    save!
+  end  
 end

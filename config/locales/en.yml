@@ -124,10 +124,33 @@ en:
   reviews:
     labels:
       current: "Current Reviews"
+      status: "Status"
       score: "Score"
       reviewer: "Reviewer"
       feedback: "Feedback"
       no_reviews: "No reviews so far..."
+      has_already_been: "This review has already been "
+    buttons:
+      edit: "Edit review"
+      accept:
+        text: "Accept"
+        confirmation: "Are you sure you want to accept this review?"
+      reject:
+        text: "Reject"
+        confirmation: "Are you sure you want to reject this review?"
+  notifications:
+    labels:
+      title: "Session proposal notifications tracker"
+      session: "Session"
+      reviews: "Reviews by"
+      status: "Status"
+    buttons:
+      accept:
+        text: "Accept and Notify"
+        confirmation: "Are you sure you want to accept this session proposal and notify its author?"
+      decline:
+        text: "Decline and Notify"
+        confirmation: "Are you sure you want to decline this session proposal and notify its author?"
   activerecord:
     models: 
       user: "User"
