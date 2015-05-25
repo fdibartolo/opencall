@@ -39,10 +39,12 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.createSession = () ->
     if validSession()
       $scope.$emit 'showLoadingSpinner', 'Submitting...'
-      SessionsService.create($scope.newSession).then (id) ->
+      SessionsService.create($scope.newSession).then ((id) ->
         $location.path "/sessions/show/#{id}"
         $scope.$emit 'hideLoadingSpinner'
         toaster.pop 'success', '', 'Session proposal submitted successfully', 5000
+      ), (errorKey) ->
+        $location.path "/error/#{errorKey}"
 
   $scope.updateSession = () ->
     if validSession()

@@ -28,8 +28,10 @@ angular.module('openCall.services').factory 'SessionsService',
         tags_attributes: buildNestedAttributesFor(session.tags)
     ).success((data, status, header, config) ->
       deferred.resolve header()["id"]
-    ).error (data, status) ->
-      deferred.reject()
+    ).error (data, status, header, config) ->
+      switch status
+        when 403 then message = "access_denied"
+        else message = "generic"
 
     deferred.promise
 

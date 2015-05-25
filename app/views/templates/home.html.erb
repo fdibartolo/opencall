@@ -10,13 +10,23 @@
   <div class="row text-center">
     <% if current_user %>
       <div class="col-xs-6">
-        <div class="home-button-container">
-          <a class="img-circle home-button" href="<%= root_url + '#/sessions/new' %>">
-            <span class="glyphicon glyphicon-pencil icon" aria-hidden="true"></span><br>
-            <span class="text"><%= t('home.propose.title') %></span>
-          </a>
-        </div>
-        <p class="home-button-text hidden-xs"><%= t('home.propose.paragraph') %></p>
+        <% if can? :create, SessionProposal %>
+          <div class="home-button-container">
+            <a class="img-circle home-button" href="<%= root_url + '#/sessions/new' %>">
+              <span class="glyphicon glyphicon-pencil icon" aria-hidden="true"></span><br>
+              <span class="text"><%= t('home.propose.title') %></span>
+            </a>
+          </div>
+          <p class="home-button-text hidden-xs"><%= t('home.propose.paragraph') %></p>
+        <% else %>
+          <div class="home-button-container">
+            <a class="img-circle home-button-disabled">
+              <span class="glyphicon glyphicon-pencil icon" aria-hidden="true"></span><br>
+              <span class="text"><%= t('home.propose.title') %></span>
+            </a>
+          </div>
+          <p class="home-button-text hidden-xs"><%= t('home.propose.due_date_paragraph').html_safe %></p>
+        <% end %>
       </div>
       <div class="col-xs-6">
         <div class="home-button-container">
