@@ -1,6 +1,7 @@
 class SessionProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:search, :show]
   before_action :forbid_if_no_access, only: :author
+  before_action :forbid_if_cannot_create, only: :create
   before_action :set_session_proposal, only: [:show, :edit, :update, :author]
 
   def index
@@ -73,5 +74,9 @@ class SessionProposalsController < ApplicationController
 
   def forbid_if_no_access
     return head :forbidden if cannot? :review, SessionProposal
+  end
+
+  def forbid_if_cannot_create
+    return head :forbidden if cannot? :create, SessionProposal
   end
 end
