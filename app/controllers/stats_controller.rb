@@ -16,7 +16,6 @@ class StatsController < ApplicationController
   end
 
   def set_theme
-    @theme = Theme.find_by(id: params[:id])
-    return head(:bad_request, { message: "Unable to find theme with id '#{params[:id]}'"}) unless @theme
+    set_resource Theme, :id
   end
 end

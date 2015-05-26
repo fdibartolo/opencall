@@ -53,7 +53,6 @@ class ReviewsController < ApplicationController
   end
 
   def set_review
-    @review = Review.find_by(id: params[:id])
-    return head(:bad_request, { message: "Unable to find review with id '#{params[:id]}'"}) unless @review
+    set_resource Review, :id
   end
 end
