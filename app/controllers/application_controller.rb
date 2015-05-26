@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  def set_session_proposal
-    @session_proposal = SessionProposal.find_by(id: params[:session_proposal_id])
-    return head(:bad_request, { message: "Unable to find session proposal with id '#{params[:session_proposal_id]}'"}) unless @session_proposal
+  def set_resource resource_type, value
+    resource = eval "#{resource_type}.find_by(id: #{value})"
+    eval "@#{resource_type.to_s.underscore} = resource"
+    return head(:bad_request, { message: "Unable to find #{resource_type.to_s.underscore.gsub('_', ' ')} with id '#{value}'"}) unless resource
   end
 
   def configure_permitted_parameters

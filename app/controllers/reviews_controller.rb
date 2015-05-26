@@ -1,9 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_session_proposal, only: [:index, :single_for_current_user, :create]
+  before_action only: [:index, :single_for_current_user, :create] do
+    set_resource SessionProposal, params[:session_proposal_id]
+  end
   before_action :forbid_if_cannot_create, except: [:accept, :reject]
   before_action :forbid_if_cannot_manage, only: [:accept, :reject]
-  before_action :set_review, only: [:accept, :reject]
+  before_action only: [:accept, :reject] do
+    set_resource Review, params[:id]
+  end
 
   def index
   end
@@ -50,10 +54,5 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:body, :score)
-  end
-
-  def set_review
-    @review = Review.find_by(id: params[:id])
-    return head(:bad_request, { message: "Unable to find review with id '#{params[:id]}'"}) unless @review
   end
 end

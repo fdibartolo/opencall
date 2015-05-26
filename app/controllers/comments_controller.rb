@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: :create
-  before_action :set_session_proposal
+  before_action do
+    set_resource SessionProposal, params[:session_proposal_id]
+  end
 
   def index
     comments = []

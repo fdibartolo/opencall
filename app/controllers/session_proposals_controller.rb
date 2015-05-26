@@ -2,7 +2,9 @@ class SessionProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:search, :show]
   before_action :forbid_if_no_access, only: :author
   before_action :forbid_if_cannot_create, only: :create
-  before_action :set_session_proposal, only: [:show, :edit, :update, :author]
+  before_action only: [:show, :edit, :update, :author] do
+    set_resource SessionProposal, params[:id]
+  end
 
   def index
     @session_proposals = SessionProposal.all
@@ -63,11 +65,6 @@ class SessionProposalsController < ApplicationController
   end
 
   private
-  def set_session_proposal
-    @session_proposal = SessionProposal.find_by(id: params[:id])
-    return head(:bad_request, { message: "Unable to find session proposal with id '#{params[:id]}'"}) unless @session_proposal
-  end
-
   def session_proposal_params
     params.require(:session_proposal).permit(:title, :summary, :description, :video_link, :track_id, :audience_id, :theme_id, :audience_count, :tags_attributes => [ :id, :name, :_destroy ])
   end
