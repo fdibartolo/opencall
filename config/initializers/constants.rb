@@ -8,3 +8,5 @@ MaxSessionProposalVotes = 10
 MailerAccount = "sesiones@agiles.org"
 
 SubmissionDueDate = Date.parse "July 6 2015" # as is until we update the system to support multi-event
+
+Version = "1.0.11"
