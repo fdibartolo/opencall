@@ -6,7 +6,13 @@ class CommentsController < ApplicationController
 
   def index
     comments = []
-    @session_proposal.comments.map {|c| comments << { body: c.body, author: { name: c.user.full_name, avatar_url: c.user.avatar_url }, date: c.created_at }}
+    @session_proposal.comments.map do |c| 
+      comments << { 
+        body: c.body, 
+        author: { name: c.user.full_name, avatar_url: c.user.avatar_url, is_reviewer: (c.user.reviewer? or c.user.admin?) }, 
+        date: c.created_at
+      }
+    end
     render json: { comments: comments }
   end
 

@@ -29,6 +29,7 @@ RSpec.describe CommentsController, :type => :controller do
         expect(body['comments'].count).to eq 1
         expect(body['comments'].first['body']).to eq session.comments.first.body
         expect(body['comments'].first['author']['name']).to eq session.comments.first.user.full_name
+        expect(body['comments'].first['author']['is_reviewer']).to be (session.comments.first.user.reviewer? or session.comments.first.user.admin?)
       end
     end
   end
