@@ -1,10 +1,18 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: :create
-  before_action :set_session_proposal
+  before_action do
+    set_resource SessionProposal, params[:session_proposal_id]
+  end
 
   def index
     comments = []
-    @session_proposal.comments.map {|c| comments << { body: c.body, author: { name: c.user.full_name, avatar_url: c.user.avatar_url }, date: c.created_at }}
+    @session_proposal.comments.map do |c| 
+      comments << { 
+        body: c.body, 
+        author: { name: c.user.full_name, avatar_url: c.user.avatar_url, is_reviewer: (c.user.reviewer? or c.user.admin?) }, 
+        date: c.created_at
+      }
+    end
     render json: { comments: comments }
   end
 

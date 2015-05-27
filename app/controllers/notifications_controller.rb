@@ -1,7 +1,9 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
   before_action :forbid_if_no_access
-  before_action :set_session_proposal, only: [:accept, :decline]
+  before_action only: [:accept, :decline] do
+    set_resource SessionProposal, params[:session_proposal_id]
+  end
 
   def index
     @session_proposals = SessionProposal.all

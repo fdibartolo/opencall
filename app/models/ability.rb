@@ -2,6 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    can [:create], SessionProposal if Time.now <= SubmissionDueDate
     can [:edit], SessionProposal do |session_proposal|
       session_proposal.user.email == user.email and Time.now <= SubmissionDueDate
     end

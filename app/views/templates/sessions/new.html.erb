@@ -1,136 +1,145 @@
-<div ng-cloak ng-init="initForm()" fade-animation="true" class="row">
-  <div class="form-horizontal">
-    <div class="form-group">
-      <div class="text-center"><h2><%= t('sessions.labels.new') %></h2></div>
-    </div>
-    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidTitle}">
-      <label for="input-title" class="col-sm-2 control-label"><%= t('sessions.labels.title') %></label>
-      <div class="col-sm-8">
-        <input type="text" id="input-title" placeholder="<%= t('sessions.labels.title') %>" ng-model="newSession.title" class="form-control">
-        <span ng-if="newSession.invalidTitle" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-        <small ng-if="newSession.invalidTitle" class="text-danger">
-          <%= t('sessions.errors.title_cant_be_blank') %>
-        </small>
+<% if current_user and can? :create, SessionProposal %>
+  <div ng-cloak ng-init="initForm()" fade-animation="true" class="row">
+    <div class="form-horizontal">
+      <div class="form-group">
+        <div class="text-center"><h2><%= t('sessions.labels.new') %></h2></div>
       </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidThemeId}">
-      <label for="select-theme" class="col-sm-2 control-label"><%= t('sessions.labels.theme') %></label>
-      <div class="col-sm-8">
-        <%= select_tag "theme", options_from_collection_for_select(Theme.all, "id", "name"), { id: "select-theme", 'ng-model': "newSession.theme_id", class: "form-control selectpicker" } %>
-        <small ng-if="newSession.invalidThemeId" class="text-danger"><%= t('sessions.errors.theme_cant_be_blank') %></small>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidTrackId}">
-      <label for="select-track" class="col-sm-2 control-label"><%= t('sessions.labels.track') %></label>
-      <div class="col-sm-8">
-        <%= select_tag "track", options_from_collection_for_select(Track.all, "id", "name"), { id: "select-track", 'ng-model': "newSession.track_id", class: "form-control selectpicker" } %>
-        <small ng-if="newSession.invalidTrackId" class="text-danger"><%= t('sessions.errors.track_cant_be_blank') %></small>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidAudienceId}">
-      <label for="select-audience" class="col-sm-2 control-label"><%= t('sessions.labels.audience') %></label>
-      <div class="col-sm-8">
-        <%= select_tag "audience", options_from_collection_for_select(Audience.all, "id", "name"), { id: "select-audience", 'ng-model': "newSession.audience_id", class: "form-control selectpicker" } %>
-        <small ng-if="newSession.invalidAudienceId" class="text-danger"><%= t('sessions.errors.audience_cant_be_blank') %></small>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="input-audience_count" class="col-sm-2 control-label">
-        <%= t('sessions.labels.audience_count') %>
-      </label>
-      <div class="col-sm-8">
-        <input type="number" id="input-audience_count" placeholder="<%= t('sessions.placeholders.audience_count') %>" ng-model="newSession.audience_count" class="form-control" only-digits>
-      </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidSummary}">
-      <label for="input-summary" class="col-sm-2 control-label"><%= t('sessions.labels.summary') %></label>
-      <div class="col-sm-8">
-        <ul class="nav nav-tabs" ng-init="previewSummary = false">
-          <li role="presentation" ng-class="{active: !previewSummary}">
-            <a ng-click="previewSummary = !previewSummary">
-              <small><%= t('sessions.markdown.text') %></small>
-            </a>
-          </li>
-          <li role="presentation" ng-class="{active: previewSummary}">
-            <a ng-click="previewSummary = !previewSummary">
-              <small><%= t('sessions.markdown.preview') %></small>
-            </a>
-          </li>
-        </ul>
-        <div ng-if="!previewSummary" fade-animation="true">
-          <textarea type="text" id="input-summary" class="form-control" placeholder="<%= t('sessions.placeholders.summary') %>" ng-model="newSession.summary" rows="6"></textarea>
-          <small ng-if="newSession.invalidSummary" class="text-danger">
-            <%= t('sessions.errors.summary_cant_be_blank') %>
-          </small>
-          <small class="text-muted">
-            <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+      <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidTitle}">
+        <label for="input-title" class="col-sm-2 control-label"><%= t('sessions.labels.title') %></label>
+        <div class="col-sm-8">
+          <input type="text" id="input-title" placeholder="<%= t('sessions.labels.title') %>" ng-model="newSession.title" class="form-control">
+          <span ng-if="newSession.invalidTitle" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <small ng-if="newSession.invalidTitle" class="text-danger">
+            <%= t('sessions.errors.title_cant_be_blank') %>
           </small>
         </div>
-        <div ng-if="previewSummary" fade-animation="true">
-          <br><p markdown="newSession.summary"></p>
+      </div>
+      <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidThemeId}">
+        <label for="select-theme" class="col-sm-2 control-label"><%= t('sessions.labels.theme') %></label>
+        <div class="col-sm-8">
+          <%= select_tag "theme", options_from_collection_for_select(Theme.all, "id", "name"), { id: "select-theme", 'ng-model': "newSession.theme_id", class: "form-control selectpicker" } %>
+          <small ng-if="newSession.invalidThemeId" class="text-danger"><%= t('sessions.errors.theme_cant_be_blank') %></small>
         </div>
       </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidDescription}">
-      <label for="input-description" class="col-sm-2 control-label"><%= t('sessions.labels.description') %></label>
-      <div class="col-sm-8">
-        <ul class="nav nav-tabs" ng-init="previewDescription = false">
-          <li role="presentation" ng-class="{active: !previewDescription}">
-            <a ng-click="previewDescription = !previewDescription">
-              <small><%= t('sessions.markdown.text') %></small>
-            </a>
-          </li>
-          <li role="presentation" ng-class="{active: previewDescription}">
-            <a ng-click="previewDescription = !previewDescription">
-              <small><%= t('sessions.markdown.preview') %></small>
-            </a>
-          </li>
-        </ul>
-        <div ng-if="!previewDescription" fade-animation="true">
-          <textarea type="text" id="input-description" class="form-control" placeholder="<%= t('sessions.placeholders.description') %>" ng-model="newSession.description" rows="10"></textarea>
-          <small ng-if="newSession.invalidDescription" class="text-danger">
-            <%= t('sessions.errors.description_cant_be_blank') %>
+      <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidTrackId}">
+        <label for="select-track" class="col-sm-2 control-label"><%= t('sessions.labels.track') %></label>
+        <div class="col-sm-8">
+          <%= select_tag "track", options_from_collection_for_select(Track.all, "id", "name"), { id: "select-track", 'ng-model': "newSession.track_id", class: "form-control selectpicker" } %>
+          <small ng-if="newSession.invalidTrackId" class="text-danger"><%= t('sessions.errors.track_cant_be_blank') %></small>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidAudienceId}">
+        <label for="select-audience" class="col-sm-2 control-label"><%= t('sessions.labels.audience') %></label>
+        <div class="col-sm-8">
+          <%= select_tag "audience", options_from_collection_for_select(Audience.all, "id", "name"), { id: "select-audience", 'ng-model': "newSession.audience_id", class: "form-control selectpicker" } %>
+          <small ng-if="newSession.invalidAudienceId" class="text-danger"><%= t('sessions.errors.audience_cant_be_blank') %></small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="input-audience_count" class="col-sm-2 control-label">
+          <%= t('sessions.labels.audience_count') %>
+        </label>
+        <div class="col-sm-8">
+          <input type="number" id="input-audience_count" placeholder="<%= t('sessions.placeholders.audience_count') %>" ng-model="newSession.audience_count" class="form-control" only-digits>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidSummary}">
+        <label for="input-summary" class="col-sm-2 control-label"><%= t('sessions.labels.summary') %></label>
+        <div class="col-sm-8">
+          <ul class="nav nav-tabs" ng-init="previewSummary = false">
+            <li role="presentation" ng-class="{active: !previewSummary}">
+              <a ng-click="previewSummary = !previewSummary">
+                <small><%= t('sessions.markdown.text') %></small>
+              </a>
+            </li>
+            <li role="presentation" ng-class="{active: previewSummary}">
+              <a ng-click="previewSummary = !previewSummary">
+                <small><%= t('sessions.markdown.preview') %></small>
+              </a>
+            </li>
+          </ul>
+          <div ng-if="!previewSummary" fade-animation="true">
+            <textarea type="text" id="input-summary" class="form-control" placeholder="<%= t('sessions.placeholders.summary') %>" ng-model="newSession.summary" rows="6"></textarea>
+            <small ng-if="newSession.invalidSummary" class="text-danger">
+              <%= t('sessions.errors.summary_cant_be_blank') %>
+            </small>
+            <small class="text-muted">
+              <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+            </small>
+          </div>
+          <div ng-if="previewSummary" fade-animation="true">
+            <br><p markdown="newSession.summary"></p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidDescription}">
+        <label for="input-description" class="col-sm-2 control-label"><%= t('sessions.labels.description') %></label>
+        <div class="col-sm-8">
+          <ul class="nav nav-tabs" ng-init="previewDescription = false">
+            <li role="presentation" ng-class="{active: !previewDescription}">
+              <a ng-click="previewDescription = !previewDescription">
+                <small><%= t('sessions.markdown.text') %></small>
+              </a>
+            </li>
+            <li role="presentation" ng-class="{active: previewDescription}">
+              <a ng-click="previewDescription = !previewDescription">
+                <small><%= t('sessions.markdown.preview') %></small>
+              </a>
+            </li>
+          </ul>
+          <div ng-if="!previewDescription" fade-animation="true">
+            <textarea type="text" id="input-description" class="form-control" placeholder="<%= t('sessions.placeholders.description') %>" ng-model="newSession.description" rows="10"></textarea>
+            <small ng-if="newSession.invalidDescription" class="text-danger">
+              <%= t('sessions.errors.description_cant_be_blank') %>
+            </small>
+            <small class="text-muted">
+              <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+            </small>
+          </div>
+          <div ng-if="previewDescription" fade-animation="true">
+            <br><p markdown="newSession.description"></p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidVideo}">
+        <label for="input-videolink" class="col-sm-2 control-label"><%= t('sessions.labels.video') %></label>
+        <div class="col-sm-8">
+          <input type="text" id="input-videolink" placeholder="i.e.: http://youtube.com/watch?v=..." ng-model="newSession.video_link" class="form-control">
+          <small ng-if="newSession.invalidVideo" class="text-danger">
+            <%= t('sessions.errors.video_cant_be_blank') %>
           </small>
-          <small class="text-muted">
-            <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
-          </small>
-        </div>
-        <div ng-if="previewDescription" fade-animation="true">
-          <br><p markdown="newSession.description"></p>
         </div>
       </div>
-    </div>
-    <div class="form-group" ng-class="{'has-error has-feedback': newSession.invalidVideo}">
-      <label for="input-videolink" class="col-sm-2 control-label"><%= t('sessions.labels.video') %></label>
-      <div class="col-sm-8">
-        <input type="text" id="input-videolink" placeholder="i.e.: http://youtube.com/watch?v=..." ng-model="newSession.video_link" class="form-control">
-        <small ng-if="newSession.invalidVideo" class="text-danger">
-          <%= t('sessions.errors.video_cant_be_blank') %>
-        </small>
+      <div class="form-group">
+        <label for="input-tags" class="col-sm-2 control-label"><%= t('sessions.labels.tags') %></label>
+        <div class="col-sm-8">
+          <input type="text" id="input-tags" placeholder="<%= t('sessions.labels.tags') %>" class="form-control" tag-suggestion>
+          <ul class="list-inline">
+            <li ng-repeat="tag in newSession.tags track by $index" class="tag lg bg-primary" fade-animation="true" ng-if="!tag._destroy">
+              <span class="ion-android-close clickable" aria-hidden="true" style="padding-right:10px" ng-click="removeTag($index)"></span>{{tag.name}}
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="input-tags" class="col-sm-2 control-label"><%= t('sessions.labels.tags') %></label>
-      <div class="col-sm-8">
-        <input type="text" id="input-tags" placeholder="<%= t('sessions.labels.tags') %>" class="form-control" tag-suggestion>
-        <ul class="list-inline">
-          <li ng-repeat="tag in newSession.tags track by $index" class="tag lg bg-primary" fade-animation="true" ng-if="!tag._destroy">
-            <span class="ion-android-close clickable" aria-hidden="true" style="padding-right:10px" ng-click="removeTag($index)"></span>{{tag.name}}
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-8">
-        <button id="create-button" class="btn btn-primary pull-right" ng-click="createSession()" ng-if="isNew()">
-          <%= t('sessions.buttons.create_session') %>
-        </button>
-        <button id="create-button" class="btn btn-primary pull-right" ng-click="updateSession()" ng-if="!isNew()">
-          <%= t('sessions.buttons.update_session') %>
-        </button>
-        <br><hr>
-        <div class="btn btn-default pull-right"><%= link_to t('sessions.buttons.back'), "#/sessions" %></div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+          <button id="create-button" class="btn btn-primary pull-right" ng-click="createSession()" ng-if="isNew()">
+            <%= t('sessions.buttons.create_session') %>
+          </button>
+          <button id="create-button" class="btn btn-primary pull-right" ng-click="updateSession()" ng-if="!isNew()">
+            <%= t('sessions.buttons.update_session') %>
+          </button>
+          <br><hr>
+          <div class="btn btn-default pull-right"><%= link_to t('sessions.buttons.back'), "#/sessions" %></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="no-review-access">
+    <h4 class="text-muted text-center">
+      <%= t('sessions.no_access.create') %> <br><br>
+      <span class="ion-sad"></span>
+    </h4>
+  </div>
+<% end %>

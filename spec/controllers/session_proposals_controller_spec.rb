@@ -127,6 +127,13 @@ RSpec.describe SessionProposalsController, :type => :controller do
         post :create, payload
         expect(response).to have_http_status(422)
       end
+
+      it "should return forbidden entity if past due date" do
+        travel_to (SubmissionDueDate + 1.day) do
+          post :create, payload
+          expect(response).to have_http_status(403)
+        end
+      end
     end
   end
 

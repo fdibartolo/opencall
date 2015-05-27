@@ -7,10 +7,12 @@
     <a class="img-circle btn-action info" toggle-help title="Mostrar ayuda">
       <span class="text" aria-hidden="true">?</span>
     </a>
-    <div class="divisor"></div>
-    <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="<%= t('sessions.help.create_session') %>">
-      <span class="ion-plus-round icon" aria-hidden="true"></span>
-    </a>
+    <% if can? :create, SessionProposal %>
+      <div class="divisor"></div>
+      <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="<%= t('sessions.help.create_session') %>">
+        <span class="ion-plus-round icon" aria-hidden="true"></span>
+      </a>
+    <% end %>
   </div>
 <% else %>
   <div class="social-login-container text-center" style="padding:10px;margin-top:50px">

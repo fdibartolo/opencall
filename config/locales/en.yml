@@ -33,6 +33,7 @@ en:
     propose:
       title: "Propose"
       paragraph: "Share with the community what you would like to talk about, and gather valuable early feedback that will help you refine your idea!"
+      due_date_paragraph: "Time is up to propose <span class='ion-sad' style='font-size:120%'></span>... the organizing committee is now reviewing the submitted proposals and will notify the results soon!"
     vote:
       title: "Vote"
       paragraph: "Help building the sessions grid with your feedback! You can add comments to the proposals, fav the ones you like, and more!"
@@ -112,6 +113,7 @@ en:
       audience_count: "Max number of participants the session is limited to"
     no_access:
       reviews: "You have no access to perform reviews..."
+      create: "Session proposals submission deadline is up"
   roles:
     labels:
       current: "Current %{role}"
