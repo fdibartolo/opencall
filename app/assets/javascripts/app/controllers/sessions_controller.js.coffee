@@ -135,7 +135,9 @@ angular.module('openCall.controllers').controller 'SessionsController',
         comment = 
           body: $scope.newSessionComment.body
           author:
+            name: CURRENT_USER_NAME
             avatar_url: CURRENT_USER_AVATAR
+            is_reviewer: IS_CURRENT_USER_REVIEWER
           date: moment()
         $scope.session.comments.push comment
         $scope.newSessionComment.body = ''

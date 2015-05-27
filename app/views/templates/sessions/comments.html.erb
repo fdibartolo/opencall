@@ -2,7 +2,10 @@
   <div class="row session-comment" ng-repeat="comment in session.comments" fade-animation="true">
     <div class="col-sm-2 text-center ">
       <img ng-src="{{comment.author.avatar_url}}" class="avatar lg img-circle">
-      <div class="author">{{comment.author.name}}</div>
+      <div class="author">
+        {{comment.author.name}} <br>
+        <small><b>{{comment.author.is_reviewer ? 'Reviewers Team' : 'Community Member' }}</b></small>
+      </div>
       <div class="text-muted date" time-from-now="comment.date"></div>
     </div>
     <div class="col-sm-8">
