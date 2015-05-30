@@ -6,5 +6,7 @@ RoleReviewer  = 'reviewer'
 MaxSessionProposalVotes = 10
 
 MailerAccount = "sesiones@agiles.org"
+ChairsAccount = "sesiones2015@agiles.org"
 
 SubmissionDueDate = Date.parse "July 6 2015" # as is until we update the system to support multi-event
+AcceptanceDueDate = DateTime.parse "August 17 2015 23:59 UTC-3" # as is until we update the system to support multi-event
