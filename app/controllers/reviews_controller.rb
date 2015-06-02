@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
   end
 
   def single_for_current_user
+    @reviewers = (Role.find_by(name: RoleAdmin).users + Role.find_by(name: RoleReviewer).users).uniq
     @review = current_user.reviews.find_by(session_proposal_id: @session_proposal.id)
   end
 

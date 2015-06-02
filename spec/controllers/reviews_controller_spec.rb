@@ -122,6 +122,7 @@ RSpec.describe ReviewsController, :type => :controller do
 
     context "while reviewer" do
       login_as :reviewer
+      let!(:admin) { FactoryGirl.create :admin, first_name: 'admin' }
 
       context "with invalid param id" do
         before :each do
@@ -153,11 +154,20 @@ RSpec.describe ReviewsController, :type => :controller do
           expect(body['status']).to eq review.workflow_state
         end
 
-        it "should return empty when no one exists" do
+        it "should not return reviews body when no one exists" do
           get :single_for_current_user, { session_proposal_id: session.id }
 
           body = JSON.parse response.body
-          expect(body).to be_empty
+          expect(body['body']).to be nil
+        end
+
+        it "should include all valid reviewers" do
+          get :single_for_current_user, { session_proposal_id: session.id }
+
+          body = JSON.parse response.body
+          expect(body['reviewers'].count).to be 2
+          expect(body['reviewers'][0]['id']).to eq admin.id
+          expect(body['reviewers'][1]['id']).to eq logged_in(:reviewer).id
         end
       end
     end
