@@ -32,7 +32,7 @@ RSpec.describe ReviewsController, :type => :controller do
 
   describe "POST create" do
     let(:session) { FactoryGirl.create :session_proposal }
-    let(:payload) { { session_proposal_id: session.id, review: { body: 'new review', score: 8 }}}
+    let(:payload) { { session_proposal_id: session.id, review: { body: 'new review', score: 8, second_reviewer_id: 1 }}}
     let!(:admin) { FactoryGirl.create :admin, first_name: 'admin' }
 
     context "while user" do
@@ -53,6 +53,7 @@ RSpec.describe ReviewsController, :type => :controller do
         expect(session.reviews.count).to eq 1
         expect(session.reviews.last.body).to eq 'new review'
         expect(session.reviews.last.score).to eq 8
+        expect(session.reviews.last.second_reviewer_id).to eq 1
       end
 
       it "should update review to given SessionProposal when one exists" do
