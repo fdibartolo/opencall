@@ -24,6 +24,7 @@ angular.module('openCall.services').factory 'ReviewsService',
       review:
         body: review.body
         score: review.score
+        second_reviewer_id: review.secondReviewer.id  if angular.isDefined(review.secondReviewer)
     ).success((data, status) ->
       deferred.resolve()
     ).error (data, status, header, config) ->

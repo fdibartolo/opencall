@@ -130,6 +130,8 @@ en:
       score: "Score"
       reviewer: "Reviewer"
       feedback: "Feedback"
+      pair_reviewer: "Pair Reviewer"
+      reviewed_with: "Reviewed with"
       no_reviews: "No reviews so far..."
       has_already_been: "This review has already been "
     buttons:

@@ -16,7 +16,10 @@
         <td class="score text-center" ng-class="{'text-success': goodReview(review.score), 'text-warning': poorReview(review.score), 'text-danger': badReview(review.score)}" style="font-size:130%">
           <strong>{{review.score}}</strong>
         </td>
-        <td class="reviewer text-center">{{review.reviewer}}</td>
+        <td class="reviewer text-center">
+          <span>{{review.reviewer}}</span><br>
+          <span ng-if="review.second_reviewer != null"><small>({{review.second_reviewer}})</small></span>
+        </td>
         <td>
           {{review.body}}
           <div ng-if="isPendingReview(review.status)" class="actions">

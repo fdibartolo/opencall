@@ -14,6 +14,10 @@ RSpec.describe Review, :type => :model do
     end
   end  
 
+  describe "optional attributes" do
+    it { expect(Review.attribute_names).to include 'second_reviewer_id' }
+  end
+
   describe "#score" do
     it "should be greater than 0" do
       review.score = 0
