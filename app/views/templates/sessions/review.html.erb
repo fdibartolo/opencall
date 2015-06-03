@@ -45,18 +45,30 @@
       <div class="col-sm-2 text-center">
         <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
       </div>
-      <div class="col-sm-8">
-        <p ng-if="!isPendingOrNewReview(newSessionReview.status)" ng-class="{'text-success': isAcceptedReview(newSessionReview.status), 'text-danger': isRejectedReview(newSessionReview.status)}">
-          <%= t('reviews.labels.has_already_been') %> {{newSessionReview.status}}
-        </p>
-        <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></textarea><br>
-
-        <label for="input-description" class="control-label" ng-class="{'text-danger': newSessionReview.invalidScore}">
-          <%= t('sessions.labels.score') %>: &nbsp;
-        </label>
-        <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" ng-class="{'text-danger': newSessionReview.invalidScore}">
-          <input type="radio" name="inlineScoreOptions" ng-model="newSessionReview.score" value="{{i}}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)">{{i}}
-        </label>
+      <div class="col-sm-8 form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Pair Reviewer</label>
+          <div class="col-sm-10">
+            <select ng-options="reviewer.full_name for reviewer in newSessionReview.reviewers track by reviewer.id" ng-model="newSessionReview.secondReviewer" class="form-control selectpicker"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Feedback</label>
+          <div class="col-sm-10">
+            <p ng-if="!isPendingOrNewReview(newSessionReview.status)" ng-class="{'text-success': isAcceptedReview(newSessionReview.status), 'text-danger': isRejectedReview(newSessionReview.status)}">
+              <%= t('reviews.labels.has_already_been') %> {{newSessionReview.status}}
+            </p>
+            <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></textarea>
+          </div>
+        </div>        
+        <div class="form-group">
+          <label class="col-sm-2 control-label" ng-class="{'text-danger': newSessionReview.invalidScore}"><%= t('sessions.labels.score') %></label>
+          <div class="col-sm-10">
+            <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" ng-class="{'text-danger': newSessionReview.invalidScore}">
+              <input type="radio" name="inlineScoreOptions" ng-model="newSessionReview.score" value="{{i}}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)">{{i}}
+            </label>
+          </div>
+        </div>        
 
         <button class="btn btn-primary pull-right" ng-click="postReview()" ng-disabled="!isPendingOrNewReview(newSessionReview.status)">
           <%= t('sessions.buttons.submit_review') %>

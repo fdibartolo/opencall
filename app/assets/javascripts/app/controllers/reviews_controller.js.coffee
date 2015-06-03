@@ -7,6 +7,7 @@ angular.module('openCall.controllers').controller 'ReviewsController',
     body: ''
     score: 0
     status: ''
+    secondReviewer: {}
 
   $scope.initReviewForm = () ->
     SessionsService.show($routeParams.id).then ((session) ->
