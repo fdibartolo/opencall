@@ -8,6 +8,7 @@ json.sessions @session_proposals do |session_proposal|
   json.reviews session_proposal.reviews do |review|
     json.extract! review, :score
     json.reviewer review.user.full_name
+    json.second_reviewer User.find_by(id: review.second_reviewer_id).full_name if User.find_by(id: review.second_reviewer_id)
     json.status review.workflow_state
   end
 end

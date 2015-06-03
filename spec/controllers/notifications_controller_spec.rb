@@ -19,7 +19,8 @@ RSpec.describe NotificationsController, type: :controller do
       let!(:theme) { FactoryGirl.create :theme }
       let!(:first_session) { FactoryGirl.create :session_proposal, theme: theme, track: track }
       let!(:reviewer) { FactoryGirl.create(:reviewer, first_name: 'reviewer') }
-      let!(:first_review) { FactoryGirl.create :review, session_proposal: first_session, user: reviewer, workflow_state: 'accepted' }
+      let!(:second_reviewer) { FactoryGirl.create(:user, first_name: 'second') }
+      let!(:first_review) { FactoryGirl.create :review, session_proposal: first_session, user: reviewer, workflow_state: 'accepted', second_reviewer_id: second_reviewer.id }
       let!(:second_review) { FactoryGirl.create :review, session_proposal: first_session, user: reviewer }
       let!(:second_session) { FactoryGirl.create :session_proposal, user: logged_in(:admin), theme: theme, track: track }
       let!(:third_review) { FactoryGirl.create :review, session_proposal: second_session, user: reviewer }
@@ -32,9 +33,11 @@ RSpec.describe NotificationsController, type: :controller do
         expect(body['sessions'].first['reviews'].count).to eq 2
         expect(body['sessions'].first['reviews'].first['reviewer']).to eq first_review.user.full_name
         expect(body['sessions'].first['reviews'].first['status']).to eq first_review.workflow_state
+        expect(body['sessions'].first['reviews'].first['second_reviewer']).to eq second_reviewer.full_name
         expect(body['sessions'].last['reviews'].count).to eq 1
         expect(body['sessions'].last['reviews'].first['reviewer']).to eq third_review.user.full_name
         expect(body['sessions'].last['reviews'].first['status']).to eq third_review.workflow_state
+        expect(body['sessions'].last['reviews'].first['second_reviewer']).to be nil
       end
 
       it "should include session status" do
