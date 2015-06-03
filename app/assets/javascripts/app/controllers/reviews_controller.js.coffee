@@ -15,9 +15,14 @@ angular.module('openCall.controllers').controller 'ReviewsController',
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
     UsersService.user_review_for($routeParams.id).then ((review) ->
-      $scope.newSessionReview = review  if review
+      if review
+        $scope.newSessionReview = review
+        $scope.newSessionReview.secondReviewer = setSecondReviewer(review)
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
+
+  setSecondReviewer = (review) ->
+    return reviewer for reviewer in review.reviewers when reviewer.id is review.second_reviewer_id
 
   $scope.postReview = () ->
     $scope.newSessionReview.invalidBody = $scope.newSessionReview.body is ''
