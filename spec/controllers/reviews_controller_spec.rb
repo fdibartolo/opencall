@@ -17,7 +17,8 @@ RSpec.describe ReviewsController, :type => :controller do
       login_as :reviewer
 
       it "should return all reviews" do
-        reviewers_review = FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer)
+        second_reviewer = FactoryGirl.create :user, first_name: 'second'
+        reviewers_review = FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer), second_reviewer_id: second_reviewer.id
         admins_review = FactoryGirl.create :review, session_proposal: session, user: FactoryGirl.create(:admin, first_name: 'admin')
 
         get :index, { session_proposal_id: session.id }
@@ -25,7 +26,9 @@ RSpec.describe ReviewsController, :type => :controller do
         body = JSON.parse response.body
         expect(body['reviews'].count).to eq 2
         expect(body['reviews'].first['reviewer']).to eq reviewers_review.user.full_name
+        expect(body['reviews'].first['second_reviewer']).to eq second_reviewer.full_name
         expect(body['reviews'].last['reviewer']).to eq admins_review.user.full_name
+        expect(body['reviews'].last['second_reviewer']).to be nil
       end
     end
   end
