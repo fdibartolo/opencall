@@ -91,7 +91,8 @@ RSpec.describe ReviewsController, :type => :controller do
 
       it "should return only owned reviews" do
         first_session = FactoryGirl.create :session_proposal
-        reviewers_review = FactoryGirl.create :review, session_proposal: first_session, user: logged_in(:reviewer)
+        second_reviewer = FactoryGirl.create :user, first_name: 'second'
+        reviewers_review = FactoryGirl.create :review, session_proposal: first_session, user: logged_in(:reviewer), second_reviewer_id: second_reviewer.id
         second_session = FactoryGirl.create :session_proposal, user: first_session.user
         admins_review = FactoryGirl.create :review, session_proposal: second_session, user: FactoryGirl.create(:admin, first_name: 'admin')
 
@@ -104,6 +105,7 @@ RSpec.describe ReviewsController, :type => :controller do
         expect(body['reviews'].first['body']).to eq reviewers_review.body
         expect(body['reviews'].first['score']).to eq reviewers_review.score
         expect(body['reviews'].first['status']).to eq reviewers_review.workflow_state
+        expect(body['reviews'].first['second_reviewer']).to eq second_reviewer.full_name
       end
     end
   end
