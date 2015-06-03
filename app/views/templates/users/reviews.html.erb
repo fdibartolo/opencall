@@ -22,6 +22,9 @@
               <h3>{{review.session_proposal_title}}</h3>
               <div class="author">{{review.session_proposal_author}}</div>
               <p>{{review.body}}</p>
+              <div ng-if="review.second_reviewer != null">
+                <small>Reviewed with <strong>{{review.second_reviewer}}</strong></small>
+              </div>
             </div>
             <div class="col-sm-2 text-right" style="margin-top:25px">
               <p ng-class="{'text-success': isAcceptedReview(review.status), 'text-danger': isRejectedReview(review.status), 'text-warning': isPendingReview(review.status)}">
