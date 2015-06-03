@@ -47,13 +47,13 @@
       </div>
       <div class="col-sm-8 form-horizontal">
         <div class="form-group">
-          <label class="col-sm-2 control-label">Pair Reviewer</label>
+          <label class="col-sm-2 control-label"><%= t('reviews.labels.pair_reviewer') %></label>
           <div class="col-sm-10">
             <select ng-options="reviewer.full_name for reviewer in newSessionReview.reviewers track by reviewer.id" ng-model="newSessionReview.secondReviewer" class="form-control selectpicker"></select>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-sm-2 control-label">Feedback</label>
+          <label class="col-sm-2 control-label"><%= t('reviews.labels.feedback') %></label>
           <div class="col-sm-10">
             <p ng-if="!isPendingOrNewReview(newSessionReview.status)" ng-class="{'text-success': isAcceptedReview(newSessionReview.status), 'text-danger': isRejectedReview(newSessionReview.status)}">
               <%= t('reviews.labels.has_already_been') %> {{newSessionReview.status}}

@@ -110,6 +110,8 @@ es:
       score: "Puntaje"
       reviewer: "Revisor"
       feedback: "Devolución"
+      pair_reviewer: "Segundo Revisor"
+      reviewed_with: "Revisada con"
       no_reviews: "No hay revisiones a la fecha..."
       has_already_been: "Esta revisión ya ha sido "
     buttons:
