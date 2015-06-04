@@ -27,5 +27,6 @@ deploy:
     develop: opencallstage
     master: opencall
 
-after_script:
+- after_success:
+  - gem install heroku
   - heroku config:set commit_id=$TRAVIS_COMMIT
