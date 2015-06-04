@@ -9,7 +9,7 @@
       <div class="text-muted date" time-from-now="comment.date"></div>
     </div>
     <div class="col-sm-8">
-      <p>{{comment.body}}</p>
+      <p markdown="comment.body"></p>
     </div>
     <div class="col-sm-12"><hr></div>
   </div>
@@ -19,7 +19,27 @@
       <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
     </div>
     <div class="col-sm-8">
-      <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.comment') %>" ng-model="newSessionComment.body" rows="4"></textarea><br>
+      <ul class="nav nav-tabs" ng-init="previewComment = false">
+        <li role="presentation" ng-class="{active: !previewComment}">
+          <a ng-click="previewComment = !previewComment">
+            <small><%= t('sessions.markdown.text') %></small>
+          </a>
+        </li>
+        <li role="presentation" ng-class="{active: previewComment}">
+          <a ng-click="previewComment = !previewComment">
+            <small><%= t('sessions.markdown.preview') %></small>
+          </a>
+        </li>
+      </ul>
+      <div ng-if="!previewComment" fade-animation="true">
+        <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.comment') %>" ng-model="newSessionComment.body" rows="4"></textarea>
+        <small class="text-muted">
+          <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+        </small><br>
+      </div>
+      <div ng-if="previewComment" fade-animation="true">
+        <br><p markdown="newSessionComment.body"></p><hr>
+      </div>
       <button class="btn btn-primary pull-right" ng-click="postComment()">
         <%= t('sessions.buttons.comment') %>
       </button>
