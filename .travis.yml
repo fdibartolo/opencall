@@ -28,4 +28,4 @@ deploy:
     master: opencall
 
 after_script:
-  -heroku config:set commit_id=$TRAVIS_COMMIT
+  - heroku config:set commit_id=$TRAVIS_COMMIT
