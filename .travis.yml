@@ -29,4 +29,4 @@ deploy:
 
 after_success:
   - gem install heroku
-  - heroku config:set commit_id=$TRAVIS_COMMIT
+  - ./post_deploy.sh
