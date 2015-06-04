@@ -26,3 +26,6 @@ deploy:
   app:
     develop: opencallstage
     master: opencall
+
+after_script:
+  -heroku config:set commit_id=$TRAVIS_COMMIT
