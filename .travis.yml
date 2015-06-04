@@ -29,4 +29,4 @@ deploy:
 
 after_success:
   - gem install heroku
-  - ./post_deploy.sh
+  - bash ./post_deploy.sh
