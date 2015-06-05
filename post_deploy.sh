@@ -14,9 +14,9 @@ echo "Host heroku.com" >> ~/.ssh/config
 echo "   StrictHostKeyChecking no" >> ~/.ssh/config
 echo "   CheckHostIP no" >> ~/.ssh/config
 echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-  
-#  - yes | heroku keys:add
-#  - yes | git push heroku master
+
+heroku keys:clear  
+yes | heroku keys:add
 
 
 heroku config:set commit_id=$TRAVIS_COMMIT
