@@ -10,8 +10,7 @@ RSpec.describe MainController, :type => :controller do
   end
 
   describe "GET version" do
-    it "returns just version when not commit_id" do
-    	ENV['commit_id'] = nil
+    it "returns just version when not commit" do
       get :version
       expect(response).to have_http_status(:success)
       expect(response.body).to include Version
@@ -19,11 +18,15 @@ RSpec.describe MainController, :type => :controller do
 
     it "returns version and commit_id when commit_id" do
     	commit_id = 'djsdfhksdfh82432342424'
-    	ENV['commit_id'] = commit_id
+      path = File.expand_path('../../../public/commit_track.txt', __FILE__)
+      f = File.new(path, "w")
+      f.write(commit_id)
+      f.close  
       get :version
       expect(response).to have_http_status(:success)
       expect(response.body).to include Version
       expect(response.body).to include commit_id    
+      File.delete(path)
     end
 
   end
