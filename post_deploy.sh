@@ -1,5 +1,7 @@
 #!/bin/bash
 
+gem install heroku
+
 if [ $TRAVIS_BRANCH == "master" ]; then
 	heroku_app=opencall
 fi
