@@ -30,5 +30,5 @@ deploy:
     develop: opencallstage
     master: opencall
 
-after_success:
+after_deploy:
   - bash ./post_deploy.sh
