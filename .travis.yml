@@ -20,15 +20,17 @@ before_script:
   - psql -c 'create database open_call_test;' -U postgres
   - bundle exec rake db:migrate RAILS_ENV="test"
 
+before_deploy:
+  - "echo $TRAVIS_COMMIT > public/commit_track.txt"
+
 deploy:
   provider: heroku
+  skip_cleanup: true
   run: 
     - "rake db:migrate"
+    - "echo $TRAVIS_COMMIT > public/current_commit.txt"
   api_key:
     secure: JUUqgctA4rewr6y53+1p9y20tlsEAAhXM5P5cI27wTMrCIgXD/1tg69qmjzuZU7HHhpvB4LazDNHPmQ7ET4Ny3+C7msjr659kTVnOwj+4MB+0OwhcWq3LXB1UXHVh7UCmNSTmV/tl3fmsAYHA/SePODmIQW92gdE1TIsFK45U3E=
   app:
     develop: opencallstage
     master: opencall
-
-after_deploy:
-  - bash ./post_deploy.sh
