@@ -253,4 +253,61 @@ RSpec.describe SessionProposalsController, :type => :controller do
       expect(session_ids).to_not include not_faved_session.id
     end
   end
+
+  describe "GET reviewer comments" do
+    context "while user" do
+      it "should return forbidden" do
+        get :reviewer_comments
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context "while reviewer" do
+      let(:theme) { FactoryGirl.create :theme }
+      let!(:first_session) { FactoryGirl.create :session_proposal, theme: theme }
+      let!(:role_admin) { FactoryGirl.create :role }
+
+      login_as :reviewer, 'Reviewer'
+
+      it "should include themes list" do
+        another_theme = FactoryGirl.create :theme, name: 'Another theme'
+        get :reviewer_comments
+
+        body = JSON.parse response.body
+        expect(body['themes'].count).to eq 2
+        expect(body['themes'].first).to eq theme.name
+        expect(body['themes'].last).to eq another_theme.name
+      end
+
+      context "while having commented sessions" do
+        let!(:second_session) { FactoryGirl.create :session_proposal, theme: theme, user: logged_in(:reviewer, 'Reviewer') }
+
+        it "should include session info" do
+          get :reviewer_comments
+
+          body = JSON.parse response.body
+          expect(body['sessions'].count).to eq 2
+          expect(body['sessions'].first['id']).to eq first_session.id
+          expect(body['sessions'].first['title']).to eq first_session.title
+          expect(body['sessions'].first['theme']).to eq first_session.theme.name
+          expect(body['sessions'].last['id']).to eq second_session.id
+          expect(body['sessions'].last['title']).to eq second_session.title
+          expect(body['sessions'].last['theme']).to eq second_session.theme.name
+        end
+
+        it "should include count of comments only from reviewers" do
+          user_comment = FactoryGirl.create :comment, session_proposal: first_session, user: FactoryGirl.create(:user, first_name: 'user')
+          another_user_comment = FactoryGirl.create :comment, session_proposal: second_session, user: FactoryGirl.create(:user, first_name: 'user2')
+          reviewer_comment = FactoryGirl.create :comment, session_proposal: first_session, user: logged_in(:reviewer, 'Reviewer')
+
+          get :reviewer_comments
+
+          body = JSON.parse response.body
+          expect(body['sessions'].first['comments'].count).to eq 1
+          expect(body['sessions'].first['comments'].first['reviewer']).to eq reviewer_comment.user.full_name 
+          expect(body['sessions'].last['comments'].count).to eq 0
+        end
+      end
+    end
+  end
 end

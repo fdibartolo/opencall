@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :session_proposals, except: [:destroy], defaults: { format: :json } do
     collection do
       get :search
+      get :reviewer_comments
     end
     member do
       get :author
