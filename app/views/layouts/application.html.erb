@@ -59,6 +59,13 @@
                       <li class="dropdown-header">Reviewer</li>
                       <li><%= link_to 'My reviews', "#{root_url}#/users/reviews" %></li>
                     <% end %>
+                    <% if current_user.reviewer? or current_user.admin? %>
+                      <li class="divider"></li>
+                      <li class="dropdown-header">Reports</li>
+                      <li>
+                        <%= link_to 'Comments by proposals', "#{root_url}#/reports/reviewer_comments" %>
+                      </li>
+                    <% end %>
                     <li class="divider"></li>
                     <li>
                       <%= link_to "Sign out", destroy_user_session_path, method: :delete, id: 'signout-link' %>
