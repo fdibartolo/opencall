@@ -85,6 +85,11 @@ class SessionProposal < ActiveRecord::Base
     __elasticsearch__.index_document
   end
 
+  def reviewer_comments
+    reviewers_ids = (Role.find_by(name: RoleAdmin).users.pluck(:id) + Role.find_by(name: RoleReviewer).users.pluck(:id)).uniq
+    comments.where(user_id: reviewers_ids)
+  end
+
   private
   def accept
     self.notified_on = DateTime.now

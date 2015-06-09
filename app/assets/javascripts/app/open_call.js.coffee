@@ -60,6 +60,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/notifications.html'
     controller: 'NotificationsController'
 
+  $routeProvider.when '/reports/reviewer_comments',
+    templateUrl: '/templates/reviewer_comments.html'
+    controller: 'ReportsController'
+
   $routeProvider.otherwise redirectTo: '/home'
 ]
 

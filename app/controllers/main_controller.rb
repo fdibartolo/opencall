@@ -4,7 +4,11 @@ class MainController < ApplicationController
 
   def version
   	response.stream.write Version
-  	response.stream.write("-" + ENV["commit_id"]) if ENV["commit_id"]
+  	path = File.expand_path('../../../public/commit_track.txt', __FILE__)
+  	if File.exist?(path) 
+  		commit = File.read(path)
+  		response.stream.write("-" + commit)
+  	end
   	response.stream.close
   end
 
