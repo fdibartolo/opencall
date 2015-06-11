@@ -28,12 +28,7 @@ RSpec.describe User, :type => :model do
   end
 
   describe ".from_omniauth" do
-    let(:auth) { OmniAuth::AuthHash.new({ :provider => 'provider', :uid => '123456', :info => { name: 'First Last', email: user.email}})}
-
-    it "should create user if no one exist for given omniauth identity" do
-      expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
-      expect(User.last.email).to eq auth.info.email
-    end
+    let(:auth) { OmniAuth::AuthHash.new({ :provider => 'provider', :uid => '123456', :info => { name: 'First Last', email: user.email, urls: { public_profile: 'http://my_public_profile' }}})}
 
     it "should return user if omniauth identity exists" do
       identity = FactoryGirl.create(:identity, provider: auth.provider, uid: auth.uid)
@@ -44,6 +39,27 @@ RSpec.describe User, :type => :model do
       FactoryGirl.create :identity
       expect { User.from_omniauth(auth) }.to change(Identity, :count).by(1)
       expect(User.last.identities.count).to eq 2
+    end
+
+    context "when user does not exist" do
+      it "should create user for given omniauth identity" do
+        expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
+        expect(User.last.email).to eq auth.info.email
+      end
+
+      it "should add linkedin link when provider is linkedin" do
+        auth.provider = 'linkedin'
+
+        expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
+        expect(User.last.linkedin).to eq auth.info.urls.public_profile
+      end
+
+      it "should not add linkedin link when provider is not linkedin" do
+        auth.provider = 'github'
+
+        expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
+        expect(User.last.linkedin).to be nil
+      end
     end
   end
 

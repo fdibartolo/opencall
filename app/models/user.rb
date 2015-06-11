@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
       )
     end
 
+    user.linkedin = auth.info.urls.public_profile if auth.provider == 'linkedin'
     user.identities.build(provider: auth.provider, uid: auth.uid, image_url: auth.info.image)
     user.save!
     user
