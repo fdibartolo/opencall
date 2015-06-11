@@ -96,10 +96,13 @@ RSpec.configure do |config|
   end
 
   config.after :suite do
-    [SessionProposal, Tag].each do |model|
-      model.__elasticsearch__.client.indices.delete(index: model.index_name) if model.__elasticsearch__.client.indices.exists(index: model.index_name)
+    if Elasticsearch::Extensions::Test::Cluster.running?
+      [SessionProposal, Tag].each do |model|
+        model.__elasticsearch__.client.indices.delete(index: model.index_name) if 
+          model.__elasticsearch__.client.indices.exists(index: model.index_name)
+      end
+      Elasticsearch::Extensions::Test::Cluster.stop(port: ENV['ES_TEST_PORT']) if 
+        Elasticsearch::Extensions::Test::Cluster.running?
     end
-    Elasticsearch::Extensions::Test::Cluster.stop(port: ENV['ES_TEST_PORT']) if 
-      Elasticsearch::Extensions::Test::Cluster.running?
   end
 end
