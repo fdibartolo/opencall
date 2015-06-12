@@ -140,4 +140,19 @@ RSpec.describe User, :type => :model do
       expect(user.session_proposal_faved_ids).to_not include "5"
     end
   end
+
+  describe "#missing_bio?" do
+    %w[bio linkedin aboutme twitter facebook].each do |attribute|
+      it "should be false when at least #{attribute} is filled out" do
+        user = FactoryGirl.build(:user)
+        eval "user.#{attribute} = 'something'"
+        expect(user.missing_bio?).to be false
+      end
+    end
+
+    it "should be true when bio-specific attributes are all emtpty" do
+      user = FactoryGirl.build(:user)
+      expect(user.missing_bio?).to be true
+    end
+  end
 end

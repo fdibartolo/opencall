@@ -72,6 +72,10 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def missing_bio?
+    not (bio? or linkedin? or aboutme? or twitter? or facebook?)
+  end
+
   private
   def allowed? id
     id.is_a? Numeric and self.session_proposal_voted_ids.count < MaxSessionProposalVotes
