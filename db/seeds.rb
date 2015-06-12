@@ -21,7 +21,7 @@ end
 # Test-specifif env
 if Rails.env.test?
   User.create!([
-    { first_name: 'Robert', last_name: 'Martin', country: 'US', email: 'bob@mail.com', password: '12345678' },
+    { first_name: 'Robert', last_name: 'Martin', country: 'US', email: 'bob@mail.com', password: '12345678', bio: 'my bio' },
     { first_name: 'Reviewer', last_name: 'Last', country: 'US', email: 'reviewer@mail.com', password: '12345678' },
     { first_name: 'Admin', last_name: 'Last', country: 'US', email: 'admin@mail.com', password: '12345678' }
   ])
