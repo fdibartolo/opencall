@@ -155,4 +155,11 @@ RSpec.describe User, :type => :model do
       expect(user.missing_bio?).to be true
     end
   end
+
+  describe "#has_session_proposals?" do
+    let(:author) { (FactoryGirl.create :session_proposal).user }
+    
+    it { expect(user.has_session_proposals?).to be false }
+    it { expect(author.has_session_proposals?).to be true }
+  end
 end
