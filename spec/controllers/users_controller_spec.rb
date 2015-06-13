@@ -13,14 +13,14 @@ RSpec.describe Users::UsersController, :type => :controller do
   end
 
   describe "GET unlink social" do
-    let(:identity) { FactoryGirl.create :identity, user: logged_in(:user) }
+    let(:identity) { FactoryGirl.create :identity, user: logged_in }
 
     before :each do
       get :unlink_social, { provider: identity.provider }
     end
 
-    it { expect(logged_in(:user).identities).to_not include identity }
-    it { expect(response).to redirect_to(edit_user_registration_path(logged_in(:user))) }
+    it { expect(logged_in.identities).to_not include identity }
+    it { expect(response).to redirect_to(edit_user_registration_path(logged_in)) }
     it { expect(request.flash[:notice]).to include I18n.t('flash.unlink_social_ok', provider: identity.provider) }
   end
 
@@ -54,12 +54,12 @@ RSpec.describe Users::UsersController, :type => :controller do
     context "with valid params" do
       it "should add vote when param is true" do
         post :toggle_session_vote, { id: 1, vote: true }
-        allow(logged_in(:user)).to receive(:add_session_vote).with(1).exactly(1).times
+        allow(logged_in).to receive(:add_session_vote).with(1).exactly(1).times
       end
 
       it "should remove vote when param is false" do
         post :toggle_session_vote, { id: 1, vote: false }
-        allow(logged_in(:user)).to receive(:remove_session_vote).with(1).exactly(1).times
+        allow(logged_in).to receive(:remove_session_vote).with(1).exactly(1).times
       end
     end
   end
@@ -84,7 +84,7 @@ RSpec.describe Users::UsersController, :type => :controller do
     context "with valid params" do
       it "should trigger toggling faved session" do
         post :toggle_session_fav, { id: 1 }
-        allow(logged_in(:user)).to receive(:toggle_session_faved).with(1).exactly(1).times
+        allow(logged_in).to receive(:toggle_session_faved).with(1).exactly(1).times
       end
     end
   end

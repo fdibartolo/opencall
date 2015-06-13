@@ -18,7 +18,7 @@ RSpec.describe ReviewsController, :type => :controller do
 
       it "should return all reviews" do
         second_reviewer = FactoryGirl.create :user, first_name: 'second'
-        reviewers_review = FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer), second_reviewer_id: second_reviewer.id
+        reviewers_review = FactoryGirl.create :review, session_proposal: session, user: logged_in, second_reviewer_id: second_reviewer.id
         admins_review = FactoryGirl.create :review, session_proposal: session, user: FactoryGirl.create(:admin, first_name: 'admin')
 
         get :index, { session_proposal_id: session.id }
@@ -60,7 +60,7 @@ RSpec.describe ReviewsController, :type => :controller do
       end
 
       it "should update review to given SessionProposal when one exists" do
-        FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer)
+        FactoryGirl.create :review, session_proposal: session, user: logged_in
         payload[:review][:body] = 'updated'
         payload[:review][:score] = 10
         post :create, payload
@@ -95,7 +95,7 @@ RSpec.describe ReviewsController, :type => :controller do
       it "should return only owned reviews" do
         first_session = FactoryGirl.create :session_proposal
         second_reviewer = FactoryGirl.create :user, first_name: 'second'
-        reviewers_review = FactoryGirl.create :review, session_proposal: first_session, user: logged_in(:reviewer), second_reviewer_id: second_reviewer.id
+        reviewers_review = FactoryGirl.create :review, session_proposal: first_session, user: logged_in, second_reviewer_id: second_reviewer.id
         second_session = FactoryGirl.create :session_proposal, user: first_session.user
         admins_review = FactoryGirl.create :review, session_proposal: second_session, user: FactoryGirl.create(:admin, first_name: 'admin')
 
@@ -146,10 +146,10 @@ RSpec.describe ReviewsController, :type => :controller do
 
       context "with valid params" do
         let(:second_session) { FactoryGirl.create :session_proposal, user: session.user }
-        let(:second_review) { FactoryGirl.create :review, session_proposal: second_session, user: logged_in(:reviewer) }
+        let(:second_review) { FactoryGirl.create :review, session_proposal: second_session, user: logged_in }
 
         it "should return review info when one exists" do
-          review = FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer)
+          review = FactoryGirl.create :review, session_proposal: session, user: logged_in
 
           get :single_for_current_user, { session_proposal_id: session.id }
 
@@ -172,7 +172,7 @@ RSpec.describe ReviewsController, :type => :controller do
           body = JSON.parse response.body
           expect(body['reviewers'].count).to be 2
           expect(body['reviewers'][0]['id']).to eq admin.id
-          expect(body['reviewers'][1]['id']).to eq logged_in(:reviewer).id
+          expect(body['reviewers'][1]['id']).to eq logged_in.id
         end
       end
     end
@@ -184,7 +184,7 @@ RSpec.describe ReviewsController, :type => :controller do
   }.each do |action, status|
     describe "POST #{action}" do
       let(:session) { FactoryGirl.create :session_proposal }
-      let(:review) { FactoryGirl.create :review, session_proposal: session, user: logged_in(:reviewer) }
+      let(:review) { FactoryGirl.create :review, session_proposal: session, user: logged_in }
       let(:payload) { { session_proposal_id: session.id, id: review.id } }
 
       context "while reviewer" do
