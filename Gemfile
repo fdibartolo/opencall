@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
+ruby '2.2.2'
 
 gem 'rails', '4.2.1'
 gem 'puma', '2.11.2'
@@ -44,6 +44,7 @@ group :development, :test do
   gem 'factory_girl_rails', '4.5.0'
   gem 'protractor-rails', '0.0.15'
   gem 'coveralls', '0.8.1', require: false
+  gem 'letter_opener'
 end
 
 gem 'rails_12factor', '0.0.3', group: :production

@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     angularjs-rails (1.3.15)
     animate-rails (1.0.8)
       rails
@@ -120,6 +121,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.2)
     jwt (1.2.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.3.0)
+      launchy (~> 2.2)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -299,6 +304,7 @@ DEPENDENCIES
   highcharts-rails (= 4.1.5)
   jbuilder (= 2.2.13)
   jquery-rails (= 4.0.3)
+  letter_opener
   marked-rails (= 0.3.2.0)
   momentjs-rails (= 2.10.2)
   newrelic_rpm (= 3.12.0.288)
