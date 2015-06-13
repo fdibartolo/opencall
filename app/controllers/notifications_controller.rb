@@ -21,6 +21,11 @@ class NotificationsController < ApplicationController
     head :no_content
   end
 
+  def notify_authors
+    AuthorMessageInbox.new.message_all params['message']['subject'], params['message']['body']
+    head :no_content
+  end
+
   private
   def forbid_if_no_access
     return head :forbidden unless current_user.admin?

@@ -1,5 +1,9 @@
 angular.module('openCall.controllers').controller 'NotificationsController', 
-['$scope', '$location', 'constants', 'NotificationsService', ($scope, $location, constants, NotificationsService) ->
+['$scope', '$location', 'constants', 'NotificationsService', 'toaster', ($scope, $location, constants, NotificationsService, toaster) ->
+
+  $scope.newMessage =
+    subject: ''
+    body: ''
 
   $scope.init = () ->
     $scope.sort = constants.notifications.sort.top
@@ -37,6 +41,16 @@ angular.module('openCall.controllers').controller 'NotificationsController',
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
       $scope.$emit 'hideLoadingSpinner'
+
+  $scope.submitMessage = () ->
+    $scope.$emit 'showLoadingSpinner', 'Sending message...'
+    NotificationsService.submitMessage($scope.newMessage).then (() ->
+      $location.path "/notifications"
+      $scope.$emit 'hideLoadingSpinner'
+      toaster.pop 'success', '', 'Message to all authors submitted successfully', 5000
+    ), (errorKey) ->
+      $scope.$emit 'hideLoadingSpinner'
+      $location.path "/error/#{errorKey}"
 
   $scope.toggleTheme = (theme) ->
     theme.active = !theme.active
