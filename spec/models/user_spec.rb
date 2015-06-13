@@ -41,7 +41,7 @@ RSpec.describe User, :type => :model do
     end
 
     it "should add new identity to existing user" do
-      FactoryGirl.create :identity
+      FactoryGirl.create :identity, user: user
       expect { User.from_omniauth(auth) }.to change(Identity, :count).by(1)
       expect(User.last.identities.count).to eq 2
     end
