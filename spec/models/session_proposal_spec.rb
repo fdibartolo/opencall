@@ -114,4 +114,26 @@ RSpec.describe SessionProposal, :type => :model do
       end
     end
   end
+
+  describe ".reviewer_comments" do
+    let!(:user) { FactoryGirl.create :user, first_name: 'user' }
+    let!(:reviewer) { FactoryGirl.create :reviewer, first_name: 'reviewer' }
+    let!(:admin) { FactoryGirl.create :admin, first_name: 'admin' }
+    let(:session) { FactoryGirl.create(:session_proposal) }
+    let(:user_comment) {FactoryGirl.create :comment, session_proposal: session, user: user }
+    let(:reviewer_comment) {FactoryGirl.create :comment, session_proposal: session, user: reviewer }
+    let(:admin_comment) {FactoryGirl.create :comment, session_proposal: session, user: admin }
+
+    it "should not return comments from users" do
+      expect(session.reviewer_comments).not_to include user_comment
+    end
+
+    it "should return comments from reviewers" do
+      expect(session.reviewer_comments).to include reviewer_comment
+    end
+
+    it "should return comments from admins" do
+      expect(session.reviewer_comments).to include admin_comment
+    end
+  end
 end

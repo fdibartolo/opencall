@@ -156,6 +156,12 @@ en:
       decline:
         text: "Decline and Notify"
         confirmation: "Are you sure you want to decline this session proposal and notify its author?"
+  reports:
+    labels:
+      title: "Session Proposals with comments made by reviewers"
+      session: "Session"
+      theme: "Theme"
+      comments: "Comments"
   activerecord:
     models: 
       user: "User"
