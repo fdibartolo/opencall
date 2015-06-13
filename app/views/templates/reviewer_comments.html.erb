@@ -1,0 +1,31 @@
+<div class="container" ng-cloak ng-init="getReviewerCommentsInfo()" fade-animation="true">
+  <div class="col-sm-10">
+    <h3><%= t('reports.labels.title') %></h3><br>
+
+    <table class="table table-hover table-condensed" ng-if="sessions.length > 0">
+      <thead>
+        <th width="40%"><%= t('reports.labels.session') %></th>
+        <th width="30%"><%= t('reports.labels.theme') %></th>
+        <th width="30%"><%= t('reports.labels.comments') %></th>
+      </thead>
+      <tr ng-repeat="session in sessions" class="reviewers-comments-summary" ng-show="isVisibleTheme(session.theme)">
+        <td class="session">
+          <h4>
+            <a ng-href="#/sessions/show/{{session.id}}" target="_blank">{{session.title}}</a>
+            <small><i>({{session.id}})</i></small>
+          </h4>
+        </td>
+        <td>{{session.theme}}</td>
+        <td>
+          <ul ng-repeat="comment in session.comments">
+            <li class="comments">
+              {{comment.reviewer}}<br>
+              <small><i>on {{comment.created_at | date: 'mediumDate'}}</i></small>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div ng-include="'templates/themes_list.html'"></div>
+</div>

@@ -135,6 +135,12 @@ es:
       decline:
         text: "Declinar y Notificar"
         confirmation: "¿Está seguro que desea declinar esta propuesta y notificar a su autor?"
+  reports:
+    labels:
+      title: "Sesiones propuestas con comentarios del equipo de revisores"
+      session: "Sesión"
+      theme: "Temática"
+      comments: "Comentarios"
   activerecord:
     models: 
       user: "Usuario"

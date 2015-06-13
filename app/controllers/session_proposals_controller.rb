@@ -1,6 +1,6 @@
 class SessionProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:search, :show]
-  before_action :forbid_if_no_access, only: :author
+  before_action :forbid_if_no_access, only: [:author, :reviewer_comments]
   before_action :forbid_if_cannot_create, only: :create
   before_action only: [:show, :edit, :update, :author] do
     set_resource SessionProposal, params[:id]
@@ -62,6 +62,9 @@ class SessionProposalsController < ApplicationController
 
   def faved_for_current_user
     @session_proposals = SessionProposal.where(id: current_user.session_proposal_faved_ids)
+  end
+
+  def reviewer_comments
   end
 
   private
