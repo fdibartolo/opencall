@@ -28,22 +28,47 @@ RSpec.describe User, :type => :model do
   end
 
   describe ".from_omniauth" do
-    let(:auth) { OmniAuth::AuthHash.new({ :provider => 'provider', :uid => '123456', :info => { name: 'First Last', email: user.email}})}
-
-    it "should create user if no one exist for given omniauth identity" do
-      expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
-      expect(User.last.email).to eq auth.info.email
-    end
-
-    it "should return user if omniauth identity exists" do
-      identity = FactoryGirl.create(:identity, provider: auth.provider, uid: auth.uid)
-      expect(User.from_omniauth(auth)).to eq identity.user
-    end
+    let(:auth) { OmniAuth::AuthHash.new({ :provider => 'provider', :uid => '123456', :info => { name: 'First Last', email: user.email, urls: { public_profile: 'http://my_public_profile' }}})}
 
     it "should add new identity to existing user" do
       FactoryGirl.create :identity
       expect { User.from_omniauth(auth) }.to change(Identity, :count).by(1)
       expect(User.last.identities.count).to eq 2
+    end
+
+    context "while identity exists" do
+      it "should return its user" do
+        identity = FactoryGirl.create(:identity, provider: auth.provider, uid: auth.uid)
+        expect(User.from_omniauth(auth)).to eq identity.user
+      end
+
+      it "should update linkedin linkedin when provider is linkedin" do
+        identity = FactoryGirl.create(:identity, provider: auth.provider, uid: auth.uid)
+        auth.provider = 'linkedin'
+        identity.user.linkedin = 'some url'
+        expect(User.from_omniauth(auth).linkedin).to eq auth.info.urls.public_profile
+      end
+    end
+
+    context "when user does not exist" do
+      it "should create user for given omniauth identity" do
+        expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
+        expect(User.last.email).to eq auth.info.email
+      end
+
+      it "should add linkedin link when provider is linkedin" do
+        auth.provider = 'linkedin'
+
+        expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
+        expect(User.last.linkedin).to eq auth.info.urls.public_profile
+      end
+
+      it "should not add linkedin link when provider is not linkedin" do
+        auth.provider = 'github'
+
+        expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
+        expect(User.last.linkedin).to be nil
+      end
     end
   end
 
@@ -123,5 +148,27 @@ RSpec.describe User, :type => :model do
       user.toggle_session_faved "5"
       expect(user.session_proposal_faved_ids).to_not include "5"
     end
+  end
+
+  describe "#missing_bio?" do
+    %w[bio linkedin aboutme twitter facebook].each do |attribute|
+      it "should be false when at least #{attribute} is filled out" do
+        user = FactoryGirl.build(:user)
+        eval "user.#{attribute} = 'something'"
+        expect(user.missing_bio?).to be false
+      end
+    end
+
+    it "should be true when bio-specific attributes are all emtpty" do
+      user = FactoryGirl.build(:user)
+      expect(user.missing_bio?).to be true
+    end
+  end
+
+  describe "#has_session_proposals?" do
+    let(:author) { (FactoryGirl.create :session_proposal).user }
+    
+    it { expect(user.has_session_proposals?).to be false }
+    it { expect(author.has_session_proposals?).to be true }
   end
 end
