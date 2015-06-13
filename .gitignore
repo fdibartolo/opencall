@@ -27,3 +27,5 @@ coverage/
 
 # node modules
 node_modules/
+
+.idea
