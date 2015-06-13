@@ -30,15 +30,24 @@ RSpec.describe User, :type => :model do
   describe ".from_omniauth" do
     let(:auth) { OmniAuth::AuthHash.new({ :provider => 'provider', :uid => '123456', :info => { name: 'First Last', email: user.email, urls: { public_profile: 'http://my_public_profile' }}})}
 
-    it "should return user if omniauth identity exists" do
-      identity = FactoryGirl.create(:identity, provider: auth.provider, uid: auth.uid)
-      expect(User.from_omniauth(auth)).to eq identity.user
-    end
-
     it "should add new identity to existing user" do
       FactoryGirl.create :identity
       expect { User.from_omniauth(auth) }.to change(Identity, :count).by(1)
       expect(User.last.identities.count).to eq 2
+    end
+
+    context "while identity exists" do
+      it "should return its user" do
+        identity = FactoryGirl.create(:identity, provider: auth.provider, uid: auth.uid)
+        expect(User.from_omniauth(auth)).to eq identity.user
+      end
+
+      it "should update linkedin linkedin when provider is linkedin" do
+        identity = FactoryGirl.create(:identity, provider: auth.provider, uid: auth.uid)
+        auth.provider = 'linkedin'
+        identity.user.linkedin = 'some url'
+        expect(User.from_omniauth(auth).linkedin).to eq auth.info.urls.public_profile
+      end
     end
 
     context "when user does not exist" do

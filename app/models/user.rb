@@ -20,7 +20,12 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth auth
     identity = Identity.find_by(provider: auth.provider, uid: auth.uid)
-    return identity.user if identity
+
+    if identity
+      identity.user.linkedin = auth.info.urls.public_profile if auth.provider == 'linkedin'
+      identity.user.save! if auth.provider == 'linkedin'
+      return identity.user
+    end
 
     user = User.find_by(email: auth.info.email) if auth.info.email
     unless user
