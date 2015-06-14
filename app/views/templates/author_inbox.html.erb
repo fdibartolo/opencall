@@ -3,13 +3,13 @@
     <div class="text-center"><h2><%= t('notifications.labels.author_inbox') %></h2></div>
   </div>
   <div class="form-group">
-    <label for="input-subject" class="col-sm-2 control-label">Subject</label>
+    <label for="input-subject" class="col-sm-2 control-label"><%= t('notifications.labels.subject') %></label>
     <div class="col-sm-8">
       <input type="text" id="input-subject" ng-model="newMessage.subject" class="form-control">
     </div>
   </div>
   <div class="form-group">
-    <label for="input-body" class="col-sm-2 control-label">Body</label>
+    <label for="input-body" class="col-sm-2 control-label"><%= t('notifications.labels.body') %></label>
     <div class="col-sm-8">
       <textarea type="text" id="input-body" ng-model="newMessage.body" class="form-control" rows="6"></textarea>
     </div>
@@ -17,7 +17,7 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-8">
       <button id="create-button" class="btn btn-primary pull-right" ng-click="submitMessage()">
-        Send message
+        <%= t('notifications.labels.send_message') %>
       </button>
       <br><hr>
     </div>
