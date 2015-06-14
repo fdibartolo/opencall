@@ -86,8 +86,7 @@ class SessionProposal < ActiveRecord::Base
   end
 
   def reviewer_comments
-    reviewers_ids = (Role.find_by(name: RoleAdmin).users.pluck(:id) + Role.find_by(name: RoleReviewer).users.pluck(:id)).uniq
-    comments.where(user_id: reviewers_ids)
+    comments.where(user_id: Role.admins_and_reviewers.map(&:id))
   end
 
   private
