@@ -1,4 +1,6 @@
 class MainController < ApplicationController
+  before_action :missing_bio, only: :index
+
   def index
   end
 
@@ -12,4 +14,11 @@ class MainController < ApplicationController
   	response.stream.close
   end
 
+  private
+  def missing_bio
+    if current_user and current_user.has_session_proposals? and current_user.missing_bio?
+      flash[:alert] = I18n.t 'flash.missing_bio'
+      redirect_to edit_user_registration_path
+    end
+  end
 end

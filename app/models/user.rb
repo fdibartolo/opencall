@@ -20,7 +20,12 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth auth
     identity = Identity.find_by(provider: auth.provider, uid: auth.uid)
-    return identity.user if identity
+
+    if identity
+      identity.user.linkedin = auth.info.urls.public_profile if auth.provider == 'linkedin'
+      identity.user.save! if auth.provider == 'linkedin'
+      return identity.user
+    end
 
     user = User.find_by(email: auth.info.email) if auth.info.email
     unless user
@@ -33,6 +38,7 @@ class User < ActiveRecord::Base
       )
     end
 
+    user.linkedin = auth.info.urls.public_profile if auth.provider == 'linkedin'
     user.identities.build(provider: auth.provider, uid: auth.uid, image_url: auth.info.image)
     user.save!
     user
@@ -69,6 +75,14 @@ class User < ActiveRecord::Base
       self.session_proposal_faved_ids << id if id.is_a? Numeric
     end
     save!
+  end
+
+  def missing_bio?
+    not (bio? or linkedin? or aboutme? or twitter? or facebook?)
+  end
+
+  def has_session_proposals?
+    session_proposals.count > 0
   end
 
   private
