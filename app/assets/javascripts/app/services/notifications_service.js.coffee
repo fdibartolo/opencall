@@ -28,7 +28,7 @@ angular.module('openCall.services').factory 'NotificationsService',
         subject: message.subject
         body: message.body
     ).success((data, status, header, config) ->
-      deferred.resolve header()["id"]
+      deferred.resolve()
     ).error (data, status, header, config) ->
       switch status
         when 403 then message = "access_denied"
