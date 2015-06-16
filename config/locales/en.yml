@@ -137,6 +137,7 @@ en:
       has_already_been: "This review has already been "
     buttons:
       edit: "Edit review"
+      start: "Start review"
       accept:
         text: "Accept"
         confirmation: "Are you sure you want to accept this review?"
@@ -158,10 +159,13 @@ en:
         confirmation: "Are you sure you want to decline this session proposal and notify its author?"
   reports:
     labels:
-      title: "Session Proposals with comments made by reviewers"
+      title:
+        reviewer_comments: "Session Proposals with comments made by reviewers"
+        reviews_status: "Status of Reviews by session proposals"
       session: "Session"
       theme: "Theme"
       comments: "Comments"
+      reviews: "Reviews by"
   activerecord:
     models: 
       user: "User"
