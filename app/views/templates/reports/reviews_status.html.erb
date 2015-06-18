@@ -4,12 +4,33 @@
 
     <table class="table table-hover table-condensed" ng-if="sessions.length > 0">
       <thead>
-        <th width="30%"><%= t('reports.labels.session') %></th>
-        <th width="25%"><%= t('reports.labels.theme') %></th>
-        <th width="35%"><%= t('reports.labels.reviews') %></th>
+        <th width="30%">
+          <%= t('reports.labels.session') %> &nbsp;
+          <span ng-class="isSortBySessions() ? 'text-primary' : 'text-muted'" style="font-size:110%">
+            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleSessionsSort()" ng-if="!isSortBySessions()" title="Sort by title"></span>
+            <span class="clickable glyphicon glyphicon-sort-by-alphabet" ng-click="toggleSessionsSort()" ng-if="isSessionsTopSort()" title="Sort by title"></span>
+            <span class="clickable glyphicon glyphicon-sort-by-alphabet-alt" ng-click="toggleSessionsSort()" ng-if="isSessionsBottomSort()" title="Sort by title"></span>
+          </span>
+        </th>
+        <th width="25%">
+          <%= t('reports.labels.theme') %> &nbsp;
+          <span ng-class="isSortByThemes() ? 'text-primary' : 'text-muted'" style="font-size:110%">
+            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleThemesSort()" ng-if="!isSortByThemes()" title="Sort by title"></span>
+            <span class="clickable glyphicon glyphicon-sort-by-alphabet" ng-click="toggleThemesSort()" ng-if="isThemesTopSort()" title="Sort by theme"></span>
+            <span class="clickable glyphicon glyphicon-sort-by-alphabet-alt" ng-click="toggleThemesSort()" ng-if="isThemesBottomSort()" title="Sort by theme"></span>
+          </span>
+        </th>
+        <th width="35%">
+          <%= t('reports.labels.reviews') %> &nbsp;
+          <span ng-class="isSortByReviews() ? 'text-primary' : 'text-muted'" style="font-size:110%">
+            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleReviewsSort()" ng-if="!isSortByReviews()" title="Sort by title"></span>
+            <span class="clickable glyphicon glyphicon-sort-by-attributes" ng-click="toggleReviewsSort()" ng-if="isReviewsTopSort()" title="Sort by number of reviews"></span>
+            <span class="clickable glyphicon glyphicon-sort-by-attributes-alt" ng-click="toggleReviewsSort()" ng-if="isReviewsBottomSort()" title="Sort by number of reviews"></span>
+          </span>
+        </th>
         <th width="10%"></th>
       </thead>
-      <tr ng-repeat="session in sessions" class="reviews-status-summary" ng-show="isVisibleTheme(session.theme)">
+      <tr ng-repeat="session in sessions | orderBy:sort.expression" class="reviews-status-summary" ng-show="isVisibleTheme(session.theme)">
         <td class="session">
           <h5>
             <a ng-href="#/sessions/show/{{session.id}}" target="_blank">{{session.title}}</a><br>

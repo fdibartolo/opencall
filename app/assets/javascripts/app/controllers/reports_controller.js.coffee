@@ -13,6 +13,8 @@ angular.module('openCall.controllers').controller 'ReportsController',
       $scope.$emit 'hideLoadingSpinner'
 
   $scope.getReviewsStatus = () ->
+    $scope.sort = constants.reports.sort.sessions.top
+
     $scope.$emit 'showLoadingSpinner', 'Loading...'
     NotificationsService.sessions().then ((response) ->
       $scope.sessions = response.sessions
@@ -45,4 +47,53 @@ angular.module('openCall.controllers').controller 'ReportsController',
 
   $scope.isPendingReview = (status) ->
     status is constants.reviews.status.pending
+
+  $scope.isSortBySessions = () ->
+    isSortBy constants.reports.sort.sessions
+
+  $scope.isSortByThemes = () ->
+    isSortBy constants.reports.sort.themes
+
+  $scope.isSortByReviews = () ->
+    isSortBy constants.reports.sort.reviews
+
+  isSortBy = (type) ->
+    $scope.sort is type.top or $scope.sort is type.bottom
+
+  $scope.toggleSessionsSort = () ->
+    if $scope.isSessionsTopSort()
+      $scope.sort = constants.reports.sort.sessions.bottom
+    else
+      $scope.sort = constants.reports.sort.sessions.top
+
+  $scope.isSessionsTopSort = () ->
+    $scope.isSortBySessions() and ($scope.sort.type is constants.reports.sort.sessions.top.type)
+    
+  $scope.isSessionsBottomSort = () ->
+    $scope.isSortBySessions() and ($scope.sort.type is constants.reports.sort.sessions.bottom.type)
+    
+  $scope.toggleThemesSort = () ->
+    if $scope.isThemesTopSort()
+      $scope.sort = constants.reports.sort.themes.bottom
+    else
+      $scope.sort = constants.reports.sort.themes.top
+
+  $scope.isThemesTopSort = () ->
+    $scope.isSortByThemes() and ($scope.sort.type is constants.reports.sort.themes.top.type)
+    
+  $scope.isThemesBottomSort = () ->
+    $scope.isSortByThemes() and ($scope.sort.type is constants.reports.sort.themes.bottom.type)
+    
+  $scope.toggleReviewsSort = () ->
+    if $scope.isReviewsTopSort()
+      $scope.sort = constants.reports.sort.reviews.bottom
+    else
+      $scope.sort = constants.reports.sort.reviews.top
+
+  $scope.isReviewsTopSort = () ->
+    $scope.isSortByReviews() and ($scope.sort.type is constants.reports.sort.reviews.top.type)
+    
+  $scope.isReviewsBottomSort = () ->
+    $scope.isSortByReviews() and ($scope.sort.type is constants.reports.sort.reviews.bottom.type)
+    
 ]
