@@ -1,5 +1,5 @@
 <div class="col-sm-2 text-center" sticky offset="60">
-  <span><small><em>click a theme to enable/disable</em></small></span><br><br>
+  <span><small><em>click a theme to show/hide</em></small></span><br><br>
   <ul class="list-inline">
     <li ng-repeat="theme in themes" class="tag lg bg-primary clickable" ng-class="{'bg-primary': theme.active, 'bg-info text-muted': !theme.active}" ng-click="toggleTheme(theme)">{{theme.name}}</li>
   </ul>
