@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     roles.where(name: RoleReviewer).exists?
   end
 
+  def author?
+    !session_proposals.empty?
+  end
+
   def add_session_vote id
     unless self.session_proposal_voted_ids.include? id
       self.session_proposal_voted_ids << id if allowed?(id)

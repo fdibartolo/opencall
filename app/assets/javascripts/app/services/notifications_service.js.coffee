@@ -20,6 +20,22 @@ angular.module('openCall.services').factory 'NotificationsService',
   decline = (sessionProposalId) ->
     postAction "/notifications/#{sessionProposalId}/decline"
 
+  submitMessage = (message) ->
+    deferred = $q.defer()
+
+    $http.post("/notifications/notify_authors",
+      message:
+        subject: message.subject
+        body: message.body
+    ).success((data, status, header, config) ->
+      deferred.resolve()
+    ).error (data, status, header, config) ->
+      switch status
+        when 403 then message = "access_denied"
+        else message = "generic"
+
+    deferred.promise
+
   postAction = (url) ->
     deferred = $q.defer()
 
@@ -39,4 +55,5 @@ angular.module('openCall.services').factory 'NotificationsService',
   sessions: sessions
   accept: accept
   decline: decline
+  submitMessage: submitMessage
 ]

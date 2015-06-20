@@ -68,6 +68,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/reports/reviews_status.html'
     controller: 'ReportsController'
 
+  $routeProvider.when '/author_inbox',
+    templateUrl: '/templates/author_inbox.html'
+    controller: 'NotificationsController'
+
   $routeProvider.otherwise redirectTo: '/home'
 ]
 

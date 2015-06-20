@@ -150,6 +150,10 @@ en:
       session: "Session"
       reviews: "Reviews by"
       status: "Status"
+      author_inbox: Write a message for all authors
+      subject: Subject
+      body: Body
+      send_message: Send Message
     buttons:
       accept:
         text: "Accept and Notify"

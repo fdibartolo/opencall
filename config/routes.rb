@@ -53,5 +53,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'notifications/notify_authors', to: 'notifications#notify_authors'
+
   root 'main#index'
 end

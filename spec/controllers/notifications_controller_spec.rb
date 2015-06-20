@@ -22,7 +22,7 @@ RSpec.describe NotificationsController, type: :controller do
       let!(:second_reviewer) { FactoryGirl.create(:user, first_name: 'second') }
       let!(:first_review) { FactoryGirl.create :review, session_proposal: first_session, user: reviewer, workflow_state: 'accepted', second_reviewer_id: second_reviewer.id }
       let!(:second_review) { FactoryGirl.create :review, session_proposal: first_session, user: reviewer }
-      let!(:second_session) { FactoryGirl.create :session_proposal, user: logged_in(:admin), theme: theme, track: track }
+      let!(:second_session) { FactoryGirl.create :session_proposal, user: @logged_user, theme: theme, track: track }
       let!(:third_review) { FactoryGirl.create :review, session_proposal: second_session, user: reviewer }
 
       it "should include reviews info" do

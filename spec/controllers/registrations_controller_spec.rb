@@ -11,6 +11,6 @@ RSpec.describe Users::RegistrationsController, :type => :controller do
     end
 
     it { expect(response.location).to match edit_user_registration_path }
-    it { expect(logged_in(:user).bio).to eq 'updated bio' }
+    it { expect(logged_in.bio).to eq 'updated bio' }
   end
 end
