@@ -166,13 +166,12 @@ RSpec.describe ReviewsController, :type => :controller do
           expect(body['body']).to be nil
         end
 
-        it "should include all valid reviewers" do
+        it "should include all valid reviewers except logged_in user" do
           get :single_for_current_user, { session_proposal_id: session.id }
 
           body = JSON.parse response.body
-          expect(body['reviewers'].count).to be 2
+          expect(body['reviewers'].count).to be 1
           expect(body['reviewers'][0]['id']).to eq admin.id
-          expect(body['reviewers'][1]['id']).to eq logged_in.id
         end
       end
     end

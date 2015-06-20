@@ -5,6 +5,7 @@ es:
     role_assign_error: "No hemos podido encontrar ningún usuario cuyo correo electrónico sea '%{email}'"
     role_revoke_ok: "Rol fue revocado exitosamente"
     role_revoke_error: "No se pudo revocar el rol, usuario no encontrado"
+    missing_bio: "Como un potencial orador, por favor indica una breve Bio O BIEN al menos un link de tus redes sociales"
   home:
     announcement:
       title: "Bienvenidos"
@@ -116,6 +117,7 @@ es:
       has_already_been: "Esta revisión ya ha sido "
     buttons:
       edit: "Editar revisión"
+      start: "Iniciar revisión"
       accept:
         text: "Aceptar"
         confirmation: "¿Está seguro que desea acepter esta revisión?"
@@ -137,10 +139,13 @@ es:
         confirmation: "¿Está seguro que desea declinar esta propuesta y notificar a su autor?"
   reports:
     labels:
-      title: "Sesiones propuestas con comentarios del equipo de revisores"
+      title:
+        reviewer_comments: "Sesiones propuestas con comentarios del equipo de revisores"
+        reviews_status: "Estado de revisiones por sesiones propuestas"
       session: "Sesión"
       theme: "Temática"
       comments: "Comentarios"
+      reviews: "Revisiones por"
   activerecord:
     models: 
       user: "Usuario"

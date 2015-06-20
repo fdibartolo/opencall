@@ -26,6 +26,7 @@ en:
     role_assign_error: "Unable to find user with email '%{email}'"
     role_revoke_ok: "Role was revoked succesfully"
     role_revoke_error: "Unable to revoke role, user cannot be found"
+    missing_bio: "As a potential speaker, please provide a short bio OR at least one social network link"
   home:
     announcement:
       title: "Welcome"
@@ -136,6 +137,7 @@ en:
       has_already_been: "This review has already been "
     buttons:
       edit: "Edit review"
+      start: "Start review"
       accept:
         text: "Accept"
         confirmation: "Are you sure you want to accept this review?"
@@ -161,10 +163,13 @@ en:
         confirmation: "Are you sure you want to decline this session proposal and notify its author?"
   reports:
     labels:
-      title: "Session Proposals with comments made by reviewers"
+      title:
+        reviewer_comments: "Session Proposals with comments made by reviewers"
+        reviews_status: "Status of Reviews by session proposals"
       session: "Session"
       theme: "Theme"
       comments: "Comments"
+      reviews: "Reviews by"
   activerecord:
     models: 
       user: "User"

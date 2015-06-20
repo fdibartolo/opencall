@@ -20,4 +20,27 @@ angular.module('openCall.constants').constant 'constants',
       bottom:
         type: 'bottom'
         expression: '-reviews.length'
+  reports:
+    sort:
+      sessions:
+        top:
+          type: 'top'
+          expression: 'title'
+        bottom:
+          type: 'bottom'
+          expression: '-title'
+      themes:
+        top:
+          type: 'top'
+          expression: 'theme'
+        bottom:
+          type: 'bottom'
+          expression: '-theme'
+      reviews:
+        top:
+          type: 'top'
+          expression: 'reviews.length'
+        bottom:
+          type: 'bottom'
+          expression: '-reviews.length'
 
