@@ -165,10 +165,10 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe "#has_session_proposals?" do
+  describe "#author?" do
     let(:author) { (FactoryGirl.create :session_proposal).user }
     
-    it { expect(user.has_session_proposals?).to be false }
-    it { expect(author.has_session_proposals?).to be true }
+    it { expect(user.author?).to be false }
+    it { expect(author.author?).to be true }
   end
 end
