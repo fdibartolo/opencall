@@ -18,11 +18,10 @@ Pendiente de agregar:
 
 * Crear base de datos
 
-`$ rake db:create`
+  `$ rake db:create`
+  `$ rake db:migrate`
 
-`$ rake db:migrate`
-
-* Correr tests
+* Correr ambas suites de tests
 
   `$ foreman run bin/rspec`
 
