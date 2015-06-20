@@ -130,6 +130,10 @@ es:
       session: "Sesión"
       reviews: "Revisiones por"
       status: "Estado"
+      author_inbox: "Escribe un mensaje para todos los autores de propuestas"
+      subject: "Asunto"
+      body: "Mensaje"
+      send_message: "Enviar mensaje"
     buttons:
       accept:
         text: "Aceptar y Notificar"
