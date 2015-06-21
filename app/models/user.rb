@@ -85,10 +85,6 @@ class User < ActiveRecord::Base
     not (bio? or linkedin? or aboutme? or twitter? or facebook?)
   end
 
-  def has_session_proposals?
-    session_proposals.count > 0
-  end
-
   private
   def allowed? id
     id.is_a? Numeric and self.session_proposal_voted_ids.count < MaxSessionProposalVotes

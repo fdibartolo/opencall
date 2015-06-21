@@ -7,4 +7,8 @@ class NotificationMailerPreview < ActionMailer::Preview
   def session_declined_email
     NotificationMailer.session_declined_email SessionProposal.first
   end
+
+  def general_notification_email
+    NotificationMailer.general_notification_email User.first.email, "Some Subject", "Some Body"
+  end
 end

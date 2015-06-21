@@ -25,4 +25,17 @@ RSpec.describe NotificationMailer, type: :mailer do
     it { expect(mail.body).to match session.title }
     it { expect(mail.body).to match ChairsAccount }
   end
+
+  describe ".general_notification_email" do
+    let(:author) { FactoryGirl.create :user }
+    let(:subject) { "Some subject" }
+    let(:body) { "Some body" }
+    let(:mail) { NotificationMailer.general_notification_email(author.email, subject, body).deliver_now }
+    let!(:admin) { FactoryGirl.create :admin, first_name: 'admin' }
+
+    it { expect(mail.to).to include author.email }
+    it { expect(mail.bcc).to include admin.email }
+    it { expect(mail.subject).to eq subject }
+    it { expect(mail.body).to match body }
+  end
 end

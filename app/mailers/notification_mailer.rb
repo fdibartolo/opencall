@@ -11,13 +11,13 @@ class NotificationMailer < ApplicationMailer
     mail to: @user.email, bcc: administrators
   end
 
-  def general_notification_email(email, subject, body)
+  def general_notification_email email, subject, body
     @body = body
-    mail to: email, subject: subject
+    mail to: email, subject: subject, bcc: administrators
   end
 
   private
   def administrators
-    Role.find_by(name: RoleAdmin).users.pluck(:email)
+    Role.find_by(name: RoleAdmin).users.pluck(:email) if Role.find_by(name: RoleAdmin)
   end
 end
