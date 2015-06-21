@@ -1,13 +1,11 @@
 class AuthorMessageInbox
-
   def message_all(subject, body)
-      all_authors.each do |author|
-        send_message(author, subject, body)
-      end
+    all_authors.each do |author|
+      send_message(author, subject, body)
+    end
   end
 
   private
-
   def all_authors
     User.select(&:author?)
   end

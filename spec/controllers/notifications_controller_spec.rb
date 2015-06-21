@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe NotificationsController, type: :controller do
   describe "GET #index for reviews by session" do
-
     context "while user" do
       login_as :user
 
@@ -122,5 +121,37 @@ RSpec.describe NotificationsController, type: :controller do
         end
       end
     end
-  end  
+  end
+
+  describe "POST #notify_authors" do
+    context "while user" do
+      login_as :user
+
+      it "should return forbidden" do
+        post :notify_authors
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context "while admin" do
+      login_as :admin
+
+      context "with missing params" do
+        it "should throw exception which ActionController::Base handle it into 400 Bad Request" do
+          expect{ post(:notify_authors, {}) }.to raise_error ActionController::ParameterMissing
+        end
+      end
+
+      context "with valid params" do
+        let(:payload) { { message: { subject: "some subject", body: "some body" } } }
+
+        it "should fire email" do
+          expect_any_instance_of(AuthorMessageInbox).to receive(:message_all).
+            with(payload[:message][:subject], payload[:message][:body])
+
+          post :notify_authors, payload
+        end
+      end
+    end
+  end
 end
