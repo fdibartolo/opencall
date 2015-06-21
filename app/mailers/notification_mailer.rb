@@ -11,9 +11,9 @@ class NotificationMailer < ApplicationMailer
     mail to: @user.email, bcc: administrators
   end
 
-  def general_notification_email(email, subject, body)
+  def general_notification_email email, subject, body
     @body = body
-    mail to: email, subject: subject
+    mail to: email, subject: subject, bcc: administrators
   end
 
   private
