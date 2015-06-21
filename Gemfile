@@ -23,7 +23,7 @@ gem 'ng-sticky-rails', '1.7.9.0'
 gem 'highcharts-rails', '4.1.5'
 gem 'highcharts-ng-rails', '0.0.7'
 
-gem 'devise', '3.4.1'
+gem 'devise', '3.5.1'
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.2.6'
 gem 'omniauth-linkedin', '0.2.0'
