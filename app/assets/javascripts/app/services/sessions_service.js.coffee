@@ -33,6 +33,8 @@ angular.module('openCall.services').factory 'SessionsService',
         when 403 then message = "access_denied"
         else message = "generic"
 
+      deferred.reject message
+
     deferred.promise
 
   update = (session) ->
