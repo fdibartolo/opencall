@@ -5,7 +5,7 @@ gem 'rails', '4.2.1'
 gem 'puma', '2.11.2'
 gem 'pg', '0.18.1'
 
-gem 'jbuilder', '2.2.13'
+gem 'jbuilder', '2.3.0'
 gem 'sass-rails', '5.0.3'
 gem 'bootstrap-sass', '3.3.5'
 gem 'autoprefixer-rails', '5.2.0.1'
@@ -44,7 +44,7 @@ group :development, :test do
   gem 'factory_girl_rails', '4.5.0'
   gem 'protractor-rails', '0.0.15'
   gem 'coveralls', '0.8.1', require: false
-  gem 'letter_opener'
+  gem 'letter_opener', '1.4.1'
 end
 
 gem 'rails_12factor', '0.0.3', group: :production
