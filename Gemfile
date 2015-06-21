@@ -3,7 +3,7 @@ ruby '2.2.1'
 
 gem 'rails', '4.2.1'
 gem 'puma', '2.11.3'
-gem 'pg', '0.18.1'
+gem 'pg', '0.18.2'
 
 gem 'jbuilder', '2.3.0'
 gem 'sass-rails', '5.0.3'

@@ -171,7 +171,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    pg (0.18.1)
+    pg (0.18.2)
     protractor-rails (0.0.15)
       colorize
       railties
@@ -313,7 +313,7 @@ DEPENDENCIES
   omniauth-github (= 1.1.2)
   omniauth-google-oauth2 (= 0.2.6)
   omniauth-linkedin (= 0.2.0)
-  pg (= 0.18.1)
+  pg (= 0.18.2)
   protractor-rails (= 0.0.15)
   puma (= 2.11.3)
   rails (= 4.2.1)
