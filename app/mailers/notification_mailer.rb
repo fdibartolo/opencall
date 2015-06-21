@@ -18,6 +18,6 @@ class NotificationMailer < ApplicationMailer
 
   private
   def administrators
-    Role.find_by(name: RoleAdmin).users.pluck(:email)
+    Role.find_by(name: RoleAdmin).users.pluck(:email) if Role.find_by(name: RoleAdmin)
   end
 end
