@@ -21,7 +21,7 @@ RSpec.describe MainController, :type => :controller do
       end
 
       context "has proposals submitted and" do
-        let!(:session) { FactoryGirl.create :session_proposal, user: logged_in(:user) }
+        let!(:session) { FactoryGirl.create :session_proposal, user: logged_in }
 
         context "bio is filled out" do
           it "returns http success" do

@@ -16,7 +16,12 @@ Pendiente de agregar:
 
 * Instalar dependencias (módulos node) via `rake protractor:install`. Asegurarse que [nodejs](http://nodejs.org/) se encuentra instalado localmente. Se puede verificar que todo instaló correctamente via `rake protractor:example`
 
-* Correr tests
+* Crear base de datos
+
+  `$ rake db:create`
+  `$ rake db:migrate`
+
+* Correr ambas suites de tests
 
   `$ foreman run bin/rspec`
 

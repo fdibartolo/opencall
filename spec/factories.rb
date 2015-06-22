@@ -3,7 +3,7 @@ FactoryGirl.define do
     first_name                  'Robert'
     last_name                   'Martin'
     country                     'US'
-    email                       { "#{first_name}.#{last_name}@main.com".downcase }
+    sequence(:email) { |n| "#{first_name}.#{last_name}#{n}@main.com".downcase }
     password                    'unclebob'
     session_proposal_voted_ids  []
 

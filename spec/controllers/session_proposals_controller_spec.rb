@@ -74,7 +74,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       end
       context "with valid params" do
         it "should return the SessionProposal for given id" do
-          session = FactoryGirl.create :session_proposal, user: logged_in(:user)
+          session = FactoryGirl.create :session_proposal, user: logged_in
           allow(SessionProposal).to receive(:find_by).and_return(session)
           
           get :edit, { id: session.id }
@@ -147,7 +147,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       end
 
       context "with valid params" do
-        let(:session) { FactoryGirl.create :session_proposal, user: logged_in(:user) }
+        let(:session) { FactoryGirl.create :session_proposal, user: logged_in }
         let(:payload) { { id: session.id, session_proposal: { title: 'title' } } }
         
         it "should return success if can save" do
@@ -202,7 +202,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
   describe "GET all for current user" do
     it "should list only current user ones" do
-      user_session = FactoryGirl.create :session_proposal, user: logged_in(:user), track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme)
+      user_session = FactoryGirl.create :session_proposal, user: logged_in, track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme)
       another_session = FactoryGirl.create :session_proposal
 
       get :for_current_user
@@ -221,7 +221,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       voted_session = FactoryGirl.create :session_proposal, theme: theme, track: track
       not_voted_session = FactoryGirl.create :session_proposal, user: FactoryGirl.create(:user, first_name: 'jim'), track: track
       # HACK :S - why cant do logged_in(:user).session_proposal_voted_ids << voted_session.id 
-      logged_in_user = User.find_by(email: logged_in(:user).email)
+      logged_in_user = User.find_by(email: logged_in.email)
       logged_in_user.session_proposal_voted_ids << voted_session.id
       logged_in_user.save!
 
@@ -241,7 +241,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       faved_session = FactoryGirl.create :session_proposal, theme: theme, track: track
       not_faved_session = FactoryGirl.create :session_proposal, user: FactoryGirl.create(:user, first_name: 'jim'), track: track
       # HACK :S - why cant do logged_in(:user).session_proposal_faved_ids << faved_session.id 
-      logged_in_user = User.find_by(email: logged_in(:user).email)
+      logged_in_user = User.find_by(email: logged_in.email)
       logged_in_user.session_proposal_faved_ids << faved_session.id
       logged_in_user.save!
 
@@ -280,7 +280,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       end
 
       context "while having commented sessions" do
-        let!(:second_session) { FactoryGirl.create :session_proposal, theme: theme, user: logged_in(:reviewer, 'Reviewer') }
+        let!(:second_session) { FactoryGirl.create :session_proposal, theme: theme, user: logged_in }
 
         it "should include session info" do
           get :reviewer_comments
@@ -298,7 +298,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
         it "should include count of comments only from reviewers" do
           user_comment = FactoryGirl.create :comment, session_proposal: first_session, user: FactoryGirl.create(:user, first_name: 'user')
           another_user_comment = FactoryGirl.create :comment, session_proposal: second_session, user: FactoryGirl.create(:user, first_name: 'user2')
-          reviewer_comment = FactoryGirl.create :comment, session_proposal: first_session, user: logged_in(:reviewer, 'Reviewer')
+          reviewer_comment = FactoryGirl.create :comment, session_proposal: first_session, user: logged_in
 
           get :reviewer_comments
 

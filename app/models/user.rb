@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     roles.where(name: RoleReviewer).exists?
   end
 
+  def author?
+    !session_proposals.empty?
+  end
+
   def add_session_vote id
     unless self.session_proposal_voted_ids.include? id
       self.session_proposal_voted_ids << id if allowed?(id)
@@ -79,10 +83,6 @@ class User < ActiveRecord::Base
 
   def missing_bio?
     not (bio? or linkedin? or aboutme? or twitter? or facebook?)
-  end
-
-  def has_session_proposals?
-    session_proposals.count > 0
   end
 
   private

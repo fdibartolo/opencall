@@ -117,6 +117,7 @@ es:
       has_already_been: "Esta revisión ya ha sido "
     buttons:
       edit: "Editar revisión"
+      start: "Iniciar revisión"
       accept:
         text: "Aceptar"
         confirmation: "¿Está seguro que desea acepter esta revisión?"
@@ -129,6 +130,10 @@ es:
       session: "Sesión"
       reviews: "Revisiones por"
       status: "Estado"
+      author_inbox: "Escribe un mensaje para todos los autores de propuestas"
+      subject: "Asunto"
+      body: "Mensaje"
+      send_message: "Enviar mensaje"
     buttons:
       accept:
         text: "Aceptar y Notificar"
@@ -138,10 +143,13 @@ es:
         confirmation: "¿Está seguro que desea declinar esta propuesta y notificar a su autor?"
   reports:
     labels:
-      title: "Sesiones propuestas con comentarios del equipo de revisores"
+      title:
+        reviewer_comments: "Sesiones propuestas con comentarios del equipo de revisores"
+        reviews_status: "Estado de revisiones por sesiones propuestas"
       session: "Sesión"
       theme: "Temática"
       comments: "Comentarios"
+      reviews: "Revisiones por"
   activerecord:
     models: 
       user: "Usuario"

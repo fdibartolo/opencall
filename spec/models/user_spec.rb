@@ -31,7 +31,7 @@ RSpec.describe User, :type => :model do
     let(:auth) { OmniAuth::AuthHash.new({ :provider => 'provider', :uid => '123456', :info => { name: 'First Last', email: user.email, urls: { public_profile: 'http://my_public_profile' }}})}
 
     it "should add new identity to existing user" do
-      FactoryGirl.create :identity
+      FactoryGirl.create :identity, user: user
       expect { User.from_omniauth(auth) }.to change(Identity, :count).by(1)
       expect(User.last.identities.count).to eq 2
     end
@@ -165,10 +165,10 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe "#has_session_proposals?" do
+  describe "#author?" do
     let(:author) { (FactoryGirl.create :session_proposal).user }
     
-    it { expect(user.has_session_proposals?).to be false }
-    it { expect(author.has_session_proposals?).to be true }
+    it { expect(user.author?).to be false }
+    it { expect(author.author?).to be true }
   end
 end

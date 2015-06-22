@@ -52,7 +52,8 @@
                       <li><%= link_to 'My reviews', "#{root_url}#/users/reviews" %></li>
                       <li><%= link_to 'Manage reviewers', roles_url %></li>
                       <li><%= link_to 'Proposals status', "#{root_url}#/stats" %></li>
-                      <li><%= link_to 'Notifications', "#{root_url}#/notifications" %></li>
+                      <li><%= link_to 'Acceptance Notifications', "#{root_url}#/acceptance_notifications" %></li>
+                      <li><%= link_to 'Author Inbox', "#{root_url}#/author_inbox" %></li>
                     <% end %>
                     <% if current_user.reviewer? %>
                       <li class="divider"></li>
@@ -62,9 +63,8 @@
                     <% if current_user.reviewer? or current_user.admin? %>
                       <li class="divider"></li>
                       <li class="dropdown-header">Reports</li>
-                      <li>
-                        <%= link_to 'Comments by proposals', "#{root_url}#/reports/reviewer_comments" %>
-                      </li>
+                      <li><%= link_to 'Comments by proposals', "#{root_url}#/reports/reviewer_comments" %></li>
+                      <li><%= link_to 'Reviews status', "#{root_url}#/reports/reviews_status" %></li>
                     <% end %>
                     <li class="divider"></li>
                     <li>

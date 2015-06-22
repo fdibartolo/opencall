@@ -12,6 +12,8 @@ angular.module('openCall.services').factory 'ReportsService',
         when 403 then message = "access_denied"
         else message = "generic"
 
+      deferred.reject message
+
     deferred.promise
 
   reviewerComments: reviewerComments
