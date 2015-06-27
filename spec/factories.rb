@@ -60,7 +60,7 @@ FactoryGirl.define do
 
   factory :review do
     body        'some reviewer comment'
-    score       7
+    score       1
     association :session_proposal, factory: :session_proposal
   end
 

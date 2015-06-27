@@ -62,13 +62,13 @@ RSpec.describe StatsController, type: :controller do
       end
 
       it "should include reviews score for each proposal" do
-        FactoryGirl.create :review, score: 9, session_proposal: first_session, user: logged_in
+        FactoryGirl.create :review, score: 2, session_proposal: first_session, user: logged_in
 
         get :show, { id: first_theme.id }
 
         body = JSON.parse response.body
         expect(body['proposals'].count).to eq 2
-        expect(body['proposals'][0]['reviews']).to eq [9]
+        expect(body['proposals'][0]['reviews']).to eq [2]
         expect(body['proposals'][1]['reviews']).to eq []
       end
     end

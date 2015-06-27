@@ -35,7 +35,7 @@ RSpec.describe ReviewsController, :type => :controller do
 
   describe "POST create" do
     let(:session) { FactoryGirl.create :session_proposal }
-    let(:payload) { { session_proposal_id: session.id, review: { body: 'new review', score: 8, second_reviewer_id: 1 }}}
+    let(:payload) { { session_proposal_id: session.id, review: { body: 'new review', score: 2, second_reviewer_id: 1 }}}
     let!(:admin) { FactoryGirl.create :admin, first_name: 'admin' }
 
     context "while user" do
@@ -55,19 +55,19 @@ RSpec.describe ReviewsController, :type => :controller do
         expect(response).to have_http_status(204)
         expect(session.reviews.count).to eq 1
         expect(session.reviews.last.body).to eq 'new review'
-        expect(session.reviews.last.score).to eq 8
+        expect(session.reviews.last.score).to eq 2
         expect(session.reviews.last.second_reviewer_id).to eq 1
       end
 
       it "should update review to given SessionProposal when one exists" do
         FactoryGirl.create :review, session_proposal: session, user: logged_in
         payload[:review][:body] = 'updated'
-        payload[:review][:score] = 10
+        payload[:review][:score] = 2
         post :create, payload
         expect(response).to have_http_status(204)
         expect(session.reviews.count).to eq 1
         expect(session.reviews.last.body).to eq 'updated'
-        expect(session.reviews.last.score).to eq 10
+        expect(session.reviews.last.score).to eq 2
       end
 
       it "should fire email on create" do
