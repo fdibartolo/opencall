@@ -4,7 +4,7 @@ RSpec.describe Review, :type => :model do
   let(:review) { FactoryGirl.build(:review) }
 
   describe "mandatory attributes" do
-    %w[body score session_proposal_id user_id].each do |attribute|
+    %w[body private_body score session_proposal_id user_id].each do |attribute|
       it "should include #{attribute}" do
         review = FactoryGirl.build(:review)
         eval "review.#{attribute} = nil"
