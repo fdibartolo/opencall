@@ -27,7 +27,7 @@ describe "Reviews page", ->
 
     review = 
       body: 'I like it!'
-      score: 9
+      score: 2
 
     @reviewPage.submit review
     expect(browser.getCurrentUrl()).toMatch '/users\/reviews'
