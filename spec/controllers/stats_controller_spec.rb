@@ -22,7 +22,7 @@ RSpec.describe StatsController, type: :controller do
     end
 
     it "should include how many have at least 1 review done" do
-      FactoryGirl.create :review, session_proposal: first_session, user: logged_in
+      FactoryGirl.create :review, session_proposal: first_session, user: logged_in, second_reviewer: (FactoryGirl.create :reviewer)
 
       get :index
 
@@ -62,7 +62,7 @@ RSpec.describe StatsController, type: :controller do
       end
 
       it "should include reviews score for each proposal" do
-        FactoryGirl.create :review, score: 2, session_proposal: first_session, user: logged_in
+        FactoryGirl.create :review, score: 2, session_proposal: first_session, user: logged_in, second_reviewer: (FactoryGirl.create :reviewer)
 
         get :show, { id: first_theme.id }
 

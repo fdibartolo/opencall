@@ -17,7 +17,7 @@ RSpec.describe ReviewsController, :type => :controller do
       login_as :reviewer
 
       it "should return all reviews" do
-        second_reviewer = FactoryGirl.create :user, first_name: 'second'
+        second_reviewer = FactoryGirl.create :reviewer
         reviewers_review = FactoryGirl.create :review, session_proposal: session, user: logged_in, second_reviewer_id: second_reviewer.id
         admins_review = FactoryGirl.create :review, session_proposal: session, user: FactoryGirl.create(:admin, first_name: 'admin')
 
@@ -28,7 +28,7 @@ RSpec.describe ReviewsController, :type => :controller do
         expect(body['reviews'].first['reviewer']).to eq reviewers_review.user.full_name
         expect(body['reviews'].first['second_reviewer']).to eq second_reviewer.full_name
         expect(body['reviews'].last['reviewer']).to eq admins_review.user.full_name
-        expect(body['reviews'].last['second_reviewer']).to be nil
+        expect(body['reviews'].last['second_reviewer']).to eq second_reviewer.full_name
       end
     end
   end
