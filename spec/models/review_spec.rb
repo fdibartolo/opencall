@@ -19,15 +19,15 @@ RSpec.describe Review, :type => :model do
   end
 
   describe "#score" do
-    it "should be greater than 0" do
-      review.score = 0
+    it "should be equals or greater than  -2" do
+      review.score = -3
       expect(review.valid?).to be false
-      expect(review.errors['score']).to include "must be greater than 0"
+      expect(review.errors['score']).to include "must be greater than or equal to -2"
     end
-    it "should not be greater than 10" do
+    it "should not be greater than 2" do
       review.score = 11
       expect(review.valid?).to be false
-      expect(review.errors['score']).to include "must be less than or equal to 10"
+      expect(review.errors['score']).to include "must be less than or equal to 2"
     end
   end
 
