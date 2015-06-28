@@ -48,7 +48,7 @@
       <div class="col-sm-8 form-horizontal">
         <div class="form-group">
           <label class="col-sm-2 control-label"><%= t('reviews.labels.pair_reviewer') %></label>
-          <div class="col-sm-10">
+          <div class="col-sm-10" ng-class="{'invalid-border': newSessionReview.invalidSecondReviewer}">
             <select ng-options="reviewer.full_name for reviewer in newSessionReview.reviewers track by reviewer.id" ng-model="newSessionReview.secondReviewer" class="form-control selectpicker"></select>
           </div>
         </div>
@@ -68,8 +68,8 @@
           </div>
         </div>        
         <div class="form-group">
-          <label class="col-sm-2 control-label" ng-class="{'text-danger': newSessionReview.invalidScore}"><%= t('sessions.labels.score') %></label>
-          <div class="col-sm-10">
+          <label class="col-sm-2 control-label"><%= t('sessions.labels.score') %></label>
+          <div class="col-sm-10" ng-class="{'invalid-border': newSessionReview.invalidScore}">
             <select ng-disabled="!isPendingOrNewReview(newSessionReview.status)" name="inlineScoreOptions" ng-model="newSessionReview.score" class="form-control selectpicker">
               <option value="-2"><%= t('reviews.labels.score_strong_reject') %></option>
               <option value="-1"><%= t('reviews.labels.score_weak_reject') %></option>

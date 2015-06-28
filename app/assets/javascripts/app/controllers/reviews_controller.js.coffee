@@ -26,11 +26,13 @@ angular.module('openCall.controllers').controller 'ReviewsController',
     return reviewer for reviewer in review.reviewers when reviewer.id is review.second_reviewer_id
 
   $scope.postReview = () ->
-    $scope.newSessionReview.invalidBody = $scope.newSessionReview.body is '' or angular.isUndefined($scope.newSessionReview.body)
-    $scope.newSessionReview.invalidPrivateBody = $scope.newSessionReview.private_body is '' or angular.isUndefined($scope.newSessionReview.private_body)
-    $scope.newSessionReview.invalidScore = $scope.newSessionReview.score is 0 or angular.isUndefined($scope.newSessionReview.score)
+    $scope.newSessionReview.invalidBody           = $scope.newSessionReview.body is '' or angular.isUndefined($scope.newSessionReview.body)
+    $scope.newSessionReview.invalidPrivateBody    = $scope.newSessionReview.private_body is '' or angular.isUndefined($scope.newSessionReview.private_body)
+    $scope.newSessionReview.invalidScore          = $scope.newSessionReview.score is 0 or angular.isUndefined($scope.newSessionReview.score)
+    $scope.newSessionReview.invalidSecondReviewer = $scope.newSessionReview.secondReviewer is {} or angular.isUndefined($scope.newSessionReview.secondReviewer)
 
-    unless $scope.newSessionReview.invalidBody or $scope.newSessionReview.invalidScore or $scope.newSessionReview.invalidPrivateBody
+    unless $scope.newSessionReview.invalidBody or $scope.newSessionReview.invalidScore or 
+    $scope.newSessionReview.invalidPrivateBody or $scope.newSessionReview.invalidSecondReviewer
       ReviewsService.create($routeParams.id, $scope.newSessionReview).then (() ->
         clearReview()
         $location.path "/users/reviews"
