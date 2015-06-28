@@ -49,7 +49,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label"><%= t('reviews.labels.pair_reviewer') %></label>
           <div class="col-sm-10" ng-class="{'invalid-border': newSessionReview.invalidSecondReviewer}">
-            <select ng-options="reviewer.full_name for reviewer in newSessionReview.reviewers track by reviewer.id" ng-model="newSessionReview.secondReviewer" class="form-control selectpicker"></select>
+            <select ng-options="reviewer.full_name for reviewer in newSessionReview.reviewers track by reviewer.id" ng-model="newSessionReview.secondReviewer" class="form-control selectpicker" id="select-second-reviewer"></select>
           </div>
         </div>
         <div class="form-group">
@@ -70,7 +70,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label"><%= t('sessions.labels.score') %></label>
           <div class="col-sm-10" ng-class="{'invalid-border': newSessionReview.invalidScore}">
-            <select ng-options="score.text for score in validReviewScores track by score.value" ng-model="newSessionReview.score" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"class="form-control selectpicker"></select>
+            <select ng-options="score.text for score in validReviewScores track by score.value" ng-model="newSessionReview.score" ng-disabled="!isPendingOrNewReview(newSessionReview.status)" class="form-control selectpicker" id="select-score"></select>
           </div>
         </div>        
 

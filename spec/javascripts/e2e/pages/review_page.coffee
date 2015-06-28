@@ -1,13 +1,16 @@
 ReviewPage = ->
-  @newSessionBody  = element(By.model('newSessionReview.body'))
+  @newSessionBody         = element(By.model('newSessionReview.body'))
   @newSessionPrivateBody  = element(By.model('newSessionReview.private_body'))
-  @newSessionScore = element.all(By.model('newSessionReview.score'))
+  @newSessionPairReviewer = element.all(By.css('#select-second-reviewer > option')).last()
+  @newSessionScore        = element.all(By.css('#select-score > option')).last()
+
   @submitButton = element(By.css('.btn-primary'))
 
   @submit = (review) ->
+    @newSessionPairReviewer.click()
     @newSessionBody.sendKeys review.body
     @newSessionPrivateBody.sendKeys review.privateBody
-    @newSessionScore.get(review.score - 1).click()
+    @newSessionScore.click()
     @submitButton.click()
     return
 
