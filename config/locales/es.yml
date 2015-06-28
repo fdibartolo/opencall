@@ -117,10 +117,6 @@ es:
       reviewed_with: "Revisada con"
       no_reviews: "No hay revisiones a la fecha..."
       has_already_been: "Esta revisión ya ha sido "
-      score_strong_accept: "Aceptación fuerte"
-      score_weak_accept: "Aceptación débil"
-      score_strong_reject: "Rechazo fuerte"
-      score_weak_reject: "Rechazo débil"
     buttons:
       edit: "Editar revisión"
       start: "Iniciar revisión"

@@ -137,10 +137,6 @@ en:
       reviewed_with: "Reviewed with"
       no_reviews: "No reviews so far..."
       has_already_been: "This review has already been "
-      score_strong_accept: "Strong accept"
-      score_weak_accept: "Weak accept"
-      score_strong_reject: "Strong reject"
-      score_weak_reject: "Weak reject"
     buttons:
       edit: "Edit review"
       start: "Start review"
