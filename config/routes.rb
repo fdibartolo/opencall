@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
 
   get '/version' => 'main#version'
-  
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/ }
 
   namespace :users do
@@ -47,13 +46,14 @@ Rails.application.routes.draw do
   resources :stats, only: [:index, :show], defaults: { format: :json }
 
   resources :notifications, param: :session_proposal_id, only: [:index], defaults: { format: :json } do
+    collection do
+      post :notify_authors
+    end
     member do
       post :accept
       post :decline
     end
   end
-
-  post 'notifications/notify_authors', to: 'notifications#notify_authors'
 
   root 'main#index'
 end

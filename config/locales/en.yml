@@ -108,7 +108,8 @@ en:
       fav: "right|Fav the session"
     placeholders:
       comment: "Leave a comment to the author"
-      review: "Give your point of view about the session proposal"
+      review_feedback_for_author: "Give your point of view to the author about the session proposal"
+      review_comment_for_admins: "Provide any comment for the chairs. This WILL NOT be shared with the author"
       summary: "Summary that highlights the session"
       description: "Details about the session, such as the dynamic to be used, target audience, etc"
       audience_count: "Max number of participants the session is limited to"
@@ -131,6 +132,7 @@ en:
       score: "Score"
       reviewer: "Reviewer"
       public_feedback: "Feedback for the author"
+      comment_for_admins: "Comments for the chairs"
       pair_reviewer: "Pair Reviewer"
       reviewed_with: "Reviewed with"
       no_reviews: "No reviews so far..."
@@ -154,10 +156,10 @@ en:
       session: "Session"
       reviews: "Reviews by"
       status: "Status"
-      author_inbox: Write a message for all authors
-      subject: Subject
-      body: Body
-      send_message: Send Message
+      author_inbox: "Write a message for all authors"
+      subject: "Subject"
+      body: "Body"
+      send_message: "Send Message"
     buttons:
       accept:
         text: "Accept and Notify"

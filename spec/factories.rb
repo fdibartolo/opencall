@@ -61,9 +61,10 @@ FactoryGirl.define do
   end
 
   factory :review do
-    body        'some reviewer comment'
-    score       1
-    association :session_proposal, factory: :session_proposal
+    body         'some reviewer comment'
+    private_body 'some info for chairs'
+    score        1
+    association  :session_proposal, factory: :session_proposal
     association :second_reviewer, factory: :reviewer
   end
 

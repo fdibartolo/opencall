@@ -27,6 +27,7 @@ describe "Reviews page", ->
 
     review = 
       body: 'I like it!'
+      privateBody: 'private comment'
       score: 2
 
     @reviewPage.submit review

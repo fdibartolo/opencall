@@ -23,6 +23,7 @@ angular.module('openCall.services').factory 'ReviewsService',
     $http.post("/session_proposals/#{id}/reviews",
       review:
         body: review.body
+        private_body: review.private_body
         score: review.score
         second_reviewer_id: review.secondReviewer.id  if angular.isDefined(review.secondReviewer)
     ).success((data, status) ->

@@ -56,8 +56,12 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/stats.html'
     controller: 'StatsController'
 
-  $routeProvider.when '/notifications',
-    templateUrl: '/templates/notifications.html'
+  $routeProvider.when '/acceptance_notifications',
+    templateUrl: '/templates/notifications/acceptance.html'
+    controller: 'NotificationsController'
+
+  $routeProvider.when '/author_inbox',
+    templateUrl: '/templates/notifications/author_inbox.html'
     controller: 'NotificationsController'
 
   $routeProvider.when '/reports/reviewer_comments',
@@ -67,10 +71,6 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
   $routeProvider.when '/reports/reviews_status',
     templateUrl: '/templates/reports/reviews_status.html'
     controller: 'ReportsController'
-
-  $routeProvider.when '/author_inbox',
-    templateUrl: '/templates/author_inbox.html'
-    controller: 'NotificationsController'
 
   $routeProvider.otherwise redirectTo: '/home'
 ]

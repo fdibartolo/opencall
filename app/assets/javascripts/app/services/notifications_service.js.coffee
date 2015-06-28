@@ -12,6 +12,8 @@ angular.module('openCall.services').factory 'NotificationsService',
         when 403 then message = "access_denied"
         else message = "generic"
 
+      deferred.reject message
+
     deferred.promise
 
   accept = (sessionProposalId) ->
@@ -33,6 +35,8 @@ angular.module('openCall.services').factory 'NotificationsService',
       switch status
         when 403 then message = "access_denied"
         else message = "generic"
+
+      deferred.reject message
 
     deferred.promise
 
