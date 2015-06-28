@@ -5,6 +5,7 @@ angular.module('openCall.controllers').controller 'ReviewsController',
   $scope.reviews = []
   $scope.newSessionReview = 
     body: ''
+    private_body: ''
     score: 0
     status: ''
     secondReviewer: {}
@@ -25,17 +26,22 @@ angular.module('openCall.controllers').controller 'ReviewsController',
     return reviewer for reviewer in review.reviewers when reviewer.id is review.second_reviewer_id
 
   $scope.postReview = () ->
-    $scope.newSessionReview.invalidBody = $scope.newSessionReview.body is ''
-    $scope.newSessionReview.invalidScore = $scope.newSessionReview.score is 0
+    $scope.newSessionReview.invalidBody = $scope.newSessionReview.body is '' or angular.isUndefined($scope.newSessionReview.body)
+    $scope.newSessionReview.invalidPrivateBody = $scope.newSessionReview.private_body is '' or angular.isUndefined($scope.newSessionReview.private_body)
+    $scope.newSessionReview.invalidScore = $scope.newSessionReview.score is 0 or angular.isUndefined($scope.newSessionReview.score)
 
-    unless $scope.newSessionReview.invalidBody or $scope.newSessionReview.invalidScore
+    unless $scope.newSessionReview.invalidBody or $scope.newSessionReview.invalidScore or $scope.newSessionReview.invalidPrivateBody
       ReviewsService.create($routeParams.id, $scope.newSessionReview).then (() ->
-        $scope.newSessionReview.body = ''
-        $scope.newSessionReview.score = 0
+        clearReview()
         $location.path "/users/reviews"
         toaster.pop 'success', '', 'Review submitted successfully', 5000
       ), (errorKey) ->
         $location.path "/error/#{errorKey}"
+
+  clearReview = () ->
+    $scope.newSessionReview.body = ''
+    $scope.newSessionReview.private_body = ''
+    $scope.newSessionReview.score = 0
 
   $scope.loadSessionReviews = () ->
     ReviewsService.all($routeParams.id).then ((reviews) ->
