@@ -70,12 +70,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label"><%= t('sessions.labels.score') %></label>
           <div class="col-sm-10" ng-class="{'invalid-border': newSessionReview.invalidScore}">
-            <select ng-disabled="!isPendingOrNewReview(newSessionReview.status)" name="inlineScoreOptions" ng-model="newSessionReview.score" class="form-control selectpicker">
-              <option value="-2"><%= t('reviews.labels.score_strong_reject') %></option>
-              <option value="-1"><%= t('reviews.labels.score_weak_reject') %></option>
-              <option value="1"><%= t('reviews.labels.score_weak_accept') %></option>
-              <option value="2"><%= t('reviews.labels.score_strong_accept') %></option>
-            </select>
+            <select ng-options="score.text for score in validReviewScores track by score.value" ng-model="newSessionReview.score" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"class="form-control selectpicker"></select>
           </div>
         </div>        
 

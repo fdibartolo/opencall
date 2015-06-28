@@ -6,9 +6,10 @@ angular.module('openCall.controllers').controller 'ReviewsController',
   $scope.newSessionReview = 
     body: ''
     private_body: ''
-    score: 0
+    score: {}
     status: ''
     secondReviewer: {}
+  $scope.validReviewScores = constants.reviews.score.values
 
   $scope.initReviewForm = () ->
     SessionsService.show($routeParams.id).then ((session) ->
@@ -18,6 +19,7 @@ angular.module('openCall.controllers').controller 'ReviewsController',
     UsersService.user_review_for($routeParams.id).then ((review) ->
       if review
         $scope.newSessionReview = review
+        $scope.newSessionReview.score = setScore(review)
         $scope.newSessionReview.secondReviewer = setSecondReviewer(review)
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
@@ -25,10 +27,13 @@ angular.module('openCall.controllers').controller 'ReviewsController',
   setSecondReviewer = (review) ->
     return reviewer for reviewer in review.reviewers when reviewer.id is review.second_reviewer_id
 
+  setScore = (review) ->
+    return score for score in $scope.validReviewScores when score.value is review.score
+
   $scope.postReview = () ->
     $scope.newSessionReview.invalidBody           = $scope.newSessionReview.body is '' or angular.isUndefined($scope.newSessionReview.body)
     $scope.newSessionReview.invalidPrivateBody    = $scope.newSessionReview.private_body is '' or angular.isUndefined($scope.newSessionReview.private_body)
-    $scope.newSessionReview.invalidScore          = $scope.newSessionReview.score is 0 or angular.isUndefined($scope.newSessionReview.score)
+    $scope.newSessionReview.invalidScore          = $scope.newSessionReview.score is {} or angular.isUndefined($scope.newSessionReview.score)
     $scope.newSessionReview.invalidSecondReviewer = $scope.newSessionReview.secondReviewer is {} or angular.isUndefined($scope.newSessionReview.secondReviewer)
 
     unless $scope.newSessionReview.invalidBody or $scope.newSessionReview.invalidScore or 
@@ -41,9 +46,10 @@ angular.module('openCall.controllers').controller 'ReviewsController',
         $location.path "/error/#{errorKey}"
 
   clearReview = () ->
-    $scope.newSessionReview.body = ''
-    $scope.newSessionReview.private_body = ''
-    $scope.newSessionReview.score = 0
+    $scope.newSessionReview.body           = ''
+    $scope.newSessionReview.private_body   = ''
+    $scope.newSessionReview.score          = {}
+    $scope.newSessionReview.secondReviewer = {}
 
   $scope.loadSessionReviews = () ->
     ReviewsService.all($routeParams.id).then ((reviews) ->
