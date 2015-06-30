@@ -130,7 +130,7 @@ es:
     labels:
       title: "Seguimiento de notificaciones sobre propuestas"
       session: "Sesión"
-      reviews: "Revisiones por"
+      reviews: "Evaluaciones por"
       status: "Estado"
       author_inbox: "Escribe un mensaje para todos los autores de propuestas"
       subject: "Asunto"

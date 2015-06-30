@@ -150,7 +150,7 @@ en:
     labels:
       title: "Session proposal notifications tracker"
       session: "Session"
-      reviews: "Reviews by"
+      reviews: "Evaluations by"
       status: "Status"
       author_inbox: "Write a message for all authors"
       subject: "Subject"
