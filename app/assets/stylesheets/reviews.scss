@@ -1,5 +1,6 @@
 .review-big-score {
-  font-size: 300%;
+  font-size: 120%;
+  font-weight: 200;
   margin-top: 20px;
   border-radius: 50%;
   height: 80px;
@@ -10,14 +11,7 @@
     display: table-cell; 
     vertical-align: middle;
   }
-  
-  span.for-green, span.for-red { color: white; }
-  span.for-yellow { color: black; }
 }
-
-.bg-green { background-color: green; }
-.bg-yellow { background-color: yellow; }
-.bg-red { background-color: red; }
 
 .review-summary {
   .status, .score, .reviewer { vertical-align: middle; }

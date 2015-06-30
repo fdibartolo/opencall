@@ -60,7 +60,10 @@ angular.module('openCall.controllers').controller 'ReviewsController',
   $scope.loadUserReviews = () ->
     $scope.loading = true
     UsersService.user_reviews().then ((reviews) ->
-      $scope.reviews = reviews
+      $scope.reviews = []
+      angular.forEach reviews, (review) ->
+        review.score = setScoreFor(review)
+        $scope.reviews.push review
       $scope.loading = false
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
