@@ -61,7 +61,7 @@ en:
       my_sessions: "My session proposals"
       my_voted_sessions: "My voted session proposals"
       my_faved_sessions: "My faved session proposals"
-      my_reviewed_sessions: "My reviewed session proposals"
+      my_reviewed_sessions: "My evaluated session proposals"
       no_sessions_yet: "You have no session proposals yet, let's do one!"
       no_fav_yet:
         primary: "You have not faved any session yet!"
@@ -127,7 +127,7 @@ en:
         confirmation: "Are you sure to revoke role to %{name}?"
   reviews:
     labels:
-      current: "Current Reviews"
+      current: "Current Evaluations"
       status: "Status"
       score: "Score"
       reviewer: "Reviewer"

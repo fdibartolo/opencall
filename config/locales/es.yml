@@ -107,7 +107,7 @@ es:
         confirmation: "Está seguro de revocar el rol a %{name}?"
   reviews:
     labels:
-      current: "Actuales Revisiones"
+      current: "Evaluaciones Actuales"
       status: "Estado"
       score: "Puntaje"
       reviewer: "Revisor"
