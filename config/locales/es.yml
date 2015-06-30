@@ -116,16 +116,16 @@ es:
       pair_reviewer: "Segundo Revisor"
       reviewed_with: "Revisada con"
       no_reviews: "No hay revisiones a la fecha..."
-      has_already_been: "Esta revisión ya ha sido "
+      has_already_been: "Esta evaluación ya ha sido "
     buttons:
-      edit: "Editar revisión"
-      start: "Iniciar revisión"
+      edit: "Editar evaluación"
+      start: "Iniciar evaluación"
       accept:
         text: "Aceptar"
-        confirmation: "¿Está seguro que desea acepter esta revisión?"
+        confirmation: "¿Está seguro que desea acepter esta evaluación?"
       reject:
         text: "Rechazar"
-        confirmation: "¿Está seguro que desea rechazar esta revisión?"
+        confirmation: "¿Está seguro que desea rechazar esta evaluación?"
   notifications:
     labels:
       title: "Seguimiento de notificaciones sobre propuestas"
@@ -147,11 +147,11 @@ es:
     labels:
       title:
         reviewer_comments: "Sesiones propuestas con comentarios del equipo de revisores"
-        reviews_status: "Estado de revisiones por sesiones propuestas"
+        reviews_status: "Estado de evaluaciones por sesiones propuestas"
       session: "Sesión"
       theme: "Temática"
       comments: "Comentarios"
-      reviews: "Revisiones por"
+      reviews: "Evaluaciones por"
   activerecord:
     models: 
       user: "Usuario"

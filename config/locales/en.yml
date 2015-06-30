@@ -136,16 +136,16 @@ en:
       pair_reviewer: "Pair Reviewer"
       reviewed_with: "Reviewed with"
       no_reviews: "No reviews so far..."
-      has_already_been: "This review has already been "
+      has_already_been: "This evaluation has already been "
     buttons:
-      edit: "Edit review"
-      start: "Start review"
+      edit: "Edit evaluation"
+      start: "Start evaluation"
       accept:
         text: "Accept"
-        confirmation: "Are you sure you want to accept this review?"
+        confirmation: "Are you sure you want to accept this evaluation?"
       reject:
         text: "Reject"
-        confirmation: "Are you sure you want to reject this review?"
+        confirmation: "Are you sure you want to reject this evaluation?"
   notifications:
     labels:
       title: "Session proposal notifications tracker"
@@ -167,11 +167,11 @@ en:
     labels:
       title:
         reviewer_comments: "Session Proposals with comments made by reviewers"
-        reviews_status: "Status of Reviews by session proposals"
+        reviews_status: "Status of Evaluations by session proposals"
       session: "Session"
       theme: "Theme"
       comments: "Comments"
-      reviews: "Reviews by"
+      reviews: "Evaluations by"
   activerecord:
     models: 
       user: "User"
