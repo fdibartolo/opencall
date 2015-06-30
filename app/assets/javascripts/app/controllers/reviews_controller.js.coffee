@@ -62,7 +62,7 @@ angular.module('openCall.controllers').controller 'ReviewsController',
     UsersService.user_reviews().then ((reviews) ->
       $scope.reviews = []
       angular.forEach reviews, (review) ->
-        review.score = setScoreFor(review)
+        review.score = setScore(review)
         $scope.reviews.push review
       $scope.loading = false
     ), (errorKey) ->

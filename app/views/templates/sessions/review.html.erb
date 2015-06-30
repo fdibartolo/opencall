@@ -59,12 +59,18 @@
               <%= t('reviews.labels.has_already_been') %> {{newSessionReview.status}}
             </p>
             <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review_feedback_for_author') %>" ng-model="newSessionReview.body" rows="5" ng-class="{'invalid-border': newSessionReview.invalidBody}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></textarea>
+            <small class="text-muted">
+              <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+            </small><br>
           </div>
         </div>        
         <div class="form-group">
           <label class="col-sm-2 control-label"><%= t('reviews.labels.comment_for_admins') %></label>
           <div class="col-sm-10">
             <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review_comment_for_admins') %>" ng-model="newSessionReview.private_body" rows="5" ng-class="{'invalid-border': newSessionReview.invalidPrivateBody}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></textarea>
+            <small class="text-muted">
+              <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+            </small><br>
           </div>
         </div>        
         <div class="form-group">

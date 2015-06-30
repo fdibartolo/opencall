@@ -21,10 +21,15 @@
             <div class="col-sm-10">
               <h3>{{review.session_proposal_title}}</h3>
               <div class="author">{{review.session_proposal_author}}</div>
-              <p>{{review.body}}</p>
-              <div ng-if="review.second_reviewer != null">
+              <div ng-if="review.second_reviewer != null" style="margin-top:-10px">
                 <small><%= t('reviews.labels.reviewed_with') %> <strong>{{review.second_reviewer}}</strong></small>
-              </div>
+              </div><br>
+
+              <label><%= t('reviews.labels.public_feedback') %></label>
+              <p markdown="review.body"></p>
+              <hr>
+              <label><%= t('reviews.labels.comment_for_admins') %></label>
+              <p markdown="review.private_body"></p><br>
             </div>
             <div class="col-sm-2 text-right" style="margin-top:25px">
               <a ng-href="#/sessions/review/{{review.session_proposal_id}}" class="btn btn-xs btn-success" style="color:white" ng-disabled="!isPendingReview(review.status)">
