@@ -7,8 +7,8 @@
         <th width="40%"><%= t('notifications.labels.session') %></th>
         <th width="30%">
           <%= t('notifications.labels.reviews') %>
-          <span class="clickable text-primary glyphicon glyphicon-triangle-top" ng-click="toggleSort()" ng-if="isTopSort()" title="Sort by number of reviews"></span>
-          <span class="clickable text-primary glyphicon glyphicon-triangle-bottom" ng-click="toggleSort()" ng-if="isBottomSort()" title="Sort by number of reviews"></span>
+          <span class="clickable text-primary glyphicon glyphicon-triangle-top" ng-click="toggleSort()" ng-if="isTopSort()" title="Sort by number of evaluations"></span>
+          <span class="clickable text-primary glyphicon glyphicon-triangle-bottom" ng-click="toggleSort()" ng-if="isBottomSort()" title="Sort by number of evaluations"></span>
         </th>
         <th width="20%"></th>
         <th width="10%"></th>
@@ -25,9 +25,11 @@
         <td>
           <ul ng-repeat="review in session.reviews">
             <li class="reviews">              
-              {{review.reviewer}}
-              (<span ng-class="{'text-success': goodReview(review.score), 'text-danger': poorReview(review.score), ' -refresh text-warning': badReview(review.score)}" style="font-size:110%">{{review.score}}</span>)
-              &nbsp;<span ng-class="{'glyphicon glyphicon-ok text-success': isAcceptedReview(review.status), 'glyphicon glyphicon-remove text-danger': isRejectedReview(review.status), 'glyphicon glyphicon-refresh text-warning': isPendingReview(review.status)}" style="font-size:120%"></span>
+              {{review.reviewer}} <br> <small>{{review.second_reviewer}}</small>
+
+              (<span ng-class="{'text-success': goodReview(review.score), 'text-danger': poorReview(review.score), ' -refresh text-warning': badReview(review.score)}">{{review.score}}</span>)
+
+              &nbsp;<span ng-class="{'glyphicon glyphicon-ok text-success': isAcceptedReview(review.status), 'glyphicon glyphicon-remove text-danger': isRejectedReview(review.status), 'glyphicon glyphicon-refresh text-warning': isPendingReview(review.status)}" style="font-size:110%"></span>
             </li>
           </ul>
         </td>
