@@ -53,7 +53,10 @@ angular.module('openCall.controllers').controller 'ReviewsController',
 
   $scope.loadSessionReviews = () ->
     ReviewsService.all($routeParams.id).then ((reviews) ->
-      $scope.session.reviews = reviews
+      $scope.session.reviews = []
+      angular.forEach reviews, (review) ->
+        review.score = setScore(review)
+        $scope.session.reviews.push review
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
 
