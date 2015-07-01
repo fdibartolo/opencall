@@ -11,8 +11,8 @@ RSpec.describe NotificationsController, type: :controller do
       end
     end
 
-    context "while admin" do
-      login_as :admin
+    context "while reviewer" do
+      login_as :reviewer
 
       let!(:track) { FactoryGirl.create :track }
       let!(:theme) { FactoryGirl.create :theme }

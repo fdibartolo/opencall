@@ -11,17 +11,20 @@ RSpec.describe Ability, :type => :model do
     it { expect(ability).to be_able_to :edit, session_proposal }
     it { expect(ability).to_not be_able_to :edit, SessionProposal.new(user: FactoryGirl.create(:user)) }
     it { expect(ability).to_not be_able_to :review, SessionProposal }
+    it { expect(ability).to_not be_able_to :list, SessionProposal }
     it { expect(ability).to_not be_able_to :accept, Review }
     it { expect(ability).to_not be_able_to :reject, Review }
 
-    it "but submission is past due, should not be able to create session proposal" do
-      travel_to SubmissionDueDate + 1.day
-      expect(ability).to_not be_able_to :create, SessionProposal
-    end
+    context "while submission is past due" do
+      it "should not be able to create session proposal" do
+        travel_to SubmissionDueDate + 1.day
+        expect(ability).to_not be_able_to :create, SessionProposal
+      end
 
-    it "but submission is past due, should not be able to edit session proposal" do
-      travel_to SubmissionDueDate + 1.day
-      expect(ability).to_not be_able_to :edit, session_proposal
+      it "should not be able to edit session proposal" do
+        travel_to SubmissionDueDate + 1.day
+        expect(ability).to_not be_able_to :edit, session_proposal
+      end
     end
   end
 
@@ -30,6 +33,7 @@ RSpec.describe Ability, :type => :model do
     let(:ability) { Ability.new(user) }
 
     it { expect(ability).to be_able_to :review, SessionProposal }
+    it { expect(ability).to be_able_to :list, SessionProposal }
     it { expect(ability).to_not be_able_to :edit, session_proposal }
     it { expect(ability).to_not be_able_to :accept, Review }
     it { expect(ability).to_not be_able_to :reject, Review }
