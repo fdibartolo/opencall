@@ -12,7 +12,8 @@ RSpec.describe ReviewMailer, type: :mailer do
     it { expect(mail.body).to match review.user.full_name }
     it { expect(mail.body).to match review.session_proposal.title }
     it { expect(mail.body).to match "Score: #{review.score}" }
-    it { expect(mail.body).to match "Details: #{review.body}" }
+    it { expect(mail.body).to match "Feedback for author: #{review.body}" }
+    it { expect(mail.body).to match "Comment for chairs: #{review.private_body}" }
     it { expect(mail.body).to match "Reviewed with: #{second_reviewer.full_name}" }
     it { expect(mail.body).to match "/#/sessions/show/#{review.session_proposal.id}" }
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602222426) do
+ActiveRecord::Schema.define(version: 20150627145711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150602222426) do
     t.datetime "updated_at",          null: false
     t.string   "workflow_state"
     t.integer  "second_reviewer_id"
+    t.text     "private_body"
   end
 
   add_index "reviews", ["session_proposal_id"], name: "index_reviews_on_session_proposal_id", using: :btree

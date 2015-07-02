@@ -8,7 +8,7 @@ class Ability
     end
 
     if user.reviewer?
-      can [:review], SessionProposal
+      can [:review, :list], SessionProposal
     end
 
     if user.admin?

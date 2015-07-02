@@ -46,27 +46,37 @@
         <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
       </div>
       <div class="col-sm-8 form-horizontal">
+        <p ng-if="!isPendingOrNewReview(newSessionReview.status)" class="text-center" ng-class="{'text-success': isAcceptedReview(newSessionReview.status), 'text-danger': isRejectedReview(newSessionReview.status)}">
+          <%= t('reviews.labels.has_already_been') %> {{newSessionReview.status}}
+        </p>
         <div class="form-group">
           <label class="col-sm-2 control-label"><%= t('reviews.labels.pair_reviewer') %></label>
-          <div class="col-sm-10">
-            <select ng-options="reviewer.full_name for reviewer in newSessionReview.reviewers track by reviewer.id" ng-model="newSessionReview.secondReviewer" class="form-control selectpicker"></select>
+          <div class="col-sm-10" ng-class="{'invalid-border': newSessionReview.invalidSecondReviewer}">
+            <select ng-options="reviewer.full_name for reviewer in newSessionReview.reviewers track by reviewer.id" ng-model="newSessionReview.secondReviewer" class="form-control selectpicker" id="select-second-reviewer" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></select>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-sm-2 control-label"><%= t('reviews.labels.feedback') %></label>
+          <label class="col-sm-2 control-label"><%= t('reviews.labels.public_feedback') %></label>
           <div class="col-sm-10">
-            <p ng-if="!isPendingOrNewReview(newSessionReview.status)" ng-class="{'text-success': isAcceptedReview(newSessionReview.status), 'text-danger': isRejectedReview(newSessionReview.status)}">
-              <%= t('reviews.labels.has_already_been') %> {{newSessionReview.status}}
-            </p>
-            <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review') %>" ng-model="newSessionReview.body" rows="4" ng-class="{'invalid-border': newSessionReview.invalidBody}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></textarea>
+            <textarea type="text" class="form-control" rows="5" placeholder="<%= t('sessions.placeholders.review_feedback_for_author') %>" ng-model="newSessionReview.body" ng-class="{'invalid-border': newSessionReview.invalidBody}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></textarea>
+            <small class="text-muted">
+              <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+            </small><br>
           </div>
         </div>        
         <div class="form-group">
-          <label class="col-sm-2 control-label" ng-class="{'text-danger': newSessionReview.invalidScore}"><%= t('sessions.labels.score') %></label>
+          <label class="col-sm-2 control-label"><%= t('reviews.labels.comment_for_admins') %></label>
           <div class="col-sm-10">
-            <label class="radio-inline" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" ng-class="{'text-danger': newSessionReview.invalidScore}">
-              <input type="radio" name="inlineScoreOptions" ng-model="newSessionReview.score" value="{{i}}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)">{{i}}
-            </label>
+            <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.review_comment_for_admins') %>" ng-model="newSessionReview.private_body" rows="5" ng-class="{'invalid-border': newSessionReview.invalidPrivateBody}" ng-disabled="!isPendingOrNewReview(newSessionReview.status)"></textarea>
+            <small class="text-muted">
+              <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
+            </small><br>
+          </div>
+        </div>        
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><%= t('sessions.labels.score') %></label>
+          <div class="col-sm-10" ng-class="{'invalid-border': newSessionReview.invalidScore}">
+            <select ng-options="score.text for score in validReviewScores track by score.value" ng-model="newSessionReview.score" ng-disabled="!isPendingOrNewReview(newSessionReview.status)" class="form-control selectpicker" id="select-score"></select>
           </div>
         </div>        
 

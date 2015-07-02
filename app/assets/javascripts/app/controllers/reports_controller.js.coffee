@@ -1,6 +1,6 @@
 angular.module('openCall.controllers').controller 'ReportsController', 
-['$scope', 'constants', 'ReportsService', 'NotificationsService', 
-($scope, constants, ReportsService, NotificationsService) ->
+['$scope', '$location', 'constants', 'ReportsService', 'NotificationsService', 
+($scope, $location, constants, ReportsService, NotificationsService) ->
 
   $scope.getReviewerCommentsInfo = () ->
     $scope.$emit 'showLoadingSpinner', 'Loading...'

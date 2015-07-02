@@ -15,7 +15,7 @@
         <th width="25%">
           <%= t('reports.labels.theme') %> &nbsp;
           <span ng-class="isSortByThemes() ? 'text-primary' : 'text-muted'" style="font-size:110%">
-            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleThemesSort()" ng-if="!isSortByThemes()" title="Sort by title"></span>
+            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleThemesSort()" ng-if="!isSortByThemes()" title="Sort by theme"></span>
             <span class="clickable glyphicon glyphicon-sort-by-alphabet" ng-click="toggleThemesSort()" ng-if="isThemesTopSort()" title="Sort by theme"></span>
             <span class="clickable glyphicon glyphicon-sort-by-alphabet-alt" ng-click="toggleThemesSort()" ng-if="isThemesBottomSort()" title="Sort by theme"></span>
           </span>
@@ -23,9 +23,9 @@
         <th width="35%">
           <%= t('reports.labels.reviews') %> &nbsp;
           <span ng-class="isSortByReviews() ? 'text-primary' : 'text-muted'" style="font-size:110%">
-            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleReviewsSort()" ng-if="!isSortByReviews()" title="Sort by title"></span>
-            <span class="clickable glyphicon glyphicon-sort-by-attributes" ng-click="toggleReviewsSort()" ng-if="isReviewsTopSort()" title="Sort by number of reviews"></span>
-            <span class="clickable glyphicon glyphicon-sort-by-attributes-alt" ng-click="toggleReviewsSort()" ng-if="isReviewsBottomSort()" title="Sort by number of reviews"></span>
+            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleReviewsSort()" ng-if="!isSortByReviews()" title="Sort by number of evaluations"></span>
+            <span class="clickable glyphicon glyphicon-sort-by-attributes" ng-click="toggleReviewsSort()" ng-if="isReviewsTopSort()" title="Sort by number of evaluations"></span>
+            <span class="clickable glyphicon glyphicon-sort-by-attributes-alt" ng-click="toggleReviewsSort()" ng-if="isReviewsBottomSort()" title="Sort by number of evaluations"></span>
           </span>
         </th>
         <th width="10%"></th>
@@ -43,7 +43,6 @@
             <li class="reviews">
               <small>
                 {{review.reviewer}} - {{review.second_reviewer}}
-                <span ng-class="{'glyphicon glyphicon-ok text-success': isAcceptedReview(review.status), 'glyphicon glyphicon-remove text-danger': isRejectedReview(review.status), 'glyphicon glyphicon-refresh text-warning': isPendingReview(review.status)}"></span>
               </small>
             </li>
           </ul>
