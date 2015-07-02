@@ -1,4 +1,4 @@
-describe "Reviews page", ->
+describe 'Reviews page', ->
   beforeEach ->
     @signinPage = require './pages/signin_page.coffee'
     @signinPage.signinAs 'reviewer@mail.com'
@@ -9,7 +9,7 @@ describe "Reviews page", ->
 
     return
 
-  it "should have access to the review form", (done) ->
+  it 'should have access to the review form', (done) ->
     @sessionsPage.index()
 
     sessionIndex = 1
@@ -19,7 +19,7 @@ describe "Reviews page", ->
     done()
     return
 
-  it "should be able to submit a review", (done) ->
+  it 'should be able to submit a review', (done) ->
     @sessionsPage.index()
 
     sessionIndex = 1
