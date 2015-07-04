@@ -61,7 +61,7 @@ en:
       my_sessions: "My session proposals"
       my_voted_sessions: "My voted session proposals"
       my_faved_sessions: "My faved session proposals"
-      my_reviewed_sessions: "My reviewed session proposals"
+      my_reviewed_sessions: "My evaluated session proposals"
       no_sessions_yet: "You have no session proposals yet, let's do one!"
       no_fav_yet:
         primary: "You have not faved any session yet!"
@@ -83,8 +83,8 @@ en:
       edit_session: "Edit proposal"
       unvote_session: "Remove vote"
       unfav_session: "Remove fav"
-      submit_review: "Submit Review"
-      start_review: "Start a formal review"
+      submit_review: "Submit evaluation"
+      start_review: "Start formal evaluation"
       cancel: "Cancel"
       load_more: "Load more..."
       comment: "Comment"
@@ -108,7 +108,8 @@ en:
       fav: "right|Fav the session"
     placeholders:
       comment: "Leave a comment to the author"
-      review: "Give your point of view about the session proposal"
+      review_feedback_for_author: "Give your point of view to the author about the session proposal"
+      review_comment_for_admins: "Provide any comment for the chairs. This WILL NOT be shared with the author"
       summary: "Summary that highlights the session"
       description: "Details about the session, such as the dynamic to be used, target audience, etc"
       audience_count: "Max number of participants the session is limited to"
@@ -126,29 +127,30 @@ en:
         confirmation: "Are you sure to revoke role to %{name}?"
   reviews:
     labels:
-      current: "Current Reviews"
+      current: "Current Evaluations"
       status: "Status"
       score: "Score"
       reviewer: "Reviewer"
-      feedback: "Feedback"
+      public_feedback: "Feedback for the author"
+      comment_for_admins: "Comments for the chairs"
       pair_reviewer: "Pair Reviewer"
       reviewed_with: "Reviewed with"
       no_reviews: "No reviews so far..."
-      has_already_been: "This review has already been "
+      has_already_been: "This evaluation has already been "
     buttons:
-      edit: "Edit review"
-      start: "Start review"
+      edit: "Edit evaluation"
+      start: "Start evaluation"
       accept:
         text: "Accept"
-        confirmation: "Are you sure you want to accept this review?"
+        confirmation: "Are you sure you want to accept this evaluation?"
       reject:
         text: "Reject"
-        confirmation: "Are you sure you want to reject this review?"
+        confirmation: "Are you sure you want to reject this evaluation?"
   notifications:
     labels:
       title: "Session proposal notifications tracker"
       session: "Session"
-      reviews: "Reviews by"
+      reviews: "Evaluations by"
       status: "Status"
       author_inbox: "Write a message for all authors"
       subject: "Subject"
@@ -164,12 +166,12 @@ en:
   reports:
     labels:
       title:
-        reviewer_comments: "Session Proposals with comments made by reviewers"
-        reviews_status: "Status of Reviews by session proposals"
+        reviewer_comments: "Session Proposals with comments from reviewers"
+        reviews_status: "Status of Evaluations by session proposal"
       session: "Session"
       theme: "Theme"
       comments: "Comments"
-      reviews: "Reviews by"
+      reviews: "Evaluations by"
   activerecord:
     models: 
       user: "User"

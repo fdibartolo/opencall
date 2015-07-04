@@ -1,6 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :forbid_if_no_access
+  before_action :forbid_if_cannot_list, only: :index
+  before_action :forbid_if_no_access, except: :index
   before_action only: [:accept, :decline] do
     set_resource SessionProposal, params[:session_proposal_id]
   end
@@ -28,6 +29,10 @@ class NotificationsController < ApplicationController
   end
 
   private
+  def forbid_if_cannot_list
+    return head :forbidden if cannot? :list, SessionProposal
+  end
+
   def forbid_if_no_access
     return head :forbidden unless current_user.admin?
   end

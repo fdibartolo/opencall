@@ -63,8 +63,8 @@ es:
       edit_session: "Editar propuesta"
       unvote_session: "Remover voto"
       unfav_session: "Remover fav"
-      submit_review: "Enviar Revisión"
-      start_review: "Iniciar una revisión formal"
+      submit_review: "Enviar evaluación"
+      start_review: "Iniciar una evaluación formal"
       cancel: "Cancelar"
       load_more: "Cargar mas..."
       comment: "Comentar"
@@ -88,7 +88,8 @@ es:
       fav: "right|Marcá la sesión como favorita"
     placeholders:
       comment: "Dejar un comentario al autor"
-      review: "Da tu punto de vista de la sesión"
+      review_feedback_for_author: "Da tu punto de vista de la sesión al autor"
+      review_comment_for_admins: "Indica algún comentario para los chairs. Esto NO SERA COMPARTIDO con el autor"
       summary: "Sinopsis que resume la sesión"
       description: "Detalles sobre la sesión, como ser la dinámica a utilizar, el tipo de audiencia, etc"
       audience_count: "Máximo númbero de participantes que puede tener la sesión"
@@ -106,29 +107,30 @@ es:
         confirmation: "Está seguro de revocar el rol a %{name}?"
   reviews:
     labels:
-      current: "Actuales Revisiones"
+      current: "Evaluaciones Actuales"
       status: "Estado"
       score: "Puntaje"
       reviewer: "Revisor"
-      feedback: "Devolución"
+      public_feedback: "Devolución para el autor"
+      comment_for_admins: "Comentarios para los chairs"
       pair_reviewer: "Segundo Revisor"
       reviewed_with: "Revisada con"
       no_reviews: "No hay revisiones a la fecha..."
-      has_already_been: "Esta revisión ya ha sido "
+      has_already_been: "Esta evaluación ya ha sido "
     buttons:
-      edit: "Editar revisión"
-      start: "Iniciar revisión"
+      edit: "Editar evaluación"
+      start: "Iniciar evaluación"
       accept:
         text: "Aceptar"
-        confirmation: "¿Está seguro que desea acepter esta revisión?"
+        confirmation: "¿Está seguro que desea acepter esta evaluación?"
       reject:
         text: "Rechazar"
-        confirmation: "¿Está seguro que desea rechazar esta revisión?"
+        confirmation: "¿Está seguro que desea rechazar esta evaluación?"
   notifications:
     labels:
       title: "Seguimiento de notificaciones sobre propuestas"
       session: "Sesión"
-      reviews: "Revisiones por"
+      reviews: "Evaluaciones por"
       status: "Estado"
       author_inbox: "Escribe un mensaje para todos los autores de propuestas"
       subject: "Asunto"
@@ -145,11 +147,11 @@ es:
     labels:
       title:
         reviewer_comments: "Sesiones propuestas con comentarios del equipo de revisores"
-        reviews_status: "Estado de revisiones por sesiones propuestas"
+        reviews_status: "Estado de evaluaciones por sesiones propuestas"
       session: "Sesión"
       theme: "Temática"
       comments: "Comentarios"
-      reviews: "Revisiones por"
+      reviews: "Evaluaciones por"
   activerecord:
     models: 
       user: "Usuario"

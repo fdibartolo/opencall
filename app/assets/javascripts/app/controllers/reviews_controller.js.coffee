@@ -5,9 +5,11 @@ angular.module('openCall.controllers').controller 'ReviewsController',
   $scope.reviews = []
   $scope.newSessionReview = 
     body: ''
-    score: 0
+    private_body: ''
+    score: {}
     status: ''
     secondReviewer: {}
+  $scope.validReviewScores = constants.reviews.score.values
 
   $scope.initReviewForm = () ->
     SessionsService.show($routeParams.id).then ((session) ->
@@ -17,6 +19,7 @@ angular.module('openCall.controllers').controller 'ReviewsController',
     UsersService.user_review_for($routeParams.id).then ((review) ->
       if review
         $scope.newSessionReview = review
+        $scope.newSessionReview.score = setScore(review)
         $scope.newSessionReview.secondReviewer = setSecondReviewer(review)
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
@@ -24,29 +27,46 @@ angular.module('openCall.controllers').controller 'ReviewsController',
   setSecondReviewer = (review) ->
     return reviewer for reviewer in review.reviewers when reviewer.id is review.second_reviewer_id
 
-  $scope.postReview = () ->
-    $scope.newSessionReview.invalidBody = $scope.newSessionReview.body is ''
-    $scope.newSessionReview.invalidScore = $scope.newSessionReview.score is 0
+  setScore = (review) ->
+    return score for score in $scope.validReviewScores when score.value is review.score
 
-    unless $scope.newSessionReview.invalidBody or $scope.newSessionReview.invalidScore
+  $scope.postReview = () ->
+    $scope.newSessionReview.invalidBody           = $scope.newSessionReview.body is '' or angular.isUndefined($scope.newSessionReview.body)
+    $scope.newSessionReview.invalidPrivateBody    = $scope.newSessionReview.private_body is '' or angular.isUndefined($scope.newSessionReview.private_body)
+    $scope.newSessionReview.invalidScore          = $scope.newSessionReview.score is {} or angular.isUndefined($scope.newSessionReview.score)
+    $scope.newSessionReview.invalidSecondReviewer = $scope.newSessionReview.secondReviewer is {} or angular.isUndefined($scope.newSessionReview.secondReviewer)
+
+    unless $scope.newSessionReview.invalidBody or $scope.newSessionReview.invalidScore or 
+    $scope.newSessionReview.invalidPrivateBody or $scope.newSessionReview.invalidSecondReviewer
       ReviewsService.create($routeParams.id, $scope.newSessionReview).then (() ->
-        $scope.newSessionReview.body = ''
-        $scope.newSessionReview.score = 0
+        clearReview()
         $location.path "/users/reviews"
         toaster.pop 'success', '', 'Review submitted successfully', 5000
       ), (errorKey) ->
         $location.path "/error/#{errorKey}"
 
+  clearReview = () ->
+    $scope.newSessionReview.body           = ''
+    $scope.newSessionReview.private_body   = ''
+    $scope.newSessionReview.score          = {}
+    $scope.newSessionReview.secondReviewer = {}
+
   $scope.loadSessionReviews = () ->
     ReviewsService.all($routeParams.id).then ((reviews) ->
-      $scope.session.reviews = reviews
+      $scope.session.reviews = []
+      angular.forEach reviews, (review) ->
+        review.score = setScore(review)
+        $scope.session.reviews.push review
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
 
   $scope.loadUserReviews = () ->
     $scope.loading = true
     UsersService.user_reviews().then ((reviews) ->
-      $scope.reviews = reviews
+      $scope.reviews = []
+      angular.forEach reviews, (review) ->
+        review.score = setScore(review)
+        $scope.reviews.push review
       $scope.loading = false
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"

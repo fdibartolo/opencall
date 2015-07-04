@@ -13,7 +13,7 @@ class NotificationMailer < ApplicationMailer
 
   def general_notification_email email, subject, body
     @body = body
-    mail to: email, subject: subject, bcc: administrators
+    mail to: email, subject: subject
   end
 
   private

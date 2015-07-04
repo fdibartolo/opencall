@@ -15,7 +15,9 @@ FactoryGirl.define do
 
     factory :reviewer do
       after(:create) do |user|
-        user.roles = [create(:role, name: RoleReviewer)]
+        #user.roles = [create(:role, name: RoleReviewer)]
+        reviewer_role = Role.find_by(name: RoleReviewer) || create(:role, name: RoleReviewer)
+        user.roles = [reviewer_role]
       end
     end
   end
@@ -59,9 +61,11 @@ FactoryGirl.define do
   end
 
   factory :review do
-    body        'some reviewer comment'
-    score       7
-    association :session_proposal, factory: :session_proposal
+    body         'some reviewer comment'
+    private_body 'some info for chairs'
+    score        1
+    association  :session_proposal, factory: :session_proposal
+    association :second_reviewer, factory: :reviewer
   end
 
   factory :track do
