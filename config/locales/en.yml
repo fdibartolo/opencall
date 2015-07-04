@@ -166,8 +166,8 @@ en:
   reports:
     labels:
       title:
-        reviewer_comments: "Session Proposals with comments made by reviewers"
-        reviews_status: "Status of Evaluations by session proposals"
+        reviewer_comments: "Session Proposals with comments from reviewers"
+        reviews_status: "Status of Evaluations by session proposal"
       session: "Session"
       theme: "Theme"
       comments: "Comments"
