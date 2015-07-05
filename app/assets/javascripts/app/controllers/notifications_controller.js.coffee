@@ -45,7 +45,8 @@ angular.module('openCall.controllers').controller 'NotificationsController',
   $scope.submitMessage = () ->
     $scope.$emit 'showLoadingSpinner', 'Sending message...'
     NotificationsService.submitMessage($scope.newMessage).then (() ->
-      $location.path "/notifications"
+      $scope.newMessage.subject = ''
+      $scope.newMessage.body    = ''
       $scope.$emit 'hideLoadingSpinner'
       toaster.pop 'success', '', 'Message to all authors submitted successfully', 5000
     ), (errorKey) ->
