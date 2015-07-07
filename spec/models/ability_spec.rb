@@ -17,12 +17,12 @@ RSpec.describe Ability, :type => :model do
 
     context "while submission is past due" do
       it "should not be able to create session proposal" do
-        travel_to SubmissionDueDate + 1.day
+        travel_to SubmissionDueDate + 1.minute
         expect(ability).to_not be_able_to :create, SessionProposal
       end
 
       it "should not be able to edit session proposal" do
-        travel_to SubmissionDueDate + 1.day
+        travel_to SubmissionDueDate + 1.minute
         expect(ability).to_not be_able_to :edit, session_proposal
       end
     end
