@@ -172,6 +172,8 @@ en:
       theme: "Theme"
       comments: "Comments"
       reviews: "Evaluations by"
+    buttons:
+      export_reviews: "Export all to CSV"
   activerecord:
     models: 
       user: "User"

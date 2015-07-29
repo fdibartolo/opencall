@@ -1,6 +1,6 @@
 class SessionProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:search, :show]
-  before_action :forbid_if_no_access, only: [:author, :reviewer_comments]
+  before_action :forbid_if_no_access, only: [:author, :reviewer_comments, :export]
   before_action :forbid_if_cannot_create, only: :create
   before_action only: [:show, :edit, :update, :author] do
     set_resource SessionProposal, params[:id]
@@ -65,6 +65,12 @@ class SessionProposalsController < ApplicationController
   end
 
   def reviewer_comments
+  end
+
+  def export
+    respond_to do |f|
+      f.csv { send_data SessionProposal.to_csv }
+    end
   end
 
   private

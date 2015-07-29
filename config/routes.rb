@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :reviewer_comments
+      get :export, defaults: { format: :csv }
     end
     member do
       get :author
