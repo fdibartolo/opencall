@@ -1,7 +1,15 @@
 <div class="container" ng-cloak ng-init="getReviewsStatus()" fade-animation="true">
   <div class="col-sm-10">
-    <h3><%= t('reports.labels.title.reviews_status') %></h3><br>
-
+    <h3>
+      <%= t('reports.labels.title.reviews_status') %>
+      <span class="pull-right">      
+        <a href="/session_proposals/export.csv" class="btn btn-xs btn-default">
+          <%= t('reports.buttons.export_reviews') %> &nbsp; 
+          <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+        </a>
+      </span>
+    </h3><br>
+    
     <table class="table table-hover table-condensed" ng-if="sessions.length > 0">
       <thead>
         <th width="30%">
