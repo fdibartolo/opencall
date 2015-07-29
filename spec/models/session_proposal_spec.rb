@@ -136,4 +136,39 @@ RSpec.describe SessionProposal, :type => :model do
       expect(session.reviewer_comments).to include admin_comment
     end
   end
+
+  describe ".to_csv" do
+    let(:track) { FactoryGirl.create :track }
+    let(:audience) { FactoryGirl.create :audience }
+    let(:theme) { FactoryGirl.create :theme }
+
+    it "should contain column headers" do
+      csv = SessionProposal.to_csv
+      expect(csv).to match %w[session_proposal_id title theme audience audience_count track author country evaluation_1 evaluation_2 evaluation_3].join(',')
+    end
+
+    it "should group all reviews by session proposal on the same row" do
+      first_session  = FactoryGirl.create :session_proposal, title: 'session 1', track: track, audience: audience, theme: theme
+      second_session = FactoryGirl.create :session_proposal, title: 'session 2', track: track, audience: audience, theme: theme
+
+      first_review  = FactoryGirl.create :review, session_proposal: first_session, score: -1, user: FactoryGirl.create(:reviewer)
+      second_review = FactoryGirl.create :review, session_proposal: first_session, score: 1, user: FactoryGirl.create(:reviewer)
+      third_review  = FactoryGirl.create :review, session_proposal: second_session, score: 2, user: FactoryGirl.create(:reviewer)
+
+      rows = SessionProposal.to_csv.split("\n")
+      expect(rows.count).to be 3
+
+      expect(rows[1].split(',')[0]).to eq first_session.id.to_s
+      expect(rows[1].split(',')[1]).to eq first_session.title
+      expect(rows[1].split(',')[8]).to eq first_review.score.to_s
+      expect(rows[1].split(',')[9]).to eq second_review.score.to_s
+      expect(rows[1].split(',')[10]).to be nil
+
+      expect(rows[2].split(',')[0]).to eq second_session.id.to_s
+      expect(rows[2].split(',')[1]).to eq second_session.title
+      expect(rows[2].split(',')[8]).to eq third_review.score.to_s
+      expect(rows[2].split(',')[9]).to be nil
+      expect(rows[2].split(',')[10]).to be nil
+    end
+  end
 end

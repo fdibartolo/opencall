@@ -1,3 +1,4 @@
+require 'csv'
 require 'elasticsearch/model'
 
 class SessionProposal < ActiveRecord::Base
@@ -71,6 +72,24 @@ class SessionProposal < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << %w[session_proposal_id title theme audience audience_count track author country evaluation_1 evaluation_2 evaluation_3]
+      SessionProposal.all.each do |session_proposal|
+        row = [] << session_proposal.id << 
+                    session_proposal.title << 
+                    session_proposal.theme.name << 
+                    session_proposal.audience.name <<
+                    session_proposal.audience_count << 
+                    session_proposal.track.name << 
+                    session_proposal.user.full_name << 
+                    session_proposal.user.country
+        session_proposal.reviews.each { |review| row << review.score }
+        csv << row
+      end
+    end    
   end
 
   def self.match_all_query
