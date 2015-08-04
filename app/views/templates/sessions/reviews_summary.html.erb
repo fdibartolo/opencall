@@ -1,4 +1,4 @@
-<% if current_user and current_user.admin? %>
+<% if current_user and can? :accept, Review and can? :reject, Review%>
   <div class="row col-sm-offset-1 col-sm-10" ng-controller="ReviewsController" ng-init="loadSessionReviews()">
     <hr><h3><%= t('reviews.labels.current') %></h3>
 

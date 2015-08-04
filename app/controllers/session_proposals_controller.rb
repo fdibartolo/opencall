@@ -1,7 +1,8 @@
 class SessionProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:search, :show]
-  before_action :forbid_if_no_access, only: [:author, :reviewer_comments, :export]
+  before_action :forbid_if_cannot_review, only: [:author, :reviewer_comments]
   before_action :forbid_if_cannot_create, only: :create
+  before_action :forbid_if_cannot_manage, only: :export
   before_action only: [:show, :edit, :update, :author] do
     set_resource SessionProposal, params[:id]
   end
@@ -78,11 +79,15 @@ class SessionProposalsController < ApplicationController
     params.require(:session_proposal).permit(:title, :summary, :description, :video_link, :track_id, :audience_id, :theme_id, :audience_count, :tags_attributes => [ :id, :name, :_destroy ])
   end
 
-  def forbid_if_no_access
+  def forbid_if_cannot_review
     return head :forbidden if cannot? :review, SessionProposal
   end
 
   def forbid_if_cannot_create
     return head :forbidden if cannot? :create, SessionProposal
+  end
+
+  def forbid_if_cannot_manage
+    return head :forbidden if cannot? :manage, SessionProposal
   end
 end
