@@ -313,6 +313,8 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
   describe "GET export" do
     context "while user" do
+      login_as :reviewer
+
       it "should return forbidden" do
         get :export, format: :csv
         expect(response).to have_http_status(403)
@@ -320,7 +322,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     end
 
     context "while reviewer" do
-      login_as :reviewer, 'Reviewer'
+      login_as :admin
 
       it "should return success" do
         get :export, format: :csv
