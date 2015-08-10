@@ -18,13 +18,13 @@ class NotificationsController < ApplicationController
 
   def accept
     @session_proposal.accept! if @session_proposal.can_accept?
-    NotificationMailer.session_accepted_email(@session_proposal).deliver_now if @session_proposal.accepted?
+    NotificationMailer.session_accepted_email(@session_proposal, params[:body]).deliver_now if @session_proposal.accepted?
     head :no_content
   end
 
   def decline
     @session_proposal.decline! if @session_proposal.can_decline?
-    NotificationMailer.session_declined_email(@session_proposal).deliver_now if @session_proposal.declined?
+    NotificationMailer.session_declined_email(@session_proposal, params[:body]).deliver_now if @session_proposal.declined?
     head :no_content
   end
 

@@ -82,23 +82,41 @@ RSpec.describe NotificationsController, type: :controller do
         let(:session) { FactoryGirl.create :session_proposal }
         let(:payload) { { session_proposal_id: session.id } }
 
-        it "should include template" do
-          get action, payload
+        context "with invalid param id" do
+          before :each do
+            allow(Review).to receive(:find_by).and_return(nil)
+            payload[:session_proposal_id] = 0
+            post action, payload
+          end
 
-          body = JSON.parse response.body
-          expect(body['template']).to match "Dear #{session.user.full_name},\n\n#{expected_text}"
+          it "should return 400 Bad Request" do
+            expect(response).to have_http_status(400)
+          end
+
+          it "should return 'cannot find' message" do
+            expect(response.header['Message']).to eq "Unable to find session proposal with id '0'"
+          end
         end
 
-        it "should include reviews public feedback" do
-          first_review  = FactoryGirl.create :review, session_proposal: session, user: @logged_user, body: 'something'
-          second_review = FactoryGirl.create :review, session_proposal: session, user: @logged_user, body: 'another comment'
+        context "with valid params" do
+          it "should include template" do
+            get action, payload
 
-          get action, payload
+            body = JSON.parse response.body
+            expect(body['template']).to match "Dear #{session.user.full_name},\n\n#{expected_text}"
+          end
 
-          body = JSON.parse response.body
-          expect(body['feedback'].count).to eq 2
-          expect(body['feedback'].first).to eq first_review.body
-          expect(body['feedback'].last).to eq second_review.body
+          it "should include reviews public feedback" do
+            first_review  = FactoryGirl.create :review, session_proposal: session, user: @logged_user, body: 'something'
+            second_review = FactoryGirl.create :review, session_proposal: session, user: @logged_user, body: 'another comment'
+
+            get action, payload
+
+            body = JSON.parse response.body
+            expect(body['feedback'].count).to eq 2
+            expect(body['feedback'].first).to eq first_review.body
+            expect(body['feedback'].last).to eq second_review.body
+          end
         end
       end
     end
@@ -110,7 +128,7 @@ RSpec.describe NotificationsController, type: :controller do
   }.each do |action, status|
     describe "POST #{action}" do
       let(:session) { FactoryGirl.create :session_proposal }
-      let(:payload) { { session_proposal_id: session.id } }
+      let(:payload) { { session_proposal_id: session.id, body: 'some body' } }
 
       context "while reviewer" do
         login_as :reviewer
@@ -151,6 +169,7 @@ RSpec.describe NotificationsController, type: :controller do
             post action, payload
             email = ActionMailer::Base.deliveries.last
             expect(email.subject).to eq I18n.t("notification_mailer.session_#{status}_email.subject")
+            expect(email.body).to match payload[:body]
           end
 
           it "should fire '#{status}' email even if already #{status}" do
@@ -159,6 +178,7 @@ RSpec.describe NotificationsController, type: :controller do
             post action, payload
             email = ActionMailer::Base.deliveries.last
             expect(email.subject).to eq I18n.t("notification_mailer.session_#{status}_email.subject")
+            expect(email.body).to match payload[:body]
           end
         end
       end
