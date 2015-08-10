@@ -2,12 +2,18 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
   before_action :forbid_if_cannot_list, only: :index
   before_action :forbid_if_no_access, except: :index
-  before_action only: [:accept, :decline] do
+  before_action only: [:accept, :decline, :acceptance_template, :denial_template] do
     set_resource SessionProposal, params[:session_proposal_id]
   end
 
   def index
     @session_proposals = SessionProposal.all
+  end
+
+  def acceptance_template
+  end
+
+  def denial_template
   end
 
   def accept

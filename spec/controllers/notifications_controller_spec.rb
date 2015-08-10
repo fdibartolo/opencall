@@ -63,6 +63,48 @@ RSpec.describe NotificationsController, type: :controller do
   end
 
   {
+    'acceptance_template' => 'We are pleased to inform you',
+    'denial_template' => 'We regret to inform you'
+  }.each do |action, expected_text|
+    describe "GET #{action}" do
+      context "while reviewer" do
+        login_as :reviewer
+
+        it "should return forbidden" do
+          post :notify_authors
+          expect(response).to have_http_status(403)
+        end
+      end
+
+      context "while admin" do
+        login_as :admin
+
+        let(:session) { FactoryGirl.create :session_proposal }
+        let(:payload) { { session_proposal_id: session.id } }
+
+        it "should include template" do
+          get action, payload
+
+          body = JSON.parse response.body
+          expect(body['template']).to match "Dear #{session.user.full_name},\n\n#{expected_text}"
+        end
+
+        it "should include reviews public feedback" do
+          first_review  = FactoryGirl.create :review, session_proposal: session, user: @logged_user, body: 'something'
+          second_review = FactoryGirl.create :review, session_proposal: session, user: @logged_user, body: 'another comment'
+
+          get action, payload
+
+          body = JSON.parse response.body
+          expect(body['feedback'].count).to eq 2
+          expect(body['feedback'].first).to eq first_review.body
+          expect(body['feedback'].last).to eq second_review.body
+        end
+      end
+    end
+  end
+
+  {
     'accept' => 'accepted',
     'decline' => 'declined'
   }.each do |action, status|
