@@ -1,0 +1,48 @@
+<div class="modal fade bs-example-modal-lg" id="emailComposerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-init="getAcceptanceTemplateFor()">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 ng-if="isAcceptanceTemplate" class="modal-title" id="myModalLabel">
+          <%= t('notifications.labels.acceptance_email') %>
+        </h4>
+        <h4 ng-if="isDenialTemplate" class="modal-title" id="myModalLabel">
+          <%= t('notifications.labels.denial_email') %>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs" role="tablist" ng-init="body = true">
+          <li role="presentation" ng-class="{active: body}">
+            <a ng-click="body = !body">
+              <small><%= t('notifications.labels.compose') %></small>
+            </a>
+          </li>
+          <li role="presentation" ng-class="{active: !body}">
+            <a ng-click="body = !body">
+              <small><%= t('notifications.labels.feedback') %></small>
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div ng-if="body">
+            <textarea type="text" class="form-control" ng-model="notificationData.body" rows="25"></textarea>
+          </div>
+          <div ng-if="!body">
+            <br><div ng-repeat="feedback in notificationData.feedback"><p markdown="feedback"></p><hr></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <%= t('notifications.buttons.cancel') %>
+        </button>
+        <button ng-if="isAcceptanceTemplate" class="btn btn-success" confirmed-action="acceptSession(sessionToNotify)" confirm-click="<%= t('notifications.buttons.accept.confirmation') %>" ng-disabled="isDeclinedSession(sessionToNotify.status)">
+          <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= t('notifications.buttons.accept.text') %>
+        </button>
+        <button ng-if="isDenialTemplate" class="btn btn-danger" confirmed-action="declineSession(sessionToNotify)" confirm-click="<%= t('notifications.buttons.decline.confirmation') %>" ng-disabled="isAcceptedSession(sessionToNotify.status)">
+          <span class="glyphicon glyphicon-remove"></span>&nbsp;<%= t('notifications.buttons.decline.text') %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
