@@ -136,6 +136,10 @@ es:
       subject: "Asunto"
       body: "Mensaje"
       send_message: "Enviar mensaje"
+      acceptance_email: "Composición de notificación de aceptación para el autor"
+      denial_email: "Composición de notificación de rechazo para el autor"
+      compose: "Componer Email"
+      feedback: "Devolución pública de los revisores"
     buttons:
       accept:
         text: "Aceptar y Notificar"
@@ -143,6 +147,7 @@ es:
       decline:
         text: "Declinar y Notificar"
         confirmation: "¿Está seguro que desea declinar esta propuesta y notificar a su autor?"
+      cancel: "Cancelar"
   reports:
     labels:
       title:
