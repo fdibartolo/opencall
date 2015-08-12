@@ -1,5 +1,5 @@
 angular.module('openCall.controllers').controller 'NotificationsController', 
-['$scope', '$location', 'constants', 'NotificationsService', 'toaster', ($scope, $location, constants, NotificationsService, toaster) ->
+['$scope', '$location', '$window', 'constants', 'NotificationsService', 'toaster', ($scope, $location, $window, constants, NotificationsService, toaster) ->
 
   $scope.newMessage =
     subject: ''
@@ -24,23 +24,49 @@ angular.module('openCall.controllers').controller 'NotificationsController',
 
   $scope.acceptSession = (session) ->
     $scope.$emit 'showLoadingSpinner', 'Accepting and notifying...'
-    NotificationsService.accept(session.id).then (() ->
+    NotificationsService.accept(session.id, $scope.notificationData.body).then (() ->
       session.status      = constants.sessions.status.accepted
       session.notified_on = moment().format()
       $scope.$emit 'hideLoadingSpinner'
+      $window.location.reload()
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
       $scope.$emit 'hideLoadingSpinner'
 
   $scope.declineSession = (session) ->
     $scope.$emit 'showLoadingSpinner', 'Declining and notifying...'
-    NotificationsService.decline(session.id).then (() ->
+    NotificationsService.decline(session.id, $scope.notificationData.body).then (() ->
       session.status      = constants.sessions.status.declined
       session.notified_on = moment().format()
       $scope.$emit 'hideLoadingSpinner'
+      $window.location.reload()
     ), (errorKey) ->
       $location.path "/error/#{errorKey}"
       $scope.$emit 'hideLoadingSpinner'
+
+  $scope.getAcceptanceTemplateFor = (session) ->
+    if angular.isDefined(session)
+      $scope.isAcceptanceTemplate = true
+      $scope.isDenialTemplate     = false
+      $scope.sessionToNotify = session
+      NotificationsService.acceptanceTemplate(session.id).then ((data) ->
+        $scope.notificationData = 
+          body: data.template
+          feedback: data.feedback
+      ), (errorKey) ->
+        $location.path "/error/#{errorKey}"
+
+  $scope.getDenialTemplateFor = (session) ->
+    if angular.isDefined(session)
+      $scope.isAcceptanceTemplate = false
+      $scope.isDenialTemplate     = true
+      $scope.sessionToNotify = session
+      NotificationsService.denialTemplate(session.id).then ((data) ->
+        $scope.notificationData = 
+          body: data.template
+          feedback: data.feedback
+      ), (errorKey) ->
+        $location.path "/error/#{errorKey}"
 
   $scope.submitMessage = () ->
     $scope.$emit 'showLoadingSpinner', 'Sending message...'

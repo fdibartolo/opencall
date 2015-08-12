@@ -156,6 +156,10 @@ en:
       subject: "Subject"
       body: "Body"
       send_message: "Send Message"
+      acceptance_email: "Compose acceptance notification to the session author"
+      denial_email: "Compose denial notification to the session author"
+      compose: "Compose Email"
+      feedback: "Reviewer's public feedback"
     buttons:
       accept:
         text: "Accept and Notify"
@@ -163,6 +167,7 @@ en:
       decline:
         text: "Decline and Notify"
         confirmation: "Are you sure you want to decline this session proposal and notify its author?"
+      cancel: "Cancel"
   reports:
     labels:
       title:

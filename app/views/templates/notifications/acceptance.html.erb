@@ -40,10 +40,10 @@
         </td>
         <td class="actions">
           <div class="pull-right">
-            <button class="btn btn-xs btn-success" confirmed-action="acceptSession(session)" confirm-click="<%= t('notifications.buttons.accept.confirmation') %>" ng-disabled="isDeclinedSession(session.status)">
+            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isDeclinedSession(session.status)" ng-click="getAcceptanceTemplateFor(session)">
               <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= t('notifications.buttons.accept.text') %>
             </button><br>
-            <button class="btn btn-xs btn-danger" confirmed-action="declineSession(session)" confirm-click="<%= t('notifications.buttons.decline.confirmation') %>" ng-disabled="isAcceptedSession(session.status)">
+            <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isAcceptedSession(session.status)" ng-click="getDenialTemplateFor(session)">
               <span class="glyphicon glyphicon-remove"></span>&nbsp;<%= t('notifications.buttons.decline.text') %>
             </button>
           </div>
@@ -51,5 +51,6 @@
       </tr>
     </table>
   </div>
+  <div ng-include="'templates/notifications/acceptance_email_composer.html'"></div>
   <div ng-include="'templates/themes_list.html'"></div>
 </div>

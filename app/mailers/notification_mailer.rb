@@ -1,13 +1,13 @@
 class NotificationMailer < ApplicationMailer
-  def session_accepted_email session_proposal
+  def session_accepted_email session_proposal, body
     @user = session_proposal.user
-    @session_proposal = session_proposal
+    @body = body
     mail to: @user.email, bcc: administrators
   end
 
-  def session_declined_email session_proposal
+  def session_declined_email session_proposal, body
     @user = session_proposal.user
-    @session_proposal = session_proposal
+    @body = body
     mail to: @user.email, bcc: administrators
   end
 

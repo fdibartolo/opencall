@@ -51,6 +51,8 @@ Rails.application.routes.draw do
       post :notify_authors
     end
     member do
+      get :acceptance_template
+      get :denial_template
       post :accept
       post :decline
     end
