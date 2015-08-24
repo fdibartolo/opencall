@@ -103,7 +103,7 @@ RSpec.describe NotificationsController, type: :controller do
             get action, payload
 
             body = JSON.parse response.body
-            expect(body['template']).to match "Dear #{session.user.full_name},\n\n#{expected_text}"
+            expect(body['template']).to match "Estimado #{session.user.full_name},\n\n#{expected_text}"
           end
 
           it "should include reviews public feedback" do
