@@ -63,8 +63,8 @@ RSpec.describe NotificationsController, type: :controller do
   end
 
   {
-    'acceptance_template' => 'We are pleased to inform you',
-    'denial_template' => 'We regret to inform you'
+    'acceptance_template' => 'Nos alegra informarte que tu propuesta',
+    'denial_template' => 'Lamentamos informarte que tu propuesta'
   }.each do |action, expected_text|
     describe "GET #{action}" do
       context "while reviewer" do
