@@ -8,7 +8,7 @@ RSpec.describe NotificationMailer, type: :mailer do
     let!(:admin) { FactoryGirl.create :admin, first_name: 'admin' }
 
     it { expect(mail.to).to include session.user.email }
-    it { expect(mail.bcc).to include admin.email }
+    it { expect(mail.bcc).to include 'sesiones2015@agiles.org' }
     it { expect(mail.subject).to eq I18n.t('notification_mailer.session_accepted_email.subject') }
     it { expect(mail.body).to match body }
   end
@@ -20,7 +20,7 @@ RSpec.describe NotificationMailer, type: :mailer do
     let!(:admin) { FactoryGirl.create :admin, first_name: 'admin' }
 
     it { expect(mail.to).to include session.user.email }
-    it { expect(mail.bcc).to include admin.email }
+    it { expect(mail.bcc).to include 'sesiones2015@agiles.org' }
     it { expect(mail.subject).to eq I18n.t('notification_mailer.session_declined_email.subject') }
     it { expect(mail.body).to match body }
   end
