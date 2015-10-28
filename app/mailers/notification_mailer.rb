@@ -2,13 +2,13 @@ class NotificationMailer < ApplicationMailer
   def session_accepted_email session_proposal, body
     @user = session_proposal.user
     @body = body
-    mail to: @user.email, bcc: 'sesiones2015@agiles.org'
+    mail to: @user.email, bcc: ChairsAccount
   end
 
   def session_declined_email session_proposal, body
     @user = session_proposal.user
     @body = body
-    mail to: @user.email, bcc: 'sesiones2015@agiles.org'
+    mail to: @user.email, bcc: ChairsAccount
   end
 
   def general_notification_email email, subject, body
