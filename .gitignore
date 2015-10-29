@@ -18,6 +18,7 @@
 
 # Local auxiliary notes/reminders/to-do's
 aux_notes.txt
+queries.txt
 
 # Local env variables
 .env

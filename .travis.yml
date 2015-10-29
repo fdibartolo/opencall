@@ -3,7 +3,7 @@ rvm:
   - 2.2.1
 
 env:
-  - ES_TEST_HOST=localhost ES_TEST_PORT=9250
+  - ES_TEST_HOST=localhost ES_TEST_PORT=9250 SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3'
 
 
 addons:
