@@ -8,7 +8,7 @@ MaxSessionProposalVotes = 10
 MailerAccount = "Sesiones Agiles 2015 <sesiones@agiles.org>"
 ChairsAccount = "sesiones2015@agiles.org"
 
-SubmissionDueDate = DateTime.parse ENV['SUBMISSION_DUE_DATE'] || DateTime.now.to_s # as is until we update the system to support multi-event
-AcceptanceDueDate = DateTime.parse ENV['ACCEPTANCE_DUE_DATE'] || DateTime.now.to_s # as is until we update the system to support multi-event
+SubmissionDueDate = DateTime.parse ENV['SUBMISSION_DUE_DATE'] # as is until we update the system to support multi-event
+AcceptanceDueDate = DateTime.parse ENV['ACCEPTANCE_DUE_DATE'] # as is until we update the system to support multi-event
 
 Version = "1.0.11"
