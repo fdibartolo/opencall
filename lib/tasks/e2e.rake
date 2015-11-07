@@ -1,10 +1,14 @@
 require 'rake'
 require 'elasticsearch/extensions/test/cluster/tasks'
 
+def overwrite_env_vars
+  ENV['SUBMISSION_DUE_DATE']=(DateTime.now + 1.day).to_s
+end
+
 namespace :open_call do
   desc "Starts ElasticSearch on test port (ES_TEST_PORT) and runs protractor e2e tests"
   task :e2e do
-    # system "ps aux | grep -ie 'elasticsearch' | grep -v grep | awk '{print $2}' | xargs kill -9" 
+    overwrite_env_vars()
 
     Elasticsearch::Extensions::Test::Cluster.start(port: ENV['ES_TEST_PORT'], nodes: 1) unless
       Elasticsearch::Extensions::Test::Cluster.running?
