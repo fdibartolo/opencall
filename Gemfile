@@ -40,10 +40,10 @@ gem 'workflow', '1.2.0'
 group :development, :test do
   gem 'spring', '1.4.1'
   gem 'spring-commands-rspec', '1.0.4'
-  gem 'rspec-rails', '3.3.2'
+  gem 'rspec-rails', '3.3.3'
   gem 'factory_girl_rails', '4.5.0'
   gem 'protractor-rails', '0.0.15'
-  gem 'coveralls', '0.8.1', require: false
+  gem 'coveralls', '0.8.3', require: false
   gem 'letter_opener', '1.4.1'
 end
 
