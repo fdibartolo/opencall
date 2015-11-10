@@ -30,9 +30,9 @@ gem 'omniauth-linkedin', '0.2.0'
 gem 'cancancan', '1.13.1'
 
 gem 'will_paginate', '3.0.7'
-gem 'elasticsearch-model', '0.1.7'
-gem 'elasticsearch-rails', '0.1.7'
-gem 'elasticsearch-extensions', '0.0.18'
+gem 'elasticsearch-model', '0.1.8'
+gem 'elasticsearch-rails', '0.1.8'
+gem 'elasticsearch-extensions', '0.0.19'
 
 gem 'newrelic_rpm', '3.14.0.305'
 gem 'workflow', '1.2.0'
