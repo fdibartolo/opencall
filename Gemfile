@@ -34,7 +34,7 @@ gem 'elasticsearch-model', '0.1.7'
 gem 'elasticsearch-rails', '0.1.7'
 gem 'elasticsearch-extensions', '0.0.18'
 
-gem 'newrelic_rpm', '3.12.0.288'
+gem 'newrelic_rpm', '3.14.0.305'
 gem 'workflow', '1.2.0'
 
 group :development, :test do
@@ -42,7 +42,7 @@ group :development, :test do
   gem 'spring-commands-rspec', '1.0.4'
   gem 'rspec-rails', '3.3.3'
   gem 'factory_girl_rails', '4.5.0'
-  gem 'protractor-rails', '0.0.15'
+  gem 'protractor-rails', '0.0.17'
   gem 'coveralls', '0.8.5', require: false
   gem 'letter_opener', '1.4.1'
 end
