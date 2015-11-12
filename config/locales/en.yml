@@ -171,12 +171,14 @@ en:
   reports:
     labels:
       title:
-        reviewer_comments: "Session Proposals with comments from reviewers"
+        reviewer_comments: "Session proposals with comments from reviewers"
         reviews_status: "Status of Evaluations by session proposal"
+        session_votes: "Session proposals by number of community votes"
       session: "Session"
       theme: "Theme"
       comments: "Comments"
       reviews: "Evaluations by"
+      votes: "# Votes"
     buttons:
       export_reviews: "Export all to CSV"
   activerecord:

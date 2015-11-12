@@ -153,10 +153,12 @@ es:
       title:
         reviewer_comments: "Sesiones propuestas con comentarios del equipo de revisores"
         reviews_status: "Estado de evaluaciones por sesiones propuestas"
+        session_votes: "Sesiones propuestas por cantidad de votos de la comunidad"
       session: "Sesión"
       theme: "Temática"
       comments: "Comentarios"
       reviews: "Evaluaciones por"
+      votes: "Cantidad votos"
     buttons:
       export_reviews: "Exportar todas a CSV"
   activerecord:

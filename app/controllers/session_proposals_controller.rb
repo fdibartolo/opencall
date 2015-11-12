@@ -1,6 +1,6 @@
 class SessionProposalsController < ApplicationController
   before_action :authenticate_user!, except: [:search, :show]
-  before_action :forbid_if_cannot_review, only: [:author, :reviewer_comments]
+  before_action :forbid_if_cannot_review, only: [:author, :reviewer_comments, :community_votes]
   before_action :forbid_if_cannot_create, only: :create
   before_action :forbid_if_cannot_manage, only: :export
   before_action only: [:show, :edit, :update, :author] do
@@ -66,6 +66,10 @@ class SessionProposalsController < ApplicationController
   end
 
   def reviewer_comments
+  end
+
+  def community_votes
+    render json: { themes: Theme.all.map(&:name), sessions: SessionProposal.all_with_user_votes }
   end
 
   def export

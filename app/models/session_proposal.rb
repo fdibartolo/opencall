@@ -101,6 +101,19 @@ class SessionProposal < ActiveRecord::Base
     comments.where(user_id: Role.admins_and_reviewers.map(&:id))
   end
 
+  def self.all_with_user_votes
+    sessions = Hash[SessionProposal.all.map{|s| "#{s.id}||#{s.title}||#{s.theme.name}||#{s.user.full_name}"}.map {|s| [s, 0]}]
+    User.all.each do |u| 
+      SessionProposal.where(id: u.session_proposal_voted_ids).each {|s| sessions["#{s.id}||#{s.title}||#{s.theme.name}||#{s.user.full_name}"] += 1}
+    end
+    session_with_votes = []
+    sessions.each do |k,v|
+      id, title, theme, author = k.split('||')
+      session_with_votes << { id: id.to_i, title: title, theme: theme, author: author, votes: v }
+    end
+    session_with_votes
+  end
+
   private
   def accept
     self.notified_on = DateTime.now

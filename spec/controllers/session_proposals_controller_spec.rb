@@ -335,4 +335,46 @@ RSpec.describe SessionProposalsController, :type => :controller do
       end
     end
   end
+
+  describe "GET community votes" do
+    context "while user" do
+      it "should return forbidden" do
+        get :community_votes
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context "while reviewer" do
+      let(:theme) { FactoryGirl.create :theme }
+      let!(:first_session) { FactoryGirl.create :session_proposal, theme: theme }
+      let!(:role_admin) { FactoryGirl.create :role }
+
+      login_as :reviewer, 'Reviewer'
+
+      it "should include themes list" do
+        another_theme = FactoryGirl.create :theme, name: 'Another theme'
+        get :community_votes
+
+        body = JSON.parse response.body
+        expect(body['themes'].count).to eq 2
+        expect(body['themes'].first).to eq theme.name
+        expect(body['themes'].last).to eq another_theme.name
+      end
+
+      it "should include session info and votes" do
+        logged_in_user = User.find_by(email: logged_in.email)
+        logged_in_user.session_proposal_voted_ids = [first_session.id]
+        logged_in_user.save!
+
+        get :community_votes
+
+        body = JSON.parse response.body
+        expect(body['sessions'].count).to eq 1
+        expect(body['sessions'].first['id']).to eq first_session.id
+        expect(body['sessions'].first['title']).to eq first_session.title
+        expect(body['sessions'].first['theme']).to eq first_session.theme.name
+        expect(body['sessions'].first['votes']).to eq 1
+      end
+    end
+  end
 end
