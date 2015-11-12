@@ -173,16 +173,19 @@ RSpec.describe SessionProposal, :type => :model do
   end
 
   describe ".all_with_user_votes" do
-    let!(:first_session) { FactoryGirl.create :session_proposal, title: 'First' }
-    let!(:second_session) { FactoryGirl.create :session_proposal, title: 'Second' }
+    let(:theme) { FactoryGirl.create :theme }
+    let!(:first_session) { FactoryGirl.create :session_proposal, title: 'First', theme: theme }
+    let!(:second_session) { FactoryGirl.create :session_proposal, title: 'Second', theme: theme }
 
     it "should include id and title" do
       sessions = SessionProposal.all_with_user_votes
       expect(sessions.count).to eq 2
       expect(sessions.first[:id]).to eq first_session.id
       expect(sessions.first[:title]).to eq first_session.title
+      expect(sessions.first[:theme]).to eq first_session.theme.name
       expect(sessions.last[:id]).to eq second_session.id
       expect(sessions.last[:title]).to eq second_session.title
+      expect(sessions.last[:theme]).to eq second_session.theme.name
     end
 
     it "should include user votes" do

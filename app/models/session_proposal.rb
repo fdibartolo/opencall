@@ -102,12 +102,15 @@ class SessionProposal < ActiveRecord::Base
   end
 
   def self.all_with_user_votes
-    sessions = Hash[SessionProposal.all.map{|s| "#{s.id},#{s.title}"}.map {|s| [s, 0]}]
+    sessions = Hash[SessionProposal.all.map{|s| "#{s.id},#{s.title},#{s.theme.name}"}.map {|s| [s, 0]}]
     User.all.each do |u| 
-      SessionProposal.find(u.session_proposal_voted_ids).each { |s| sessions["#{s.id},#{s.title}"] += 1 }
+      SessionProposal.find(u.session_proposal_voted_ids).each { |s| sessions["#{s.id},#{s.title},#{s.theme.name}"] += 1 }
     end
     session_with_votes = []
-    sessions.each {|k,v| session_with_votes << { id: k.split(',')[0].to_i, title: k.split(',')[1], votes: v } }
+    sessions.each do |k,v|
+      id, title, theme = k.split(',')
+      session_with_votes << { id: id.to_i, title: title, theme: theme, votes: v }
+    end
     session_with_votes
   end
 
