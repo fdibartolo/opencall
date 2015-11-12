@@ -104,7 +104,7 @@ class SessionProposal < ActiveRecord::Base
   def self.all_with_user_votes
     sessions = Hash[SessionProposal.all.map{|s| "#{s.id},#{s.title},#{s.theme.name}"}.map {|s| [s, 0]}]
     User.all.each do |u| 
-      SessionProposal.find(u.session_proposal_voted_ids).each { |s| sessions["#{s.id},#{s.title},#{s.theme.name}"] += 1 }
+      SessionProposal.where(id: u.session_proposal_voted_ids).each { |s| sessions["#{s.id},#{s.title},#{s.theme.name}"] += 1 }
     end
     session_with_votes = []
     sessions.each do |k,v|
