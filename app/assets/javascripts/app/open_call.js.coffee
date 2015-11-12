@@ -72,6 +72,10 @@ app.config ['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
     templateUrl: '/templates/reports/reviews_status.html'
     controller: 'ReportsController'
 
+  $routeProvider.when '/reports/session_votes',
+    templateUrl: '/templates/reports/session_votes.html'
+    controller: 'ReportsController'
+
   $routeProvider.otherwise redirectTo: '/home'
 ]
 

@@ -32,6 +32,16 @@ angular.module('openCall.controllers').controller 'ReportsController',
         active: true
       $scope.themes.push theme
 
+  $scope.getSessionsWithVotes = () ->
+    $scope.$emit 'showLoadingSpinner', 'Loading...'
+    ReportsService.communityVotes().then ((response) ->
+      $scope.sessions = response.sessions
+      prepareThemesFilter response.themes
+      $scope.$emit 'hideLoadingSpinner'
+    ), (errorKey) ->
+      $location.path "/error/#{errorKey}"
+      $scope.$emit 'hideLoadingSpinner'
+
   $scope.toggleTheme = (theme) ->
     theme.active = !theme.active
     
