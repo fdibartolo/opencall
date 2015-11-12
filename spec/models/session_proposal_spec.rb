@@ -171,4 +171,28 @@ RSpec.describe SessionProposal, :type => :model do
       expect(rows[2].split(',')[10]).to be nil
     end
   end
+
+  describe ".all_with_user_votes" do
+    let!(:first_session) { FactoryGirl.create :session_proposal, title: 'First' }
+    let!(:second_session) { FactoryGirl.create :session_proposal, title: 'Second' }
+
+    it "should include id and title" do
+      sessions = SessionProposal.all_with_user_votes
+      expect(sessions.count).to eq 2
+      expect(sessions.first[:id]).to eq first_session.id
+      expect(sessions.first[:title]).to eq first_session.title
+      expect(sessions.last[:id]).to eq second_session.id
+      expect(sessions.last[:title]).to eq second_session.title
+    end
+
+    it "should include user votes" do
+      first_user = FactoryGirl.create :user, first_name: 'first', session_proposal_voted_ids: [first_session.id, second_session.id]
+      second_user = FactoryGirl.create :user, first_name: 'second', session_proposal_voted_ids: [first_session.id]
+
+      sessions = SessionProposal.all_with_user_votes
+      expect(sessions.count).to eq 2
+      expect(sessions.first[:votes]).to eq 2
+      expect(sessions.last[:votes]).to eq 1
+    end
+  end
 end
