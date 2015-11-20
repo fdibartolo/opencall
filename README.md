@@ -6,20 +6,49 @@ Pendiente de agregar:
 
 * Info del proyecto
 
-### Setup de entorno local
+### Setup del entorno: VM versus Local
 
-* Clonar repo
+Debajo ambas opciones, o una o la otra...
 
-* De no estar presente, instalar [ElasticSearch](http://www.elasticsearch.org/)
+#### VM
+
+Provisionar una VM con todo lo necesario ya instalado, los requerimientos para esto están listados en [OpenCallCookbook](https://github.com/fdibartolo/open_call_cookbook#requirements):
+
+* Clonar chef cookbook
+
+  `$ git clone https://github.com/fdibartolo/open_call_cookbook.git [path-al-cookbook]`
+
+* Generar Vagrantfile
+
+  `$ cp Vagrantfile.sample Vagrantfile`
+
+* Editar Vagrantfile
+
+  Reemplazar las 2 instancias de _[cookbooks_path]_ con el [path-al-cookbook] de arriba
+
+* Andá por un café
+
+  `$ vagrant up`
+
+#### Local
+
+* De no estar presente, instalar 
+  * [ElasticSearch](http://www.elasticsearch.org/)
+  * [NodeJS](http://nodejs.org/)
+
+* Clonar repo y `cd [path-al-repo]`
+
+* Generar .env
+
+  `$ cp .env_sample .env`
 
 * Instalar dependencias (gemas ruby) via `bundle install`
 
-* Instalar dependencias (módulos node) via `rake protractor:install`. Asegurarse que [nodejs](http://nodejs.org/) se encuentra instalado localmente. Se puede verificar que todo instaló correctamente via `rake protractor:example`
+* Instalar dependencias (módulos node) via `rake protractor:install`. Se puede verificar que todo instaló correctamente via `rake protractor:example`
 
-* Crear base de datos
+* Crear base de datos, con datos de referencia
 
-  `$ rake db:create`
-  `$ rake db:migrate`
+  `$ rake db:setup`
 
 * Correr ambas suites de tests
 
