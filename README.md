@@ -1,5 +1,5 @@
 ## OpenCall
-[![Build Status](https://travis-ci.org/nicopaez/opencall.svg?branch=master)](https://travis-ci.org/nicopaez/opencall) [![Code Climate](https://codeclimate.com/github/nicopaez/opencall/badges/gpa.svg)](https://codeclimate.com/github/nicopaez/opencall) [![Coverage Status](https://coveralls.io/repos/nicopaez/opencall/badge.svg)](https://coveralls.io/r/nicopaez/opencall) [![Dependency Status](https://gemnasium.com/nicopaez/opencall.svg)](https://gemnasium.com/nicopaez/opencall)
+[![Build Status](https://travis-ci.org/fdibartolo/opencall.svg?branch=master)](https://travis-ci.org/fdibartolo/opencall) [![Code Climate](https://codeclimate.com/github/fdibartolo/opencall/badges/gpa.svg)](https://codeclimate.com/github/fdibartolo/opencall) [![Coverage Status](https://coveralls.io/repos/fdibartolo/opencall/badge.svg?branch=master&service=github)](https://coveralls.io/github/fdibartolo/opencall?branch=master) [![Dependency Status](https://gemnasium.com/fdibartolo/opencall.svg)](https://gemnasium.com/fdibartolo/opencall)
 ---
 
 Pendiente de agregar:
