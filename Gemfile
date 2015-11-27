@@ -1,20 +1,20 @@
 source 'https://rubygems.org'
 ruby '2.2.1'
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 gem 'puma', '2.15.3'
-gem 'pg', '0.18.3'
+gem 'pg', '0.18.4'
 
 gem 'jbuilder', '2.3.2'
 gem 'sass-rails', '5.0.4'
-gem 'bootstrap-sass', '3.3.5.1'
-gem 'autoprefixer-rails', '6.1.0.1'
+gem 'bootstrap-sass', '3.3.6'
+gem 'autoprefixer-rails', '6.1.1'
 gem 'bootstrap-select-rails', '1.6.3'
 gem 'uglifier', '2.7.2'
 gem 'coffee-rails', '4.1.0'
 gem 'angularjs-rails', '1.4.7'
 gem 'jquery-rails', '4.0.5'
-gem 'animate-rails', '1.0.8'
+gem 'animate-rails', '1.0.9'
 gem 'twitter-typeahead-rails', '0.11.1'
 gem 'marked-rails', '0.3.2.0'
 gem 'momentjs-rails', '2.10.6'
@@ -38,12 +38,12 @@ gem 'newrelic_rpm', '3.14.0.305'
 gem 'workflow', '1.2.0'
 
 group :development, :test do
-  gem 'spring', '1.4.1'
+  gem 'spring', '1.4.4'
   gem 'spring-commands-rspec', '1.0.4'
-  gem 'rspec-rails', '3.3.3'
+  gem 'rspec-rails', '3.4.0'
   gem 'factory_girl_rails', '4.5.0'
   gem 'protractor-rails', '0.0.17'
-  gem 'coveralls', '0.8.5', require: false
+  gem 'coveralls', '0.8.9', require: false
   gem 'letter_opener', '1.4.1'
 end
 
