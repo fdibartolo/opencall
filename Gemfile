@@ -26,7 +26,7 @@ gem 'highcharts-ng-rails', '0.0.7'
 gem 'devise', '3.5.2'
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.2.6'
-gem 'omniauth-linkedin', '0.2.0'
+gem 'omniauth-linkedin-oauth2', '0.1.5'
 gem 'cancancan', '1.13.1'
 
 gem 'will_paginate', '3.0.7'
