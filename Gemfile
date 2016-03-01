@@ -23,8 +23,8 @@ gem 'highcharts-rails', '4.1.9'
 gem 'highcharts-ng-rails', '0.0.7'
 
 gem 'devise', '3.5.6'
-# gem 'omniauth-github', '1.1.2'
-# gem 'omniauth-google-oauth2', '0.2.6'
+gem 'omniauth-github', '1.1.2'
+gem 'omniauth-google-oauth2', '0.3.1'
 gem 'omniauth-linkedin', '0.2.0'
 gem 'cancancan', '1.13.1'
 
