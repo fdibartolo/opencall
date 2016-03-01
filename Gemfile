@@ -38,7 +38,7 @@ gem 'newrelic_rpm', '3.14.0.305'
 gem 'workflow', '1.2.0'
 
 group :development, :test do
-  gem 'spring', '1.4.4'
+  gem 'spring', '1.6.4'
   gem 'spring-commands-rspec', '1.0.4'
   gem 'rspec-rails', '3.4.2'
   gem 'factory_girl_rails', '4.6.0'
