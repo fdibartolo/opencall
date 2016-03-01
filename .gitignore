@@ -30,3 +30,8 @@ coverage/
 node_modules/
 
 .idea
+
+# VM files
+Vagrantfile
+.vagrant/
+vagrant_setup.txt
