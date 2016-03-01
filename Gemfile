@@ -42,7 +42,7 @@ group :development, :test do
   gem 'rspec-rails', '3.4.2'
   gem 'factory_girl_rails', '4.6.0'
   gem 'protractor-rails', '0.0.18'
-  gem 'coveralls', '0.8.13', require: false
+  gem 'coveralls', '0.8.9', require: false
   gem 'letter_opener', '1.4.1'
 end
 
