@@ -12,7 +12,7 @@ Aquí tenemos 2 opciones: instalar todo lo necesario en nuestra computadora, o b
 
 ##### Local
 
-* De no estar presente, instalar 
+De no estar presente, instalar 
   * [ElasticSearch](http://www.elasticsearch.org/)
   * [NodeJS](http://nodejs.org/)
   * [PostgreSQL](http://www.postgresql.org/)
@@ -21,7 +21,7 @@ Aquí tenemos 2 opciones: instalar todo lo necesario en nuestra computadora, o b
 
 Luego de haber clonado el repositorio, dispondremos de una tarea `rake` que nos crea un `Vagrantfile` basado en [OpenCallCookbook](https://github.com/fdibartolo/open_call_cookbook). Los requerimientos del sistema para tal está listados [ahí mismo](https://github.com/fdibartolo/open_call_cookbook#requirements):
 
-* Clonar chef cookbook
+* Correr
 
   `$ rake open_call:vm:setup`
 
