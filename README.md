@@ -6,37 +6,32 @@ Pendiente de agregar:
 
 * Info del proyecto
 
-### Setup del entorno: VM versus Local
+### Setup del entorno
 
-Debajo ambas opciones, o una o la otra...
+Aquí tenemos 2 opciones: instalar todo lo necesario en nuestra computadora, o bien, provisionar una máquina virtual pre-configurada.
 
-#### VM
+##### Local
 
-Provisionar una VM con todo lo necesario ya instalado, los requerimientos para esto están listados en [OpenCallCookbook](https://github.com/fdibartolo/open_call_cookbook#requirements):
+De no estar presente, instalar 
+  * [ElasticSearch](http://www.elasticsearch.org/)
+  * [NodeJS](http://nodejs.org/)
+  * [PostgreSQL](http://www.postgresql.org/)
 
-* Clonar chef cookbook
+##### VM
 
-  `$ git clone https://github.com/fdibartolo/open_call_cookbook.git [path-al-cookbook]`
+Luego de haber clonado el repositorio, dispondremos de una tarea `rake` que nos crea un `Vagrantfile` basado en [OpenCallCookbook](https://github.com/fdibartolo/open_call_cookbook). Los requerimientos del sistema para tal está listados [ahí mismo](https://github.com/fdibartolo/open_call_cookbook#requirements):
 
-* Generar Vagrantfile
+* Correr
 
-  `$ cp Vagrantfile.sample Vagrantfile`
+  `$ rake open_call:vm:setup`
 
-* Editar Vagrantfile
-
-  Reemplazar las 2 instancias de _[cookbooks_path]_ con el [path-al-cookbook] de arriba
-
-* Andá por un café
+* Si todo fue bien, andá por un café
 
   `$ vagrant up`
 
-#### Local
+##### y continuamos por aquí...
 
-* De no estar presente, instalar 
-  * [ElasticSearch](http://www.elasticsearch.org/)
-  * [NodeJS](http://nodejs.org/)
-
-* Clonar repo y `cd [path-al-repo]`
+* `$ cd [path-al-repo]` o `$ vagrant shh && cd /vagrant`
 
 * Generar .env
 
@@ -91,11 +86,11 @@ A modo de ejemplo, se puede referenciar el archivo `.env_sample`
 
 #### Datos dummy 
 
-A modo de prueba, se pueden crear datos dummy a traves de:
+A modo de prueba, se pueden crear datos dummy a través de:
 
   `$ rake open_call:sessions_with_tags:generate[./db/mocks/mock_sessions_with_tags.json]`
 
-La creación de los datos automaticamente indexará los índices de ElasticSearch
+La creación de los datos automáticamente indexará los índices de ElasticSearch
 
 ### Cómo contribuir
 

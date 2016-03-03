@@ -35,3 +35,4 @@ node_modules/
 Vagrantfile
 .vagrant/
 vagrant_setup.txt
+vm_cookbook/
