@@ -33,7 +33,7 @@ gem 'elasticsearch-model', '0.1.8'
 gem 'elasticsearch-rails', '0.1.8'
 gem 'elasticsearch-extensions', '0.0.20'
 
-gem 'newrelic_rpm', '3.14.0.305'
+gem 'newrelic_rpm', '3.15.0.314'
 gem 'workflow', '1.2.0'
 
 group :development, :test do
