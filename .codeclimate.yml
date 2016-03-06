@@ -3,4 +3,6 @@ languages:
    JavaScript: true
 
 exclude_paths:
- - "app/assets/javascripts/analytics.js"
+  - "app/assets/javascripts/analytics.js"
+  - spec/**/*
+  
