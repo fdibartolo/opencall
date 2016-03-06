@@ -5,7 +5,7 @@ gem 'rails', '4.2.5.2'
 gem 'puma', '2.15.3'
 gem 'pg', '0.18.4'
 
-gem 'jbuilder', '2.3.2'
+gem 'jbuilder', '2.4.1'
 gem 'sass-rails', '5.0.4'
 gem 'bootstrap-sass', '3.3.6'
 gem 'bootstrap-select-rails', '1.6.3'
