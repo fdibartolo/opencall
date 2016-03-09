@@ -3,8 +3,7 @@ rvm:
   - 2.2.1
 
 env:
-  - ES_TEST_HOST=localhost ES_TEST_PORT=9250 SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3'
-
+  - ES_TEST_HOST=localhost ES_TEST_PORT=9250 SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3' DISPLAY=:99
 
 addons:
   postgresql: "9.3"
@@ -18,6 +17,11 @@ test:
 before_script:
   - psql -c 'create database open_call_test;' -U postgres
   - bundle exec rake db:migrate RAILS_ENV="test"
+  - sh -e /etc/init.d/xvfb start
+
+script:
+  - rake
+  - rake open_call:e2e
 
 before_deploy:
   - "echo $TRAVIS_COMMIT > public/commit_track.txt"
