@@ -1,6 +1,33 @@
-languages:
-   Ruby: true
-   JavaScript: true
-
+engines:
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  coffeelint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.erb"
+  - "**.rb"
+  - "**.slim"
+  - "**.coffee"
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
 exclude_paths:
- - "app/assets/javascripts/analytics.js"
+- app/assets/javascripts/analytics.js
+- spec/**/*
