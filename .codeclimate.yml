@@ -30,4 +30,5 @@ ratings:
   - "**.module"
 exclude_paths:
 - app/assets/javascripts/analytics.js
+- db/**/*
 - spec/**/*
