@@ -20,8 +20,8 @@ before_script:
   - sh -e /etc/init.d/xvfb start
 
 script:
-  - rake
-  - rake open_call:e2e
+  - bundle exec rake
+  - bundle exec rake open_call:e2e
 
 before_deploy:
   - "echo $TRAVIS_COMMIT > public/commit_track.txt"
