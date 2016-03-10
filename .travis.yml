@@ -3,7 +3,7 @@ rvm:
   - 2.2.1
 
 env:
-  - ES_TEST_HOST=localhost ES_TEST_PORT=9250 SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3' DISPLAY=:99 NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules:/usr/lib/node_modules
+  - ES_TEST_HOST=localhost ES_TEST_PORT=9250 SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3' DISPLAY=:99 NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules:/usr/lib/node_modules:/home/travis/.nvm/v$TRAVIS_NODE_VERSION/lib/node_modules/
 
 addons:
   postgresql: "9.3"
@@ -13,6 +13,11 @@ test:
   adapter: postgresql
   database: open_call_test
   username: postgres
+
+cache:
+  bundler: true
+  directories:
+    - node_modules
 
 before_script:
   - psql -c 'create database open_call_test;' -U postgres
