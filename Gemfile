@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.2.1'
 
-gem 'rails', '4.2.5.2'
-gem 'puma', '2.15.3'
+gem 'rails', '4.2.6'
+gem 'puma', '3.4.0'
 gem 'pg', '0.18.4'
 
 gem 'jbuilder', '2.4.1'
@@ -12,8 +12,8 @@ gem 'bootstrap-select-rails', '1.6.3'
 gem 'uglifier', '2.7.2'
 gem 'coffee-rails', '4.1.1'
 gem 'angularjs-rails', '1.5.0'
-gem 'jquery-rails', '4.1.0'
-gem 'animate-rails', '1.0.9'
+gem 'jquery-rails', '4.1.1'
+gem 'animate-rails', '1.0.10'
 gem 'twitter-typeahead-rails', '0.11.1'
 gem 'marked-rails', '0.3.2.0'
 gem 'momentjs-rails', '2.11.0'
@@ -33,7 +33,7 @@ gem 'elasticsearch-model', '0.1.8'
 gem 'elasticsearch-rails', '0.1.8'
 gem 'elasticsearch-extensions', '0.0.20'
 
-gem 'newrelic_rpm', '3.15.0.314'
+gem 'newrelic_rpm', '3.15.1.316'
 gem 'workflow', '1.2.0'
 
 group :development, :test do
@@ -41,7 +41,7 @@ group :development, :test do
   gem 'spring-commands-rspec', '1.0.4'
   gem 'rspec-rails', '3.4.2'
   gem 'factory_girl_rails', '4.6.0'
-  gem 'protractor-rails', '0.0.18'
+  gem 'protractor-rails', '0.0.19'
   gem 'coveralls', '0.8.9', require: false
   gem 'letter_opener', '1.4.1'
 end
