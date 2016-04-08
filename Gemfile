@@ -23,7 +23,7 @@ gem 'highcharts-rails', '4.1.9'
 gem 'highcharts-ng-rails', '0.0.7'
 
 gem 'devise', '3.5.6'
-gem 'omniauth-oauth2', '1.3.1'
+gem 'omniauth-oauth2', '1.3.1' # upgrading to 1.4.0 injects a defect on linkedin oauth
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.3.1'
 gem 'omniauth-linkedin-oauth2', '0.1.5'
