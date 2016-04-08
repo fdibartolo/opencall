@@ -67,6 +67,20 @@ Notarán que existen dos Procfiles: `./Procfile` y `./Procfile.local`. El primer
 
 Por única vez, será necesario dar permisos necesarios a dicho script: `chmod 777 bin/start`
 
+#### (Re)generando el índice de ElasticSearch
+
+Dentro de la `rails console`, podremos lograr esto a través de:
+
+```ruby
+SessionProposal.import
+
+# o bien, forzando la regenaración del índice
+SessionProposal.import force: true
+
+```
+
+Mas info sobre esto en la [doc oficial](https://github.com/elastic/elasticsearch-rails/tree/master/elasticsearch-model#importing-the-data) de la gema.
+
 #### Variables de entorno
 
 Una de las opciones con foreman es que nos permite tener un archivo `.env` en la raiz, de manera tal poder definir las variables de entorno necesarias para los modos desarrollo y test. A continuación se listan las variables de entorno que el sistema necesitará para una u otra necesidad:
