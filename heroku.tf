@@ -24,7 +24,7 @@ resource "heroku_app" "default" {
   }
 
   provisioner "local-exec" {
-    command = "git remote add ${heroku_app.default.name} ${heroku_app.default.git_url}; git push ${heroku_app.default.name} master; heroku run rake db:setup"
+    command = "./heroku.sh ${heroku_app.default.name} ${heroku_app.default.git_url}"
   }
 }
 
