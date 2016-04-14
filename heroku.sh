@@ -1,3 +1,5 @@
+#!/bin/bash
+
 REMOTE=$1
 GIT_URL=$2
 
