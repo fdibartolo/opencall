@@ -17,7 +17,7 @@ variable "linkedin_secret" {}
 // fallback value, not prompted upon applying
 variable "region" { default = "us" }
 variable "lang" { default = "en_US.UTF-8" }
-variable "tz" { default = "America/Buenos Aires" }
+variable "tz" { default = "America/Argentina/Buenos_Aires" }
 variable "submission_due_date" { default = "July 8 2020 23:59 UTC-3" }
 variable "acceptance_due_date" { default = "August 17 2020 23:59 UTC-3" }
 variable "web_concurrency" { default = "2" }
