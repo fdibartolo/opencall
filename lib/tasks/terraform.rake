@@ -22,13 +22,13 @@ namespace :open_call do
     desc "Creates an OpenCall instance on Heroku"
     task :create => [:check_system_requirements] do
       puts "About to build infrastructure; you are now being prompted for configuration variables:".yellow
-      system("terraform apply")
+      Dir.chdir("terraform") { system("terraform apply") }
     end
 
     desc "Destroy the OpenCall instance from Heroku"
     task :destroy => [:check_system_requirements] do
-      puts "About to destroy infrastructure...".yellow
-      system("terraform destroy")
+      puts "About to destroy infrastructure; you can provide _any_ value when prompted for config vars".yellow
+      Dir.chdir("terraform") { system("terraform destroy") }
     end
   end
 end

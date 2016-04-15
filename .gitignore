@@ -38,5 +38,5 @@ vagrant_setup.txt
 vm_cookbook/
 
 # terraform
-terraform.tfvars
-terraform.tfstate*
+terraform/terraform.tfvars
+terraform/terraform.tfstate*
