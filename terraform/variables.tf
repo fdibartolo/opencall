@@ -4,6 +4,7 @@ variable "api_key" {}
 
 // to be prompted upon applying, must have
 variable "name" {}
+variable "branch" {}
 variable "github_key" {}
 variable "github_secret" {}
 variable "twitter_key" {}

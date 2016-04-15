@@ -24,7 +24,7 @@ resource "heroku_app" "default" {
   }
 
   provisioner "local-exec" {
-    command = "./heroku.sh ${heroku_app.default.name} ${heroku_app.default.git_url}"
+    command = "./heroku.sh ${heroku_app.default.name} ${heroku_app.default.git_url} ${var.branch}"
   }
 }
 
