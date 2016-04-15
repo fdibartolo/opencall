@@ -6,9 +6,16 @@ namespace :open_call do
 
       result = `terraform -v`
       if $?.success?
-        puts "#{result[0..-3]} is present".green
+        puts "- #{result[0..-3]} is present".green
       else
         raise "Terraform is not installed. Follow installation instructions from 'https://www.terraform.io/intro/getting-started/install.html' before continuing".red
+      end
+
+      result = `heroku --version`
+      if $?.success?
+        puts "- #{result[0..-3]} is present".green
+      else
+        raise "Heroku toolbelt is not installed. If you are on OSX, consider installing it via homebrew. Refer to this for more info: https://github.com/heroku/toolbelt/issues/53#issuecomment-47022750".red
       end
     end
 
