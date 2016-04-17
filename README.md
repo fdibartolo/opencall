@@ -104,7 +104,11 @@ A modo de prueba, se pueden crear datos dummy a través de:
 
   `$ rake open_call:sessions_with_tags:generate[./db/mocks/mock_sessions_with_tags.json]`
 
-La creación de los datos automáticamente indexará los índices de ElasticSearch
+La creación de los datos automáticamente indexará los índices de ElasticSearch, cuyo cluster debe estar corriendo.
+
+### Provisionamiento de nueva instancia en Heroku
+
+Este proceso está automatizado tal cual se detalla en su [apartado](https://github.com/fdibartolo/opencall/terraform)
 
 ### Cómo contribuir
 
