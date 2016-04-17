@@ -108,7 +108,7 @@ La creación de los datos automáticamente indexará los índices de ElasticSear
 
 ### Provisionamiento de nueva instancia en Heroku
 
-Este proceso está automatizado tal cual se detalla en su [apartado](https://github.com/fdibartolo/opencall/terraform)
+Este proceso está automatizado tal cual se detalla en su [apartado](https://github.com/fdibartolo/opencall/blob/terraform/terraform/README.md)
 
 ### Cómo contribuir
 
