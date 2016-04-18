@@ -26,6 +26,7 @@ es:
       sign_in_to_post: "Inicia sesión y dejale un comentario al autor"
       sign_in_to_all: "Inicia sesión y propone tu charla, vota las de otros, marca tus favoritas, y mas!"
       no_search_results: "No hemos podido encontrar resultados <br> que concuerden con la búsqueda... "
+      no_sessions: "Está todo tranquilo por aquí...<br> Sé el primero es proponer una sesión!"
       matching_tags: "Otros tags relevantes"
       new: "¿De qué te gustaría hablar?"
       title: "Título"
