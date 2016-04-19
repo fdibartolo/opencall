@@ -4,7 +4,7 @@
     <%- resource_class.omniauth_providers.each do |provider| %>
       <% provider_icon = provider == :google_oauth2 ? 'googleplus' : provider %>
       <div class="col-xs-4 text-center">
-        <%= link_to content_tag(:span, '', class: "btn-social ion-social-#{provider_icon}"), user_omniauth_authorize_path(provider) %>
+        <%= link_to content_tag(:span, '', class: "ion-social-#{provider_icon}"), user_omniauth_authorize_path(provider), class: "btn btn-social btn-#{provider_icon}" %>
       </div>
     <% end -%>
   <% end -%>
