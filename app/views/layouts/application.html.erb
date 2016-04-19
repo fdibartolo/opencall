@@ -46,27 +46,17 @@
                     <li><%= link_to 'My proposals', "#{root_url}#/users/sessions" %></li>
                     <li><%= link_to 'My voted proposals', "#{root_url}#/users/voted_sessions" %></li>
                     <li><%= link_to 'My faved proposals', "#{root_url}#/users/faved_sessions" %></li>
-                    <% if current_user.admin? %>
-                      <li class="divider"></li>
-                      <li class="dropdown-header">Administrator</li>
-                      <li><%= link_to 'My evaluations', "#{root_url}#/users/reviews" %></li>
-                      <li><%= link_to 'Manage reviewers', roles_url %></li>
-                      <li><%= link_to 'Proposals status', "#{root_url}#/stats" %></li>
-                      <li><%= link_to 'Acceptance Notifications', "#{root_url}#/acceptance_notifications" %></li>
-                      <li><%= link_to 'Author Inbox', "#{root_url}#/author_inbox" %></li>
+
+                    <% if can? :review, SessionProposal %>
+                      <div ng-include="'templates/menu/administration.html'" replace-element></div>
                     <% end %>
-                    <% if current_user.reviewer? %>
-                      <li class="divider"></li>
-                      <li class="dropdown-header">Reviewer</li>
-                      <li><%= link_to 'My evaluations', "#{root_url}#/users/reviews" %></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Reports</li>
+                    <li><%= link_to 'Sessions by vote count', "#{root_url}#/reports/session_votes" %></li>
+                    <% if can? :review, SessionProposal %>
+                      <div ng-include="'templates/menu/advanced_reports.html'" replace-element></div>
                     <% end %>
-                    <% if current_user.reviewer? or current_user.admin? %>
-                      <li class="divider"></li>
-                      <li class="dropdown-header">Reports</li>
-                      <li><%= link_to 'Comments by proposals', "#{root_url}#/reports/reviewer_comments" %></li>
-                      <li><%= link_to 'Evaluations status', "#{root_url}#/reports/reviews_status" %></li>
-                      <li><%= link_to 'Sessions by votes', "#{root_url}#/reports/session_votes" %></li>
-                    <% end %>
+
                     <li class="divider"></li>
                     <li>
                       <%= link_to "Sign out", destroy_user_session_path, method: :delete, id: 'signout-link' %>
