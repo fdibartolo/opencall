@@ -1,0 +1,9 @@
+<li class="divider"></li>
+<li class="dropdown-header">Administration</li>
+<li><%= link_to 'My evaluations', "#{root_url}#/users/reviews" %></li>
+<% if can? :manage, SessionProposal %>
+  <li><%= link_to 'Manage reviewers', roles_url %></li>
+  <li><%= link_to 'Proposals status', "#{root_url}#/stats" %></li>
+  <li><%= link_to 'Acceptance Notifications', "#{root_url}#/acceptance_notifications" %></li>
+  <li><%= link_to 'Author Inbox', "#{root_url}#/author_inbox" %></li>
+<% end %>
