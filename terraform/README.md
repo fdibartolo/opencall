@@ -1,5 +1,5 @@
 ## Provisionamiento de nueva instancia en Heroku
----
+
 El proceso de creación de instancias de la app en Heroku está automatizado a través de tareas `rake`. Si bien existe una instancia principal sincronizada con el branch master, y cuyo despliegue está también automatizo via Github > TravisCI > Heroku, el propósito de este provisionamiento automático es generar instancias especificas para contextos especiales (una prueba puntual en un entorno simil producción, un evento, etc).
 
 ### Requerimientos de sistema
@@ -15,6 +15,7 @@ De no estar presente, instalar
   Existen dos tareas, según la acción en cuestión:
 
   * Crear app
+
   `$ rake open_call:heroku:create`
 
   Entre otras cosas, esta tarea correrá el bash script `terraform/heroku.sh`. De ser necesario, habrá que darle permisos de ejecución por única vez
@@ -22,6 +23,7 @@ De no estar presente, instalar
   `$ chmod +x heroku.sh`
 
   * Eliminar app
+  
   `$ rake open_call:heroku:destroy`
 
 ### Variables: configuración de la app
