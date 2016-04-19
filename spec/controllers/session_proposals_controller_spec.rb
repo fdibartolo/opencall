@@ -339,7 +339,6 @@ RSpec.describe SessionProposalsController, :type => :controller do
   describe "GET community votes" do
     let(:theme) { FactoryGirl.create :theme }
     let!(:first_session) { FactoryGirl.create :session_proposal, theme: theme }
-    let!(:role_admin) { FactoryGirl.create :role }
 
     it "should return success" do
       get :community_votes
