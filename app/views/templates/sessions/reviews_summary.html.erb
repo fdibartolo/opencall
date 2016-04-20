@@ -25,10 +25,10 @@
           <label><%= t('reviews.labels.comment_for_admins') %></label>
           <p markdown="review.private_body"></p>
           <div ng-if="isPendingReview(review.status)" class="actions">
-            <button class="btn btn-xs btn-success" confirmed-action="acceptReview(review)" confirm-click="<%= t('reviews.buttons.accept.confirmation') %>">
+            <button class="btn btn-sm btn-success" confirmed-action="acceptReview(review)" confirm-click="<%= t('reviews.buttons.accept.confirmation') %>">
               <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= t('reviews.buttons.accept.text') %>
             </button>
-            <button class="btn btn-xs btn-danger" confirmed-action="rejectReview(review)" confirm-click="<%= t('reviews.buttons.reject.confirmation') %>">
+            <button class="btn btn-sm btn-danger" confirmed-action="rejectReview(review)" confirm-click="<%= t('reviews.buttons.reject.confirmation') %>">
               <span class="glyphicon glyphicon-remove"></span>&nbsp;<%= t('reviews.buttons.reject.text') %>
             </button>
           </div>

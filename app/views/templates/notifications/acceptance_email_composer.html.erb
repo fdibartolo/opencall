@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
           <%= t('notifications.buttons.cancel') %>
         </button>
         <button ng-if="isAcceptanceTemplate" class="btn btn-success" confirmed-action="acceptSession(sessionToNotify)" confirm-click="<%= t('notifications.buttons.accept.confirmation') %>" ng-disabled="isDeclinedSession(sessionToNotify.status)">

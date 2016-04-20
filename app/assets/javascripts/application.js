@@ -17,7 +17,8 @@
 //= require angular-mocks
 //= require angular-animate
 //= require app/open_call
-//= require bootstrap-sprockets
+//= require tether
+//= require bootstrap
 //= require bootstrap-select
 //= require twitter/typeahead.min
 //= require marked

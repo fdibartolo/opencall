@@ -17,7 +17,7 @@
             <td><%= user.last_name %></td>
             <td><%= user.email %></td>
             <td>
-              <%= link_to t('roles.buttons.revoke.text'), role_path(role, user_id: user.id), data: { confirm: t('roles.buttons.revoke.confirmation', name: user.full_name) }, method: :delete, class: "btn btn-danger btn-sm pull-right" %>
+              <%= link_to t('roles.buttons.revoke.text'), role_path(role, user_id: user.id), data: { confirm: t('roles.buttons.revoke.confirmation', name: user.full_name) }, method: :delete, class: "btn btn-danger btn-sm pull-xs-right" %>
             </td>
           </tr>
         <% end %>

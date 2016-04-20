@@ -123,14 +123,14 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-8">
-          <button id="create-button" class="btn btn-primary pull-right" ng-click="createSession()" ng-if="isNew()">
+          <button id="create-button" class="btn btn-primary pull-xs-right" ng-click="createSession()" ng-if="isNew()">
             <%= t('sessions.buttons.create_session') %>
           </button>
-          <button id="create-button" class="btn btn-primary pull-right" ng-click="updateSession()" ng-if="!isNew()">
+          <button id="create-button" class="btn btn-primary pull-xs-right" ng-click="updateSession()" ng-if="!isNew()">
             <%= t('sessions.buttons.update_session') %>
           </button>
           <br><hr>
-          <div class="btn btn-default pull-right"><%= link_to t('sessions.buttons.back'), "#/sessions" %></div>
+          <div class="btn btn-secondary pull-xs-right"><%= link_to t('sessions.buttons.back'), "#/sessions" %></div>
         </div>
       </div>
     </div>

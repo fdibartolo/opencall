@@ -39,11 +39,11 @@
           </div>
         </td>
         <td class="actions">
-          <div class="pull-right">
-            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isDeclinedSession(session.status)" ng-click="getAcceptanceTemplateFor(session)">
+          <div class="pull-xs-right">
+            <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isDeclinedSession(session.status)" ng-click="getAcceptanceTemplateFor(session)">
               <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= t('notifications.buttons.accept.text') %>
             </button><br>
-            <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isAcceptedSession(session.status)" ng-click="getDenialTemplateFor(session)">
+            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isAcceptedSession(session.status)" ng-click="getDenialTemplateFor(session)">
               <span class="glyphicon glyphicon-remove"></span>&nbsp;<%= t('notifications.buttons.decline.text') %>
             </button>
           </div>

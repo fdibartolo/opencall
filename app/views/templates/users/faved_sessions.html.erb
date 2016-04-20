@@ -24,7 +24,7 @@
       <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
         <h3>
           <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
-          <a ng-click="remove_fav(session.id)" class="btn btn-xs btn-warning pull-right" style="color:white;margin:5px">
+          <a ng-click="remove_fav(session.id)" class="btn btn-sm btn-warning pull-xs-right" style="color:white;margin:5px">
             <%= t('sessions.buttons.unfav_session') %> &nbsp; 
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </a>
@@ -33,7 +33,7 @@
         <div>
           <ul class="list-inline">
             <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
-            <li class="pull-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
+            <li class="pull-xs-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
               <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
                 <span class="ion-videocamera">&nbsp;</span><%= t('sessions.labels.video') %>
               </a>

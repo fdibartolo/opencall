@@ -17,7 +17,7 @@
         </div>
         <ul class="list-inline">
           <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag.name}}</li>
-          <li class="pull-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
+          <li class="pull-xs-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
             <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
               <span class="ion-videocamera">&nbsp;</span><%= t('sessions.labels.video') %>
             </a>
@@ -34,7 +34,7 @@
     <br><hr>
 
     <div class="row text-center" ng-init="showProfile = false">
-      <div class="btn btn-default btn-sm" ng-click="showProfile = !showProfile">
+      <div class="btn btn-secondary btn-sm" ng-click="showProfile = !showProfile">
         {{ showProfile ? 'Hide' : 'Show'}} {{session.author.name}}'s profile
       </div>
       <div ng-include="'templates/users/profile_summary.html'" ng-if="showProfile"></div>
@@ -80,14 +80,14 @@
           </div>
         </div>        
 
-        <button class="btn btn-primary pull-right" ng-click="postReview()" ng-disabled="!isPendingOrNewReview(newSessionReview.status)">
+        <button class="btn btn-primary pull-xs-right" ng-click="postReview()" ng-disabled="!isPendingOrNewReview(newSessionReview.status)">
           <%= t('sessions.buttons.submit_review') %>
         </button>
       </div>
     </div>
 
     <div class="col-sm-10 text-right" style="padding-right:5px;margin:20px 0"><hr>
-      <div class="btn btn-default">
+      <div class="btn btn-secondary">
         <%= link_to t('sessions.buttons.cancel'), "#/sessions/show/{{session.id}}" %>
       </div>
     </div>
