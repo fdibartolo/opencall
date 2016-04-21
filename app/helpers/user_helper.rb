@@ -37,11 +37,22 @@ module UserHelper
   end
 
   def link_context_for provider
-    provider_icon = provider == :google_oauth2 ? 'googleplus' : provider
+    provider_icon = social_icon_for provider
     color, action, message = current_user.identities.find_by(provider: provider).nil? ? 
       ['text-muted', user_omniauth_authorize_path(provider), 'link'] : 
       ['', users_unlink_social_path(provider: provider), 'unlink']
     
-    ["ion-social-#{provider_icon} #{color}", action, "click to #{message}"]
+    ["#{provider_icon} #{color}", action, "click to #{message}"]
+  end
+
+  def social_icon_for provider
+    case provider
+    when :google_oauth2
+      'fa fa-google-plus'
+    when :github
+      'fa fa-github'
+    when :linkedin
+      'fa fa-linkedin-square'
+    end
   end
 end
