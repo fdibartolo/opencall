@@ -1,10 +1,10 @@
 <div ng-cloak ng-init="sessions()" fade-animation="true" class="row">
   <div ng-if="loading" class="loading">
-    <p class="text-center"><span class="ion-loading-a"></span></p>
+    <p class="text-xs-center"><span class="ion-loading-a"></span></p>
   </div>
   <div ng-if="!loading">
     <div ng-if="sessions.length == 0" class="no-search-results">
-      <h2 class="text-center">
+      <h2 class="text-xs-center">
         <%= t('sessions.labels.no_sessions_yet') %><br><br>
       </h2>
       <div class="action-button-container">
@@ -15,7 +15,7 @@
     </div>
 
     <div ng-if="sessions.length > 0" class="col-sm-offset-1 col-sm-10"><br><br>
-      <h2 class="text-center"><%= t('sessions.labels.my_sessions') %></h2><br><br>
+      <h2 class="text-xs-center"><%= t('sessions.labels.my_sessions') %></h2><br><br>
 
       <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
         <h3>

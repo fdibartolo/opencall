@@ -1,7 +1,7 @@
 <div class="row col-sm-offset-2 col-sm-8" ng-init="loadProfileSummary()" fade-animation="true">
   <br><div class="text-left">{{session.profile.bio}}</div><br>
 
-  <div class="row session-profile-links text-center">
+  <div class="row session-profile-links text-xs-center">
     <a ng-href="{{session.profile.website}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.website)}">
       <span class="ion-social-wordpress"></span>
     </a>

@@ -9,7 +9,7 @@
       </thead>
       <tr ng-repeat="session in sessions | orderBy:'-votes'" class="reviewers-comments-summary" ng-show="isVisibleTheme(session.theme)">
         <td class="">
-          <div class="text-center">
+          <div class="text-xs-center">
             <div class="votes-count center-block"><span>{{session.votes}}</span></div>
           </div>
         </td>

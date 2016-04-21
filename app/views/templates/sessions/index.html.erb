@@ -7,7 +7,7 @@
         ng-change="search()"
         helpable="<%= t('sessions.help.search') %>">
       <span class="glyphicon glyphicon-search form-control-feedback" style="margin-right:15px" aria-hidden="true"></span>
-      <p ng-if="searchTerms != '' && total != 0" class="text-muted text-center" fade-animation="true">
+      <p ng-if="searchTerms != '' && total != 0" class="text-muted text-xs-center" fade-animation="true">
         <small><i>{{total}} matching results</i></small>
       </p>
     </div>
@@ -15,7 +15,7 @@
 
   <div class="col-md-8">
     <div ng-if="loading" class="loading">
-      <p class="text-center"><span class="ion-loading-a"></span></p>
+      <p class="text-xs-center"><span class="ion-loading-a"></span></p>
     </div>
     <div ng-if="!loading" ng-include="'templates/sessions/search_result.html'"></div>
   </div>
@@ -23,7 +23,7 @@
   <div sticky offset="60" sticky-class="buttons-sticked" class="col-md-offset-1 col-md-3">
     <div ng-include="'templates/sessions/search_side_bar.html'"></div>
     <br><br>
-    <div ng-if="matched_tags.length > 0" class="text-center">
+    <div ng-if="matched_tags.length > 0" class="text-xs-center">
       <h3><%= t('sessions.labels.matching_tags') %></h3>
       <ul class="list-inline">
         <li ng-repeat="tag in matched_tags track by $index" class="tag lg bg-primary clickable" ng-click="search(tag.key)">

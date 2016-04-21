@@ -1,18 +1,18 @@
 <% if current_user and can? :review, SessionProposal %>
   <div ng-cloak ng-controller="ReviewsController" ng-init="loadUserReviews()" fade-animation="true" class="row">
     <div ng-if="loading" class="loading">
-      <p class="text-center"><span class="ion-loading-a"></span></p>
+      <p class="text-xs-center"><span class="ion-loading-a"></span></p>
     </div>
     <div ng-if="!loading">
       <div ng-if="reviews.length == 0" class="no-search-results">
-        <h2 class="text-center"><%= t('sessions.labels.no_reviews_yet') %></h2>
+        <h2 class="text-xs-center"><%= t('sessions.labels.no_reviews_yet') %></h2>
       </div>
 
       <div ng-if="reviews.length > 0" fade-animation="true">
-        <h2 class="text-center"><%= t('sessions.labels.my_reviewed_sessions') %></h2><br><br>
+        <h2 class="text-xs-center"><%= t('sessions.labels.my_reviewed_sessions') %></h2><br><br>
 
         <div ng-repeat="review in reviews" class="row session-summary">
-          <div class="col-sm-2 text-center">
+          <div class="col-sm-2 text-xs-center">
             <div class="review-big-score center-block" ng-style="{'background-color': review.score.bgColor, 'color': review.score.color}">
               <span>{{review.score.text}}</span>
             </div>
@@ -48,7 +48,7 @@
   </div>
 <% else %>
   <div class="no-review-access">
-    <h4 class="text-muted text-center">
+    <h4 class="text-muted text-xs-center">
       <%= t('sessions.no_access.reviews') %> <br><br>
       <span class="ion-sad"></span>
     </h4>
