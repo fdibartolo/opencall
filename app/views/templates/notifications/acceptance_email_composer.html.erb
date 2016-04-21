@@ -12,13 +12,13 @@
       </div>
       <div class="modal-body">
         <ul class="nav nav-tabs" role="tablist" ng-init="body = true">
-          <li role="presentation" ng-class="{active: body}">
-            <a ng-click="body = !body">
+          <li class="nav-item" role="presentation">
+            <a ng-click="body = !body" class="nav-link"  ng-class="{active: body}">
               <small><%= t('notifications.labels.compose') %></small>
             </a>
           </li>
-          <li role="presentation" ng-class="{active: !body}">
-            <a ng-click="body = !body">
+          <li class="nav-item" role="presentation">
+            <a ng-click="body = !body" class="nav-link" ng-class="{active: !body}">
               <small><%= t('notifications.labels.feedback') %></small>
             </a>
           </li>
@@ -37,10 +37,10 @@
           <%= t('notifications.buttons.cancel') %>
         </button>
         <button ng-if="isAcceptanceTemplate" class="btn btn-success" confirmed-action="acceptSession(sessionToNotify)" confirm-click="<%= t('notifications.buttons.accept.confirmation') %>" ng-disabled="isDeclinedSession(sessionToNotify.status)">
-          <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= t('notifications.buttons.accept.text') %>
+          <span class="fa fa-check"></span>&nbsp;<%= t('notifications.buttons.accept.text') %>
         </button>
         <button ng-if="isDenialTemplate" class="btn btn-danger" confirmed-action="declineSession(sessionToNotify)" confirm-click="<%= t('notifications.buttons.decline.confirmation') %>" ng-disabled="isAcceptedSession(sessionToNotify.status)">
-          <span class="glyphicon glyphicon-remove"></span>&nbsp;<%= t('notifications.buttons.decline.text') %>
+          <span class="fa fa-times"></span>&nbsp;<%= t('notifications.buttons.decline.text') %>
         </button>
       </div>
     </div>

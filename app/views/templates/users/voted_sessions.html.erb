@@ -26,7 +26,7 @@
           <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
           <a ng-click="remove_vote(session.id)" class="btn btn-sm btn-danger pull-xs-right" style="color:white;margin:5px">
             <%= t('sessions.buttons.unvote_session') %> &nbsp; 
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <span class="fa fa-times" aria-hidden="true"></span>
           </a>
         </h3>
         <div class="track">{{session.theme}} - {{session.track}}</div>

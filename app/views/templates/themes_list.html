@@ -1,7 +1,7 @@
-<div class="col-sm-2 text-xs-center" sticky offset="60">
+<div class="col-sm-2 text-xs-center themes" sticky offset="60">
   <span><small><em>click a theme to show/hide</em></small></span><br><br>
   <ul class="list-inline">
-    <li ng-repeat="theme in themes" class="tag lg bg-primary clickable" ng-class="{'bg-primary': theme.active, 'bg-info text-muted': !theme.active}" ng-click="toggleTheme(theme)">{{theme.name}}</li>
+    <li ng-repeat="theme in themes" class="tag lg border clickable" ng-class="{'bg-primary': theme.active, 'bg-secondary': !theme.active}" ng-click="toggleTheme(theme)">{{theme.name}}</li>
   </ul>
   <br>
 </div>

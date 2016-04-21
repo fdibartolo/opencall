@@ -8,7 +8,7 @@
         <label for="input-title" class="col-sm-2 control-label"><%= t('sessions.labels.title') %></label>
         <div class="col-sm-8">
           <input type="text" id="input-title" placeholder="<%= t('sessions.labels.title') %>" ng-model="newSession.title" class="form-control">
-          <span ng-if="newSession.invalidTitle" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <span ng-if="newSession.invalidTitle" class="fa fa-times form-control-feedback" aria-hidden="true"></span>
           <small ng-if="newSession.invalidTitle" class="text-danger">
             <%= t('sessions.errors.title_cant_be_blank') %>
           </small>

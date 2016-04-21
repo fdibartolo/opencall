@@ -65,6 +65,7 @@
     padding: 4px 15px;
     font-size: 100%; 
   }
+  &.border { border: 1px solid $brand-primary; }
   small { font-size: 70%; }
 }
 
