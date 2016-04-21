@@ -2,7 +2,6 @@ $btn-primary-hover-bg: #286090;
 $btn-info-hover-bg: #31b0d5;
 
 @import "bootstrap";
-@import "bootstrap-select";
 @import "home";
 @import "users";
 @import "session_proposals";
@@ -82,3 +81,5 @@ $btn-info-hover-bg: #31b0d5;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
   }
 }
+
+.form-control-label { font-weight: bold; text-align: right; }

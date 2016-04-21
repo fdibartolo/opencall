@@ -19,7 +19,6 @@
 //= require app/open_call
 //= require tether
 //= require bootstrap
-//= require bootstrap-select
 //= require twitter/typeahead.min
 //= require marked
 //= require moment
