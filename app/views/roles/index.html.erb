@@ -3,8 +3,8 @@
   <% @roles.each do |role| %>
     <h3><%= t('roles.labels.current', role: role.name.pluralize(2).titlecase) %></h3><br>
 
-    <div class="row col-sm-8">
-      <table class="table table-hover table-condensed">
+    <div class="col-sm-6">
+      <table class="table table-hover table-sm">
         <thead>
           <th><%= t('devise.labels.first_name') %></th>
           <th><%= t('devise.labels.last_name') %></th>
@@ -24,7 +24,7 @@
       </table>
     </div>
     <br>
-    <div class="row col-sm-5">
+    <div class="col-sm-offset-1 col-sm-5">
       <h4><%= t('roles.labels.assign_new', role: role.name.titlecase) %></h4>
 
       <%= form_tag(role_path(role), method: :patch) do -%>
