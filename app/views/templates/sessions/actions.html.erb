@@ -1,18 +1,18 @@
 <% if current_user %>
   <span class="actions pull-xs-right clickable">
     <span id="vote-btn" ng-click="vote($index)" ng-if="!session.voted && availableVotes > 0" data-index="{{$index}}"
-      class="ion-ios7-circle-outline text-success" helpable="<%= t('sessions.help.vote') %>">
+      class="fa fa-circle-o text-success" helpable="<%= t('sessions.help.vote') %>">
     </span>
-    <span ng-click="vote($index)" ng-if="session.voted" class="ion-checkmark-circled text-success" 
+    <span ng-click="vote($index)" ng-if="session.voted" class="fa fa-check-circle text-success" 
       helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}"></span>
-    <span ng-click="fav($index)" ng-if="!session.faved" class="ion-ios7-star-outline text-warning" 
+    <span ng-click="fav($index)" ng-if="!session.faved" class="fa fa-star-o text-warning" 
       helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}"></span>
-    <span ng-click="fav($index)" ng-if="session.faved" class="ion-ios7-star text-warning" 
+    <span ng-click="fav($index)" ng-if="session.faved" class="fa fa-star text-warning" 
       helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}">
     </span>
     <% if current_user and can? :review, SessionProposal %>
       <a id="review-btn" ng-href="#/sessions/review/{{session.id}}">
-        <span class="ion-compose text-success" title="<%= t('sessions.buttons.start_review') %>"></span>
+        <span class="fa fa-pencil-square-o text-success" title="<%= t('sessions.buttons.start_review') %>"></span>
       </a>
     <% end %>
   </span>

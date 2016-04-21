@@ -11,7 +11,7 @@
         <div class="row">
           <div class="track col-sm-6">{{session.theme}} - {{session.track}}</div>
           <div class="col-sm-6 audience text-xs-right">
-            <span class="count ion-person-stalker"></span>&nbsp;{{session.audience_count || "-"}}&nbsp;&nbsp;
+            <span ng-if="session.audience_count != null"><span class="count fa fa-users"></span>&nbsp;{{session.audience_count}} &nbsp;&nbsp;</span>
             <span class="fa fa-tag"></span>&nbsp;{{session.audience}}
           </div>
         </div>
