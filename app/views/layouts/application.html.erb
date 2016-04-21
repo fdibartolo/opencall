@@ -41,13 +41,13 @@
                 <%= link_to 'My voted proposals', "#{root_url}#/users/voted_sessions", class: "dropdown-item" %>
                 <%= link_to 'My faved proposals', "#{root_url}#/users/faved_sessions", class: "dropdown-item" %>
                 <% if can? :review, SessionProposal %>
-                  <div ng-include="'templates/menu/administration.html'" replace-element></div>
+                  <div ng-include="'/templates/menu/administration.html'" replace-element></div>
                 <% end %>
                 <div class="dropdown-divider"></div>
                 <h6 class="dropdown-header">Reports</h6>
                 <%= link_to 'Sessions by vote count', "#{root_url}#/reports/session_votes", class: "dropdown-item" %>
                 <% if can? :review, SessionProposal %>
-                  <div ng-include="'templates/menu/advanced_reports.html'" replace-element></div>
+                  <div ng-include="'/templates/menu/advanced_reports.html'" replace-element></div>
                 <% end %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete, id: 'signout-link', class: "dropdown-item" %>
