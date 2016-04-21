@@ -115,7 +115,7 @@
           <input type="text" id="input-tags" placeholder="<%= t('sessions.labels.tags') %>" class="form-control" tag-suggestion>
           <ul class="list-inline">
             <li ng-repeat="tag in newSession.tags track by $index" class="tag lg bg-primary" fade-animation="true" ng-if="!tag._destroy">
-              <span class="ion-android-close clickable" aria-hidden="true" style="padding-right:10px" ng-click="removeTag($index)"></span>{{tag.name}}
+              <span class="fa fa-times clickable" aria-hidden="true" style="padding-right:10px" ng-click="removeTag($index)"></span>{{tag.name}}
             </li>
           </ul>
         </div>
