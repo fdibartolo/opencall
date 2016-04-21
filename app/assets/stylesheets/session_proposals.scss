@@ -114,8 +114,7 @@
     text-decoration: none !important;
   }
 
-  .icon { font-size: 300%; }
-  .text { font-size: 250%; }
+  .icon, .text { font-size: 250%; }
 }
 
 .btn-action.non-clickable { 

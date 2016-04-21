@@ -1,7 +1,7 @@
 <div ng-if="sessions.length == 0" class="no-search-results">
   <h4 ng-if="searchTerms != ''" class="text-muted text-xs-center">
     <%= t('sessions.labels.no_search_results').html_safe %>
-    <br><br><span class="ion-sad"></span>
+    <br><br><span class="fa fa-frown-o"></span>
   </h4>
   <h4 ng-if="searchTerms == ''" class="text-muted text-xs-center">
     <%= t('sessions.labels.no_sessions').html_safe %>
