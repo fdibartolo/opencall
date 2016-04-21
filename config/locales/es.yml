@@ -14,7 +14,7 @@ es:
     propose:
       title: "Proponé"
       paragraph: "Compartí con la comunidad sobre qué te gustaría hablar, qué te gustaría compartir, y recibí feedback temprano que te permitan refinar tu idea!"
-      due_date_paragraph: "Llegamos a la fecha límite para proponer <span class='ion-sad' style='font-size:120%'></span>... el comité organizador esta evaluando las propuestas enviadas y dará a conocer los resultados pronto!"
+      due_date_paragraph: "Llegamos a la fecha límite para proponer <span class='fa fa-frown-o' style='font-size:120%'></span>... el comité organizador esta evaluando las propuestas enviadas y dará a conocer los resultados pronto!"
     vote:
       title: "Votá"
       paragraph: "Ayudá a generar la grilla de charlas con tu feedback! Podés hacer comentarios a los autores de las mismas, marcar tus favoritas, y mas!"
