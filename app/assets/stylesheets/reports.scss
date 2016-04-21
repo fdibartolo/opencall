@@ -36,8 +36,13 @@
   }
 }
 
-.themes { font-size: 90%; }
+.table { &.table-sm { font-size: 90%; } }
 
-.table {
-  &.table-sm { font-size: 90%; }
+.themes {
+  font-size: 90%;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
 }

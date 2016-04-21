@@ -1,7 +1,7 @@
 <% if current_user and can? :review, SessionProposal %>
   <div ng-cloak ng-controller="ReviewsController" ng-init="loadUserReviews()" fade-animation="true" class="row">
     <div ng-if="loading" class="loading">
-      <p class="text-xs-center"><span class="ion-loading-a"></span></p>
+      <p class="text-xs-center"><span class="fa fa-spinner fa-pulse"></span></p>
     </div>
     <div ng-if="!loading">
       <div ng-if="reviews.length == 0" class="no-search-results">
