@@ -8,25 +8,33 @@
   </h4>
 </div>
 
-<div ng-if="sessions.length > 0"><br>
-  <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
-    <h3>
-      <a ng-href="#/sessions/show/{{session.id}}" helpable="<%= t('sessions.help.session_title') %>" data-index="{{$index}}">
-        {{session.title}}
-      </a>
-      <span ng-include="'templates/sessions/actions.html'"></span>
-    </h3>
-    <div class="author">{{session.author}}</div>
-    <div>
-      <ul class="list-inline">
-        <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" 
-          ng-click="search(tag)">{{tag}}</li>
-      </ul>
+<div ng-if="sessions.length > 0" class="card-columns">
+  <div ng-repeat="session in sessions" fade-animation="true">
+    <div class="card card-animated">
+      <div class="card-block">
+        <h6 class="title">
+          <a ng-href="#/sessions/show/{{session.id}}" helpable="<%= t('sessions.help.session_title') %>" data-index="{{$index}}">
+          {{session.title}}
+          </a>
+        </h6>
+        <p class="author"><small>{{session.author}}</small></p>
+        <p class="tags">
+          <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag)">
+            {{tag}}
+          </span>
+        </p>
+      </div>
+      <% if current_user %>
+        <div class="card-footer">
+          <span ng-include="'templates/sessions/actions.html'"></span>
+        </div>
+      <% end %>
     </div>
   </div>
-  <button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;margin-bottom:100px;padding:5px 50px">
-    <%= t('sessions.buttons.load_more') %>
-  </button>
-  <div ng-if="sessions.length >= total" style="margin-bottom:100px"></div>
-  <div id="bottom-fade"></div>
 </div>
+
+<button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;margin-bottom:100px;padding:5px 50px">
+  <%= t('sessions.buttons.load_more') %>
+</button>
+<div ng-if="sessions.length >= total" style="margin-bottom:100px"></div>
+<div id="bottom-fade"></div>
