@@ -1,12 +1,12 @@
 <br><br>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal col-sm-8" }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "col-sm-8" }) do |f| %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="<%= validation_error_class? :first_name %>">
-    <label for="input-firstname" class="col-sm-2 control-label"><%= t('devise.labels.first_name') %></label>
+    <label for="input-firstname" class="col-sm-2 form-control-label"><%= t('devise.labels.first_name') %></label>
     <div class="col-sm-10">
       <%= f.text_field :first_name, class: "form-control", id: "input-firstname", placeholder: t('devise.labels.first_name') %>
       <%= validation_error_details? :first_name %>
@@ -14,46 +14,50 @@
   </div>
 
   <div class="<%= validation_error_class? :last_name %>">
-    <label for="input-lastname" class="col-sm-2 control-label"><%= t('devise.labels.last_name') %></label>
+    <label for="input-lastname" class="col-sm-2 form-control-label"><%= t('devise.labels.last_name') %></label>
     <div class="col-sm-10">
       <%= f.text_field :last_name, class: "form-control", id: "input-lastname", placeholder: t('devise.labels.last_name') %>
       <%= validation_error_details? :last_name %>
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="input-country" class="col-sm-2 control-label"><%= t('devise.labels.country') %></label>
+  <div class="form-group row">
+    <label for="input-country" class="col-sm-2 form-control-label"><%= t('devise.labels.country') %></label>
     <div class="col-sm-10">
-      <%= f.select :country, options_for_select(%w[Argentina Bolivia Brazil Chile Colombia CostaRica Cuba Dominicana Ecuador ElSalvador Honduras Mexico Nicaragua Panama Paraguay Peru Uruguay Venezuela Otro], :selected => f.object.country), {}, { class: "form-control selectpicker", id: "input-country" } %>
+      <%= f.select :country, options_for_select(%w[Argentina Bolivia Brazil Chile Colombia CostaRica Cuba Dominicana Ecuador ElSalvador Honduras Mexico Nicaragua Panama Paraguay Peru Uruguay Venezuela Otro], :selected => f.object.country), {}, { class: "form-control c-select", id: "input-country" } %>
     </div>
   </div>
 
   <div class="<%= validation_error_class? :email %>">
-    <label for="input-email" class="col-sm-2 control-label"><%= t('devise.labels.email') %></label>
+    <label for="input-email" class="col-sm-2 form-control-label"><%= t('devise.labels.email') %></label>
     <div class="col-sm-10">
       <%= f.email_field :email, class: "form-control", id: "input-email", placeholder: t('devise.labels.email') %>
       <%= validation_error_details? :email %>
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="input-website" class="col-sm-2 control-label">Website/Blog</label>
+  <div class="form-group row">
+    <label for="input-website" class="col-sm-2 form-control-label">Website/Blog</label>
     <div class="col-sm-10">
       <%= f.url_field :website, class: "form-control", id: "input-website", placeholder: "Website" %>
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="input-bio" class="col-sm-2 control-label">Bio</label>
+  <div class="form-group row">
+    <label for="input-bio" class="col-sm-2 form-control-label">Bio</label>
     <div class="col-sm-10">
       <ul class="nav nav-tabs" ng-init="bio = true">
-        <li role="presentation" ng-class="{active: bio}"><a ng-click="bio = !bio">
-          <small><%= t('devise.labels.bio_text') %></small>
-        </a></li>
-        <li role="presentation" ng-class="{active: !bio}"><a ng-click="bio = !bio">
-          <small><%= t('devise.labels.bio_social_network') %></small>
-        </a></li>
-        <div class="text-right"><small class="text-muted">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" ng-click="bio = !bio" ng-class="{active: bio}">
+            <small><%= t('devise.labels.bio_text') %></small>
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" ng-click="bio = !bio" ng-class="{active: !bio}">
+            <small><%= t('devise.labels.bio_social_network') %></small>
+          </a>
+        </li>
+        <div class="text-xs-right"><small class="text-muted">
           <i><%= t('devise.labels.bio_hint').html_safe %></i>
         </small></div>
       </ul>
@@ -63,26 +67,26 @@
       <div ng-show="!bio" fade-animation="true">
         <br>
         <div class="form-horizontal">
-          <div class="form-group">
-            <label for="input-linkedin" class="col-sm-2 control-label">LinkedIn</label>
+          <div class="form-group row">
+            <label for="input-linkedin" class="col-sm-2 form-control-label">LinkedIn</label>
             <div class="col-sm-10">
               <%= f.url_field :linkedin, class: "form-control", id: "input-linkedin", placeholder: "i.e.: http://linkedin.com/pub/..." %>
             </div>
           </div>
-          <div class="form-group">
-            <label for="input-aboutme" class="col-sm-2 control-label">AboutMe</label>
+          <div class="form-group row">
+            <label for="input-aboutme" class="col-sm-2 form-control-label">AboutMe</label>
             <div class="col-sm-10">
               <%= f.url_field :aboutme, class: "form-control", id: "input-aboutme", placeholder: "i.e.: http://about.me/..." %>
             </div>
           </div>
-          <div class="form-group">
-            <label for="input-twitter" class="col-sm-2 control-label">Twitter</label>
+          <div class="form-group row">
+            <label for="input-twitter" class="col-sm-2 form-control-label">Twitter</label>
             <div class="col-sm-10">
               <%= f.url_field :twitter, class: "form-control", id: "input-twitter", placeholder: "i.e.: http://twitter.com/..." %>
             </div>
           </div>
-          <div class="form-group">
-            <label for="input-facebook" class="col-sm-2 control-label">Facebook</label>
+          <div class="form-group row">
+            <label for="input-facebook" class="col-sm-2 form-control-label">Facebook</label>
             <div class="col-sm-10">
               <%= f.url_field :facebook, class: "form-control", id: "input-facebook", placeholder: "i.e.: http://facebook.com/..." %>
             </div>
@@ -92,14 +96,14 @@
     </div>
   </div>
 
-  <div class="row"><div class="col-sm-offset-2 col-sm-10"><hr></div></div>
+  <div class="row"><div class="col-sm-offset-2 col-sm-10"></div></div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary"><%= t('devise.buttons.save') %></button>
-      <div class="btn btn-secondary"><%= link_to t('devise.buttons.back'), :back %></div>
+      <div class="btn btn-secondary"><%= link_to t('devise.buttons.cancel'), :back %></div>
       <br><hr>
-      <%= link_to "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span> &nbsp; #{t('devise.buttons.delete.label')}".html_safe, registration_path(resource_name), data: { confirm: t('devise.buttons.delete.confirmation') }, method: :delete, class: "btn btn-danger pull-xs-right" %>
+      <%= link_to "<span class='fa fa-trash-o' aria-hidden='true'></span> &nbsp; #{t('devise.buttons.delete.label')}".html_safe, registration_path(resource_name), data: { confirm: t('devise.buttons.delete.confirmation') }, method: :delete, class: "btn btn-danger pull-xs-right" %>
     </div>
   </div>
 <% end %>
