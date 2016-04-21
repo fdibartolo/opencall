@@ -6,21 +6,21 @@
       <thead>
         <th width="40%"><%= t('notifications.labels.session') %></th>
         <th width="30%">
-          <%= t('notifications.labels.reviews') %>
-          <span class="clickable text-primary glyphicon glyphicon-triangle-top" ng-click="toggleSort()" ng-if="isTopSort()" title="Sort by number of evaluations"></span>
-          <span class="clickable text-primary glyphicon glyphicon-triangle-bottom" ng-click="toggleSort()" ng-if="isBottomSort()" title="Sort by number of evaluations"></span>
+          <%= t('notifications.labels.reviews') %> &nbsp;
+          <span class="clickable text-primary fa fa-arrow-up" ng-click="toggleSort()" ng-if="isTopSort()" title="Sort by number of evaluations"></span>
+          <span class="clickable text-primary fa fa-arrow-down" ng-click="toggleSort()" ng-if="isBottomSort()" title="Sort by number of evaluations"></span>
         </th>
         <th width="20%"></th>
         <th width="10%"></th>
       </thead>
       <tr ng-repeat="session in sessions | orderBy:sort.expression" class="notifications-summary" ng-class="{'success': isAcceptedSession(session.status), 'danger': isDeclinedSession(session.status)}" ng-show="isVisibleTheme(session.theme)">
         <td class="session">
-          <h4>
+          <h6>
             <a ng-href="#/sessions/show/{{session.id}}" target="_blank">
               {{session.title}}
             </a><br>
             <small><i>{{session.author}}</i></small>
-          </h4>
+          </h6>
         </td>
         <td>
           <ul ng-repeat="review in session.reviews">
