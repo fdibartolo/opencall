@@ -1,12 +1,16 @@
 <div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row"><br><br>
   <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="search()">
-    <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group has-feedback">
-      <input type="text" class="form-control" 
-        ng-model="searchTerms" 
-        ng-model-options="{ debounce: 1000 }"
-        ng-change="search()"
-        helpable="<%= t('sessions.help.search') %>">
-      <span class="glyphicon glyphicon-search form-control-feedback" style="margin-right:15px" aria-hidden="true"></span>
+    <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+      <div class="input-group searchbox">      
+        <input type="text" class="form-control"
+          ng-model="searchTerms" 
+          ng-model-options="{ debounce: 1000 }"
+          ng-change="search()"
+          helpable="<%= t('sessions.help.search') %>">
+        <div class="input-group-addon">
+          <span class="fa fa-search" aria-hidden="true"></span>
+        </div>
+      </div>
       <p ng-if="searchTerms != '' && total != 0" class="text-muted text-xs-center" fade-animation="true">
         <small><i>{{total}} matching results</i></small>
       </p>

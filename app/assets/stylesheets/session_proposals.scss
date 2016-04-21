@@ -68,8 +68,8 @@
     font-size: 75%;
   }
   &.lg { 
-    padding: 4px 15px;
-    font-size: 90%; 
+    padding: 3px 13px;
+    font-size: 85%; 
   }
   &.border { border: 1px solid $brand-primary; }
   small { font-size: 70%; }
@@ -150,4 +150,13 @@
     cursor: default;
     &:hover { text-decoration: none !important; color: #777777 !important; }
   }
+}
+
+.searchbox {
+  input { 
+    border-right: none !important;
+
+    &:focus { border-color: none !important; }
+  }
+  div.input-group-addon { background-color: white; } 
 }

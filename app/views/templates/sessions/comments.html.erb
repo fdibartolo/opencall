@@ -20,13 +20,13 @@
     </div>
     <div class="col-sm-8">
       <ul class="nav nav-tabs" ng-init="previewComment = false">
-        <li role="presentation" ng-class="{active: !previewComment}">
-          <a ng-click="previewComment = !previewComment">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" ng-click="previewComment = !previewComment" ng-class="{active: !previewComment}">
             <small><%= t('sessions.markdown.text') %></small>
           </a>
         </li>
-        <li role="presentation" ng-class="{active: previewComment}">
-          <a ng-click="previewComment = !previewComment">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" ng-click="previewComment = !previewComment" ng-class="{active: previewComment}">
             <small><%= t('sessions.markdown.preview') %></small>
           </a>
         </li>
