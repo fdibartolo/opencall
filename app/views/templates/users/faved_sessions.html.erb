@@ -12,7 +12,7 @@
       </h2>
       <div class="home-button-container">
         <a class="img-circle home-button text-xs-center" href="<%= root_url + '#/sessions' %>">
-          <span class="glyphicon glyphicon-thumbs-up icon" aria-hidden="true"></span><br>
+          <span class="fa fa-thumbs-o-up icon" aria-hidden="true"></span><br>
           <span class="text"><%= t('sessions.buttons.fav') %></span>
         </a>
       </div>
@@ -35,7 +35,7 @@
             <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
             <li class="pull-xs-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
               <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
-                <span class="ion-videocamera">&nbsp;</span><%= t('sessions.labels.video') %>
+                <span class="fa fa-video-camera">&nbsp;</span><%= t('sessions.labels.video') %>
               </a>
             </li>
           </ul>
