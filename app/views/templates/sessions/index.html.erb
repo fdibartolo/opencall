@@ -1,4 +1,4 @@
-<div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row"><br><br>
+<div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row"><br>
   <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="search()">
     <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
       <div class="input-group searchbox">      
@@ -15,16 +15,24 @@
         <small><i>{{total}} matching results</i></small>
       </p>
     </div>
+
+    <div ng-if="matched_tags.length > 0" class="col-sm-12 matched-tags">
+      <small><span class="text-muted"><%= t('sessions.labels.matching_tags').html_safe %></span></small>
+      <span ng-repeat="tag in matched_tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag.key)">
+        {{tag.key}} <small>({{tag.doc_count}})</small>
+      </span>
+    </div>
+
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div ng-if="loading" class="loading">
       <p class="text-xs-center"><span class="fa fa-spinner fa-pulse"></span></p>
     </div>
     <div ng-if="!loading" ng-include="'templates/sessions/search_result.html'"></div>
   </div>
 
-  <div sticky offset="60" sticky-class="buttons-sticked" class="col-md-offset-1 col-md-3">
+<!--   <div sticky offset="60" sticky-class="buttons-sticked" class="col-md-offset-1 col-md-3">
     <div ng-include="'templates/sessions/search_side_bar.html'"></div>
     <br><br>
     <div ng-if="matched_tags.length > 0" class="text-xs-center">
@@ -35,5 +43,5 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </div>
