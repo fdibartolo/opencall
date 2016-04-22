@@ -103,7 +103,7 @@ en:
     help:
       search: "top|Find session proposals by author or key words, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Your available votes"
-      create_session: "bottom|Propose a session"
+      create_session: "top|Propose a session"
       session_title: "top|Click on the title to navigate to session details"
       vote: "left|Vote the session"
       fav: "right|Fav the session"
