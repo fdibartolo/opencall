@@ -18,7 +18,7 @@
 </head>
 <body>
   <nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container-fluid">
       <a class="navbar-brand" ng-href="<%= "#{root_url}#/home" %>">Agiles 2015 | Call for Papers</a>
       <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         &#9776;
@@ -67,7 +67,7 @@
 
   <a id="scroll-to-top" style="visibility:hidden"></a>
   <div loading-spinner></div>
-  <div class="container content">
+  <div class="container-fluid content">
     <%= render :partial => 'layouts/messages' %>  
 
     <%= yield %>

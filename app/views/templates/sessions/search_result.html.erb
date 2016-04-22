@@ -19,7 +19,8 @@
         </h6>
         <p class="author"><small>{{session.author}}</small></p>
         <p class="tags">
-          <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag)">
+          <span class="fa fa-tags text-muted"></span>
+          <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable text-mutedx" ng-click="search(tag)">
             {{tag}}
           </span>
         </p>
