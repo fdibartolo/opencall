@@ -1,16 +1,8 @@
 <span class="clickable">
   <!-- <span class="fa fa-twitter text-twitter"></span> -->
-  <span ng-click="vote($index)" ng-if="!session.voted && availableVotes > 0" data-index="{{$index}}"
-    class="fa fa-circle-o text-success" helpable="<%= t('sessions.help.vote') %>" id="vote-btn">
-  </span>
-  <span ng-click="vote($index)" ng-if="session.voted" class="fa fa-check-circle text-success" 
-    helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}"></span>
-  <span ng-click="fav($index)" ng-if="!session.faved" class="fa fa-star-o text-warning" 
-    helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}"></span>
-  <span ng-click="fav($index)" ng-if="session.faved" class="fa fa-star text-warning" 
-    helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}">
-  </span>
-  <% if current_user and can? :review, SessionProposal %>
+  <span id="vote-btn" helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}" vote-action></span>
+  <span helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}" fav-action></span>
+  <% if can? :review, SessionProposal %>
     <a id="review-btn" ng-href="#/sessions/review/{{session.id}}">
       <span class="fa fa-pencil-square-o text-success" title="<%= t('sessions.buttons.start_review') %>"></span>
     </a>
