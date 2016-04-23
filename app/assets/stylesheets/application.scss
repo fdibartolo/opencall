@@ -1,7 +1,9 @@
 $btn-primary-hover-bg: #286090;
 $btn-info-hover-bg: #31b0d5;
+$color-twitter: rgb(19,138,241);
 
 @import "bootstrap";
+@import "font-awesome";
 @import "home";
 @import "users";
 @import "session_proposals";
@@ -83,3 +85,4 @@ $btn-info-hover-bg: #31b0d5;
 }
 
 .form-control-label { font-weight: bold; text-align: right; }
+.text-twitter { color: $color-twitter; }
