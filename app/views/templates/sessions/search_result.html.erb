@@ -12,15 +12,15 @@
   <div ng-repeat="session in sessions" fade-animation="true">
     <div class="card card-animated">
       <div class="card-block">
-        <h6 class="title">
+        <h5 class="title">
           <a ng-href="#/sessions/show/{{session.id}}" helpable="<%= t('sessions.help.session_title') %>" data-index="{{$index}}">
           {{session.title}}
           </a>
-        </h6>
-        <p class="author"><small>{{session.author}}</small></p>
+        </h5>
+        <p class="author">{{session.author}}</p>
         <p class="tags">
-          <span class="fa fa-tags text-muted"></span>
-          <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable text-mutedx" ng-click="search(tag)">
+          <span ng-if="session.tags.length > 0" class="fa fa-tags text-muted"></span>
+          <span ng-repeat="tag in session.tags track by $index" class="tag clickable" ng-click="search(tag)">
             {{tag}}
           </span>
         </p>

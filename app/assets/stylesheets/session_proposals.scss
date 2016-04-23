@@ -15,6 +15,8 @@
 }
 
 .card {
+  .card-block { padding-bottom: 5px; }
+
   .title { 
     margin-bottom: 0;
 
@@ -25,12 +27,31 @@
   }
 
   .author {
+    font-size: 90%;
     font-weight: 300;
     font-variant: small-caps;
     font-style: italic;
   }
 
-  .tags { margin: 0; }
+  .tags {
+    margin: 0;
+
+    span.tag { 
+      padding: 2px 5px;
+      font-weight: 300;
+      font-size: 75%;
+      color: $brand-primary;
+      border: 1px solid $brand-primary;
+      background-color: rgba($brand-primary,0.05);
+      border-radius: 5px;
+      margin-right: 1px;
+
+      &:hover {
+        color: white;
+        background-color: $brand-primary;
+      }
+    }
+  }
 
   .card-footer {
     text-align: right;
