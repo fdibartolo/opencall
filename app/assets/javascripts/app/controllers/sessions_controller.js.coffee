@@ -111,6 +111,14 @@ angular.module('openCall.controllers').controller 'SessionsController',
       delta = if $scope.sessions[index].voted then -1 else 1
       $scope.availableVotes += delta  if $scope.availableVotes isnt 0 or delta is 1
 
+      if delta is -1 and $scope.availableVotes < 4
+        switch $scope.availableVotes
+          when 3,2 then message = "You have #{$scope.availableVotes} votes left to use"
+          when 1 then message = "You just have 1 vote left"
+          else message = "You have no votes left, you can still remove a vote and reassign it if you change your mind"
+
+        toaster.pop('warning', '', message, 7000)
+
   $scope.fav = (index) ->
     $scope.sessions[index].faved = false  if angular.isUndefined($scope.sessions[index].faved)
     $scope.sessions[index].faved = !$scope.sessions[index].faved
