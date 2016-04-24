@@ -1,19 +1,18 @@
-.toast-message {
-  font-weight: normal !important;
+#toast-container > .toast {
+  background-image: none !important;
 }
 
-#toast-container > .toast-success, #toast-container > .toast-error { 
-  background-image: none !important; 
+#toast-container > .toast:before {
+  position: fixed;
+  font-family: FontAwesome;
+  font-size: 24px;
+  line-height: 18px;
+  float: left;
+  color: #FFF;
+  padding-right: 0.5em;
+  margin: auto 0.5em auto -1.5em;
 }
 
-.toast-success {
-  background: $state-success-bg !important;
-  color: $state-success-text !important;
-  border-color: $state-success-border !important;
-}
-
-.toast-error {
-  background: $state-danger-bg !important;
-  color: $state-danger-text !important;
-  border-color: $state-danger-border !important;
-}
+#toast-container > .toast-warning:before { content: "\f256"; }
+#toast-container > .toast-error:before { content: "\f00d"; }
+#toast-container > .toast-success:before { content: "\f00c"; }

@@ -1,8 +1,8 @@
 <% if notice %>
-  <div class="alert alert-success text-xs-center" role="alert" auto-dismiss="5000"><%= notice %></div>
+  <div data-alert-type="success" alert="<%= notice %>"></div>
 <% end %>
 <% if alert %>
-  <div class="alert alert-danger text-xs-center" role="alert" auto-dismiss="5000"><%= alert %></div>
+  <div data-alert-type="error" alert="<%= alert %>"></div>
 <% end %>
 
-<toaster-container toaster-options="{'position-class': 'toast-top-full-width'}" style="margin-top:55px;left:10%;width:80%;text-align:center"></toaster-container>
+<toaster-container toaster-options="{'position-class': 'toast-bottom-left'}"></toaster-container>
