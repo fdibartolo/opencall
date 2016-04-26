@@ -34,15 +34,7 @@ class SessionProposal < ActiveRecord::Base
   end
 
   def as_indexed_json options={}
-    JSON.parse(Jbuilder.encode do |json|
-      json.id           self.id
-      json.title        self.title
-      json.theme        self.theme.name
-      json.track        self.track.name
-      json.summary      self.summary
-      json.author       self.user.full_name
-      json.tags         self.tags.map(&:name)
-    end)
+    JSON.parse build_as_document
   end
 
   def self.custom_search terms='', page_number=1
@@ -54,7 +46,7 @@ class SessionProposal < ActiveRecord::Base
     Jbuilder.encode do |json|
       json.query do
         json.multi_match do
-          json.fields ["tags^10", "theme^10", "track^10", "title^5", "summary", "author"]
+          json.fields ["tags^10", "theme^10", "track^10", "title^5", "summary", "author.name"]
           json.query terms
         end
       end
@@ -115,6 +107,20 @@ class SessionProposal < ActiveRecord::Base
   end
 
   private
+  def build_as_document
+    Jbuilder.encode do |json|
+      json.id            self.id
+      json.title         self.title
+      json.theme         self.theme.name
+      json.track         self.track.name
+      json.summary       self.summary
+      json.author do
+        json.name        self.user.full_name
+        json.avatar_url  self.user.avatar_url
+      end
+      json.tags          self.tags.map(&:name)
+    end
+  end
   def accept
     self.notified_on = DateTime.now
     save!

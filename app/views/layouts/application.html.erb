@@ -13,6 +13,7 @@
     var CURRENT_USER_NAME = "<%= current_user.full_name if current_user %>";
     var IS_CURRENT_USER_REVIEWER = "<%= current_user and can? :review, SessionProposal %>" == "true";
     var MAX_SESSION_PROPOSAL_VOTES = parseInt("<%= MaxSessionProposalVotes %>");
+    var DEFAULT_AVATAR_URL = "<%= DefaultAvatarUrl %>";
   </script>
 </head>
 <body>
