@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class="card-footer col-xs-12">
-    <span ng-if="session.tags.length > 0" class="fa fa-tags clickable" ng-class="{'text-muted': !session.tagsVisible, 'text-primary': session.tagsVisible}" ng-click="session.tagsVisible = !session.tagsVisible"></span>
+    <span ng-if="session.tags.length > 0" class="fa fa-tags clickable" ng-class="{'text-muted': !session.tagsVisible, 'text-primary': session.tagsVisible}" ng-click="session.tagsVisible = !session.tagsVisible" helpable="<%= t('sessions.help.tags') %>" data-index="{{$index}}"></span>
     <% if current_user %>
       <span ng-include="'templates/sessions/actions.html'"></span>
     <% end %>
