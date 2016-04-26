@@ -93,6 +93,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
     angular.forEach sessions, (session) ->
       session.voted = $scope.sessionVotedIds.indexOf(session.id) isnt -1
       session.faved = $scope.sessionFavedIds.indexOf(session.id) isnt -1
+      session.tagsVisible = false
     sessions
 
   $scope.loadMore = () ->

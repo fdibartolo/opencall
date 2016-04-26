@@ -34,27 +34,27 @@
   }
 
   .tags {
-    margin: 0;
+    position: absolute;
+    overflow: hidden;
+    background-color: transparent;
+    width: 100%;
+    top: 75%;
+    bottom: 35px;
+    text-align: center;
+    padding: 10px 5px 0 5px;
+    border-radius: 0.25rem 0.25rem 0 0;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 
-    span.tag { 
-      padding: 2px 5px;
-      font-weight: 300;
-      font-size: 75%;
-      color: $brand-primary;
-      border: 1px solid $brand-primary;
-      background-color: rgba($brand-primary,0.05);
-      border-radius: 5px;
-      margin-right: 1px;
-
-      &:hover {
-        color: white;
-        background-color: $brand-primary;
-      }
+    &.visible {
+      top: 0%;
+      background-color: rgba(0,0,0,0.7);
     }
   }
 
   .card-footer {
-    text-align: right;
     font-size: 140%;
     padding: 0 15px;
   }
@@ -78,8 +78,8 @@
   }
 
   &:hover {
-    -webkit-transform: scale(1.01, 1.01);
-    transform: scale(1.01, 1.01);
+    // -webkit-transform: scale(1.01, 1.01);
+    // transform: scale(1.01, 1.01);
 
     &::after { opacity: 1; }
   }

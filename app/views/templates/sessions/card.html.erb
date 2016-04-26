@@ -1,4 +1,9 @@
 <div class="card card-animated">
+  <div class="tags" ng-class="{visible: session.tagsVisible}">
+    <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag)">
+      {{tag}}
+    </span>
+  </div>
   <div class="card-block">
     <h5 class="title">
       <a ng-href="#/sessions/show/{{session.id}}" helpable="<%= t('sessions.help.session_title') %>" data-index="{{$index}}">
@@ -6,16 +11,11 @@
       </a>
     </h5>
     <p class="author">{{session.author}}</p>
-    <p class="tags">
-      <span ng-if="session.tags.length > 0" class="fa fa-tags text-muted"></span>
-      <span ng-repeat="tag in session.tags track by $index" class="tag clickable" ng-click="search(tag)">
-        {{tag}}
-      </span>
-    </p>
   </div>
-  <% if current_user %>
-    <div class="card-footer">
+  <div class="card-footer">
+    <span ng-if="session.tags.length > 0" class="fa fa-tags clickable" ng-class="{'text-muted': !session.tagsVisible, 'text-primary': session.tagsVisible}" ng-click="session.tagsVisible = !session.tagsVisible"></span>
+    <% if current_user %>
       <span ng-include="'templates/sessions/actions.html'"></span>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
