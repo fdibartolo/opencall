@@ -105,8 +105,9 @@ en:
       vote_count: "top|Your available votes"
       create_session: "top|Propose a session"
       session_title: "top|Click on the title to navigate to session details"
-      vote: "left|Vote the session"
+      vote: "bottom|Vote the session"
       fav: "right|Fav the session"
+      tags: "right|Display tags"
     placeholders:
       comment: "Leave a comment to the author"
       review_feedback_for_author: "Give your point of view to the author about the session proposal"

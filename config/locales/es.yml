@@ -85,8 +85,9 @@ es:
       vote_count: "top|Tus votos disponibles"
       create_session: "top|Proponé una nueva sesión"
       session_title: "top|Hacé click en el título de la sesión para ver sus detalles"
-      vote: "left|Votá la sesión"
+      vote: "bottom|Votá la sesión"
       fav: "right|Marcá la sesión como favorita"
+      tags: "right|Mostrar etiquetas"
     placeholders:
       comment: "Dejar un comentario al autor"
       review_feedback_for_author: "Da tu punto de vista de la sesión al autor"
