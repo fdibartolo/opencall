@@ -19,6 +19,11 @@ $color-twitter: rgb(19,138,241);
 @import "notifications";
 @import "reports";
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .content { padding-top: 75px; }
 
 .btn a {
