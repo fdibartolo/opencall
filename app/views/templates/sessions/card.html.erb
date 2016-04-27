@@ -19,6 +19,9 @@
   </div>
   <div class="card-footer col-xs-12">
     <span ng-if="session.tags.length > 0" class="fa fa-tags clickable" ng-class="{'text-muted': !session.tagsVisible, 'text-primary': session.tagsVisible}" ng-click="session.tagsVisible = !session.tagsVisible" helpable="<%= t('sessions.help.tags') %>" data-index="{{$index}}"></span>
+    <a ng-if="session.video_link != ''" ng-href="{{session.video_link}}" target="_blank">
+      <span class="fa fa-video-camera text-muted clickable"></span>
+    </a>
     <% if current_user %>
       <span ng-include="'templates/sessions/actions.html'"></span>
     <% end %>

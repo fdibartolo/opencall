@@ -109,16 +109,17 @@ class SessionProposal < ActiveRecord::Base
   private
   def build_as_document
     Jbuilder.encode do |json|
-      json.id            self.id
-      json.title         self.title
-      json.theme         self.theme.name
-      json.track         self.track.name
-      json.summary       self.summary
+      json.id           self.id
+      json.title        self.title
+      json.theme        self.theme.name
+      json.track        self.track.name
+      json.summary      self.summary
       json.author do
-        json.name        self.user.full_name
-        json.avatar_url  self.user.avatar_url
+        json.name       self.user.full_name
+        json.avatar_url self.user.avatar_url
       end
-      json.tags          self.tags.map(&:name)
+      json.video_link   self.video_link    
+      json.tags         self.tags.map(&:name)
     end
   end
   def accept
