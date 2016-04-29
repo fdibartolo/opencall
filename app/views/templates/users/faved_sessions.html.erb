@@ -18,27 +18,37 @@
       </div>
     </div>
 
-    <div ng-if="sessions.length > 0" class="col-sm-offset-1 col-sm-10"><br><br>
-      <h2 class="text-xs-center"><%= t('sessions.labels.my_faved_sessions') %></h2><br><br>
-
-      <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
-        <h3>
-          <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
-          <a ng-click="remove_fav(session.id)" class="btn btn-sm btn-warning pull-xs-right" style="color:white;margin:5px">
-            <%= t('sessions.buttons.unfav_session') %> &nbsp; 
-            <span class="fa fa-times" aria-hidden="true"></span>
-          </a>
-        </h3>
-        <div class="track">{{session.theme}} - {{session.track}}</div>
-        <div>
-          <ul class="list-inline">
-            <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
-            <li class="pull-xs-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
-              <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
-                <span class="fa fa-video-camera">&nbsp;</span><%= t('sessions.labels.video') %>
+    <div ng-if="sessions.length > 0" class="col-xs-12">
+      <h2 class="text-xs-center"><%= t('sessions.labels.my_faved_sessions') %></h2><br>
+      <div class="card-columns">
+        <div ng-repeat="session in sessions" fade-animation="true">
+          <div class="card card-animated">
+            <div class="tags" ng-class="{visible: session.tagsVisible}">
+              <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">
+                {{tag}}
+              </span>
+            </div>
+            <div class="card-block col-xs-12">
+              <div class="pull-xs-left">
+                <img ng-src="{{session.author.avatar_url}}" class="avatar img-circle" default-avatar-if-error>
+              </div>
+              <div style="margin-left:50px">
+                <p class="author">{{session.author.name}}</p>
+                <h5 class="title">
+                  <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
+                </h5>
+              </div>
+            </div>
+            <div class="card-footer col-xs-12">
+              <span ng-if="session.tags.length > 0" class="fa fa-tags clickable" ng-class="{'text-muted': !session.tagsVisible, 'text-primary': session.tagsVisible}" ng-click="session.tagsVisible = !session.tagsVisible"></span>
+              <a ng-if="session.video_link != ''" ng-href="{{session.video_link}}" target="_blank">
+                <span class="fa fa-video-camera text-muted clickable"></span>
               </a>
-            </li>
-          </ul>
+              <div class="pull-xs-right">
+                <span class="fa fa-star text-warning clickable" ng-click="remove_fav(session.id)" title="<%= t('sessions.buttons.unfav_session') %>"></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div style="margin-top:100px"></div>
