@@ -8,14 +8,11 @@
   </h4>
 </div>
 
-<div ng-if="sessions.length > 0" class="card-columns">
-  <div ng-repeat="session in sessions" fade-animation="true">
-    <div ng-include="'templates/sessions/card.html'"></div>
+<div ng-if="sessions.length > 0" class="cards-container" infinite-scroll="loadMore()">
+  <div ng-repeat="session in sessions" class="card-placeholder">
+    <div ng-include="'templates/sessions/card.html'" fade-animation="true"></div>
   </div>
 </div>
 
-<button class="btn btn-primary btn-sm center-block" ng-if="sessions.length < total" ng-click="loadMore()" style="margin-top:20px;margin-bottom:100px;padding:5px 50px">
-  <%= t('sessions.buttons.load_more') %>
-</button>
 <div ng-if="sessions.length >= total" style="margin-bottom:100px"></div>
 <div id="bottom-fade"></div>
