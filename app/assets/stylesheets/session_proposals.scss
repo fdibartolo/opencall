@@ -79,23 +79,13 @@
 
 .action-button-container {
   display: table;
-  // margin-left: auto;
-  // margin-right: auto;
-  // margin-top: 15px;
   position: fixed;
   bottom: 50px;
   right: 50px;
   z-index: 999;
 
-  @media (max-width: 1199px) { 
-    height: 47px;
-    .divisor { height:47px; border-left:1px solid gray; margin:0 5px }
-  }
-  
-  @media (min-width: 1200px) {
-    height: 60px;
-    .divisor { height:60px; border-left:1px solid gray; margin:0 5px }
-  }
+  @media (max-width: 1199px) { height: 47px; }
+  @media (min-width: 1200px) { height: 60px; }
 }
 
 .btn-action {
@@ -106,15 +96,8 @@
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(0,0,0,0.6);
 
-  @media (max-width: 1199px) { 
-    width: 47px; 
-    height: 47px;
-  }
-  
-  @media (min-width: 1200px) { 
-    width: 60px; 
-    height: 60px;
-  }
+  @media (max-width: 1199px) { width: 47px; height: 47px; }
+  @media (min-width: 1200px) { width: 60px; height: 60px; }
 
   &:hover { 
     color: white; 

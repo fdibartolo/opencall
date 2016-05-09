@@ -1,16 +1,9 @@
 <% if current_user %>
   <div class="action-button-container">
-<!-- 
-    <a class="img-circle btn-action info non-clickable" rubber-band-animation="availableVotes" helpable="<%= t('sessions.help.vote_count') %>">
-      <span class="text" aria-hidden="true">{{availableVotes}}</span>
-    </a> -->
-
-    <!-- <div class="divisor"></div> -->
     <a class="img-circle btn-action info" toggle-help title="Show help">
       <span class="fa fa-question icon" aria-hidden="true"></span>
     </a>
     <% if can? :create, SessionProposal %>
-      <!-- <div class="divisor"></div> --> &nbsp;&nbsp;
       <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="<%= t('sessions.help.create_session') %>">
         <span class="fa fa-pencil icon" aria-hidden="true"></span>
       </a>
