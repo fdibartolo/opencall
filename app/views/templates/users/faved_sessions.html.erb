@@ -20,8 +20,8 @@
 
     <div ng-if="sessions.length > 0" class="col-xs-12">
       <h2 class="text-xs-center"><%= t('sessions.labels.my_faved_sessions') %></h2><br>
-      <div class="card-columns">
-        <div ng-repeat="session in sessions" fade-animation="true">
+      <div class="cards-container">
+        <div ng-repeat="session in sessions" class="card-placeholder">
           <div class="card card-animated">
             <div class="tags" ng-class="{visible: session.tagsVisible}">
               <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">
