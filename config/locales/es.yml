@@ -46,10 +46,10 @@ es:
       no_sessions_yet: "Aún no has propuesto ninguna sesión, animate!"
       no_fav_yet:
         primary: "Aún no has marcado sesiones favoritas!"
-        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en el &nbsp;%{span}&nbsp; a la derecha del título de la misma"
+        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en su &nbsp;%{span}"
       no_vote_yet:
         primary: "Aún tienes tus %{count} votos disponibles!"
-        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en el &nbsp;%{span}&nbsp; a la derecha del título de la misma"
+        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en su &nbsp;%{span}"
       no_review_yet: "Aún no has hecho ninguna revisión!"
     markdown:
       text: "Texto"

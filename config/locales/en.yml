@@ -66,10 +66,10 @@ en:
       no_sessions_yet: "You have no session proposals yet, let's do one!"
       no_fav_yet:
         primary: "You have not faved any session yet!"
-        secondary: "To do so, just search among the session proposals and click on the &nbsp;%{span}&nbsp; next to its title"
+        secondary: "To do so, just search among the session proposals and click on its &nbsp;%{span}"
       no_vote_yet:
         primary: "You still have your %{count} available votes!"
-        secondary: "To do so, just search among the session proposals and click on the &nbsp;%{span}&nbsp; next to its title"
+        secondary: "To do so, just search among the session proposals and click on its &nbsp;%{span}"
       no_reviews_yet: "You have no reviews done yet!"
     markdown:
       text: "Text"
