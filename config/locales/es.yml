@@ -83,7 +83,7 @@ es:
       search: "top|Busca sesiones por autor o bien por palabras clave, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Tus votos disponibles"
       create_session: "top|Proponé una nueva sesión"
-      session_title: "top|Hacé click en el título de la sesión para ver sus detalles"
+      session_title: "top|Hacé click en la tarjeta para ver los detalles de la sesión"
       vote: "bottom|Votá la sesión"
       fav: "right|Marcá la sesión como favorita"
       tags: "right|Mostrar etiquetas"
