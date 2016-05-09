@@ -4,6 +4,7 @@
       <span class="fa fa-question icon" aria-hidden="true"></span>
     </a>
     <% if can? :create, SessionProposal %>
+      &nbsp;&nbsp;
       <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>" helpable="<%= t('sessions.help.create_session') %>">
         <span class="fa fa-pencil icon" aria-hidden="true"></span>
       </a>

@@ -1,20 +1,16 @@
-<div class="card card-animated">
+<div class="card card-animated" helpable="<%= t('sessions.help.session_title') %>" data-index="{{$index}}">
   <div class="tags" ng-class="{visible: session.tagsVisible}">
     <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag)">
       {{tag}}
     </span>
   </div>
-  <div class="card-block col-xs-12">
+  <div class="card-block col-xs-12 clickable" navigate-to="{{session.id}}">
     <div class="pull-xs-left">
       <img ng-src="{{session.author.avatar_url}}" class="avatar img-circle" default-avatar-if-error>
     </div>
     <div style="margin-left:50px">
       <p class="author">{{session.author.name}}</p>
-      <h5 class="title">
-        <a ng-href="#/sessions/show/{{session.id}}" helpable="<%= t('sessions.help.session_title') %>" data-index="{{$index}}">
-        {{session.title}}
-        </a>
-      </h5>
+      <h5 class="title text-primary">{{session.title}}</h5>
     </div>
   </div>
   <div class="card-footer col-xs-12">

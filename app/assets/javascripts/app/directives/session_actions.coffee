@@ -49,3 +49,13 @@ angular.module("openCall.directives").directive "voteAction", ['$timeout', ($tim
 
     return
 ]
+
+angular.module("openCall.directives").directive "navigateTo", ['$location', ($location) ->
+  link: (scope, element, attrs) ->
+    element.bind "click", ->
+      scope.$apply ->
+        $location.path "/sessions/show/#{attrs.navigateTo}"
+        return
+      return
+    return
+]

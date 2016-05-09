@@ -45,8 +45,13 @@
         <a ng-href="#/sessions/review/{{session.id}}"><%= t('sessions.buttons.start_review') %></a>
       </div>
     <% end %>
-    <div class="btn btn-secondary"><%= link_to t('sessions.buttons.back'), "#/sessions" %></div>
   </div>
 
   <div ng-include="'templates/sessions/reviews_summary.html'" ng-if="session != undefined"></div>
+
+  <div class="action-button-container">
+    <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions' %>" title="<%= t('sessions.buttons.back') %>">
+      <span class="fa fa-th icon" aria-hidden="true"></span>
+    </a>
+  </div>
 </div>
