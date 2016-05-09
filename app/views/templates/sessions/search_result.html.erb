@@ -9,9 +9,7 @@
 </div>
 
 <div ng-if="sessions.length > 0" class="cards-container" infinite-scroll="loadMore()">
-  <div ng-repeat="session in sessions" class="card-placeholder">
-    <div ng-include="'templates/sessions/card.html'" fade-animation="true"></div>
-  </div>
+  <div ng-repeat="session in sessions" class="card-placeholder" ng-include="'templates/sessions/card.html'"></div>
 </div>
 
 <div ng-if="sessions.length >= total" style="margin-bottom:100px"></div>

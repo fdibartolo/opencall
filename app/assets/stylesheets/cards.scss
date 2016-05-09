@@ -32,6 +32,18 @@
     @media (min-width: 48em) { width: 50%; }
     @media (min-width: 62em) { width: 33.3%; }
   }
+
+  .card-placeholder.ng-enter {
+    -webkit-animation: fadeInUp 0.7s;
+    animation: fadeInUp 0.7s;
+  }
+
+  .card-placeholder.ng-enter-stagger {
+    -webkit-animation-delay:100ms;
+    animation-delay:100ms;
+    -webkit-animation-duration:0;
+    animation-duration:0;
+  }
 }
 
 .card {
