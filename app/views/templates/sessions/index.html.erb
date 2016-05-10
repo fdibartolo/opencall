@@ -1,5 +1,5 @@
 <div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row"><br>
-  <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="search()">
+  <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="initSearch()">
     <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
       <div class="input-group searchbox">      
         <input type="text" class="form-control"
@@ -16,7 +16,7 @@
       </p>
     </div>
 
-    <div ng-if="!loading && matched_tags.length > 0" class="col-sm-12 matched-tags text-xs-center" fade-animation="true">
+    <div ng-if="!loading && matched_tags.length > 0 && searchTerms != ''" class="col-sm-12 matched-tags text-xs-center" fade-animation="true">
       <small><span class="text-muted"><%= t('sessions.labels.matching_tags').html_safe %></span></small>
       <span ng-repeat="tag in matched_tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag.key)">
         {{tag.key}} <small>({{tag.doc_count}})</small>

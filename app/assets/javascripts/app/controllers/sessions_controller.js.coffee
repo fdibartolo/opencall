@@ -1,6 +1,6 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', '$location', '$routeParams', 'toaster', 'SessionsService', 'CommentsService', 'UsersService'
-($scope, $location, $routeParams, toaster, SessionsService, CommentsService, UsersService) ->
+['$scope', '$location', '$routeParams', '$window', 'toaster', 'SessionsService', 'CommentsService', 'UsersService',
+($scope, $location, $routeParams, $window, toaster, SessionsService, CommentsService, UsersService) ->
 
   $scope.sessions = []
   $scope.matched_tags = []
@@ -18,7 +18,6 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.sessionVotedIds = []
   $scope.sessionFavedIds = []
   $scope.availableVotes = MAX_SESSION_PROPOSAL_VOTES
-  $scope.searchTerms = ''
   $scope.searchPageNumber = 1
   $scope.newSessionComment = 
     body: ''
@@ -79,6 +78,11 @@ angular.module('openCall.controllers').controller 'SessionsController',
       UsersService.user_session_faved_ids().then (ids) ->
         $scope.sessionFavedIds = ids
 
+  $scope.initSearch = () ->
+    cached = $window.sessionStorage.getItem 'searchFor'
+    $scope.searchTerms = if angular.isDefined(cached) and cached isnt null then cached else ''
+    $scope.search()
+
   $scope.search = (termToAdd) ->
     $scope.loading = true
     $scope.searchTerms = "#{$scope.searchTerms} #{termToAdd}"  if angular.isDefined(termToAdd)
@@ -88,6 +92,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $scope.matched_tags = response.matched_tags  unless $scope.searchTerms is ''
       $scope.total        = response.total
       $scope.loading      = false
+      $window.sessionStorage.setItem 'searchFor', $scope.searchTerms
 
   addVotedAndFavedStatusFor = (sessions) ->
     angular.forEach sessions, (session) ->
