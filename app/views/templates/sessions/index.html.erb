@@ -22,7 +22,6 @@
         {{tag.key}} <small>({{tag.doc_count}})</small>
       </span>
     </div>
-
   </div>
 
   <div class="col-md-12">
@@ -33,17 +32,4 @@
   </div>
 
   <div ng-include="'templates/sessions/search_side_bar.html'"></div>
-  
-<!--   <div sticky offset="60" sticky-class="buttons-sticked" class="col-md-offset-1 col-md-3">
-    <div ng-include="'templates/sessions/search_side_bar.html'"></div>
-    <br><br>
-    <div ng-if="matched_tags.length > 0" class="text-xs-center">
-      <h3><%= t('sessions.labels.matching_tags') %></h3>
-      <ul class="list-inline">
-        <li ng-repeat="tag in matched_tags track by $index" class="tag lg bg-primary clickable" ng-click="search(tag.key)">
-          {{tag.key}} <small>({{tag.doc_count}})</small>
-        </li>
-      </ul>
-    </div>
-  </div> -->
 </div>
