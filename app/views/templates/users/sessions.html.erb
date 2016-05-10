@@ -24,7 +24,7 @@
           </a>
         </h3>
         <div class="track">
-          <a class="video-link" ng-href="{{session.video_link}}" target="_blank" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="<%= t('sessions.labels.video') %>">
+          <a class="video-link" ng-href="{{session.video_link}}" target="_blank" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" tooltip='<%= "top|#{t('sessions.labels.video')}" %>'>
             <span class="fa fa-video-camera">&nbsp;</span>
           </a>
           {{session.theme}} - {{session.track}}

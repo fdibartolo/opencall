@@ -21,7 +21,7 @@
       </div>
       <ul class="list-inline">
         <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag.name}}</li>
-        <li class="pull-xs-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
+        <li class="pull-xs-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'">
           <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
             <span class="fa fa-video-camera">&nbsp;</span><%= t('sessions.labels.video') %>
           </a>
@@ -50,7 +50,7 @@
   <div ng-include="'templates/sessions/reviews_summary.html'" ng-if="session != undefined"></div>
 
   <div class="action-button-container">
-    <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions' %>" title="<%= t('sessions.buttons.back') %>">
+    <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions' %>" tooltip='<%= "left|#{t('sessions.buttons.back')}" %>'>
       <span class="fa fa-th icon" aria-hidden="true"></span>
     </a>
   </div>

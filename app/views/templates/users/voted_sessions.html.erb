@@ -45,7 +45,7 @@
                 <span class="fa fa-video-camera text-muted clickable"></span>
               </a>
               <div class="pull-xs-right">
-                <span class="fa fa-check-circle text-success clickable" ng-click="remove_vote(session.id)" title="<%= t('sessions.buttons.unvote_session') %>"></span>
+                <span class="fa fa-check-circle text-success clickable" ng-click="remove_vote(session.id)" tooltip='<%= "bottom|#{t('sessions.buttons.unvote_session')}" %>'></span>
               </div>
             </div>
           </div>

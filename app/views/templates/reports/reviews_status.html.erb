@@ -17,25 +17,25 @@
         <th width="30%">
           <%= t('reports.labels.session') %> &nbsp;
           <span ng-class="isSortBySessions() ? 'text-primary' : 'text-muted'" style="font-size:110%">
-            <span class="clickable fa fa-sort" ng-click="toggleSessionsSort()" ng-if="!isSortBySessions()" title="Sort by title"></span>
-            <span class="clickable fa fa-sort-alpha-asc" ng-click="toggleSessionsSort()" ng-if="isSessionsTopSort()" title="Sort by title"></span>
-            <span class="clickable fa fa-sort-alpha-desc" ng-click="toggleSessionsSort()" ng-if="isSessionsBottomSort()" title="Sort by title"></span>
+            <span class="clickable fa fa-sort" ng-click="toggleSessionsSort()" ng-if="!isSortBySessions()" tooltip="top|Sort by title"></span>
+            <span class="clickable fa fa-sort-alpha-asc" ng-click="toggleSessionsSort()" ng-if="isSessionsTopSort()" tooltip="top|Sort by title"></span>
+            <span class="clickable fa fa-sort-alpha-desc" ng-click="toggleSessionsSort()" ng-if="isSessionsBottomSort()" tooltip="top|Sort by title"></span>
           </span>
         </th>
         <th width="25%">
           <%= t('reports.labels.theme') %> &nbsp;
           <span ng-class="isSortByThemes() ? 'text-primary' : 'text-muted'" style="font-size:110%">
-            <span class="clickable fa fa-sort" ng-click="toggleThemesSort()" ng-if="!isSortByThemes()" title="Sort by theme"></span>
-            <span class="clickable fa fa-sort-alpha-asc" ng-click="toggleThemesSort()" ng-if="isThemesTopSort()" title="Sort by theme"></span>
-            <span class="clickable fa fa-sort-alpha-desc" ng-click="toggleThemesSort()" ng-if="isThemesBottomSort()" title="Sort by theme"></span>
+            <span class="clickable fa fa-sort" ng-click="toggleThemesSort()" ng-if="!isSortByThemes()" tooltip="top|Sort by theme"></span>
+            <span class="clickable fa fa-sort-alpha-asc" ng-click="toggleThemesSort()" ng-if="isThemesTopSort()" tooltip="top|Sort by theme"></span>
+            <span class="clickable fa fa-sort-alpha-desc" ng-click="toggleThemesSort()" ng-if="isThemesBottomSort()" tooltip="top|Sort by theme"></span>
           </span>
         </th>
         <th width="35%">
           <%= t('reports.labels.reviews') %> &nbsp;
           <span ng-class="isSortByReviews() ? 'text-primary' : 'text-muted'" style="font-size:110%">
-            <span class="clickable fa fa-sort" ng-click="toggleReviewsSort()" ng-if="!isSortByReviews()" title="Sort by number of evaluations"></span>
-            <span class="clickable fa fa-sort-amount-asc" ng-click="toggleReviewsSort()" ng-if="isReviewsTopSort()" title="Sort by number of evaluations"></span>
-            <span class="clickable fa fa-sort-amount-desc" ng-click="toggleReviewsSort()" ng-if="isReviewsBottomSort()" title="Sort by number of evaluations"></span>
+            <span class="clickable fa fa-sort" ng-click="toggleReviewsSort()" ng-if="!isSortByReviews()" tooltip="top|Sort by number of evaluations"></span>
+            <span class="clickable fa fa-sort-amount-asc" ng-click="toggleReviewsSort()" ng-if="isReviewsTopSort()" tooltip="top|Sort by number of evaluations"></span>
+            <span class="clickable fa fa-sort-amount-desc" ng-click="toggleReviewsSort()" ng-if="isReviewsBottomSort()" tooltip="top|Sort by number of evaluations"></span>
           </span>
         </th>
         <th width="10%"></th>

@@ -45,7 +45,7 @@
                 <span class="fa fa-video-camera text-muted clickable"></span>
               </a>
               <div class="pull-xs-right">
-                <span class="fa fa-star text-warning clickable" ng-click="remove_fav(session.id)" title="<%= t('sessions.buttons.unfav_session') %>"></span>
+                <span class="fa fa-star text-warning clickable" ng-click="remove_fav(session.id)" tooltip='<%= "bottom|#{t('sessions.buttons.unfav_session')}" %>'></span>
               </div>
             </div>
           </div>

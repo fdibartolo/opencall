@@ -7,8 +7,8 @@
         <th width="40%"><%= t('notifications.labels.session') %></th>
         <th width="30%">
           <%= t('notifications.labels.reviews') %> &nbsp;
-          <span class="clickable text-primary fa fa-arrow-up" ng-click="toggleSort()" ng-if="isTopSort()" title="Sort by number of evaluations"></span>
-          <span class="clickable text-primary fa fa-arrow-down" ng-click="toggleSort()" ng-if="isBottomSort()" title="Sort by number of evaluations"></span>
+          <span class="clickable text-primary fa fa-arrow-up" ng-click="toggleSort()" ng-if="isTopSort()" tooltip="top|Sort by number of evaluations"></span>
+          <span class="clickable text-primary fa fa-arrow-down" ng-click="toggleSort()" ng-if="isBottomSort()" tooltip="top|Sort by number of evaluations"></span>
         </th>
         <th width="20%"></th>
         <th width="10%"></th>

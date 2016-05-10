@@ -10,8 +10,8 @@
         <th width="60%"><%= t('reviews.labels.feedback') %></th>
       </thead>
       <tr ng-repeat="review in session.reviews" class="review-summary">
-        <td class="status text-xs-center" title="{{review.status}}">
-          <span ng-class="{'fa fa-check text-success': isAcceptedReview(review.status), 'fa fa-times text-danger': isRejectedReview(review.status), 'fa fa-refresh text-warning': isPendingReview(review.status)}" style="font-size:120%"></span>
+        <td class="status text-xs-center">
+          <span ng-class="{'fa fa-check text-success': isAcceptedReview(review.status), 'fa fa-times text-danger': isRejectedReview(review.status), 'fa fa-refresh text-warning': isPendingReview(review.status)}" style="font-size:120%" tooltip="top|{{review.status}}"></span>
         </td>
         <td class="score text-xs-center" ng-style="{'color': review.score.bgColor}">
           <strong>{{review.score.text}}</strong>

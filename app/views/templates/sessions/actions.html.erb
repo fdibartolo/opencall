@@ -4,7 +4,7 @@
   <span helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}" fav-action></span>
   <% if can? :review, SessionProposal %>
     <a id="review-btn" ng-href="#/sessions/review/{{session.id}}">
-      <span class="fa fa-pencil-square-o text-success" title="<%= t('sessions.buttons.start_review') %>"></span>
+      <span class="fa fa-pencil-square-o text-success" tooltip='<%= "top|#{t('sessions.buttons.start_review')}" %>'></span>
     </a>
   <% end %>
 </span>
