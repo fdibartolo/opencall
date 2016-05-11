@@ -1,51 +1,51 @@
-<div class="container" ng-cloak ng-init="getReviewsStatus()" fade-animation="true">
+<div class="container-fluid" ng-cloak ng-init="getReviewsStatus()" fade-animation="true">
   <div class="col-sm-10">
     <h3>
       <%= t('reports.labels.title.reviews_status') %>
       <% if current_user and can? :manage, SessionProposal %>
-        <span class="pull-right">      
-          <a href="/session_proposals/export.csv" class="btn btn-xs btn-default">
+        <span class="pull-xs-right">      
+          <a href="/session_proposals/export.csv" class="btn btn-sm btn-secondary">
             <%= t('reports.buttons.export_reviews') %> &nbsp; 
-            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+            <span class="fa fa-download" aria-hidden="true"></span>
           </a>
         </span>
       <% end %>
     </h3><br>
     
-    <table class="table table-hover table-condensed" ng-if="sessions.length > 0">
+    <table class="table table-hover table-sm" ng-if="sessions.length > 0">
       <thead>
         <th width="30%">
           <%= t('reports.labels.session') %> &nbsp;
           <span ng-class="isSortBySessions() ? 'text-primary' : 'text-muted'" style="font-size:110%">
-            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleSessionsSort()" ng-if="!isSortBySessions()" title="Sort by title"></span>
-            <span class="clickable glyphicon glyphicon-sort-by-alphabet" ng-click="toggleSessionsSort()" ng-if="isSessionsTopSort()" title="Sort by title"></span>
-            <span class="clickable glyphicon glyphicon-sort-by-alphabet-alt" ng-click="toggleSessionsSort()" ng-if="isSessionsBottomSort()" title="Sort by title"></span>
+            <span class="clickable fa fa-sort" ng-click="toggleSessionsSort()" ng-if="!isSortBySessions()" tooltip="top|Sort by title"></span>
+            <span class="clickable fa fa-sort-alpha-asc" ng-click="toggleSessionsSort()" ng-if="isSessionsTopSort()" tooltip="top|Sort by title"></span>
+            <span class="clickable fa fa-sort-alpha-desc" ng-click="toggleSessionsSort()" ng-if="isSessionsBottomSort()" tooltip="top|Sort by title"></span>
           </span>
         </th>
         <th width="25%">
           <%= t('reports.labels.theme') %> &nbsp;
           <span ng-class="isSortByThemes() ? 'text-primary' : 'text-muted'" style="font-size:110%">
-            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleThemesSort()" ng-if="!isSortByThemes()" title="Sort by theme"></span>
-            <span class="clickable glyphicon glyphicon-sort-by-alphabet" ng-click="toggleThemesSort()" ng-if="isThemesTopSort()" title="Sort by theme"></span>
-            <span class="clickable glyphicon glyphicon-sort-by-alphabet-alt" ng-click="toggleThemesSort()" ng-if="isThemesBottomSort()" title="Sort by theme"></span>
+            <span class="clickable fa fa-sort" ng-click="toggleThemesSort()" ng-if="!isSortByThemes()" tooltip="top|Sort by theme"></span>
+            <span class="clickable fa fa-sort-alpha-asc" ng-click="toggleThemesSort()" ng-if="isThemesTopSort()" tooltip="top|Sort by theme"></span>
+            <span class="clickable fa fa-sort-alpha-desc" ng-click="toggleThemesSort()" ng-if="isThemesBottomSort()" tooltip="top|Sort by theme"></span>
           </span>
         </th>
         <th width="35%">
           <%= t('reports.labels.reviews') %> &nbsp;
           <span ng-class="isSortByReviews() ? 'text-primary' : 'text-muted'" style="font-size:110%">
-            <span class="clickable glyphicon glyphicon-sort" ng-click="toggleReviewsSort()" ng-if="!isSortByReviews()" title="Sort by number of evaluations"></span>
-            <span class="clickable glyphicon glyphicon-sort-by-attributes" ng-click="toggleReviewsSort()" ng-if="isReviewsTopSort()" title="Sort by number of evaluations"></span>
-            <span class="clickable glyphicon glyphicon-sort-by-attributes-alt" ng-click="toggleReviewsSort()" ng-if="isReviewsBottomSort()" title="Sort by number of evaluations"></span>
+            <span class="clickable fa fa-sort" ng-click="toggleReviewsSort()" ng-if="!isSortByReviews()" tooltip="top|Sort by number of evaluations"></span>
+            <span class="clickable fa fa-sort-amount-asc" ng-click="toggleReviewsSort()" ng-if="isReviewsTopSort()" tooltip="top|Sort by number of evaluations"></span>
+            <span class="clickable fa fa-sort-amount-desc" ng-click="toggleReviewsSort()" ng-if="isReviewsBottomSort()" tooltip="top|Sort by number of evaluations"></span>
           </span>
         </th>
         <th width="10%"></th>
       </thead>
       <tr ng-repeat="session in sessions | orderBy:sort.expression" class="reviews-status-summary" ng-show="isVisibleTheme(session.theme)">
         <td class="session">
-          <h5>
+          <h6>
             <a ng-href="#/sessions/show/{{session.id}}" target="_blank">{{session.title}}</a><br>
             <small><i>{{session.author}}</i></small>
-          </h5>
+          </h6>
         </td>
         <td class="theme"><small>{{session.theme}}</small></td>
         <td>
@@ -58,9 +58,9 @@
           </ul>
         </td>
         <td class="actions">
-          <a ng-href="#/sessions/review/{{session.id}}" class="btn btn-xs btn-success">
+          <a ng-href="#/sessions/review/{{session.id}}" class="btn btn-sm btn-success">
             <%= t('reviews.buttons.start') %> &nbsp; 
-            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
           </a>
         </td>
       </tr>

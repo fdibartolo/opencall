@@ -2,9 +2,9 @@ angular.module("openCall.directives").directive "fadeAnimation", ['$timeout', ($
   link: (scope, element, attrs) ->
     if attrs.fadeAnimation isnt ""
       scope.$watch attrs.fadeAnimation, (value) ->
-        if value is true
+        if value
           $(element).hide()
-          $(element).fadeIn 1000
+          $(element).fadeIn 2000
 
           if attrs.autoClose > 0
             $timeout (->

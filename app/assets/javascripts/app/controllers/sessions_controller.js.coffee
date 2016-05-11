@@ -1,6 +1,6 @@
 angular.module('openCall.controllers').controller 'SessionsController', 
-['$scope', '$location', '$routeParams', 'toaster', 'SessionsService', 'CommentsService', 'UsersService'
-($scope, $location, $routeParams, toaster, SessionsService, CommentsService, UsersService) ->
+['$scope', '$location', '$routeParams', '$window', 'toaster', 'SessionsService', 'CommentsService', 'UsersService',
+($scope, $location, $routeParams, $window, toaster, SessionsService, CommentsService, UsersService) ->
 
   $scope.sessions = []
   $scope.matched_tags = []
@@ -18,7 +18,6 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.sessionVotedIds = []
   $scope.sessionFavedIds = []
   $scope.availableVotes = MAX_SESSION_PROPOSAL_VOTES
-  $scope.searchTerms = ''
   $scope.searchPageNumber = 1
   $scope.newSessionComment = 
     body: ''
@@ -79,6 +78,11 @@ angular.module('openCall.controllers').controller 'SessionsController',
       UsersService.user_session_faved_ids().then (ids) ->
         $scope.sessionFavedIds = ids
 
+  $scope.initSearch = () ->
+    cached = $window.sessionStorage.getItem 'searchFor'
+    $scope.searchTerms = if angular.isDefined(cached) and cached isnt null then cached else ''
+    $scope.search()
+
   $scope.search = (termToAdd) ->
     $scope.loading = true
     $scope.searchTerms = "#{$scope.searchTerms} #{termToAdd}"  if angular.isDefined(termToAdd)
@@ -88,11 +92,13 @@ angular.module('openCall.controllers').controller 'SessionsController',
       $scope.matched_tags = response.matched_tags  unless $scope.searchTerms is ''
       $scope.total        = response.total
       $scope.loading      = false
+      $window.sessionStorage.setItem 'searchFor', $scope.searchTerms
 
   addVotedAndFavedStatusFor = (sessions) ->
     angular.forEach sessions, (session) ->
       session.voted = $scope.sessionVotedIds.indexOf(session.id) isnt -1
       session.faved = $scope.sessionFavedIds.indexOf(session.id) isnt -1
+      session.tagsVisible = false
     sessions
 
   $scope.loadMore = () ->
@@ -110,6 +116,14 @@ angular.module('openCall.controllers').controller 'SessionsController',
     UsersService.toggle_vote_session($scope.sessions[index].id, $scope.sessions[index].voted).then () ->
       delta = if $scope.sessions[index].voted then -1 else 1
       $scope.availableVotes += delta  if $scope.availableVotes isnt 0 or delta is 1
+
+      if delta is -1 and $scope.availableVotes < 4
+        switch $scope.availableVotes
+          when 3,2 then message = "You have #{$scope.availableVotes} votes left to use"
+          when 1 then message = "You just have 1 vote left"
+          else message = "You have no votes left, you can still remove a vote and reassign it if you change your mind"
+
+        toaster.pop('warning', '', message, 7000)
 
   $scope.fav = (index) ->
     $scope.sessions[index].faved = false  if angular.isUndefined($scope.sessions[index].faved)

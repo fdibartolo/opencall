@@ -1,44 +1,54 @@
 <div ng-cloak ng-init="voted_sessions()" fade-animation="true" class="row">
   <div ng-if="loading" class="loading">
-    <p class="text-center"><span class="ion-loading-a"></span></p>
+    <p class="text-xs-center"><span class="fa fa-spinner fa-pulse"></span></p>
   </div>
   <div ng-if="!loading">
     <div ng-if="sessions.length == 0" class="no-search-results">
-      <h2 class="text-center">
+      <h2 class="text-xs-center">
         <%= t('sessions.labels.no_vote_yet.primary', count: MaxSessionProposalVotes) %><br><br>
         <small>
-          <%= t('sessions.labels.no_fav_yet.secondary', span: '<span class="ion-ios7-circle-outline text-success" style="font-size:150%"></span>').html_safe %>
+          <%= t('sessions.labels.no_fav_yet.secondary', span: '<span class="fa fa-circle-o text-success" style="font-size:150%"></span>').html_safe %>
         </small> <br><br>
       </h2>
       <div class="home-button-container">
-        <a class="img-circle home-button text-center" href="<%= root_url + '#/sessions' %>">
-          <span class="glyphicon glyphicon-thumbs-up icon" aria-hidden="true"></span><br>
+        <a class="img-circle home-button text-xs-center" href="<%= root_url + '#/sessions' %>">
+          <span class="fa fa-thumbs-o-up icon" aria-hidden="true"></span><br>
           <span class="text"><%= t('sessions.buttons.vote') %></span>
         </a>
       </div>
     </div>
 
-    <div ng-if="sessions.length > 0" class="col-sm-offset-1 col-sm-10"><br><br>
-      <h2 class="text-center"><%= t('sessions.labels.my_voted_sessions') %></h2><br><br>
-
-      <div ng-repeat="session in sessions" class="session-summary" fade-animation="true">
-        <h3>
-          <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
-          <a ng-click="remove_vote(session.id)" class="btn btn-xs btn-danger pull-right" style="color:white;margin:5px">
-            <%= t('sessions.buttons.unvote_session') %> &nbsp; 
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </a>
-        </h3>
-        <div class="track">{{session.theme}} - {{session.track}}</div>
-        <div>
-          <ul class="list-inline">
-            <li ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">{{tag}}</li>
-            <li class="pull-right" ng-if="session.video_link != null && session.video_link != '' && session.video_link != '-'" title="{{session.video_link}}">
-              <a class="video-link" ng-href="{{session.video_link}}" target="_blank">
-                <span class="ion-videocamera">&nbsp;</span><%= t('sessions.labels.video') %>
+    <div ng-if="sessions.length > 0" class="col-xs-12">
+      <h2 class="text-xs-center"><%= t('sessions.labels.my_voted_sessions') %></h2><br>
+      <div class="cards-container">
+        <div ng-repeat="session in sessions" class="card-placeholder">
+          <div class="card card-animated">
+            <div class="tags" ng-class="{visible: session.tagsVisible}">
+              <span ng-repeat="tag in session.tags track by $index" class="tag sm bg-primary">
+                {{tag}}
+              </span>
+            </div>
+            <div class="card-block col-xs-12">
+              <div class="pull-xs-left">
+                <img ng-src="{{session.author.avatar_url}}" class="avatar img-circle" default-avatar-if-error>
+              </div>
+              <div style="margin-left:50px">
+                <p class="author">{{session.author.name}}</p>
+                <h5 class="title">
+                  <a ng-href="#/sessions/show/{{session.id}}">{{session.title}}</a>
+                </h5>
+              </div>
+            </div>
+            <div class="card-footer col-xs-12">
+              <span ng-if="session.tags.length > 0" class="fa fa-tags clickable" ng-class="{'text-muted': !session.tagsVisible, 'text-primary': session.tagsVisible}" ng-click="session.tagsVisible = !session.tagsVisible"></span>
+              <a ng-if="session.video_link != ''" ng-href="{{session.video_link}}" target="_blank">
+                <span class="fa fa-video-camera text-muted clickable"></span>
               </a>
-            </li>
-          </ul>
+              <div class="pull-xs-right">
+                <span class="fa fa-check-circle text-success clickable" ng-click="remove_vote(session.id)" tooltip='<%= "bottom|#{t('sessions.buttons.unvote_session')}" %>'></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div style="margin-top:100px"></div>
