@@ -47,12 +47,12 @@ html, body {
 
 .clickable { cursor: pointer; }
 
-.tt-suggestions {
-  background: rgba($brand-primary,0.85) !important;
+.tt-menu.tt-open {
+  background: rgba($brand-primary,0.75) !important;
   color: white !important;
   border: 1px solid $brand-primary !important;
   border-radius: 4px;
-  p { padding: 0 30px 0 10px; cursor: pointer; }
+  .tt-suggestion { padding: 3px 30px 3px 10px; cursor: pointer; }
 }
 
 .avatar {
