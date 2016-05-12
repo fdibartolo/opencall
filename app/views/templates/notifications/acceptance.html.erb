@@ -1,26 +1,26 @@
-<div class="container" ng-cloak ng-init="init()" fade-animation="true">
+<div class="container-fluid" ng-cloak ng-init="init()" fade-animation="true">
   <div class="col-sm-10">
     <h3><%= t('notifications.labels.title') %></h3><br>
 
-    <table class="table table-hover table-condensed" ng-if="sessions.length > 0">
+    <table class="table table-hover table-sm" ng-if="sessions.length > 0">
       <thead>
         <th width="40%"><%= t('notifications.labels.session') %></th>
         <th width="30%">
-          <%= t('notifications.labels.reviews') %>
-          <span class="clickable text-primary glyphicon glyphicon-triangle-top" ng-click="toggleSort()" ng-if="isTopSort()" title="Sort by number of evaluations"></span>
-          <span class="clickable text-primary glyphicon glyphicon-triangle-bottom" ng-click="toggleSort()" ng-if="isBottomSort()" title="Sort by number of evaluations"></span>
+          <%= t('notifications.labels.reviews') %> &nbsp;
+          <span class="clickable text-primary fa fa-arrow-up" ng-click="toggleSort()" ng-if="isTopSort()" tooltip="top|Sort by number of evaluations"></span>
+          <span class="clickable text-primary fa fa-arrow-down" ng-click="toggleSort()" ng-if="isBottomSort()" tooltip="top|Sort by number of evaluations"></span>
         </th>
         <th width="20%"></th>
         <th width="10%"></th>
       </thead>
       <tr ng-repeat="session in sessions | orderBy:sort.expression" class="notifications-summary" ng-class="{'success': isAcceptedSession(session.status), 'danger': isDeclinedSession(session.status)}" ng-show="isVisibleTheme(session.theme)">
         <td class="session">
-          <h4>
+          <h6>
             <a ng-href="#/sessions/show/{{session.id}}" target="_blank">
               {{session.title}}
             </a><br>
             <small><i>{{session.author}}</i></small>
-          </h4>
+          </h6>
         </td>
         <td>
           <ul ng-repeat="review in session.reviews">
@@ -29,7 +29,7 @@
 
               (<span ng-class="{'text-success': goodReview(review.score), 'text-danger': poorReview(review.score), ' -refresh text-warning': badReview(review.score)}">{{review.score}}</span>)
 
-              &nbsp;<span ng-class="{'glyphicon glyphicon-ok text-success': isAcceptedReview(review.status), 'glyphicon glyphicon-remove text-danger': isRejectedReview(review.status), 'glyphicon glyphicon-refresh text-warning': isPendingReview(review.status)}" style="font-size:110%"></span>
+              &nbsp;<span ng-class="{'fa fa-check text-success': isAcceptedReview(review.status), 'fa fa-times text-danger': isRejectedReview(review.status), 'fa fa-refresh text-warning': isPendingReview(review.status)}" style="font-size:110%"></span>
             </li>
           </ul>
         </td>
@@ -39,12 +39,12 @@
           </div>
         </td>
         <td class="actions">
-          <div class="pull-right">
-            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isDeclinedSession(session.status)" ng-click="getAcceptanceTemplateFor(session)">
-              <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= t('notifications.buttons.accept.text') %>
+          <div class="pull-xs-right">
+            <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isDeclinedSession(session.status)" ng-click="getAcceptanceTemplateFor(session)">
+              <span class="fa fa-check"></span>&nbsp;<%= t('notifications.buttons.accept.text') %>
             </button><br>
-            <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isAcceptedSession(session.status)" ng-click="getDenialTemplateFor(session)">
-              <span class="glyphicon glyphicon-remove"></span>&nbsp;<%= t('notifications.buttons.decline.text') %>
+            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#emailComposerModal" ng-disabled="isAcceptedSession(session.status)" ng-click="getDenialTemplateFor(session)">
+              <span class="fa fa-times"></span>&nbsp;<%= t('notifications.buttons.decline.text') %>
             </button>
           </div>
         </td>

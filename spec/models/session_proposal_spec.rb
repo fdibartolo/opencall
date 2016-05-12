@@ -39,7 +39,8 @@ RSpec.describe SessionProposal, :type => :model do
     it { expect(session_proposal.as_indexed_json['title']).to eq session_proposal.title }
     it { expect(session_proposal.as_indexed_json['track']).to eq session_proposal.track.name }
     it { expect(session_proposal.as_indexed_json['theme']).to eq session_proposal.theme.name }
-    it { expect(session_proposal.as_indexed_json['author']).to eq session_proposal.user.full_name }
+    it { expect(session_proposal.as_indexed_json['author']['name']).to eq session_proposal.user.full_name }
+    it { expect(session_proposal.as_indexed_json['video_link']).to eq session_proposal.video_link }
     it "should include tags name" do
       session_proposal.tags << FactoryGirl.create(:tag) << FactoryGirl.create(:tag, name: 'scrum')
       expect(session_proposal.as_indexed_json['tags']).to eq %w[xp scrum]

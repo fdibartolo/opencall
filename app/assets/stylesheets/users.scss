@@ -2,29 +2,30 @@
   border: 1px solid $brand-primary;
   border-radius: 15px;
   padding: 5px 0 15px;
-
-  h4 { text-align: center; }
+  text-align: center;
+  
+  h5 { text-align: center; }
 
   .btn-social { 
     border-radius: 50%;
     height: 60px;
     width: 60px;
     margin: 5px;
+    padding: 0;
 
     &:hover { box-shadow: 0 0 10px 0 black; }
   }
   
-  .btn-github { font-size: 280%; background-color: white; color: black; border: 1px solid black; padding-top: 2px; }
-  .btn-linkedin { font-size: 250%; background-color: rgb(21,114,178); color: white; }
-  .btn-googleplus { font-size: 250%; background-color: rgb(213,54,46); color: white; }
+  .btn-github { font-size: 240%; background-color: white; color: black; border: 1px solid black; }
+  .btn-linkedin { font-size: 240%; background-color: rgb(21,114,178); color: white; }
+  .btn-google_oauth2 { font-size: 225%; background-color: rgb(213,54,46); color: white; }
 }
 
 .social-login-association {
   border: 1px solid $brand-primary;
   border-radius: 15px;
   padding: 15px;
-
-  h4 { text-align: center; }
+  h5 { text-align: center; }
 
   .btn-social { 
     border-radius: 50%;
@@ -32,35 +33,27 @@
     width: 60px;
     margin: 5px;
     cursor: default;
+    padding: 0;
   }
   
   .btn-github {
-    font-size: 280%;
+    font-size: 240%;
     color: black;
     border: 1px solid black;
-    padding-top: 2px;
     background-color: white;
   }
   
   .btn-linkedin {
-    font-size: 250%;
+    font-size: 240%;
     color: white;
     background-color: rgb(21,114,178);
   }
   
-  .btn-googleplus {
-    font-size: 250%;
+  .btn-google_oauth2 {
+    font-size: 225%;
     color: white;
     background-color: rgb(213,54,46);
   }
-
-  // .btn-social { font-size: 400%; }
-
-  // div { display: table; }
-  
-  // span {
-  //   display: table-cell;
-  //   vertical-align:middle;
-  //   padding-left:20px;
-  // }
 }
+
+.form-control-warning, .form-control-danger { padding-right: 0; }

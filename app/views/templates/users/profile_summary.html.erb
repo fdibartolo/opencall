@@ -1,21 +1,21 @@
 <div class="row col-sm-offset-2 col-sm-8" ng-init="loadProfileSummary()" fade-animation="true">
   <br><div class="text-left">{{session.profile.bio}}</div><br>
 
-  <div class="row session-profile-links text-center">
+  <div class="row session-profile-links text-xs-center">
     <a ng-href="{{session.profile.website}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.website)}">
-      <span class="ion-social-wordpress"></span>
+      <span class="fa fa-wordpress"></span>
     </a>
     <a ng-href="{{session.profile.linkedin}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.linkedin)}">
-      <span class="ion-social-linkedin"></span>
+      <span class="fa fa-linkedin-square"></span>
     </a>
     <a ng-href="{{session.profile.facebook}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.facebook)}">
-      <span class="ion-social-facebook"></span>
+      <span class="fa fa-facebook-square"></span>
     </a>
     <a ng-href="{{session.profile.twitter}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.twitter)}">
-      <span class="ion-social-twitter"></span>
+      <span class="fa fa-twitter"></span>
     </a>
     <a ng-href="{{session.profile.aboutme}}" target="_blank" ng-class="{'text-muted disabled': isEmpty(session.profile.aboutme)}">
-      <span class="ion-earth"></span>
+      <span class="fa fa-globe"></span>
     </a>
   </div>
 </div>

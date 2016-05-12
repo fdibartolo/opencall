@@ -1,35 +1,36 @@
-<div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row"><br><br>
-  <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="search()">
-    <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group has-feedback">
-      <input type="text" class="form-control" 
-        ng-model="searchTerms" 
-        ng-model-options="{ debounce: 1000 }"
-        ng-change="search()"
-        helpable="<%= t('sessions.help.search') %>">
-      <span class="glyphicon glyphicon-search form-control-feedback" style="margin-right:15px" aria-hidden="true"></span>
-      <p ng-if="searchTerms != '' && total != 0" class="text-muted text-center" fade-animation="true">
+<div ng-cloak ng-init="getSessionVotedAndFavedIds()" fade-animation="true" class="row"><br>
+  <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="initSearch()">
+    <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+      <div class="input-group searchbox">      
+        <input type="text" class="form-control"
+          ng-model="searchTerms" 
+          ng-model-options="{ debounce: 1000 }"
+          ng-change="search()"
+          helpable="<%= t('sessions.help.search') %>">
+        <div class="input-group-addon">
+          <span class="fa fa-search" aria-hidden="true"></span>
+        </div>
+      </div>
+      <p ng-if="!loading && searchTerms != '' && total != 0" class="text-muted text-xs-center" fade-animation="true">
         <small><i>{{total}} matching results</i></small>
       </p>
     </div>
+
+    <div ng-if="!loading && matched_tags.length > 0 && searchTerms != ''" class="col-sm-12 matched-tags text-xs-center" fade-animation="true">
+      <small><span class="text-muted"><%= t('sessions.labels.matching_tags').html_safe %></span></small>
+      <span ng-repeat="tag in matched_tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag.key)">
+        {{tag.key}} <small>({{tag.doc_count}})</small>
+      </span>
+    </div>
   </div>
 
-  <div class="col-md-8">
+  <div style="position:fixed;top:0">{{availableVotes}}</div>
+  <div class="col-md-12">
     <div ng-if="loading" class="loading">
-      <p class="text-center"><span class="ion-loading-a"></span></p>
+      <p class="text-xs-center"><span class="fa fa-spinner fa-pulse"></span></p>
     </div>
     <div ng-if="!loading" ng-include="'templates/sessions/search_result.html'"></div>
   </div>
 
-  <div sticky offset="60" sticky-class="buttons-sticked" class="col-md-offset-1 col-md-3">
-    <div ng-include="'templates/sessions/search_side_bar.html'"></div>
-    <br><br>
-    <div ng-if="matched_tags.length > 0" class="text-center">
-      <h3><%= t('sessions.labels.matching_tags') %></h3>
-      <ul class="list-inline">
-        <li ng-repeat="tag in matched_tags track by $index" class="tag lg bg-primary clickable" ng-click="search(tag.key)">
-          {{tag.key}} <small>({{tag.doc_count}})</small>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <div ng-include="'templates/sessions/search_side_bar.html'"></div>
 </div>

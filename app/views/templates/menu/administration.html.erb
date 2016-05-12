@@ -1,0 +1,9 @@
+<div class="dropdown-divider"></div>
+<h6 class="dropdown-header">Administration</h6>
+<%= link_to 'My evaluations', "#{root_url}#/users/reviews", class: "dropdown-item" %>
+<% if can? :manage, SessionProposal %>
+  <%= link_to 'Manage reviewers', roles_url, class: "dropdown-item" %>
+  <%= link_to 'Proposals status', "#{root_url}#/stats", class: "dropdown-item" %>
+  <%= link_to 'Acceptance Notifications', "#{root_url}#/acceptance_notifications", class: "dropdown-item" %>
+  <%= link_to 'Author Inbox', "#{root_url}#/author_inbox", class: "dropdown-item" %>
+<% end %>

@@ -1,10 +1,10 @@
 <div class="col-sm-5 social-login-container">
   <%- if devise_mapping.omniauthable? %>
-    <h4><%= t('devise.title.social_login') %></h4>
+    <h5><%= t('devise.title.social_login') %></h5>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <% provider_icon = provider == :google_oauth2 ? 'googleplus' : provider %>
+      <% provider_icon = social_icon_for provider %>
       <div class="col-xs-4 text-center">
-        <%= link_to content_tag(:span, '', class: "ion-social-#{provider_icon}"), user_omniauth_authorize_path(provider), class: "btn btn-social btn-#{provider_icon}" %>
+        <%= link_to content_tag(:span, '', class: "#{provider_icon}"), user_omniauth_authorize_path(provider), class: "btn btn-social btn-#{provider}" %>
       </div>
     <% end -%>
   <% end -%>

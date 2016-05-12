@@ -34,7 +34,7 @@ en:
     propose:
       title: "Propose"
       paragraph: "Share with the community what you would like to talk about, and gather valuable early feedback that will help you refine your idea!"
-      due_date_paragraph: "Time is up to propose <span class='ion-sad' style='font-size:120%'></span>... the organizing committee is now reviewing the submitted proposals and will notify the results soon!"
+      due_date_paragraph: "Time is up to propose <span class='fa fa-frown-o' style='font-size:120%'></span>... the organizing committee is now reviewing the submitted proposals and will notify the results soon!"
     vote:
       title: "Vote"
       paragraph: "Help building the sessions grid with your feedback! You can add comments to the proposals, fav the ones you like, and more!"
@@ -47,7 +47,7 @@ en:
       sign_in_to_all: "Sign in and submit your session, vote others, mark your favorite ones, and more!"
       no_search_results: "We couldn't find anything that <br> matches the criteria... "
       no_sessions: "It's lonely here...<br> Be the first one to propose a session!"
-      matching_tags: "Other relevant tags"
+      matching_tags: "relevant tags <span class='fa fa-tags' style='font-size:120%'>"
       new: "What would you like to talk about?"
       title: "Title"
       theme: "Theme"
@@ -66,10 +66,10 @@ en:
       no_sessions_yet: "You have no session proposals yet, let's do one!"
       no_fav_yet:
         primary: "You have not faved any session yet!"
-        secondary: "To do so, just search among the session proposals and click on the &nbsp;%{span}&nbsp; next to its title"
+        secondary: "To do so, just search among the session proposals and click on its &nbsp;%{span}"
       no_vote_yet:
         primary: "You still have your %{count} available votes!"
-        secondary: "To do so, just search among the session proposals and click on the &nbsp;%{span}&nbsp; next to its title"
+        secondary: "To do so, just search among the session proposals and click on its &nbsp;%{span}"
       no_reviews_yet: "You have no reviews done yet!"
     markdown:
       text: "Text"
@@ -87,7 +87,6 @@ en:
       submit_review: "Submit evaluation"
       start_review: "Start formal evaluation"
       cancel: "Cancel"
-      load_more: "Load more..."
       comment: "Comment"
       back: "Back to all sessions"
       vote: "Vote"
@@ -103,10 +102,11 @@ en:
     help:
       search: "top|Find session proposals by author or key words, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Your available votes"
-      create_session: "bottom|Propose a session"
-      session_title: "top|Click on the title to navigate to session details"
-      vote: "left|Vote the session"
+      create_session: "top|Propose a session"
+      session_title: "top|Click on the card to navigate to session details"
+      vote: "bottom|Vote the session"
       fav: "right|Fav the session"
+      tags: "right|Display tags"
     placeholders:
       comment: "Leave a comment to the author"
       review_feedback_for_author: "Give your point of view to the author about the session proposal"

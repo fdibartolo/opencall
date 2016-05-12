@@ -1,10 +1,11 @@
 $btn-primary-hover-bg: #286090;
 $btn-info-hover-bg: #31b0d5;
+$color-twitter: rgb(19,138,241);
 
-@import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap-select";
+@import "font-awesome";
 @import "home";
+@import "cards";
 @import "users";
 @import "session_proposals";
 @import "reviews";
@@ -19,26 +20,40 @@ $btn-info-hover-bg: #31b0d5;
 @import "notifications";
 @import "reports";
 
-.content { padding-top: 50px; }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.content { padding-top: 75px; }
 
 .btn a {
   color: inherit;
   &:hover { text-decoration: none !important; }
 }
 
+.nav-item { .btn { margin-top:3px; } }
+
 .scrollable {
   overflow-y: scroll;
   overflow-x: hidden;  
 }
 
+.menu {
+  margin-top: 8px;
+  right: 0;
+  min-width: 220px;
+}
+
 .clickable { cursor: pointer; }
 
-.tt-suggestions {
-  background: rgba($brand-primary,0.85) !important;
+.tt-menu.tt-open {
+  background: rgba($brand-primary,0.75) !important;
   color: white !important;
   border: 1px solid $brand-primary !important;
   border-radius: 4px;
-  p { padding: 0 30px 0 10px; cursor: pointer; }
+  
+  .tt-suggestion { padding: 3px 30px 3px 10px; cursor: pointer; }
 }
 
 .avatar {
@@ -75,3 +90,6 @@ $btn-info-hover-bg: #31b0d5;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
   }
 }
+
+.form-control-label { font-weight: bold; text-align: right; }
+.text-twitter { color: $color-twitter; }
