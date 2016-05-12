@@ -15,21 +15,21 @@
       </div>
       <div class="form-group row" ng-class="{'has-danger': newSession.invalidThemeId}">
         <label for="select-theme" class="col-sm-2 form-control-label"><%= t('sessions.labels.theme') %></label>
-        <div class="col-sm-8">
+        <div class="col-sm-8" set-selected="newSession.theme_id">
           <%= select_tag "theme", options_from_collection_for_select(Theme.all, "id", "name"), { id: "select-theme", 'ng-model': "newSession.theme_id", class: "form-control c-select" } %>
           <small ng-if="newSession.invalidThemeId" class="text-danger"><%= t('sessions.errors.theme_cant_be_blank') %></small>
         </div>
       </div>
       <div class="form-group row" ng-class="{'has-danger': newSession.invalidTrackId}">
         <label for="select-track" class="col-sm-2 form-control-label"><%= t('sessions.labels.track') %></label>
-        <div class="col-sm-8">
+        <div class="col-sm-8" set-selected="newSession.track_id">
           <%= select_tag "track", options_from_collection_for_select(Track.all, "id", "name"), { id: "select-track", 'ng-model': "newSession.track_id", class: "form-control c-select" } %>
           <small ng-if="newSession.invalidTrackId" class="text-danger"><%= t('sessions.errors.track_cant_be_blank') %></small>
         </div>
       </div>
       <div class="form-group row" ng-class="{'has-danger': newSession.invalidAudienceId}">
         <label for="select-audience" class="col-sm-2 form-control-label"><%= t('sessions.labels.audience') %></label>
-        <div class="col-sm-8">
+        <div class="col-sm-8" set-selected="newSession.audience_id">
           <%= select_tag "audience", options_from_collection_for_select(Audience.all, "id", "name"), { id: "select-audience", 'ng-model': "newSession.audience_id", class: "form-control c-select" } %>
           <small ng-if="newSession.invalidAudienceId" class="text-danger"><%= t('sessions.errors.audience_cant_be_blank') %></small>
         </div>
