@@ -149,3 +149,16 @@
   }
   div.input-group-addon { background-color: white; } 
 }
+
+.add-new-session {
+  text-align: center;
+
+  span {
+    font-size: 280%;
+    padding-left: 200px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+}

@@ -5,7 +5,8 @@
   <div ng-if="!loading">
     <div ng-if="sessions.length == 0" class="no-search-results">
       <h2 class="text-xs-center">
-        <%= t('sessions.labels.no_sessions_yet') %><br><br>
+        <%= t('sessions.labels.no_sessions_yet') %><br><br><br><br>
+        <div class="add-new-session"><span class="fa fa-arrow-down"></span></div>
       </h2>
       <div class="action-button-container">
         <a class="img-circle btn-action primary" href="<%= root_url + '#/sessions/new' %>">
