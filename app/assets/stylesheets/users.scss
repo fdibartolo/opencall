@@ -29,9 +29,28 @@
     }
   }
   
-  .btn-github { font-size: 360%; background-color: white; color: black; border: 1px solid black; }
-  .btn-linkedin { font-size: 250%; background-color: $color-linkedin; color: white; padding-top: 9px; }
-  .btn-google_oauth2 { font-size: 230%; background-color: $color-google; color: white; padding-top: 10px; }
+  .btn-github { 
+    font-size: 360%;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  .btn-linkedin { 
+    font-size: 250%;
+    background-color: $color-linkedin;
+    color: white;
+    padding-top: 9px;
+    border: 1px solid darken($color-linkedin, 7%);
+  }
+  
+  .btn-google_oauth2 {
+    font-size: 230%;
+    background-color: $color-google;
+    color: white;
+    padding-top: 10px;
+    border: 1px solid darken($color-google, 7%);
+  }
 }
 
 .social-login-association {
@@ -62,6 +81,7 @@
     color: white;
     background-color: $color-linkedin;
     padding-top: 9px;
+    border: 1px solid darken($color-linkedin, 7%);
   }
   
   .btn-google_oauth2 {
@@ -69,6 +89,7 @@
     color: white;
     background-color: $color-google;
     padding-top: 10px;
+    border: 1px solid darken($color-google, 7%);
   }
 }
 
