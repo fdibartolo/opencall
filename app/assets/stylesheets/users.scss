@@ -13,7 +13,20 @@
     margin: 5px;
     padding: 0;
 
-    &:hover { box-shadow: 0 3px 10px 0 black; }
+    &:hover { 
+      box-shadow: 0 3px 10px 0 black;
+      -webkit-transform: translate(0px, -1px);
+      -moz-transform: translate(0px, -1px);
+      -o-transform: translate(0px, -1px);
+      transform: translate(0px, -1px);
+    }
+
+    &:active { 
+      -webkit-transform: translate(0px, 0px);
+      -moz-transform: translate(0px, 0px);
+      -o-transform: translate(0px, 0px);
+      transform: translate(0px, 0px);
+    }
   }
   
   .btn-github { font-size: 360%; background-color: white; color: black; border: 1px solid black; }
