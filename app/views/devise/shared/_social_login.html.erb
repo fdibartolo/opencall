@@ -4,7 +4,7 @@
     <%- resource_class.omniauth_providers.each do |provider| %>
       <% provider_icon = social_icon_for provider %>
       <div class="col-xs-4 text-center">
-        <%= link_to content_tag(:span, '', class: "#{provider_icon}"), user_omniauth_authorize_path(provider), class: "btn btn-social btn-#{provider}" %>
+        <%= link_to '', user_omniauth_authorize_path(provider), class: "btn btn-social btn-#{provider} #{provider_icon}" %>
       </div>
     <% end -%>
   <% end -%>

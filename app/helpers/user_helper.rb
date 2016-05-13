@@ -37,12 +37,11 @@ module UserHelper
   end
 
   def link_context_for provider
-    provider_icon = social_icon_for provider
     action, message, button_class = current_user.identities.find_by(provider: provider).nil? ? 
       [user_omniauth_authorize_path(provider), 'link me now!', 'btn-primary'] : 
-      [users_unlink_social_path(provider: provider), 'already linked, unlink me', 'btn-default']
+      [users_unlink_social_path(provider: provider), 'already linked, unlink me', 'btn-secondary']
     
-    ["btn-#{provider}", action, message, provider_icon, button_class]
+    [action, message, social_icon_for(provider), button_class]
   end
 
   def social_icon_for provider

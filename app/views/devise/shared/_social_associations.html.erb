@@ -1,12 +1,14 @@
-<div class="col-sm-offset-1 col-sm-3 social-login-association">
-  <%- if devise_mapping.omniauthable? %>
-    <h5><%= t('devise.title.social_linked') %></h5>
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <% div_class, action, message, icon, btn_class = link_context_for provider %>
-      <div>
-        <%= content_tag(:div, content_tag(:span, '', class: icon), class: "btn btn-social #{div_class}") %>
-        &nbsp; <%= link_to message, action, class: "btn btn-sm #{btn_class}" %>
-      </div>
+<div class="col-sm-4">
+  <div class="social-login-association">
+    <%- if devise_mapping.omniauthable? %>
+      <h5><%= t('devise.title.social_linked') %></h5>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <% action, message, icon, btn_class = link_context_for provider %>
+        <div>
+          <%= content_tag(:div, '', class: "btn btn-social btn-#{provider} #{icon}") %>
+          &nbsp; <%= link_to message, action, class: "btn btn-sm #{btn_class}" %>
+        </div>
+      <% end -%>
     <% end -%>
-  <% end -%>
+  </div>
 </div>
