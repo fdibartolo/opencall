@@ -7,8 +7,9 @@ gem 'pg', '0.18.4'
 
 gem 'jbuilder', '2.4.1'
 gem 'sass-rails', '5.0.4'
-gem 'bootstrap-sass', '3.3.6'
-gem 'bootstrap-select-rails', '1.6.3'
+gem 'bootstrap', '4.0.0.alpha3'
+gem 'rails-assets-tether', '1.1.1'
+gem 'font-awesome-rails', '4.6.2.0'
 gem 'uglifier', '2.7.2'
 gem 'coffee-rails', '4.1.1'
 gem 'angularjs-rails', '1.5.0'
@@ -23,9 +24,10 @@ gem 'highcharts-rails', '4.1.9'
 gem 'highcharts-ng-rails', '0.0.7'
 
 gem 'devise', '3.5.6'
+gem 'omniauth-oauth2', '1.3.1' # upgrading to 1.4.0 injects a defect on linkedin oauth
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.3.1'
-gem 'omniauth-linkedin', '0.2.0'
+gem 'omniauth-linkedin-oauth2', '0.1.5'
 gem 'cancancan', '1.13.1'
 
 gem 'will_paginate', '3.0.7'

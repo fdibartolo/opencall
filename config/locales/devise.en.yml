@@ -78,6 +78,7 @@ en:
       confirm: "Confirm"
       save: "Save"
       back: "Back"
+      cancel: "Cancel"
       signup: "Sign Up"
       login: "Login"
       delete:

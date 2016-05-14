@@ -76,6 +76,7 @@ es:
       confirm: "Confirmar"
       save: "Guardar"
       back: "Volver"
+      cancel: "Cancelar"
       signup: "Registrarme"
       login: "Ingresar"
       delete:

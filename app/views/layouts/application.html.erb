@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html ng-app="openCall">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>OpenCall</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= stylesheet_link_tag '//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css', :media => "all" %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link href="<%= asset_path('agiles.png') %>" rel='image_src' />
+  <link href="<%= asset_path('agiles.png') %>" rel='shortcut icon' type='image/png'>
 
   <script type="text/javascript">
     var BASE_URL = "<%= root_url %>";
@@ -14,77 +18,61 @@
     var CURRENT_USER_NAME = "<%= current_user.full_name if current_user %>";
     var IS_CURRENT_USER_REVIEWER = "<%= current_user and can? :review, SessionProposal %>" == "true";
     var MAX_SESSION_PROPOSAL_VOTES = parseInt("<%= MaxSessionProposalVotes %>");
+    var DEFAULT_AVATAR_URL = "<%= DefaultAvatarUrl %>";
   </script>
 </head>
 <body>
-  <div class="navbar-wrapper">
-    <div class="container">
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" ng-href="<%= "#{root_url}#/home" %>">Agiles 2015 | Call for Papers</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <% if current_user %>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="user-menu-link">
-                    <%= current_user.email %> &nbsp;
-                    <%= image_tag(avatar_for(current_user), :class => 'avatar img-circle', :title => current_user.email) %>
-                    <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><%= link_to "Profile", edit_user_registration_path %></li>
-                    <li><%= link_to "Change password", users_reset_password_path %></li>
-                    <li class="divider"></li>
-                    <li><%= link_to 'My proposals', "#{root_url}#/users/sessions" %></li>
-                    <li><%= link_to 'My voted proposals', "#{root_url}#/users/voted_sessions" %></li>
-                    <li><%= link_to 'My faved proposals', "#{root_url}#/users/faved_sessions" %></li>
-
-                    <% if can? :review, SessionProposal %>
-                      <div ng-include="'templates/menu/administration.html'" replace-element></div>
-                    <% end %>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Reports</li>
-                    <li><%= link_to 'Sessions by vote count', "#{root_url}#/reports/session_votes" %></li>
-                    <% if can? :review, SessionProposal %>
-                      <div ng-include="'templates/menu/advanced_reports.html'" replace-element></div>
-                    <% end %>
-
-                    <li class="divider"></li>
-                    <li>
-                      <%= link_to "Sign out", destroy_user_session_path, method: :delete, id: 'signout-link' %>
-                    </li>
-                  </ul>
-                </li>
-              <% else %>
-                <li style="padding:2px 5px">
-                  <div class="navbar-btn">
-                    <%= link_to t('sessions.buttons.sign_up'), new_user_registration_path, class: "btn btn-primary btn-sm" %>
-                  </div>
-                </li>
-                <li style="padding:2px 5px">
-                  <div class="navbar-btn">
-                    <%= link_to t('sessions.buttons.sign_in'), new_user_session_path, class: "btn btn-default btn-sm" %>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" ng-href="<%= "#{root_url}#/home" %>"><%= SiteTitle %></a>
+      <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        &#9776;
+      </button>
+      <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+        <ul class="nav navbar-nav pull-xs-right">
+          <% if current_user %>
+            <li class="nav-item dropdown">
+              <a id="user-menu-link" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.full_name %> &nbsp;
+                <%= image_tag(avatar_for(current_user), class: 'avatar img-circle', title: current_user.email) %>
+                <span class="caret"></span>
+              </a>
+              <div class="menu text-xs-right">
+                <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Change password", users_reset_password_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'My proposals', "#{root_url}#/users/sessions", class: "dropdown-item" %>
+                <%= link_to 'My voted proposals', "#{root_url}#/users/voted_sessions", class: "dropdown-item" %>
+                <%= link_to 'My faved proposals', "#{root_url}#/users/faved_sessions", class: "dropdown-item" %>
+                <% if can? :review, SessionProposal %>
+                  <div ng-include="'/templates/menu/administration.html'" replace-element></div>
+                <% end %>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header">Reports</h6>
+                <%= link_to 'Sessions by vote count', "#{root_url}#/reports/session_votes", class: "dropdown-item" %>
+                <% if can? :review, SessionProposal %>
+                  <div ng-include="'/templates/menu/advanced_reports.html'" replace-element></div>
+                <% end %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete, id: 'signout-link', class: "dropdown-item" %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to t('sessions.buttons.sign_up'), new_user_registration_path, class: "btn btn-primary btn-sm" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to t('sessions.buttons.sign_in'), new_user_session_path, class: "btn btn-secondary btn-sm" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  </nav>
 
   <a id="scroll-to-top" style="visibility:hidden"></a>
   <div loading-spinner></div>
-  <div class="container content">
+  <div class="container-fluid content">
     <%= render :partial => 'layouts/messages' %>  
 
     <%= yield %>

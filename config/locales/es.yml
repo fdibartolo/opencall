@@ -10,11 +10,11 @@ es:
     announcement:
       title: "Bienvenidos"
       body: ""
-      body: "Este es el sitio de llamado a propuestas (Call for Papers) de la conferencia <a href='http://agiles2015.agiles.org' target='_blank'>Agiles 2015</a>. Aquí podrás explorar las sesiones propuestas por diferentes autores, como así también proponer tu propia sesión. Para conocer instrucciones y/u otras recomendaciones acerca de cómo proponer una sesión, por favor referirse a la página de <a href='http://agiles2015.agiles.org/es/?page_id=47' target='_blank'>Call for Papers</a>."
+      body: "Este es el sitio de llamado a propuestas (Call for Papers) de la conferencia <a href='http://agiles2016.agiles.org' target='_blank'>Agiles 2016</a>. Aquí podrás explorar las sesiones propuestas por diferentes autores, como así también proponer tu propia sesión. Para conocer instrucciones y/u otras recomendaciones acerca de cómo proponer una sesión, por favor referirse a la página de <a href='http://agiles2016.agiles.org/postula-una-charla/' target='_blank'>Call for Papers</a>."
     propose:
       title: "Proponé"
       paragraph: "Compartí con la comunidad sobre qué te gustaría hablar, qué te gustaría compartir, y recibí feedback temprano que te permitan refinar tu idea!"
-      due_date_paragraph: "Llegamos a la fecha límite para proponer <span class='ion-sad' style='font-size:120%'></span>... el comité organizador esta evaluando las propuestas enviadas y dará a conocer los resultados pronto!"
+      due_date_paragraph: "Llegamos a la fecha límite para proponer <span class='fa fa-frown-o' style='font-size:120%'></span>... el comité organizador esta evaluando las propuestas enviadas y dará a conocer los resultados pronto!"
     vote:
       title: "Votá"
       paragraph: "Ayudá a generar la grilla de charlas con tu feedback! Podés hacer comentarios a los autores de las mismas, marcar tus favoritas, y mas!"
@@ -27,7 +27,7 @@ es:
       sign_in_to_all: "Inicia sesión y propone tu charla, vota las de otros, marca tus favoritas, y mas!"
       no_search_results: "No hemos podido encontrar resultados <br> que concuerden con la búsqueda... "
       no_sessions: "Está todo tranquilo por aquí...<br> Sé el primero es proponer una sesión!"
-      matching_tags: "Otros tags relevantes"
+      matching_tags: "tags relevantes <span class='fa fa-tags' style='font-size:120%'>"
       new: "¿De qué te gustaría hablar?"
       title: "Título"
       theme: "Temática"
@@ -46,10 +46,10 @@ es:
       no_sessions_yet: "Aún no has propuesto ninguna sesión, animate!"
       no_fav_yet:
         primary: "Aún no has marcado sesiones favoritas!"
-        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en el &nbsp;%{span}&nbsp; a la derecha del título de la misma"
+        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en su &nbsp;%{span}"
       no_vote_yet:
         primary: "Aún tienes tus %{count} votos disponibles!"
-        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en el &nbsp;%{span}&nbsp; a la derecha del título de la misma"
+        secondary: "Para hacerlo, puedes simplemente buscar entre las sesiones y hacer click en su &nbsp;%{span}"
       no_review_yet: "Aún no has hecho ninguna revisión!"
     markdown:
       text: "Texto"
@@ -67,7 +67,6 @@ es:
       submit_review: "Enviar evaluación"
       start_review: "Iniciar una evaluación formal"
       cancel: "Cancelar"
-      load_more: "Cargar mas..."
       comment: "Comentar"
       back: "Volver a todas las propuestas"
       vote: "Votá"
@@ -83,10 +82,11 @@ es:
     help:
       search: "top|Busca sesiones por autor o bien por palabras clave, tags, etc (i.e. scrum, devops)"
       vote_count: "top|Tus votos disponibles"
-      create_session: "bottom|Proponé una nueva sesión"
-      session_title: "top|Hacé click en el título de la sesión para ver sus detalles"
-      vote: "left|Votá la sesión"
+      create_session: "top|Proponé una nueva sesión"
+      session_title: "top|Hacé click en la tarjeta para ver los detalles de la sesión"
+      vote: "bottom|Votá la sesión"
       fav: "right|Marcá la sesión como favorita"
+      tags: "right|Mostrar etiquetas"
     placeholders:
       comment: "Dejar un comentario al autor"
       review_feedback_for_author: "Da tu punto de vista de la sesión al autor"
