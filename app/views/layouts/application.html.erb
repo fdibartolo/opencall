@@ -8,8 +8,8 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <link href='/assets/agiles.png' rel='image_src' />
-  <link href='/assets/agiles.png' rel='shortcut icon' type='image/png'>
+  <link href="<%= asset_path('agiles.png') %>" rel='image_src' />
+  <link href="<%= asset_path('agiles.png') %>" rel='shortcut icon' type='image/png'>
 
   <script type="text/javascript">
     var BASE_URL = "<%= root_url %>";
