@@ -110,7 +110,7 @@ La creación de los datos automáticamente indexará los índices de ElasticSear
 
 Este proceso está automatizado tal cual se detalla en su [apartado](https://github.com/fdibartolo/opencall/blob/master/terraform/README.md)
 
-### Cómo contribuir
+### Cómo contribuir :+1:
 
 1. Crea tu propio fork
 2. Crea un branch con tu nueva feature o bugfix (`git checkout -b my-new-branch`)
