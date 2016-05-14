@@ -8,6 +8,8 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link href='/assets/agiles.png' rel='image_src' />
+  <link href='/assets/agiles.png' rel='shortcut icon' type='image/png'>
 
   <script type="text/javascript">
     var BASE_URL = "<%= root_url %>";
@@ -22,7 +24,7 @@
 <body>
   <nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" ng-href="<%= "#{root_url}#/home" %>">Agiles 2015 | Call for Papers</a>
+      <a class="navbar-brand" ng-href="<%= "#{root_url}#/home" %>"><%= SiteTitle %></a>
       <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         &#9776;
       </button>
