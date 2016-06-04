@@ -109,6 +109,7 @@ en:
       tags: "right|Display tags"
     placeholders:
       comment: "Leave a comment to the author"
+      comment_by_author: "Leave a comment"
       review_feedback_for_author: "Give your point of view to the author about the session proposal"
       review_comment_for_admins: "Provide any comment for the chairs. This WILL NOT be shared with the author"
       summary: "Summary that highlights the session"

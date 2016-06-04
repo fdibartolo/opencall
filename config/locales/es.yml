@@ -89,6 +89,7 @@ es:
       tags: "right|Mostrar etiquetas"
     placeholders:
       comment: "Dejar un comentario al autor"
+      comment_by_author: "Dejar un comentario"
       review_feedback_for_author: "Da tu punto de vista de la sesión al autor"
       review_comment_for_admins: "Indica algún comentario para los chairs. Esto NO SERA COMPARTIDO con el autor"
       summary: "Sinopsis que resume la sesión"
