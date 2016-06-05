@@ -16,5 +16,4 @@ Process.fork do
     # ElasticSearch addon is not yet provided
     p "The ElasticSearch cluster did not start after 10 secs, skipping indices creation"
   end
-end
-
+end unless Rails.env.test?
