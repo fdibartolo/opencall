@@ -27,6 +27,31 @@ class SessionProposal < ActiveRecord::Base
     state :declined
   end
 
+  settings analysis: { 
+    filter: {
+      substring: {
+        type: "nGram",
+        min_gram: 3,
+        max_gram: 50
+      }
+    },
+    analyzer: {
+      index_analyzer: {
+        tokenizer: "keyword",
+        filter: ["lowercase", "substring"]
+      },
+      search_analyzer: {
+        tokenizer: "keyword",
+        filter: ["lowercase", "substring"]
+      }
+    }
+  } do
+    mappings do
+      indexes :title, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer', term_vector: "yes"
+      #indexes :video_link, index: :not_analyzed
+    end
+  end
+
   def autosave_associated_records_for_tags
     session_tags = []
     self.tags.each { |tag| session_tags << Tag.find_or_create_by(name: tag.name) unless tag.marked_for_destruction? }
