@@ -1,5 +1,5 @@
 <% if current_user and can? :review, SessionProposal %>
-  <div ng-cloak ng-controller="ReviewsController" ng-init="initReviewForm()" fade-animation="true">
+  <div ng-cloak ng-controller="ReviewsController" ng-init="initReviewForm()" animate-with="fadeIn">
     <div class="row session-detail">
       <div class="col-sm-2 text-xs-center">
         <img ng-src="{{session.author.avatar_url}}" class="avatar lg img-circle">
@@ -41,7 +41,7 @@
     </div>
     <hr>
 
-    <div class="row session-comment" fade-animation="true">
+    <div class="row session-comment" animate-with="fadeIn">
       <div class="col-sm-2 text-xs-center">
         <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
       </div>
