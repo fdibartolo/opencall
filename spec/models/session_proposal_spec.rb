@@ -76,6 +76,8 @@ RSpec.describe SessionProposal, :type => :model do
       it "should return documents that partial match on custom analyzed fields (nGram)" do
         expect(SessionProposal.custom_search('advan').results.total).to eq 1
         expect(SessionProposal.custom_search('crum').results.total).to eq 1
+        expect(SessionProposal.custom_search('Rob').results.total).to eq 3
+        expect(SessionProposal.custom_search('artin').results.total).to eq 3
       end
     end
   end

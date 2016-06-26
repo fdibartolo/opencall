@@ -47,8 +47,12 @@ class SessionProposal < ActiveRecord::Base
     }
   } do
     mappings do
-      indexes :title, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer', term_vector: "yes"
-      #indexes :video_link, index: :not_analyzed
+      indexes :title, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
+      indexes :video_link, index: :not_analyzed
+      indexes :author, type: "object" do 
+        indexes :name, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
+        indexes :avatar_url, index: :not_analyzed
+      end
     end
   end
 
