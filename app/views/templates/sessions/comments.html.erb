@@ -32,7 +32,7 @@
         </li>
       </ul>
       <div ng-if="!previewComment" animate-with="fadeIn">
-        <textarea type="text" class="form-control" placeholder="<%= t('sessions.placeholders.comment') %>" ng-model="newSessionComment.body" rows="4"></textarea>
+        <textarea type="text" class="form-control" placeholder="{{session.commentPlaceholder}}" ng-model="newSessionComment.body" rows="4"></textarea>
         <small class="text-muted">
           <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
         </small><br>
