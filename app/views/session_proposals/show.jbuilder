@@ -9,3 +9,4 @@ json.author do
 end
 json.tags @session_proposal.tags.select(:name)
 json.editable true if current_user and can? :edit, @session_proposal
+json.commentPlaceholder comment_placeholder(current_user.id, @session_proposal.user_id) if current_user
