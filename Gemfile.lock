@@ -79,7 +79,7 @@ GEM
       elasticsearch-transport (= 5.0.0)
     elasticsearch-api (5.0.0)
       multi_json
-    elasticsearch-extensions (0.0.22)
+    elasticsearch-extensions (0.0.20)
       ansi
       ruby-prof
     elasticsearch-model (0.1.9)
@@ -280,7 +280,7 @@ DEPENDENCIES
   coffee-rails (= 4.2.1)
   coveralls (= 0.8.15)
   devise (= 3.5.6)
-  elasticsearch-extensions (= 0.0.22)
+  elasticsearch-extensions (= 0.0.20)
   elasticsearch-model (= 0.1.9)
   elasticsearch-rails (= 0.1.9)
   factory_girl_rails (= 4.7.0)
