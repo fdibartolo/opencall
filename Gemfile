@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 
 gem 'rails', '4.2.7.1'
-gem 'puma', '3.4.0'
-gem 'pg', '0.18.4'
+gem 'puma', '3.6.0'
+gem 'pg', '0.19.0'
 
 gem 'jbuilder', '2.6.0'
 gem 'sass-rails', '5.0.6'
@@ -28,7 +28,7 @@ gem 'omniauth-oauth2', '1.3.1' # upgrading to 1.4.0 injects a defect on linkedin
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.3.1'
 gem 'omniauth-linkedin-oauth2', '0.1.5'
-gem 'cancancan', '1.13.1'
+gem 'cancancan', '1.15.0'
 
 gem 'will_paginate', '3.1.5'
 gem 'elasticsearch-model', '0.1.9'
