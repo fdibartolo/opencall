@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.2.1'
 
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.7.1'
 gem 'puma', '3.4.0'
 gem 'pg', '0.18.4'
 
 gem 'jbuilder', '2.4.1'
-gem 'sass-rails', '5.0.4'
+gem 'sass-rails', '5.0.6'
 gem 'bootstrap', '4.0.0.alpha3'
 gem 'rails-assets-tether', '1.1.1'
 gem 'font-awesome-rails', '4.6.2.0'
