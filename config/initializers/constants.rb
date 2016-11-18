@@ -1,6 +1,8 @@
 SiteTitle = "Agiles 2016 | Call for Papers"
 
-DefaultAvatarUrl = "https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/73.jpg"
+# UIFaces is temporarily down =(
+# DefaultAvatarUrl = "https://s3.amazonaws.com/uifaces/faces/twitter/cbillins/73.jpg" 
+DefaultAvatarUrl = "https://pickaface.net/gallery/avatar/unr_dennis67_161116_2059_9mwjh9.png"
 
 RoleAdmin     = 'admin'
 RoleReviewer  = 'reviewer'
