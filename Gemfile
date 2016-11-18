@@ -39,15 +39,15 @@ gem 'newrelic_rpm', '3.15.1.316'
 gem 'workflow', '1.2.0'
 
 group :development, :test do
-  gem 'spring', '1.6.4'
+  gem 'spring', '2.0.0'
   gem 'spring-commands-rspec', '1.0.4'
-  gem 'rspec-rails', '3.4.2'
-  gem 'factory_girl_rails', '4.6.0'
+  gem 'rspec-rails', '3.5.2'
+  gem 'factory_girl_rails', '4.7.0'
   gem 'protractor-rails', '0.0.19'
-  gem 'coveralls', '0.8.9', require: false
+  gem 'coveralls', '0.8.15', require: false
   gem 'letter_opener', '1.4.1'
 end
 
 gem 'rails_12factor', '0.0.3', group: :production
 
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '0.4.2', group: :doc
