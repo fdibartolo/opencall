@@ -4,11 +4,10 @@ angular.module('openCall.services').factory 'NotificationsService',
   sessions = () ->
     deferred = $q.defer()
 
-    $http.get("/notifications")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status, header, config) ->
-      switch status
+    $http.get("/notifications").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
+      switch response.status
         when 403 then message = "access_denied"
         else message = "generic"
 
@@ -27,10 +26,10 @@ angular.module('openCall.services').factory 'NotificationsService',
 
     $http.post(url,
       body: body
-    ).success((data, status) ->
+    ).then (response) ->
       deferred.resolve()
-    ).error (data, status, header, config) ->
-      switch status
+    , (response) ->
+      switch response.status
         when 400 then message = "session_not_found"
         when 403 then message = "access_denied"
         else message = "generic"
@@ -46,10 +45,10 @@ angular.module('openCall.services').factory 'NotificationsService',
       message:
         subject: message.subject
         body: message.body
-    ).success((data, status, header, config) ->
+    ).then (response) ->
       deferred.resolve()
-    ).error (data, status, header, config) ->
-      switch status
+    , (response) ->
+      switch response.status
         when 403 then message = "access_denied"
         else message = "generic"
 
@@ -66,11 +65,10 @@ angular.module('openCall.services').factory 'NotificationsService',
   getAction = (url) ->
     deferred = $q.defer()
 
-    $http.get(url)
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status, header, config) ->
-      switch status
+    $http.get(url).then (response) ->
+      deferred.resolve response.data
+    , (response) ->
+      switch response.status
         when 400 then message = "session_not_found"
         when 403 then message = "access_denied"
         else message = "generic"

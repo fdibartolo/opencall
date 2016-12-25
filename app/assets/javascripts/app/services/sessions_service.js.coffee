@@ -4,10 +4,9 @@ angular.module('openCall.services').factory 'SessionsService',
   all = () ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status) ->
+    $http.get("/session_proposals").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
       deferred.reject()
 
     deferred.promise
@@ -26,10 +25,11 @@ angular.module('openCall.services').factory 'SessionsService',
         description: session.description
         video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)
-    ).success((data, status, header, config) ->
-      deferred.resolve header()["id"]
-    ).error (data, status, header, config) ->
-      switch status
+    ).then (response) ->
+      headers = response.headers
+      deferred.resolve headers()["id"]
+    , (response) ->
+      switch response.status
         when 403 then message = "access_denied"
         else message = "generic"
 
@@ -51,11 +51,12 @@ angular.module('openCall.services').factory 'SessionsService',
         description: session.description
         video_link: session.video_link
         tags_attributes: buildNestedAttributesFor(session.tags)
-    ).success((data, status) ->
+    ).then (response) ->
       deferred.resolve()
-    ).error (data, status, header, config) ->
-      switch status
-        when 400 then message = sanitize(header()["message"])
+    , (response) ->
+      headers = response.headers
+      switch response.status
+        when 400 then message = sanitize(headers()["message"])
         when 403 then message = "access_denied"
         else message = "generic"
 
@@ -72,10 +73,9 @@ angular.module('openCall.services').factory 'SessionsService',
   search = (terms, pageNumber) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/search?q=#{terms}&page=#{pageNumber}")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status) ->
+    $http.get("/session_proposals/search?q=#{terms}&page=#{pageNumber}").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
       deferred.reject()
 
     deferred.promise
@@ -83,11 +83,11 @@ angular.module('openCall.services').factory 'SessionsService',
   show = (id) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/#{id}")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status, header, config) ->
-      message = if status is 400 then sanitize(header()["message"]) else "generic"
+    $http.get("/session_proposals/#{id}").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
+      headers = response.headers
+      message = if response.status is 400 then sanitize(headers()["message"]) else "generic"
       deferred.reject message
 
     deferred.promise
@@ -95,12 +95,12 @@ angular.module('openCall.services').factory 'SessionsService',
   get = (id) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/#{id}/edit")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status, header, config) ->
-      switch status
-        when 400 then message = sanitize(header()["message"])
+    $http.get("/session_proposals/#{id}/edit").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
+      headers = response.headers
+      switch response.status
+        when 400 then message = sanitize(headers()["message"])
         when 403 then message = "access_denied"
         else message = "generic"
 
@@ -114,10 +114,9 @@ angular.module('openCall.services').factory 'SessionsService',
   new_session = () ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/new")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status) ->
+    $http.get("/session_proposals/new").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
       deferred.reject()
 
     deferred.promise
@@ -125,10 +124,9 @@ angular.module('openCall.services').factory 'SessionsService',
   authorsProfile = (id) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/#{id}/author")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status) ->
+    $http.get("/session_proposals/#{id}/author").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
       deferred.reject()
 
     deferred.promise
