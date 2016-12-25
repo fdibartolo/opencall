@@ -90,3 +90,7 @@ app.factory "httpInterceptor", ['$q', '$window', ($q, $window) ->
 app.config ['$httpProvider', ($httpProvider) ->
   $httpProvider.interceptors.push "httpInterceptor"
 ]
+
+app.config ['$locationProvider', ($locationProvider) ->
+  $locationProvider.hashPrefix ''
+]

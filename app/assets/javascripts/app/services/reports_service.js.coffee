@@ -4,11 +4,10 @@ angular.module('openCall.services').factory 'ReportsService',
   reviewerComments = () ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/reviewer_comments")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status, header, config) ->
-      switch status
+    $http.get("/session_proposals/reviewer_comments").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
+      switch response.status
         when 403 then message = "access_denied"
         else message = "generic"
 
@@ -19,11 +18,10 @@ angular.module('openCall.services').factory 'ReportsService',
   communityVotes = () ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/community_votes")
-    .success((data, status) ->
-      deferred.resolve data
-    ).error (data, status, header, config) ->
-      switch status
+    $http.get("/session_proposals/community_votes").then (response) ->
+      deferred.resolve response.data
+    , (response) ->
+      switch response.status
         when 403 then message = "access_denied"
         else message = "generic"
 

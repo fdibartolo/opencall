@@ -37,7 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    angularjs-rails (1.5.8)
+    angularjs-rails (1.6.0)
     animate-rails (1.0.10)
       rails
     ansi (1.5.0)
@@ -286,7 +286,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  angularjs-rails (= 1.5.8)
+  angularjs-rails (= 1.6.0)
   animate-rails (= 1.0.10)
   bootstrap (= 4.0.0.alpha3)
   cancancan (= 1.15.0)

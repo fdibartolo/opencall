@@ -4,11 +4,10 @@ angular.module('openCall.services').factory 'ReviewsService',
   all = (id) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/#{id}/reviews")
-    .success((data, status) ->
-      deferred.resolve data.reviews
-    ).error (data, status, header, config) ->
-      switch status
+    $http.get("/session_proposals/#{id}/reviews").then (response) ->
+      deferred.resolve response.data.reviews
+    , (response) ->
+      switch response.status
         when 400 then message = "session_not_found"
         when 403 then message = "access_denied"
         else message = "generic"
@@ -26,10 +25,10 @@ angular.module('openCall.services').factory 'ReviewsService',
         private_body: review.private_body
         score: review.score.value
         second_reviewer_id: review.secondReviewer.id
-    ).success((data, status) ->
+    ).then (response) ->
       deferred.resolve()
-    ).error (data, status, header, config) ->
-      switch status
+    , (response) ->
+      switch response.status
         when 400 then message = "session_not_found"
         when 403 then message = "access_denied"
         else message = "generic"
@@ -47,11 +46,10 @@ angular.module('openCall.services').factory 'ReviewsService',
   postAction = (url) ->
     deferred = $q.defer()
 
-    $http.post(url)
-    .success((data, status) ->
+    $http.post(url).then (response) ->
       deferred.resolve()
-    ).error (data, status, header, config) ->
-      switch status
+    , (response) ->
+      switch response.status
         when 400 then message = "session_not_found"
         when 403 then message = "access_denied"
         else message = "generic"
