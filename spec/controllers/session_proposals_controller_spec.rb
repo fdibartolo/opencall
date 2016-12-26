@@ -53,6 +53,18 @@ RSpec.describe SessionProposalsController, :type => :controller do
         expect(body['id']).to eq session.id
         expect(body['author']['name']).to eq session.user.full_name
       end
+
+      it "should be editable if owned by logged user" do
+        session = FactoryGirl.create :session_proposal, user: logged_in, track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme), audience: FactoryGirl.create(:audience)
+        allow(SessionProposal).to receive(:find_by).and_return(session)
+        
+        get :show, { id: session.id }
+
+        body = JSON.parse response.body
+        expect(body['id']).to eq session.id
+        expect(body['author']['name']).to eq logged_in.full_name
+        expect(body['editable']).to be true
+      end
     end
   end
 
