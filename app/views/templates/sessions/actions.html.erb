@@ -1,6 +1,6 @@
 <div class="clickable pull-xs-right">
   <!-- <span class="fa fa-twitter text-twitter"></span> -->
-  <a><span id="vote-btn" helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}" vote-action ng-if="session.voted || availableVotes > 0" animate-with="fadeIn"></span></a>
+  <a><span id="vote-btn" helpable="<%= t('sessions.help.vote') %>" data-index="{{session.id}}" vote-action ng-if="session.voted || availableVotes > 0" animate-with="fadeIn"></span></a>
   <a><span helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}" fav-action></span></a>
   <% if can? :review, SessionProposal %>
     <a id="review-btn" ng-href="#/sessions/review/{{session.id}}">
