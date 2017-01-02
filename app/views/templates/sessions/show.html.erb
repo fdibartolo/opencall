@@ -4,14 +4,22 @@
       <img ng-src="{{session.author.avatar_url}}" class="avatar lg img-circle">
       <div class="author">{{session.author.name}}</div>
       <div class="text-muted date" time-from-now="session.date"></div>
+      <% if current_user %>
+        <div class="actions clickable">
+          <a><span ng-if="session.voted || availableVotes > 0" data-index="{{session.id}}" vote-action></span></a>
+          <a><span data-index="{{session.id}}" fav-action></span></a>
+        </div>
+      <% end %>
     </div>
     <div class="col-sm-8">
       <h2>
         {{session.title}}
-        <a ng-if="session.editable" ng-href="#/sessions/edit/{{session.id}}" class="btn btn-sm btn-success pull-xs-right" style="margin:10px">
-          <%= t('sessions.buttons.edit_session') %> &nbsp; 
-          <span class="fa fa-pencil" aria-hidden="true"></span>
-        </a>
+        <span class="pull-xs-right" animate-with="fadeIn">
+          <a ng-if="session.editable" ng-href="#/sessions/edit/{{session.id}}" class="btn btn-sm btn-success" style="margin:5px">
+            <%= t('sessions.buttons.edit_session') %> &nbsp; 
+            <span class="fa fa-pencil" aria-hidden="true"></span>
+          </a>
+        </span>
       </h2>
       <div class="row">
         <div class="track col-sm-6">{{session.theme}} - {{session.track}}</div>
