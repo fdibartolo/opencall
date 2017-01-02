@@ -75,6 +75,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
       UsersService.user_session_voted_ids().then (ids) ->
         $scope.sessionVotedIds = ids
         $scope.availableVotes -= $scope.sessionVotedIds.length
+        $window.sessionStorage.setItem 'availableVotes', $scope.availableVotes
       UsersService.user_session_faved_ids().then (ids) ->
         $scope.sessionFavedIds = ids
 
@@ -109,27 +110,40 @@ angular.module('openCall.controllers').controller 'SessionsController',
         session.faved = $scope.sessionFavedIds.indexOf(session.id) isnt -1
         $scope.sessions.push session
 
-  $scope.vote = (index) ->
-    $scope.sessions[index].voted = false  if angular.isUndefined($scope.sessions[index].voted)
-    $scope.sessions[index].voted = !$scope.sessions[index].voted
+  $scope.vote = (id) ->
+    if angular.isDefined($scope.session)
+      session = $scope.session
+    else
+      id = parseInt(id)
+      session = s for s in $scope.sessions when s.id is id
+    if angular.isDefined(session)
+      session.voted = false  if angular.isUndefined(session.voted)
+      session.voted = !session.voted
 
-    UsersService.toggle_vote_session($scope.sessions[index].id, $scope.sessions[index].voted).then () ->
-      delta = if $scope.sessions[index].voted then -1 else 1
-      $scope.availableVotes += delta  if $scope.availableVotes isnt 0 or delta is 1
+      UsersService.toggle_vote_session(session.id, session.voted).then () ->
+        delta = if session.voted then -1 else 1
+        $scope.availableVotes += delta  if $scope.availableVotes isnt 0 or delta is 1
+        $window.sessionStorage.setItem 'availableVotes', $scope.availableVotes
 
-      if delta is -1 and $scope.availableVotes < 4
-        switch $scope.availableVotes
-          when 3,2 then message = "You have #{$scope.availableVotes} votes left to use"
-          when 1 then message = "You just have 1 vote left"
-          else message = "You have no votes left, you can still remove a vote and reassign it if you change your mind"
+        if delta is -1 and $scope.availableVotes < 4
+          switch $scope.availableVotes
+            when 3,2 then message = "You have #{$scope.availableVotes} votes left to use"
+            when 1 then message = "You just have 1 vote left"
+            else message = "You have no votes left, you can still remove a vote and reassign it if you change your mind"
 
-        toaster.pop('warning', '', message, 7000)
+          toaster.pop('warning', '', message, 7000)
 
-  $scope.fav = (index) ->
-    $scope.sessions[index].faved = false  if angular.isUndefined($scope.sessions[index].faved)
-    $scope.sessions[index].faved = !$scope.sessions[index].faved
+  $scope.fav = (id) ->
+    if angular.isDefined($scope.session)
+      session = $scope.session
+    else
+      id = parseInt(id)
+      session = s for s in $scope.sessions when s.id is id
+    if angular.isDefined(session)
+      session.faved = false  if angular.isUndefined(session.faved)
+      session.faved = !session.faved
 
-    UsersService.toggle_fav_session($scope.sessions[index].id)
+      UsersService.toggle_fav_session(session.id)
 
   $scope.removeTag = (index) ->
     $scope.newSession.tags[index]._destroy = true
@@ -137,6 +151,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
   $scope.show = () ->
     SessionsService.show($routeParams.id).then ((session) ->
       $scope.session = session
+      $scope.availableVotes = parseInt($window.sessionStorage.getItem 'availableVotes')
       CommentsService.all($routeParams.id).then (comments) ->
         $scope.session.comments = comments
     ), (errorKey) ->
