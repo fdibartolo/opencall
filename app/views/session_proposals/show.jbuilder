@@ -8,5 +8,6 @@ json.author do
   json.avatar_url @session_proposal.user.avatar_url
 end
 json.tags @session_proposal.tags.select(:name)
-json.editable true if current_user and can? :edit, @session_proposal
+json.editable (current_user and can? :edit, @session_proposal)
+json.voted (current_user and current_user.session_proposal_voted_ids.include?(@session_proposal.id))
 json.commentPlaceholder comment_placeholder(current_user.id, @session_proposal.user_id) if current_user

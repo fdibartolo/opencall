@@ -65,6 +65,18 @@ RSpec.describe SessionProposalsController, :type => :controller do
         expect(body['author']['name']).to eq logged_in.full_name
         expect(body['editable']).to be true
       end
+
+      it "should include vote field if voted by logged user" do
+        session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme), audience: FactoryGirl.create(:audience)
+        allow(SessionProposal).to receive(:find_by).and_return(session)
+        logged_in.add_session_vote session.id
+
+        get :show, { id: session.id }
+
+        body = JSON.parse response.body
+        expect(body['id']).to eq session.id
+        expect(body['voted']).to be true
+      end
     end
   end
 
