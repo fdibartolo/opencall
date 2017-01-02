@@ -10,4 +10,4 @@ end
 json.tags @session_proposal.tags.select(:name)
 json.editable (current_user and can? :edit, @session_proposal)
 json.voted (current_user and current_user.session_proposal_voted_ids.include?(@session_proposal.id))
-json.commentPlaceholder comment_placeholder(current_user.id, @session_proposal.user_id) if current_user
+json.comment_placeholder comment_placeholder(current_user.id, @session_proposal.user_id) if current_user
