@@ -133,11 +133,17 @@ angular.module('openCall.controllers').controller 'SessionsController',
 
           toaster.pop('warning', '', message, 7000)
 
-  $scope.fav = (index) ->
-    $scope.sessions[index].faved = false  if angular.isUndefined($scope.sessions[index].faved)
-    $scope.sessions[index].faved = !$scope.sessions[index].faved
+  $scope.fav = (id) ->
+    if angular.isDefined($scope.session)
+      session = $scope.session
+    else
+      id = parseInt(id)
+      session = s for s in $scope.sessions when s.id is id
+    if angular.isDefined(session)
+      session.faved = false  if angular.isUndefined(session.faved)
+      session.faved = !session.faved
 
-    UsersService.toggle_fav_session($scope.sessions[index].id)
+      UsersService.toggle_fav_session(session.id)
 
   $scope.removeTag = (index) ->
     $scope.newSession.tags[index]._destroy = true
