@@ -4,6 +4,11 @@
       {{tag}}
     </span>
   </div>
+  <div class="share" ng-class="{visible: session.shareVisible}">
+    <span class="fa fa-twitter text-twitter clickable"></span> &nbsp;
+    <span class="fa fa-facebook text-primary clickable"></span> &nbsp;
+    <span class="fa fa-google-plus text-danger clickable"></span>
+  </div>
   <div class="card-block col-xs-12 clickable" navigate-to="{{session.id}}">
     <div class="pull-xs-left">
       <img ng-src="{{session.author.avatar_url}}" class="avatar img-circle" default-avatar-if-error>

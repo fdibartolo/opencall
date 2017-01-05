@@ -66,7 +66,7 @@
     margin: -10px 0 0 0;
   }
 
-  .tags {
+  .tags, .share {
     position: absolute;
     overflow: hidden;
     background-color: transparent;
@@ -83,11 +83,16 @@
     transition: all .3s ease-in-out;
 
     &.visible {
-      z-index: 10;
       top: 0%;
       background-color: rgba(0,0,0,0.7);
     }
   }
+
+  .share { font-size: 200%; }
+  
+  .tags.visible { z-index: 10; }
+
+  .share.visible { z-index: 11; }
 
   .card-footer {
     font-size: 140%;
