@@ -87,6 +87,7 @@ es:
       vote: "bottom|Votá la sesión"
       fav: "right|Marcá la sesión como favorita"
       tags: "right|Mostrar etiquetas"
+      share: "top|Opciones para compartir"
     placeholders:
       public_comment: "Dejar un comentario al autor"
       author_comment: "Dejar un comentario"
