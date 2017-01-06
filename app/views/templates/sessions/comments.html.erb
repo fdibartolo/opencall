@@ -1,5 +1,5 @@
 <% if current_user %>
-  <div class="row session-comment" ng-repeat="comment in session.comments" fade-animation="true">
+  <div class="row session-comment" ng-repeat="comment in session.comments" animate-with="fadeIn">
     <div class="col-sm-2 text-xs-center">
       <img ng-src="{{comment.author.avatar_url}}" class="avatar lg img-circle">
       <div class="author">
@@ -14,7 +14,7 @@
     <div class="col-sm-12"><hr></div>
   </div>
 
-  <div class="row session-comment" fade-animation="true">
+  <div class="row session-comment" animate-with="fadeIn">
     <div class="col-sm-2 text-xs-center">
       <%= image_tag(current_user.avatar_url, :class => 'avatar lg img-circle', :alt => current_user.email) %>
     </div>
@@ -31,13 +31,13 @@
           </a>
         </li>
       </ul>
-      <div ng-if="!previewComment" fade-animation="true">
-        <textarea type="text" class="form-control" placeholder="{{session.commentPlaceholder}}" ng-model="newSessionComment.body" rows="4"></textarea>
+      <div ng-if="!previewComment" animate-with="fadeIn">
+        <textarea type="text" class="form-control" placeholder="{{session.comment_placeholder}}" ng-model="newSessionComment.body" rows="4"></textarea>
         <small class="text-muted">
           <%= t('sessions.markdown.tip', link: '<a href="https://guides.github.com/features/mastering-markdown/#examples" target="_blank">markdown</a>').html_safe %>
         </small><br>
       </div>
-      <div ng-if="previewComment" fade-animation="true">
+      <div ng-if="previewComment" animate-with="fadeIn">
         <br><p markdown="newSessionComment.body"></p><hr>
       </div>
       <button class="btn btn-primary pull-xs-right" ng-click="postComment()">

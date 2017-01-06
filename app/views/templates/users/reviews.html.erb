@@ -1,5 +1,5 @@
 <% if current_user and can? :review, SessionProposal %>
-  <div ng-cloak ng-controller="ReviewsController" ng-init="loadUserReviews()" fade-animation="true" class="row">
+  <div ng-cloak ng-controller="ReviewsController" ng-init="loadUserReviews()" animate-with="fadeIn" class="row">
     <div ng-if="loading" class="loading">
       <p class="text-xs-center"><span class="fa fa-spinner fa-pulse"></span></p>
     </div>
@@ -8,7 +8,7 @@
         <h2 class="text-xs-center"><%= t('sessions.labels.no_reviews_yet') %></h2>
       </div>
 
-      <div ng-if="reviews.length > 0" fade-animation="true">
+      <div ng-if="reviews.length > 0" animate-with="fadeIn">
         <h2 class="text-xs-center"><%= t('sessions.labels.my_reviewed_sessions') %></h2><br><br>
 
         <div ng-repeat="review in reviews" class="row session-summary">

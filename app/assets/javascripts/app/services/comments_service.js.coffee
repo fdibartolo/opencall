@@ -4,10 +4,9 @@ angular.module('openCall.services').factory 'CommentsService',
   all = (id) ->
     deferred = $q.defer()
 
-    $http.get("/session_proposals/#{id}/comments")
-    .success((data, status) ->
-      deferred.resolve data.comments
-    ).error (data, status) ->
+    $http.get("/session_proposals/#{id}/comments").then (response) ->
+      deferred.resolve response.data.comments
+    , (response) ->
       deferred.reject()
 
     deferred.promise
@@ -18,9 +17,9 @@ angular.module('openCall.services').factory 'CommentsService',
     $http.post("/session_proposals/#{id}/comments",
       comment:
         body: comment.body
-    ).success((data, status) ->
+    ).then (response) ->
       deferred.resolve()
-    ).error (data, status) ->
+    , (response) ->
       deferred.reject()
 
     deferred.promise

@@ -4,11 +4,10 @@ angular.module('openCall.services').factory 'StatsService',
   all = () ->
     deferred = $q.defer()
 
-    $http.get("/stats")
-    .success((data, status) ->
-      deferred.resolve data.themes
-    ).error (data, status, header, config) ->
-      switch status
+    $http.get("/stats").then (response) ->
+      deferred.resolve response.data.themes
+    , (response) ->
+      switch response.status
         when 400 then message = "theme_not_found"
         when 403 then message = "access_denied"
         else message = "generic"
@@ -20,12 +19,11 @@ angular.module('openCall.services').factory 'StatsService',
   get = (id) ->
     deferred = $q.defer()
 
-    $http.get("/stats/#{id}")
-    .success((data, status) ->
-      data.proposals.sort sortByReviewsCount
-      deferred.resolve data
-    ).error (data, status, header, config) ->
-      switch status
+    $http.get("/stats/#{id}").then (response) ->
+      response.data.proposals.sort sortByReviewsCount
+      deferred.resolve response.data
+    , (response) ->
+      switch response.status
         when 400 then message = "theme_not_found"
         when 403 then message = "access_denied"
         else message = "generic"

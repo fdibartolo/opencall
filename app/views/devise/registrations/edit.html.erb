@@ -61,10 +61,10 @@
           <i><%= t('devise.labels.bio_hint').html_safe %></i>
         </small></div>
       </ul>
-      <div ng-show="bio" fade-animation="true">
+      <div ng-if="bio" animate-with="fadeIn">
         <%= f.text_area :bio, class: "form-control", id: "input-bio", placeholder: "Bio", rows: 10 %>
       </div>
-      <div ng-show="!bio" fade-animation="true">
+      <div ng-if="!bio" animate-with="fadeIn">
         <br>
         <div class="form-horizontal">
           <div class="form-group row">
