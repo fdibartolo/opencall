@@ -5,9 +5,17 @@
     </span>
   </div>
   <div class="share" ng-class="{visible: session.shareVisible}">
-    <span class="fa fa-twitter text-twitter clickable"></span> &nbsp;
-    <span class="fa fa-facebook text-primary clickable"></span> &nbsp;
-    <span class="fa fa-google-plus text-danger clickable"></span>
+    <div class="row buttons" ng-if="session.shareVisible">
+      <div class="col-xs-4 text-xs-right">
+        <span tweet="{{session.id}}" data-text="I am checking out this session!"></span>
+      </div>
+      <div class="col-xs-4 text-xs-center">
+        <span facebook="{{session.id}}"></span>
+      </div>
+      <div class="col-xs-4 text-xs-left">
+        <span google-plus="{{session.id}}"></span>
+      </div>
+    </div>
   </div>
   <div class="card-block col-xs-12 clickable" navigate-to="{{session.id}}">
     <div class="pull-xs-left">

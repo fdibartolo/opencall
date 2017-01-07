@@ -88,11 +88,13 @@
     }
   }
 
-  .share { font-size: 200%; }
-  
   .tags.visible { z-index: 10; }
 
-  .share.visible { z-index: 11; }
+  .share.visible { 
+    z-index: 11;
+
+    .buttons { margin-top: 10px; }
+  }
 
   .card-footer {
     font-size: 140%;
@@ -123,4 +125,12 @@
 
     &::after { opacity: 1; }
   }
+}
+
+.spinner-social-share {
+  font-size: 100%;
+  color: white;
+  position: absolute;
+  margin-top: 5px;
+  z-index: -1;
 }
