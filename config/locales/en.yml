@@ -91,6 +91,7 @@ en:
       back: "Back to all sessions"
       vote: "Vote"
       fav: "Fav!"
+      tweet: "Check out this session!"
     errors:
       title_cant_be_blank: "You must provide a title"
       summary_cant_be_blank: "You must provide a summary"

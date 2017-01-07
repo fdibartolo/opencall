@@ -71,6 +71,7 @@ es:
       back: "Volver a todas las propuestas"
       vote: "Votá"
       fav: "Fav!"
+      tweet: "Miren esta sesión!"
     errors:
       title_cant_be_blank: "Es necesario que indiques el título"
       summary_cant_be_blank: "Es necesario que indiques la sinopsis"
