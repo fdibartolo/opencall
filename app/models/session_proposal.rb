@@ -1,11 +1,8 @@
 require 'csv'
-require 'elasticsearch/model'
 
 class SessionProposal < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  include Searchable
   include Workflow
-  index_name [self.base_class.to_s.pluralize.underscore, Rails.env].join('_')
 
   belongs_to :user
   has_many :comments
@@ -27,32 +24,12 @@ class SessionProposal < ActiveRecord::Base
     state :declined
   end
 
-  settings analysis: { 
-    filter: {
-      substring: {
-        type: "nGram",
-        min_gram: 3,
-        max_gram: 50
-      }
-    },
-    analyzer: {
-      index_analyzer: {
-        tokenizer: "keyword",
-        filter: ["lowercase", "substring"]
-      },
-      search_analyzer: {
-        tokenizer: "keyword",
-        filter: ["lowercase", "substring"]
-      }
-    }
-  } do
-    mappings do
-      indexes :title, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
-      indexes :video_link, index: :not_analyzed
-      indexes :author, type: "object" do 
-        indexes :name, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
-        indexes :avatar_url, index: :not_analyzed
-      end
+  mapping do
+    indexes :title, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
+    indexes :video_link, index: :not_analyzed
+    indexes :author, type: "object" do 
+      indexes :name, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
+      indexes :avatar_url, index: :not_analyzed
     end
   end
 
