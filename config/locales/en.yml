@@ -91,6 +91,7 @@ en:
       back: "Back to all sessions"
       vote: "Vote"
       fav: "Fav!"
+      tweet: "Check out this session!"
     errors:
       title_cant_be_blank: "You must provide a title"
       summary_cant_be_blank: "You must provide a summary"
@@ -106,7 +107,8 @@ en:
       session_title: "top|Click on the card to navigate to session details"
       vote: "bottom|Vote the session"
       fav: "right|Fav the session"
-      tags: "right|Display tags"
+      tags: "right|Show tags"
+      share: "top|Sharing options"
     placeholders:
       public_comment: "Leave a comment to the author"
       author_comment: "Leave a comment"

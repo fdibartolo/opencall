@@ -1,7 +1,7 @@
 <div class="clickable pull-xs-right">
-  <!-- <span class="fa fa-twitter text-twitter"></span> -->
-  <a><span id="vote-btn" helpable="<%= t('sessions.help.vote') %>" data-index="{{session.id}}" vote-action ng-if="session.voted || availableVotes > 0" animate-with="fadeIn"></span></a>
-  <a><span helpable="<%= t('sessions.help.fav') %>" data-index="{{session.id}}" fav-action></span></a>
+  <span class="fa fa-share-alt clickable" ng-class="{'text-muted': !session.shareVisible, 'text-primary': session.shareVisible}" ng-click="session.shareVisible = !session.shareVisible" helpable="<%= t('sessions.help.share') %>" data-index="{{$index}}"></span>
+  <a><span id="vote-btn" helpable="<%= t('sessions.help.vote') %>" data-index="{{$index}}" data-session-id="{{session.id}}" vote-action ng-if="session.voted || availableVotes > 0" animate-with="fadeIn"></span></a>
+  <a><span helpable="<%= t('sessions.help.fav') %>" data-index="{{$index}}" data-session-id="{{session.id}}" fav-action></span></a>
   <% if can? :review, SessionProposal %>
     <a id="review-btn" ng-href="#/sessions/review/{{session.id}}">
       <span class="fa fa-pencil-square-o text-primary" tooltip='<%= "top|#{t('sessions.buttons.start_review')}" %>'></span>
