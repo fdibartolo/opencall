@@ -1,11 +1,8 @@
 require 'csv'
-require 'elasticsearch/model'
 
 class SessionProposal < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  include Searchable
   include Workflow
-  index_name [self.base_class.to_s.pluralize.underscore, Rails.env].join('_')
 
   belongs_to :user
   has_many :comments
@@ -25,6 +22,15 @@ class SessionProposal < ActiveRecord::Base
     end
     state :accepted
     state :declined
+  end
+
+  mapping do
+    indexes :title, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
+    indexes :video_link, index: :not_analyzed
+    indexes :author, type: "object" do 
+      indexes :name, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
+      indexes :avatar_url, index: :not_analyzed
+    end
   end
 
   def autosave_associated_records_for_tags

@@ -91,7 +91,7 @@ RSpec.configure do |config|
       Elasticsearch::Extensions::Test::Cluster.running?
     [SessionProposal, Tag].each do |model|
       model.__elasticsearch__.create_index! force: true
-      SessionProposal.__elasticsearch__.refresh_index!
+      model.__elasticsearch__.refresh_index!
     end
   end
 

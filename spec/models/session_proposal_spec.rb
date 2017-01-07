@@ -51,7 +51,7 @@ RSpec.describe SessionProposal, :type => :model do
     let(:user) { FactoryGirl.create :user }
     let(:track) { FactoryGirl.create :track }
     let(:theme) { FactoryGirl.create :theme }
-    let(:first_session_proposal) { FactoryGirl.create :session_proposal, title: 'Advanced TDD', user: user, track: track, theme: theme }
+    let(:first_session_proposal) { FactoryGirl.create :session_proposal, title: 'Advanced TDD', user: user, track: track, theme: theme, video_link: 'https://youtube.com/qwerty' }
     let(:second_session_proposal) { FactoryGirl.create :session_proposal, title: 'XP', user: user, track: track, theme: theme }
     let(:third_session_proposal) { FactoryGirl.create :session_proposal, title: 'Scaling Scrum', user: user, track: track, theme: theme }
 
@@ -71,6 +71,13 @@ RSpec.describe SessionProposal, :type => :model do
     context "with criteria" do
       it "should return given matching document" do
         expect(SessionProposal.custom_search('tdd').results.total).to eq 1
+      end
+
+      it "should return documents that partial match on custom analyzed fields (nGram)" do
+        expect(SessionProposal.custom_search('advan').results.total).to eq 1
+        expect(SessionProposal.custom_search('crum').results.total).to eq 1
+        expect(SessionProposal.custom_search('Rob').results.total).to eq 3
+        expect(SessionProposal.custom_search('artin').results.total).to eq 3
       end
     end
   end
