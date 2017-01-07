@@ -7,7 +7,7 @@
   <div class="share" ng-class="{visible: session.shareVisible}">
     <div class="row buttons" ng-if="session.shareVisible">
       <div class="col-xs-4 text-xs-right">
-        <span tweet="{{session.id}}" data-text="I am checking out this session!"></span>
+        <span tweet="{{session.id}}" data-text="<%= t('sessions.buttons.tweet') %>" data-twitter-account="<%= TwitterAccount %>"></span>
       </div>
       <div class="col-xs-4 text-xs-center">
         <span facebook="{{session.id}}"></span>

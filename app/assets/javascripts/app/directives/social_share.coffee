@@ -6,7 +6,7 @@ angular.module("openCall.directives").directive "tweet", ['$window', '$timeout',
     renderTweetButton = ->
       element.html "<a href='https://twitter.com/share' class='twitter-share-button' data-show-count='false' 
         data-text='#{attrs.text}' data-url='#{BASE_URL}#/sessions/show/#{attrs.tweet}' 
-        data-size='large' data-via='opencall_cfp'>Tweet</a>"
+        data-size='large' data-via='#{attrs.twitterAccount}'>Tweet</a>"
       $window.twttr.widgets.load element.parent()[0]
 
       $timeout (->
