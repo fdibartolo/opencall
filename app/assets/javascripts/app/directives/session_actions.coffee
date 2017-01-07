@@ -17,7 +17,7 @@ angular.module("openCall.directives").directive "favAction", ['$timeout', ($time
 
     element.bind "click", ->
       scope.$apply ->
-        scope.fav(attrs.index)
+        scope.fav(attrs.sessionId)
         return
       return
 
@@ -43,7 +43,7 @@ angular.module("openCall.directives").directive "voteAction", ['$timeout', ($tim
 
     element.bind "click", ->
       scope.$apply ->
-        scope.vote(attrs.index)
+        scope.vote(attrs.sessionId)
         return
       return
 
