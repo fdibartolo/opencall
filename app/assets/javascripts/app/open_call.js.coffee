@@ -94,3 +94,16 @@ app.config ['$httpProvider', ($httpProvider) ->
 app.config ['$locationProvider', ($locationProvider) ->
   $locationProvider.hashPrefix ''
 ]
+
+app.run ['$window', ($window) ->
+  # Load SDKs for social sharing, if not already loaded
+  $.getScript '//platform.twitter.com/widgets.js'  if !$window.twttr
+  $.getScript '//apis.google.com/js/platform.js'  if !$window.gapi
+  if !$window.FB
+    $.getScript '//connect.facebook.net/en_US/sdk.js', ->
+      $window.FB.init
+        xfbml: true
+        version: 'v2.8'
+
+  return
+]

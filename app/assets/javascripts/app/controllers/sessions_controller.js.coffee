@@ -100,6 +100,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
       session.voted = $scope.sessionVotedIds.indexOf(session.id) isnt -1
       session.faved = $scope.sessionFavedIds.indexOf(session.id) isnt -1
       session.tagsVisible = false
+      session.shareVisible = false
     sessions
 
   $scope.loadMore = () ->

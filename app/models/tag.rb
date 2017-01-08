@@ -1,11 +1,9 @@
 class Tag < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-  index_name [self.base_class.to_s.pluralize.underscore, Rails.env].join('_')
+  include Searchable
 
   has_and_belongs_to_many :session_proposals
 
-  validates :name,  presence: true
+  validates :name, presence: true
 
   mapping do
     indexes :name, type: "completion" #, payloads: true

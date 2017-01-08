@@ -71,6 +71,7 @@ es:
       back: "Volver a todas las propuestas"
       vote: "Votá"
       fav: "Fav!"
+      tweet: "Miren esta sesión!"
     errors:
       title_cant_be_blank: "Es necesario que indiques el título"
       summary_cant_be_blank: "Es necesario que indiques la sinopsis"
@@ -87,6 +88,7 @@ es:
       vote: "bottom|Votá la sesión"
       fav: "right|Marcá la sesión como favorita"
       tags: "right|Mostrar etiquetas"
+      share: "top|Opciones para compartir"
     placeholders:
       public_comment: "Dejar un comentario al autor"
       author_comment: "Dejar un comentario"
