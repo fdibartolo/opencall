@@ -106,4 +106,16 @@ html, body {
 }
 
 .form-control-label { font-weight: bold; text-align: right; }
+
 .text-twitter { color: $color-twitter; }
+
+.btn-twitter { 
+  background-color: $color-twitter; 
+  color: white;
+  &:hover { background-color: darken($color-twitter, 10%); }
+}
+
+.tweet-box {
+  width: 100%;
+  resize: none;
+}

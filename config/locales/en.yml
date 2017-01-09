@@ -197,3 +197,10 @@ en:
         password: "Password"
         password_confirmation: "Password confirmation"
         current_password: "Current password"
+  share:
+    twitter:
+      title: "Want your session to be shared?"
+      subtitle: "<strong>Congratulations on proposing a session for the event!</strong><br>You can now let your session proposal to be shared publicly <u>from the event's twitter account</u><sup>*</sup>. You can customize the tweet message, make sure you mention youself!!"
+      body: "Checkout this new session proposal!"
+      footer: "<sup>*</sup><i>This is your only chance to tweet via the event's account, even though you will still be able to share it from your own account anytime within this site</i>"
+      button: "Tweet"

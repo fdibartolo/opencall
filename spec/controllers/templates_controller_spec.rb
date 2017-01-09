@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe TemplatesController, :type => :controller do
   login_as :user
 
-  %w[home error loading_spinner stats themes_list
+  %w[home error loading_spinner stats themes_list tweet
     sessions/index sessions/new sessions/search_result sessions/search_side_bar sessions/review
     sessions/comments sessions/actions sessions/reviews_summary sessions/show sessions/card
     users/faved_sessions users/reviews users/sessions users/voted_sessions users/profile_summary

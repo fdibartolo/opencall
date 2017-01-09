@@ -76,3 +76,29 @@ angular.module("openCall.directives").directive 'facebook', ['$window', '$timeou
       renderShareButton()
     return
 ]
+
+angular.module("openCall.directives").directive "tweetDialog", ->
+  restrict: "A"
+  templateUrl: "/templates/tweet.html"
+  replace: true
+  link: (scope, element, attrs) ->
+    scope.$on 'showTweetDialog', (e, sessionUrl) ->
+      placeholder = $('#tweetModal').find('textarea')[0].placeholder
+      scope.message = "#{placeholder} #{sessionUrl}"
+      scope.tweetCount = 140 - scope.message.length
+      $('#tweetModal').modal 'show'
+
+angular.module("openCall.directives").directive "tweetTextCount", ->
+  restrict: "A"
+  link: (scope, element, attrs) ->
+    scope.$watch 'message', (msg) ->
+      if angular.isDefined(msg)
+        $(element).html(140 - msg.length)
+        if msg.length == 0 || msg.length > 140
+          $(element).removeClass('text-primary')
+          $(element).addClass('text-danger')
+          $('.btn-twitter').addClass('disabled')
+        else
+          $(element).removeClass('text-danger')
+          $(element).addClass('text-primary')
+          $('.btn-twitter').removeClass('disabled')
