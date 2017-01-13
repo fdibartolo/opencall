@@ -95,7 +95,8 @@ ES_TEST_HOST, ES_TEST_PORT | Host de la api de elasticsearch para tests
 PORT | Puerto del web server
 SUBMISSION_DUE_DATE | Fecha de corte para la postulación de propuestas
 ACCEPTANCE_DUE_DATE | Fecha de corte para la confirmación de propuestas aceptadas
-
+TWITTER_KEY, TWITTER_SECRET | Id de la aplicación para tuitear desde cuenta del evento
+TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET | Id de la aplicación para tuitear desde cuenta del evento
 A modo de ejemplo, se puede referenciar el archivo `.env_sample`
 
 #### Datos dummy 

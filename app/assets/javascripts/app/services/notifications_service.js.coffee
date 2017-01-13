@@ -56,6 +56,30 @@ angular.module('openCall.services').factory 'NotificationsService',
 
     deferred.promise
 
+  tweet = (id, message) ->
+    deferred = $q.defer()
+
+    $http.post("/notifications/#{id}/tweet",
+      message: message
+    ).then (response) ->
+      deferred.resolve()
+    , (response) ->
+      headers = response.headers
+      switch response.status
+        when 400 then message = "session_not_found"
+        when 422 then message = sanitize(headers()["message"])
+        else message = "generic"
+
+      deferred.reject message
+
+    deferred.promise
+
+  sanitize = (message) ->
+    if message.indexOf("Session proposal has expired") is 0
+      "session_expired"
+    else
+      "generic"
+
   acceptanceTemplate = (sessionProposalId) ->
     getAction "/notifications/#{sessionProposalId}/acceptance_template"
 
@@ -83,4 +107,5 @@ angular.module('openCall.services').factory 'NotificationsService',
   submitMessage: submitMessage
   acceptanceTemplate: acceptanceTemplate
   denialTemplate: denialTemplate
+  tweet: tweet
 ]
