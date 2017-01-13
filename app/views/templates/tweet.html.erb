@@ -1,4 +1,4 @@
-<div class="modal fade bs-example-modal-lg" id="tweetModal" tabindex="-1" role="dialog" data-backdrop="static">
+<div class="modal fade bs-example-modal-lg" id="tweetModal" tabindex="-1" role="dialog" data-backdrop="static" ng-controller="NotificationsController">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <%= t('share.twitter.subtitle').html_safe %> <br><br>
-        <textarea type="text" rows="4" class="form-control tweet-box" placeholder="<%= t('share.twitter.body').html_safe %>" ng-model="message"></textarea>
+        <textarea type="text" rows="4" class="form-control tweet-box" placeholder="<%= t('share.twitter.body').html_safe %>" ng-model="tweetMessage"></textarea>
         <div class="text-xs-right">
           <small><span tweet-text-count></span></small>
         </div>
@@ -21,8 +21,8 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           <%= t('notifications.buttons.cancel') %>
         </button>
-        <button class="btn btn-twitter">
-          <%= t('share.twitter.button') %> &nbsp;<span class="fa fa-twitter"></span>
+        <button class="btn btn-twitter" ng-click="tweet()" ng-disabled="tweeting">
+          <%= t('share.twitter.button') %> &nbsp;<span ng-if="!tweeting" class="fa fa-twitter"></span><span ng-if="tweeting" class='fa fa-spinner fa-pulse fa-3x fa-fw spinner-social-share'></span>
         </button>
       </div>
     </div>

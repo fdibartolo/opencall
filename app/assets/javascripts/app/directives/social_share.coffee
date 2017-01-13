@@ -82,16 +82,20 @@ angular.module("openCall.directives").directive "tweetDialog", ->
   templateUrl: "/templates/tweet.html"
   replace: true
   link: (scope, element, attrs) ->
-    scope.$on 'showTweetDialog', (e, sessionUrl) ->
+    scope.$on 'showTweetDialog', (e, sessionId, sessionUrl) ->
       placeholder = $('#tweetModal').find('textarea')[0].placeholder
-      scope.message = "#{placeholder} #{sessionUrl}"
-      scope.tweetCount = 140 - scope.message.length
+      scope.sessionId = sessionId
+      scope.tweetMessage = "#{placeholder} #{sessionUrl}"
+      scope.tweetCount = 140 - scope.tweetMessage.length
       $('#tweetModal').modal 'show'
+
+    scope.$on 'hideTweetDialog', (e) ->
+      $('#tweetModal').modal 'hide'
 
 angular.module("openCall.directives").directive "tweetTextCount", ->
   restrict: "A"
   link: (scope, element, attrs) ->
-    scope.$watch 'message', (msg) ->
+    scope.$watch 'tweetMessage', (msg) ->
       if angular.isDefined(msg)
         $(element).html(140 - msg.length)
         if msg.length == 0 || msg.length > 140
