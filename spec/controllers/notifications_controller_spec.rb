@@ -216,4 +216,45 @@ RSpec.describe NotificationsController, type: :controller do
       end
     end
   end
+
+  describe "POST #tweet" do
+    login_as :user
+    let(:session) { FactoryGirl.create :session_proposal }
+    let(:payload) { { session_proposal_id: session.id } }
+
+    context "with invalid params" do
+      it "should throw exception if message is missing" do
+        expect{ post(:tweet, payload) }.to raise_error ActionController::ParameterMissing
+      end
+
+      it "should throw exception if message is empty" do
+        payload[:message] = ''
+        expect{ post(:tweet, payload) }.to raise_error ActionController::ParameterMissing
+      end
+
+      it "should return 'cannot find' message for invalid session id" do
+        payload[:message] = 'x' * 140
+        payload[:session_proposal_id] = 0
+        post :tweet, payload
+        expect(response).to have_http_status(400)
+        expect(response.header['Message']).to eq "Unable to find session proposal with id '0'"
+      end
+
+      it "should return 400 Bad Request if message is larger than 140 chars" do
+        payload[:message] = 'x' * 141
+        post :tweet, payload
+        expect(response).to have_http_status(422)
+        expect(response.header['Message']).to eq "Message is too long (maximum is 140 characters)"
+      end
+    end
+
+    context "with valid params" do
+      it "should return success" do
+        allow(TwitterFacade.instance).to receive(:update).and_return(Twitter::Tweet.new(id: 1))
+        payload[:message] = 'x' * 135
+        post :tweet, payload
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
 end

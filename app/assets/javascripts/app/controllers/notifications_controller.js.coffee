@@ -79,6 +79,17 @@ angular.module('openCall.controllers').controller 'NotificationsController',
       $scope.$emit 'hideLoadingSpinner'
       $location.path "/error/#{errorKey}"
 
+  $scope.tweet = () ->
+    $scope.tweeting = true
+    NotificationsService.tweet($scope.sessionId, $scope.tweetMessage).then (() ->
+      $scope.tweeting = false
+      $scope.$emit 'hideTweetDialog'
+      toaster.pop 'success', '', 'Tweet posted successfully', 5000
+    ), (errorKey) ->
+      $scope.tweeting = false
+      $scope.$emit 'hideTweetDialog'
+      $location.path "/error/#{errorKey}"
+
   $scope.toggleTheme = (theme) ->
     theme.active = !theme.active
     

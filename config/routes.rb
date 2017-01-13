@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       get :denial_template
       post :accept
       post :decline
+      post :tweet
     end
   end
 

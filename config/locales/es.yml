@@ -212,4 +212,11 @@ es:
       other_than: "debe ser distinto a %{count}"
       odd: "debe ser impar"
       even: "debe ser par"
-      record_invalid: ! 'La validación falló: %{errors}'
+      record_invalid: "La validación falló: %{errors}"
+  share:
+    twitter:
+      title: "¿Querés que tu propuesta sea compartida?"
+      subtitle: "<strong class='text-success'>Felicitaciones por proponer una sesión para el evento <i class='fa fa-thumbs-up'></i> <i class='fa fa-thumbs-up'></i> !</strong><br>Podes ahora optar por que tu propuesta sea compartida públicamente <u>desde la cuenta de twitter del evento</u><sup>*</sup>. Podes ajustar el mensaje como quieras, asegurate de arrobarte a vos mismo!!"
+      body: "Nueva propuesta de sesión!, la pueden ver aquí"
+      footer: "<sup>*</sup><i>Esta es la única chance que tu propuesta sea tuiteada desde la cuenta del evento, sin embargo podrás compartirla con tu propia cuanta desde este sitio, cuando así desees<br>Este tweet deberá ser posteado dentro de los <strong>5 minutos</strong> desde que se haya creado la propuesta de sesión, de lo contrario, se la considerará expirada</i>"
+      button: "Tweet"
