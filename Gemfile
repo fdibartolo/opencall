@@ -29,6 +29,7 @@ gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.3.1'
 gem 'omniauth-linkedin-oauth2', '0.1.5'
 gem 'cancancan', '1.15.0'
+gem 'twitter', '5.17.0'
 
 gem 'will_paginate', '3.1.5'
 gem 'elasticsearch-model', '0.1.9'

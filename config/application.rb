@@ -23,8 +23,9 @@ module OpenCall
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
 
-    # Custom path for extensions
+    # Custom path for extensions and validators
     # config.autoload_paths += %W(#{config.root}/app/models/extensions/)
     Dir[File.join(Rails.root, "app/models/extensions", "*.rb")].each {|l| require l }
+    Dir[File.join(Rails.root, "app/models/validators", "*.rb")].each {|l| require l }
   end
 end
