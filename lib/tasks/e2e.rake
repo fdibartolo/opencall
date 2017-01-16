@@ -3,6 +3,7 @@ require 'elasticsearch/extensions/test/cluster/tasks'
 
 def overwrite_env_vars
   ENV['SUBMISSION_DUE_DATE']=(DateTime.now + 1.day).to_s
+  ENV['IS_TWEET_UPON_SUBMISSION_ENABLED']='false'
 end
 
 namespace :open_call do

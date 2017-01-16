@@ -12,6 +12,7 @@ MaxSessionProposalVotes = 10
 MailerAccount = "Sesiones Agiles <comunidad@agileecuador.org>"
 ChairsAccount = "comunidad@agileecuador.org"
 TwitterAccount = "opencall_cfp"
+IsTweetUponSubmissionEnabled = ENV['IS_TWEET_UPON_SUBMISSION_ENABLED'] == 'true'
 
 SubmissionDueDate = DateTime.parse(ENV['SUBMISSION_DUE_DATE'] ||(DateTime.now + 1.day).to_s) # as is until we update the system to support multi-event
 AcceptanceDueDate = DateTime.parse(ENV['ACCEPTANCE_DUE_DATE'] ||(DateTime.now + 1.day).to_s) # as is until we update the system to support multi-event
