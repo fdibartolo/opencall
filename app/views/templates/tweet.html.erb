@@ -9,8 +9,11 @@
       </div>
       <div class="modal-body">
         <%= t('share.twitter.subtitle').html_safe %> <br><br>
-        <textarea type="text" rows="4" class="form-control tweet-box" placeholder="<%= t('share.twitter.body').html_safe %>" ng-model="tweetMessage"></textarea>
         <div class="text-xs-right">
+          Time to tweet <strong><span tweet-countdown></span></strong>
+        </div>
+        <textarea type="text" rows="4" class="form-control tweet-box" placeholder="<%= t('share.twitter.body').html_safe %>" ng-model="tweetMessage"></textarea>
+        <div class="text-xs-right text-primary">
           <small><span tweet-text-count></span></small>
         </div>
       </div>

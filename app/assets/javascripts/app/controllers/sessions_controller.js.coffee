@@ -41,7 +41,7 @@ angular.module('openCall.controllers').controller 'SessionsController',
       SessionsService.create($scope.newSession).then ((id) ->
         $location.path "/sessions/show/#{id}"
         $scope.$emit 'hideLoadingSpinner'
-        $scope.$emit 'showTweetDialog', id, "#{BASE_URL}#/sessions/show/#{id}"
+        $scope.$emit 'showTweetDialog', id, "#{BASE_URL}#/sessions/show/#{id}"  if IS_TWEETING_ENABLED
         toaster.pop 'success', '', 'Session proposal submitted successfully', 5000
       ), (errorKey) ->
         $location.path "/error/#{errorKey}"
