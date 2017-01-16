@@ -99,10 +99,31 @@ angular.module("openCall.directives").directive "tweetTextCount", ->
       if angular.isDefined(msg)
         $(element).html(140 - msg.length)
         if msg.length == 0 || msg.length > 140
-          $(element).removeClass('text-primary')
           $(element).addClass('text-danger')
           $('.btn-twitter').addClass('disabled')
         else
           $(element).removeClass('text-danger')
-          $(element).addClass('text-primary')
           $('.btn-twitter').removeClass('disabled')
+
+angular.module("openCall.directives").directive 'tweetCountdown', ['$timeout', ($timeout) ->
+  restrict: 'A'
+  link: (scope, element, attrs) ->
+    scope.$on 'showTweetDialog', (e, sessionId, sessionUrl) ->
+      scope.countdown = 300 # 5 minutes
+      printAsMinsSecs()
+      tick = $timeout(onTick, 1000)
+
+    onTick = ->
+      scope.countdown--
+      $('#tweetModal').modal 'hide'  if scope.countdown < 0
+
+      printAsMinsSecs()
+      $(element).addClass('text-danger') if scope.countdown < 60
+      tick = $timeout(onTick, 1000)
+
+    printAsMinsSecs = ->
+      mins = Math.floor(scope.countdown / 60)
+      secs = scope.countdown - mins * 60
+      secs = "0#{secs}"  if secs <=9
+      $(element).html "#{mins}:#{secs}"
+]
