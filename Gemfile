@@ -23,12 +23,12 @@ gem 'ng-sticky-rails', '1.7.9.0'
 gem 'highcharts-rails', '4.2.5'
 gem 'highcharts-ng-rails', '0.0.7'
 
-gem 'devise', '4.2.0'
+gem 'devise', '4.3.0'
 gem 'omniauth-oauth2', '1.3.1' # upgrading to 1.4.0 injects a defect on linkedin oauth
 gem 'omniauth-github', '1.1.2'
 gem 'omniauth-google-oauth2', '0.3.1'
 gem 'omniauth-linkedin-oauth2', '0.1.5'
-gem 'cancancan', '1.15.0'
+gem 'cancancan', '2.0.0'
 gem 'twitter', '5.17.0'
 
 gem 'will_paginate', '3.1.5'
