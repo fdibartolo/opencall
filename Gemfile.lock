@@ -77,20 +77,21 @@ GEM
     docile (1.1.5)
     domain_name (0.5.20160216)
       unf (>= 0.0.5, < 1.0.0)
-    elasticsearch (5.0.0)
-      elasticsearch-api (= 5.0.0)
-      elasticsearch-transport (= 5.0.0)
-    elasticsearch-api (5.0.0)
+    elasticsearch (5.0.4)
+      elasticsearch-api (= 5.0.4)
+      elasticsearch-transport (= 5.0.4)
+    elasticsearch-api (5.0.4)
       multi_json
-    elasticsearch-extensions (0.0.20)
+    elasticsearch-extensions (0.0.26)
       ansi
+      elasticsearch
       ruby-prof
     elasticsearch-model (0.1.9)
       activesupport (> 3)
       elasticsearch (> 0.4)
       hashie
     elasticsearch-rails (0.1.9)
-    elasticsearch-transport (5.0.0)
+    elasticsearch-transport (5.0.4)
       faraday
       multi_json
     equalizer (0.0.10)
@@ -303,7 +304,7 @@ GEM
     unf_ext (0.0.7.2)
     warden (1.2.7)
       rack (>= 1.0)
-    will_paginate (3.1.5)
+    will_paginate (3.1.6)
     workflow (1.2.0)
 
 PLATFORMS
@@ -317,7 +318,7 @@ DEPENDENCIES
   coffee-rails (= 4.2.1)
   coveralls (= 0.8.9)
   devise (= 4.3.0)
-  elasticsearch-extensions (= 0.0.20)
+  elasticsearch-extensions (= 0.0.26)
   elasticsearch-model (= 0.1.9)
   elasticsearch-rails (= 0.1.9)
   factory_girl_rails (= 4.8.0)
@@ -350,5 +351,5 @@ DEPENDENCIES
   twitter (= 5.17.0)
   twitter-typeahead-rails (= 0.11.1)
   uglifier (= 3.0.4)
-  will_paginate (= 3.1.5)
+  will_paginate (= 3.1.6)
   workflow (= 1.2.0)
