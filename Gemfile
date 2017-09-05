@@ -5,12 +5,12 @@ gem 'rails', '4.2.7.1'
 gem 'puma', '3.10.0'
 gem 'pg', '0.21.0'
 
-gem 'jbuilder', '2.6.1'
+gem 'jbuilder', '2.7.0'
 gem 'sass-rails', '5.0.6'
 gem 'bootstrap', '4.0.0.alpha3' # watchout for breaking changes on .alpha5
 gem 'rails-assets-tether', '1.1.1'
 gem 'font-awesome-rails', '4.7.0.1'
-gem 'uglifier', '3.0.4'
+gem 'uglifier', '3.2.0'
 gem 'coffee-rails', '4.2.1'
 gem 'angularjs-rails', '1.6.0'
 gem 'jquery-rails', '4.2.1'
@@ -36,7 +36,7 @@ gem 'elasticsearch-model', '0.1.9'
 gem 'elasticsearch-rails', '0.1.9'
 gem 'elasticsearch-extensions', '0.0.26'
 
-gem 'newrelic_rpm', '3.17.2.327'
+gem 'newrelic_rpm', '4.4.0.336'
 gem 'workflow', '1.2.0'
 
 group :development, :test do
