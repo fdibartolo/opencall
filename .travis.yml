@@ -7,6 +7,14 @@ env:
 
 addons:
   postgresql: "9.3"
+  apt:
+    sources:
+      - elasticsearch-1.7
+    packages:
+      - elasticsearch
+
+services:
+  - elasticsearch
 
 # config/database.yml in Rails
 test:
@@ -22,13 +30,13 @@ cache:
 before_script:
   - psql -c 'create database open_call_test;' -U postgres
   - bundle exec rake db:migrate RAILS_ENV="test"
-  - bundle exec rake protractor:install
-  - npm install -g coffee-script
-  - sh -e /etc/init.d/xvfb start
+  # - bundle exec rake protractor:install
+  # - npm install -g coffee-script
+  # - sh -e /etc/init.d/xvfb start
 
 script:
   - bundle exec rake
-  - bundle exec rake open_call:e2e
+  # - bundle exec rake open_call:e2e
 
 before_deploy:
   - "echo $TRAVIS_COMMIT > public/commit_track.txt"
