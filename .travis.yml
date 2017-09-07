@@ -15,8 +15,11 @@ addons:
 #     packages:
 #       - elasticsearch
 
-# services:
-#   - elasticsearch
+services:
+  - elasticsearch
+
+before_install:
+  - curl -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.6.deb && sudo dpkg -i --force-confnew elasticsearch-1.7.6.deb && sudo service elasticsearch restart
 
 # config/database.yml in Rails
 test:
