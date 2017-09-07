@@ -34,7 +34,7 @@ gem 'twitter', '5.17.0'
 gem 'will_paginate', '3.1.6'
 gem 'elasticsearch-model', '0.1.9'
 gem 'elasticsearch-rails', '0.1.9'
-gem 'elasticsearch-extensions', '0.0.26'
+gem 'elasticsearch-extensions', '0.0.20'
 
 gem 'newrelic_rpm', '4.4.0.336'
 gem 'workflow', '1.2.0'
