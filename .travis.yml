@@ -19,7 +19,8 @@ services:
   - elasticsearch
 
 before_install:
-  - curl -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.6.deb && sudo dpkg -i --force-confnew elasticsearch-1.7.6.deb && sudo service elasticsearch restart
+  - curl -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.4.2.deb && sudo dpkg -i --force-confnew elasticsearch-1.4.2.deb && sudo service elasticsearch restart
+  - "echo ES installed version ------- `elasticsearch -v`"
 
 # config/database.yml in Rails
 test:
