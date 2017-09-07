@@ -2,19 +2,21 @@ language: ruby
 rvm:
   - 2.2.1
 
+dist: precise
+
 env:
   - ES_TEST_HOST=localhost ES_TEST_PORT=9250 SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3' DISPLAY=:99 NODE_PATH=$NODE_PATH:/home/travis/.nvm/v0.10.36/lib/node_modules
 
 addons:
   postgresql: "9.3"
-  apt:
-    sources:
-      - elasticsearch-1.7
-    packages:
-      - elasticsearch
+#   apt:
+#     sources:
+#       - elasticsearch-1.7
+#     packages:
+#       - elasticsearch
 
-services:
-  - elasticsearch
+# services:
+#   - elasticsearch
 
 # config/database.yml in Rails
 test:
