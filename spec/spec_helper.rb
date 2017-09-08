@@ -86,9 +86,12 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 
+  es_test_args = { number_of_nodes: 1, cluster_name: 'test' }
+
   config.before :each, elasticsearch: true do
-    Elasticsearch::Extensions::Test::Cluster.start(port: ENV['ES_TEST_PORT'], nodes: 1) unless 
-      Elasticsearch::Extensions::Test::Cluster.running?
+    Elasticsearch::Extensions::Test::Cluster.start(
+      es_test_args.merge({ port: ENV['ES_TEST_PORT'], command: ENV['ES_TEST_BIN'] })
+    ) unless Elasticsearch::Extensions::Test::Cluster.running? es_test_args
     [SessionProposal, Tag].each do |model|
       model.__elasticsearch__.create_index! force: true
       model.__elasticsearch__.refresh_index!
@@ -96,7 +99,7 @@ RSpec.configure do |config|
   end
 
   config.after :suite do
-    if Elasticsearch::Extensions::Test::Cluster.running?
+    if Elasticsearch::Extensions::Test::Cluster.running? es_test_args
       [SessionProposal, Tag].each do |model|
         model.__elasticsearch__.client.indices.delete(index: model.index_name) if 
           model.__elasticsearch__.client.indices.exists(index: model.index_name)
