@@ -3,19 +3,22 @@ rvm:
   - 2.2.1
 
 # dist: precise
-sudo: true
 
 env:
   - ES_TEST_HOST=localhost ES_TEST_PORT=9250 SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3' DISPLAY=:99 NODE_PATH=$NODE_PATH:/home/travis/.nvm/v0.10.36/lib/node_modules
 
 addons:
   postgresql: "9.3"
-  apt:
-    packages:
-      - oracle-java8-set-default
+
+services:
+  - elasticsearch
+
+#   apt:
+#     packages:
+#       - oracle-java8-set-default
 
 before_install:
-  - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.2.deb && sudo dpkg -i --force-confnew elasticsearch-5.1.2.deb && sudo service elasticsearch start
+#   - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.2.deb && sudo dpkg -i --force-confnew elasticsearch-5.1.2.deb && sudo service elasticsearch start
   - "echo ES installed version ------- `elasticsearch -v`"
 
 # config/database.yml in Rails
