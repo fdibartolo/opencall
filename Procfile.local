@@ -1,2 +1,2 @@
 web: bundle exec puma -C config/puma.rb
-elasticsearch: elasticsearch --cluster.name opencall
+elasticsearch: $ES_TEST_BIN -Ecluster.name=opencall
