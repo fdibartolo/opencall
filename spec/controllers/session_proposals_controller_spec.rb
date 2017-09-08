@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe SessionProposalsController, :type => :controller do
   login_as :user
+
+  before :each do
+    stub_const("SubmissionDueDate", DateTime.now + 1.day)
+  end
   
   describe "GET new" do
     it "should return an empty json-serialized SessionProposal" do
