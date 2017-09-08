@@ -3,10 +3,13 @@ rvm:
   - 2.2.1
 
 env:
-  - ES_TEST_HOST=localhost ES_TEST_PORT=9250 SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3' DISPLAY=:99 NODE_PATH=$NODE_PATH:/home/travis/.nvm/v0.10.36/lib/node_modules
+  - ES_TEST_HOST=localhost ES_TEST_PORT=9250 ES_TEST_BIN=./elasticsearch-5.1.2/bin/elasticsearch SUBMISSION_DUE_DATE='July 8 2015 23:59 UTC-3' ACCEPTANCE_DUE_DATE='August 17 2015 23:59 UTC-3' DISPLAY=:99 NODE_PATH=$NODE_PATH:/home/travis/.nvm/v0.10.36/lib/node_modules
 
 addons:
   postgresql: "9.3"
+
+before_install:
+  - wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.2.tar.gz && tar -xzf elasticsearch-5.1.2.tar.gz
 
 # config/database.yml in Rails
 test:
@@ -22,13 +25,13 @@ cache:
 before_script:
   - psql -c 'create database open_call_test;' -U postgres
   - bundle exec rake db:migrate RAILS_ENV="test"
-  - bundle exec rake protractor:install
-  - npm install -g coffee-script
-  - sh -e /etc/init.d/xvfb start
+  # - bundle exec rake protractor:install
+  # - npm install -g coffee-script
+  # - sh -e /etc/init.d/xvfb start
 
 script:
   - bundle exec rake
-  - bundle exec rake open_call:e2e
+  # - bundle exec rake open_call:e2e
 
 before_deploy:
   - "echo $TRAVIS_COMMIT > public/commit_track.txt"
