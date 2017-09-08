@@ -83,14 +83,15 @@ GEM
       elasticsearch-transport (= 5.0.4)
     elasticsearch-api (5.0.4)
       multi_json
-    elasticsearch-extensions (0.0.20)
+    elasticsearch-extensions (0.0.26)
       ansi
+      elasticsearch
       ruby-prof
-    elasticsearch-model (0.1.9)
+    elasticsearch-model (5.0.1)
       activesupport (> 3)
-      elasticsearch (> 0.4)
+      elasticsearch (~> 5)
       hashie
-    elasticsearch-rails (0.1.9)
+    elasticsearch-rails (5.0.1)
     elasticsearch-transport (5.0.4)
       faraday
       multi_json
@@ -319,9 +320,9 @@ DEPENDENCIES
   coffee-rails (= 4.2.2)
   coveralls (= 0.8.9)
   devise (= 4.3.0)
-  elasticsearch-extensions (= 0.0.20)
-  elasticsearch-model (= 0.1.9)
-  elasticsearch-rails (= 0.1.9)
+  elasticsearch-extensions (= 0.0.26)
+  elasticsearch-model (= 5.0.1)
+  elasticsearch-rails (= 5.0.1)
   factory_girl_rails (= 4.8.0)
   font-awesome-rails (= 4.7.0.2)
   highcharts-ng-rails (= 0.0.7)

@@ -13,7 +13,7 @@ Aquí tenemos 2 opciones: instalar todo lo necesario en nuestra computadora, o b
 ##### Local
 
 De no estar presente, instalar 
-  * [ElasticSearch](http://www.elasticsearch.org/)
+  * [ElasticSearch](http://www.elasticsearch.org/) - version 5+
   * [NodeJS](http://nodejs.org/)
   * [PostgreSQL](http://www.postgresql.org/)
 
@@ -92,6 +92,7 @@ GOOGLE_KEY, GOOGLE_SECRET | Id de aplicación para google oauth
 LINKEDIN_KEY, LINKEDIN_SECRET | Id de aplicación para linkedin oauth
 SEARCHBOX_URL | Host de la api de elasticsearch, generalmente localhost:9200
 ES_TEST_HOST, ES_TEST_PORT | Host de la api de elasticsearch para tests
+ES_TEST_BIN | Path to the elasticsearch binary
 PORT | Puerto del web server
 SUBMISSION_DUE_DATE | Fecha de corte para la postulación de propuestas
 ACCEPTANCE_DUE_DATE | Fecha de corte para la confirmación de propuestas aceptadas
