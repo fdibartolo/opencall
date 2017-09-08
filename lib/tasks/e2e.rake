@@ -10,9 +10,11 @@ namespace :open_call do
   desc "Starts ElasticSearch on test port (ES_TEST_PORT) and runs protractor e2e tests"
   task :e2e do
     overwrite_env_vars()
+    es_test_args = { number_of_nodes: 2, cluster_name: 'e2e_test' }
 
-    Elasticsearch::Extensions::Test::Cluster.start(port: ENV['ES_TEST_PORT'], nodes: 1) unless
-      Elasticsearch::Extensions::Test::Cluster.running?
+    Elasticsearch::Extensions::Test::Cluster.start(
+      es_test_args.merge({ port: ENV['ES_TEST_PORT'], command: ENV['ES_TEST_BIN'] })
+    ) unless Elasticsearch::Extensions::Test::Cluster.running? es_test_args
 
     begin
       Rake::Task["protractor:cleanup"].invoke # drop, create and seed for current run of e2e tests

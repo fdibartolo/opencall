@@ -27,6 +27,7 @@ class SessionProposal < ActiveRecord::Base
   mapping do
     indexes :title, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
     indexes :video_link, index: :not_analyzed
+    indexes :tags, fielddata: :true
     indexes :author, type: "object" do 
       indexes :name, search_analyzer: 'search_analyzer', analyzer: 'index_analyzer'
       indexes :avatar_url, index: :not_analyzed
@@ -54,12 +55,6 @@ class SessionProposal < ActiveRecord::Base
         json.multi_match do
           json.fields ["tags^10", "theme^10", "track^10", "title^5", "summary", "author.name"]
           json.query terms
-        end
-      end
-      json.highlight do
-        json.fields do
-          json.title "{}"
-          json.summary "{}"
         end
       end
       json.aggregations do
