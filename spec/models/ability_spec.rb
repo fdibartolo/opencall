@@ -2,6 +2,10 @@ require 'rails_helper'
 require "cancan/matchers"
 
 RSpec.describe Ability, :type => :model do
+  before :each do
+    stub_const("SubmissionDueDate", DateTime.now + 1.day)
+  end
+
   let(:session_proposal) { FactoryGirl.create(:session_proposal) }
 
   context "when having user role" do
