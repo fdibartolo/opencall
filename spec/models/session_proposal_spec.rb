@@ -204,8 +204,8 @@ RSpec.describe SessionProposal, :type => :model do
 
       sessions = SessionProposal.all_with_user_votes
       expect(sessions.count).to eq 2
-      expect(sessions.first[:votes]).to eq 2
-      expect(sessions.last[:votes]).to eq 1
+      expect(sessions.select {|v| v[:title] == first_session.title}.first[:votes]).to eq 2
+      expect(sessions.select {|v| v[:title] == second_session.title}.first[:votes]).to eq 1
     end
   end
 end
