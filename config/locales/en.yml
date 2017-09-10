@@ -182,7 +182,7 @@ en:
       theme: "Theme"
       comments: "Comments"
       reviews: "Evaluations by"
-      votes: "# Votes"
+      votes: "# Votes"
     buttons:
       export_reviews: "Export all to CSV"
   activerecord:

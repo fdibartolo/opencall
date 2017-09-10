@@ -8,7 +8,7 @@ RSpec.describe ReviewsController, :type => :controller do
       login_as :user
 
       it "should return forbidden" do
-        get :index, { session_proposal_id: session.id }
+        get :index, params: { session_proposal_id: session.id }
         expect(response).to have_http_status(403)
       end
     end
@@ -21,7 +21,7 @@ RSpec.describe ReviewsController, :type => :controller do
         reviewers_review = FactoryGirl.create :review, session_proposal: session, user: logged_in, second_reviewer_id: second_reviewer.id
         admins_review = FactoryGirl.create :review, session_proposal: session, user: FactoryGirl.create(:admin, first_name: 'admin')
 
-        get :index, { session_proposal_id: session.id }
+        get :index, params: { session_proposal_id: session.id }
 
         body = JSON.parse response.body
         expect(body['reviews'].count).to eq 2
@@ -42,7 +42,7 @@ RSpec.describe ReviewsController, :type => :controller do
       login_as :user
 
       it "should return forbidden" do
-        post :create, payload
+        post :create, params: payload
         expect(response).to have_http_status(403)
       end
     end
@@ -51,7 +51,7 @@ RSpec.describe ReviewsController, :type => :controller do
       login_as :reviewer
 
       it "should create review to given SessionProposal when no one exists" do
-        post :create, payload
+        post :create, params: payload
         expect(response).to have_http_status(204)
         expect(session.reviews.count).to eq 1
         expect(session.reviews.last.body).to eq 'new review'
@@ -64,7 +64,7 @@ RSpec.describe ReviewsController, :type => :controller do
         FactoryGirl.create :review, session_proposal: session, user: logged_in
         payload[:review][:body] = 'updated'
         payload[:review][:score] = 2
-        post :create, payload
+        post :create, params: payload
         expect(response).to have_http_status(204)
         expect(session.reviews.count).to eq 1
         expect(session.reviews.last.body).to eq 'updated'
@@ -73,7 +73,7 @@ RSpec.describe ReviewsController, :type => :controller do
 
       it "should fire email on create" do
         allow_any_instance_of(Review).to receive(:save).and_return(true)
-        post :create, payload
+        post :create, params: payload
         email = ActionMailer::Base.deliveries.last
         expect(email.subject).to eq I18n.t('review_mailer.review_created_email.subject')
       end
@@ -122,7 +122,7 @@ RSpec.describe ReviewsController, :type => :controller do
       login_as :user
 
       it "should return forbidden" do
-        get :single_for_current_user, { session_proposal_id: session.id }
+        get :single_for_current_user, params: { session_proposal_id: session.id }
         expect(response).to have_http_status(403)
       end
     end
@@ -134,7 +134,7 @@ RSpec.describe ReviewsController, :type => :controller do
       context "with invalid param id" do
         before :each do
           allow(SessionProposal).to receive(:find_by).and_return(nil)
-          get :single_for_current_user, { session_proposal_id: 0 }
+          get :single_for_current_user, params: { session_proposal_id: 0 }
         end
 
         it "should return 400 Bad Request" do
@@ -153,7 +153,7 @@ RSpec.describe ReviewsController, :type => :controller do
         it "should return review info when one exists" do
           review = FactoryGirl.create :review, session_proposal: session, user: logged_in
 
-          get :single_for_current_user, { session_proposal_id: session.id }
+          get :single_for_current_user, params: { session_proposal_id: session.id }
 
           body = JSON.parse response.body
           expect(body['body']).to eq review.body
@@ -163,14 +163,14 @@ RSpec.describe ReviewsController, :type => :controller do
         end
 
         it "should not return reviews body when no one exists" do
-          get :single_for_current_user, { session_proposal_id: session.id }
+          get :single_for_current_user, params: { session_proposal_id: session.id }
 
           body = JSON.parse response.body
           expect(body['body']).to be nil
         end
 
         it "should include all valid reviewers except logged_in user" do
-          get :single_for_current_user, { session_proposal_id: session.id }
+          get :single_for_current_user, params: { session_proposal_id: session.id }
 
           body = JSON.parse response.body
           expect(body['reviewers'].count).to be 1
@@ -193,7 +193,7 @@ RSpec.describe ReviewsController, :type => :controller do
         login_as :reviewer
 
         it "should return forbidden" do
-          post action, payload
+          post action, params: payload
           expect(response).to have_http_status(403)
         end
       end
@@ -205,7 +205,7 @@ RSpec.describe ReviewsController, :type => :controller do
           before :each do
             allow(Review).to receive(:find_by).and_return(nil)
             payload[:id] = 0
-            post action, payload
+            post action, params: payload
           end
 
           it "should return 400 Bad Request" do
@@ -219,7 +219,7 @@ RSpec.describe ReviewsController, :type => :controller do
 
         context "with valid params" do
           it "should update review to '#{status}' status" do
-            post action, payload
+            post action, params: payload
             expect(eval("review.reload.#{status}?")).to be true
             # expect(review).to receive(:accept!).exactly(1).times
           end

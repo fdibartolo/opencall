@@ -1,4 +1,4 @@
-class CreateSessionProposals < ActiveRecord::Migration
+class CreateSessionProposals < ActiveRecord::Migration[4.2]
   def change
     create_table :session_proposals do |t|
       t.string :author

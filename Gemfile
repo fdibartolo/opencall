@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.1'
 
-gem 'rails', '4.2.9'
+gem 'rails', '5.1.4'
 gem 'puma', '3.10.0'
 gem 'pg', '0.21.0'
 
@@ -43,6 +43,7 @@ group :development, :test do
   gem 'spring', '2.0.2'
   gem 'spring-commands-rspec', '1.0.4'
   gem 'rspec-rails', '3.6.1'
+  gem 'rails-controller-testing', '1.0.2'
   gem 'factory_girl_rails', '4.8.0'
   gem 'protractor-rails', '0.0.19'
   gem 'coveralls', '0.8.9', require: false
