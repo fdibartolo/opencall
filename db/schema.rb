@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -28,9 +27,8 @@ ActiveRecord::Schema.define(version: 20150627145711) do
     t.datetime "updated_at",          null: false
     t.integer  "session_proposal_id"
     t.integer  "user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
-
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.string   "uid"
@@ -39,9 +37,8 @@ ActiveRecord::Schema.define(version: 20150627145711) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "image_url"
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.text     "body"
@@ -53,10 +50,9 @@ ActiveRecord::Schema.define(version: 20150627145711) do
     t.string   "workflow_state"
     t.integer  "second_reviewer_id"
     t.text     "private_body"
+    t.index ["session_proposal_id"], name: "index_reviews_on_session_proposal_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
-
-  add_index "reviews", ["session_proposal_id"], name: "index_reviews_on_session_proposal_id", using: :btree
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -67,10 +63,9 @@ ActiveRecord::Schema.define(version: 20150627145711) do
   create_table "roles_users", id: false, force: :cascade do |t|
     t.integer "role_id", null: false
     t.integer "user_id", null: false
+    t.index ["role_id"], name: "index_roles_users_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_roles_users_on_user_id", using: :btree
   end
-
-  add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
-  add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
   create_table "session_proposals", force: :cascade do |t|
     t.string   "title"
@@ -91,10 +86,9 @@ ActiveRecord::Schema.define(version: 20150627145711) do
   create_table "session_proposals_tags", id: false, force: :cascade do |t|
     t.integer "session_proposal_id", null: false
     t.integer "tag_id",              null: false
+    t.index ["session_proposal_id"], name: "index_session_proposals_tags_on_session_proposal_id", using: :btree
+    t.index ["tag_id"], name: "index_session_proposals_tags_on_tag_id", using: :btree
   end
-
-  add_index "session_proposals_tags", ["session_proposal_id"], name: "index_session_proposals_tags_on_session_proposal_id", using: :btree
-  add_index "session_proposals_tags", ["tag_id"], name: "index_session_proposals_tags_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -142,10 +136,9 @@ ActiveRecord::Schema.define(version: 20150627145711) do
     t.string   "facebook"
     t.integer  "session_proposal_voted_ids", default: [],              array: true
     t.integer  "session_proposal_faved_ids", default: [],              array: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "comments", "users"
   add_foreign_key "identities", "users"
