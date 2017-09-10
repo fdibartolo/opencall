@@ -7,7 +7,7 @@ RSpec.describe Users::RegistrationsController, :type => :controller do
     let(:payload) { { :user => { :bio => 'updated bio' } } }
 
     before :each do
-      patch :update, payload
+      patch :update, params: payload
     end
 
     it { expect(response.location).to match edit_user_registration_path }

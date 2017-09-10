@@ -35,7 +35,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
     context "with invalid params id" do
       before :each do
         allow(SessionProposal).to receive(:find_by).and_return(nil)
-        get :show, { id: 9999 }
+        get :show, params: { id: 9999 }
       end
 
       it "should return 400 Bad Request" do
@@ -51,7 +51,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
         session = FactoryGirl.create :session_proposal, track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme), audience: FactoryGirl.create(:audience)
         allow(SessionProposal).to receive(:find_by).and_return(session)
         
-        get :show, { id: session.id }
+        get :show, params: { id: session.id }
 
         body = JSON.parse response.body
         expect(body['id']).to eq session.id
@@ -62,7 +62,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
         session = FactoryGirl.create :session_proposal, user: logged_in, track: FactoryGirl.create(:track), theme: FactoryGirl.create(:theme), audience: FactoryGirl.create(:audience)
         allow(SessionProposal).to receive(:find_by).and_return(session)
         
-        get :show, { id: session.id }
+        get :show, params: { id: session.id }
 
         body = JSON.parse response.body
         expect(body['id']).to eq session.id
@@ -75,7 +75,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
         allow(SessionProposal).to receive(:find_by).and_return(session)
         logged_in.add_session_vote session.id
 
-        get :show, { id: session.id }
+        get :show, params: { id: session.id }
 
         body = JSON.parse response.body
         expect(body['id']).to eq session.id
@@ -87,7 +87,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
         allow(SessionProposal).to receive(:find_by).and_return(session)
         logged_in.toggle_session_faved session.id
 
-        get :show, { id: session.id }
+        get :show, params: { id: session.id }
 
         body = JSON.parse response.body
         expect(body['id']).to eq session.id
@@ -101,7 +101,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       context "with invalid params id" do
         before :each do
           allow(SessionProposal).to receive(:find_by).and_return(nil)
-          get :edit, { id: 9999 }
+          get :edit, params: { id: 9999 }
         end
 
         it "should return 400 Bad Request" do
@@ -117,7 +117,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
           session = FactoryGirl.create :session_proposal, user: logged_in
           allow(SessionProposal).to receive(:find_by).and_return(session)
           
-          get :edit, { id: session.id }
+          get :edit, params: { id: session.id }
 
           body = JSON.parse response.body
           expect(body['id']).to eq session.id
@@ -132,7 +132,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
         user = FactoryGirl.create :user, first_name: 'jim'
         session = FactoryGirl.create :session_proposal, user: user
 
-        get :edit, { id: session.id }
+        get :edit, params: { id: session.id }
         expect(response).to have_http_status(403)
       end
     end
@@ -151,26 +151,26 @@ RSpec.describe SessionProposalsController, :type => :controller do
       
       it "should return success if can save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
-        post :create, payload
+        post :create, params: payload
         expect(response).to have_http_status(204)
       end
 
       it "should fire email if can save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(true)
-        post :create, payload
+        post :create, params: payload
         email = ActionMailer::Base.deliveries.last
         expect(email.subject).to eq I18n.t('session_proposal_mailer.session_proposal_created_email.subject')
       end
 
       it "should return unprocesable entity if cannot save" do
         allow_any_instance_of(SessionProposal).to receive(:save).and_return(false)
-        post :create, payload
+        post :create, params: payload
         expect(response).to have_http_status(422)
       end
 
       it "should return forbidden entity if past due date" do
         travel_to (SubmissionDueDate + 1.minute) do
-          post :create, payload
+          post :create, params: payload
           expect(response).to have_http_status(403)
         end
       end
@@ -182,7 +182,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       context "with invalid params" do
         it "should return 400 Bad Request" do
           allow(SessionProposal).to receive(:find_by).and_return(nil)
-          expect(patch(:update, { id: 9999 })).to have_http_status(400)
+          expect(patch(:update, params: { id: 9999 })).to have_http_status(400)
         end
       end
 
@@ -192,13 +192,13 @@ RSpec.describe SessionProposalsController, :type => :controller do
         
         it "should return success if can save" do
           allow_any_instance_of(SessionProposal).to receive(:update).and_return(true)
-          patch :update, payload
+          patch :update, params: payload
           expect(response).to have_http_status(204)
         end
 
         it "should return unprocesable entity if cannot save" do
           allow_any_instance_of(SessionProposal).to receive(:update).and_return(false)
-          patch :update, payload
+          patch :update, params: payload
           expect(response).to have_http_status(422)
         end
       end
@@ -209,7 +209,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
         user = FactoryGirl.create :user, first_name: 'jim'
         session = FactoryGirl.create :session_proposal, user: user
 
-        post :update, { id: session.id, session_proposal: { title: 'title' } }
+        post :update, params: { id: session.id, session_proposal: { title: 'title' } }
         expect(response).to have_http_status(403)
       end
     end
@@ -221,7 +221,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
 
     context "while user" do
       it "should return forbidden" do
-        get :author, { id: session.id }
+        get :author, params: { id: session.id }
         expect(response).to have_http_status(403)
       end
     end
@@ -230,7 +230,7 @@ RSpec.describe SessionProposalsController, :type => :controller do
       login_as :reviewer, 'Reviewer'
 
       it "should return profile info" do
-        get :author, { id: session.id }
+        get :author, params: { id: session.id }
 
         body = JSON.parse response.body
         expect(body['bio']).to eq author.bio

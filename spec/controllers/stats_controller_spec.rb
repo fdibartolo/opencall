@@ -38,7 +38,7 @@ RSpec.describe StatsController, type: :controller do
     context "with invalid params id" do
       before :each do
         allow(Theme).to receive(:find_by).and_return(nil)
-        get :show, { id: 9999 }
+        get :show, params: { id: 9999 }
       end
 
       it "should return 400 Bad Request" do
@@ -52,7 +52,7 @@ RSpec.describe StatsController, type: :controller do
 
     context "with valid params" do
       it "should return proposals list" do
-        get :show, { id: first_theme.id }
+        get :show, params: { id: first_theme.id }
 
         body = JSON.parse response.body
         expect(body['name']).to eq first_theme.name
@@ -64,7 +64,7 @@ RSpec.describe StatsController, type: :controller do
       it "should include reviews score for each proposal" do
         FactoryGirl.create :review, score: 2, session_proposal: first_session, user: logged_in, second_reviewer: (FactoryGirl.create :reviewer)
 
-        get :show, { id: first_theme.id }
+        get :show, params: { id: first_theme.id }
 
         body = JSON.parse response.body
         expect(body['proposals'].count).to eq 2

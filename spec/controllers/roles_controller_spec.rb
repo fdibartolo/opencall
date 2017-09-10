@@ -23,7 +23,7 @@ RSpec.describe RolesController, type: :controller do
 
   describe "PATCH #update" do
     context "with invalid params" do
-      it { expect{ patch :update, { id: 1, missing_email: 'email' } }.to raise_error ActionController::ParameterMissing }
+      it { expect{ patch :update, params: { id: 1, missing_email: 'email' } }.to raise_error ActionController::ParameterMissing }
     end
 
     context "with valid params" do
@@ -31,19 +31,19 @@ RSpec.describe RolesController, type: :controller do
       let(:role) { FactoryGirl.create :role, name: RoleReviewer }
 
       it "should assign role to given user" do
-        patch :update, { id: role.id, email: user.email }
+        patch :update, params: { id: role.id, email: user.email }
         expect(user.roles).to include role
       end
 
       it "should fire email to given user" do
-        patch :update, { id: role.id, email: user.email }
+        patch :update, params: { id: role.id, email: user.email }
         email = ActionMailer::Base.deliveries.last
         expect(email.subject).to eq I18n.t('role_mailer.role_created_email.subject')
       end
 
       it "should not assign role if alredy present" do
         user.roles << role
-        patch :update, { id: role.id, email: user.email }
+        patch :update, params: { id: role.id, email: user.email }
         expect(user.roles.count).to eq 1
       end
     end
@@ -51,7 +51,7 @@ RSpec.describe RolesController, type: :controller do
 
   describe "DELETE #destroy" do
     context "with invalid params" do
-      it { expect{ delete :destroy, { id: 1, missing_user_id: '1' } }.to raise_error ActionController::ParameterMissing }
+      it { expect{ delete :destroy, params: { id: 1, missing_user_id: '1' } }.to raise_error ActionController::ParameterMissing }
     end
 
     context "with valid params" do
@@ -60,7 +60,7 @@ RSpec.describe RolesController, type: :controller do
 
       it "should remove role to given user" do
         user.roles << role
-        delete :destroy, { id: role.id, user_id: user.id }
+        delete :destroy, params: { id: role.id, user_id: user.id }
         expect(user.reload.roles).to_not include role
       end
     end

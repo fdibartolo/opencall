@@ -7,7 +7,7 @@ RSpec.describe CommentsController, :type => :controller do
     context "with invalid params" do
       before :each do
         allow(SessionProposal).to receive(:find_by).and_return(nil)
-        get :index, { session_proposal_id: 9999 }
+        get :index, params: { session_proposal_id: 9999 }
       end
 
       it "should return 400 Bad Request" do
@@ -23,7 +23,7 @@ RSpec.describe CommentsController, :type => :controller do
       let(:session) { FactoryGirl.create :session_proposal_with_comment }
 
       it "should list comments for given SessionProposal" do
-        get :index, { session_proposal_id: session.id } 
+        get :index, params: { session_proposal_id: session.id } 
 
         body = JSON.parse response.body
         expect(body['comments'].count).to eq 1
@@ -40,7 +40,7 @@ RSpec.describe CommentsController, :type => :controller do
       let(:payload) { { session_proposal_id: session.id, comment: { body: 'new comment' }}}
 
       it "should add comment to given SessionProposal" do
-        post :create, payload
+        post :create, params: payload
         expect(response).to have_http_status(204)
         expect(session.comments.count).to eq 2
         expect(session.comments.last.body).to eq 'new comment'
@@ -48,7 +48,7 @@ RSpec.describe CommentsController, :type => :controller do
 
       it "should fire email" do
         allow_any_instance_of(Comment).to receive(:save).and_return(true)
-        post :create, payload
+        post :create, params: payload
         email = ActionMailer::Base.deliveries.last
         expect(email.subject).to eq I18n.t('comment_mailer.comment_created_email.subject')
       end
