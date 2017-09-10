@@ -5,7 +5,7 @@ class Identity < ApplicationRecord
   validates :uid,       presence: true
 
   after_save do |identity|
-    index_sessions_of(identity.user) if identity.image_url_changed? and identity.user.author?
+    index_sessions_of(identity.user) if identity.saved_change_to_image_url? and identity.user.author?
   end
 
   after_destroy do |identity|
