@@ -1,6 +1,6 @@
 require 'csv'
 
-class SessionProposal < ActiveRecord::Base
+class SessionProposal < ApplicationRecord
   include Searchable
   include Workflow
 

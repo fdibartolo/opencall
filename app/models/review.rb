@@ -1,4 +1,4 @@
-class Review < ActiveRecord::Base
+class Review < ApplicationRecord
   include Workflow
 
   belongs_to :session_proposal

@@ -1,4 +1,4 @@
-class Theme < ActiveRecord::Base
+class Theme < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   has_many :session_proposals

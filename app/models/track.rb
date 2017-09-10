@@ -1,3 +1,3 @@
-class Track < ActiveRecord::Base
+class Track < ApplicationRecord
   validates :name,  presence: true, uniqueness: true
 end
