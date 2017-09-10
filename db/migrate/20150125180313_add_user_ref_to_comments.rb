@@ -1,4 +1,4 @@
-class AddUserRefToComments < ActiveRecord::Migration
+class AddUserRefToComments < ActiveRecord::Migration[4.2]
   def change
     add_reference :comments, :user, index: true
     add_foreign_key :comments, :users

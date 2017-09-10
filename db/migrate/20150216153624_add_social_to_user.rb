@@ -1,4 +1,4 @@
-class AddSocialToUser < ActiveRecord::Migration
+class AddSocialToUser < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :linkedin, :string
     add_column :users, :aboutme, :string
