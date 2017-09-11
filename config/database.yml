@@ -15,6 +15,10 @@ test:
   <<: *default
   database: open_call_test
 
+integration:
+  <<: *default
+  database: open_call_integration
+
 production:
   <<: *default
   database: open_call_production

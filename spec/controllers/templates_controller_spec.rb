@@ -12,7 +12,7 @@ RSpec.describe TemplatesController, :type => :controller do
     menu/administration.html.erb menu/advanced_reports.html.erb
   ].each do |template|
     it "should serve the #{template} template" do
-      get 'template', { path: template }
+      get 'template', params: { path: template }
       expect(response).to be_success
       expect(response).to render_template template
     end

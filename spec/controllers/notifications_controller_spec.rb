@@ -39,7 +39,7 @@ RSpec.describe NotificationsController, type: :controller do
         expect(body['sessions'].last['reviews'].first['second_reviewer']).to eq second_reviewer.full_name
       end
 
-      it "should include session status" do
+      it "should include session status", :elasticsearch do
         second_session.accept!
         get :index
 
@@ -86,7 +86,7 @@ RSpec.describe NotificationsController, type: :controller do
           before :each do
             allow(Review).to receive(:find_by).and_return(nil)
             payload[:session_proposal_id] = 0
-            post action, payload
+            post action, params: payload
           end
 
           it "should return 400 Bad Request" do
@@ -100,7 +100,7 @@ RSpec.describe NotificationsController, type: :controller do
 
         context "with valid params" do
           it "should include template" do
-            get action, payload
+            get action, params: payload
 
             body = JSON.parse response.body
             expect(body['template']).to match "Dear #{session.user.full_name},\n\n#{expected_text}"
@@ -110,7 +110,7 @@ RSpec.describe NotificationsController, type: :controller do
             first_review  = FactoryGirl.create :review, session_proposal: session, user: @logged_user, body: 'something'
             second_review = FactoryGirl.create :review, session_proposal: session, user: @logged_user, body: 'another comment'
 
-            get action, payload
+            get action, params: payload
 
             body = JSON.parse response.body
             expect(body['feedback'].count).to eq 2
@@ -127,14 +127,16 @@ RSpec.describe NotificationsController, type: :controller do
     'decline' => 'declined'
   }.each do |action, status|
     describe "POST #{action}" do
-      let(:session) { FactoryGirl.create :session_proposal }
+      let!(:track) { FactoryGirl.create :track }
+      let!(:theme) { FactoryGirl.create :theme }
+      let(:session) { FactoryGirl.create :session_proposal, theme: theme, track: track }
       let(:payload) { { session_proposal_id: session.id, body: 'some body' } }
 
       context "while reviewer" do
         login_as :reviewer
 
         it "should return forbidden" do
-          post action, payload
+          post action, params: payload
           expect(response).to have_http_status(403)
         end
       end
@@ -146,7 +148,7 @@ RSpec.describe NotificationsController, type: :controller do
           before :each do
             allow(Review).to receive(:find_by).and_return(nil)
             payload[:session_proposal_id] = 0
-            post action, payload
+            post action, params: payload
           end
 
           it "should return 400 Bad Request" do
@@ -160,13 +162,13 @@ RSpec.describe NotificationsController, type: :controller do
 
         context "with valid params" do
           it "should update session proposal to '#{status}' status" do
-            post action, payload
+            post action, params: payload
             expect(eval("session.reload.#{status}?")).to be true
           end
 
           it "should fire '#{status}' email from new status" do
             allow_any_instance_of(SessionProposal).to receive(action).and_return(true)
-            post action, payload
+            post action, params: payload
             email = ActionMailer::Base.deliveries.last
             expect(email.subject).to eq I18n.t("notification_mailer.session_#{status}_email.subject")
             expect(email.body).to match payload[:body]
@@ -175,7 +177,7 @@ RSpec.describe NotificationsController, type: :controller do
           it "should fire '#{status}' email even if already #{status}" do
             eval("session.#{action}!")
             allow_any_instance_of(SessionProposal).to receive(action).and_return(true)
-            post action, payload
+            post action, params: payload
             email = ActionMailer::Base.deliveries.last
             expect(email.subject).to eq I18n.t("notification_mailer.session_#{status}_email.subject")
             expect(email.body).to match payload[:body]
@@ -211,7 +213,7 @@ RSpec.describe NotificationsController, type: :controller do
           expect_any_instance_of(AuthorMessageInbox).to receive(:message_all).
             with(payload[:message][:subject], payload[:message][:body])
 
-          post :notify_authors, payload
+          post :notify_authors, params: payload
         end
       end
     end
@@ -224,25 +226,25 @@ RSpec.describe NotificationsController, type: :controller do
 
     context "with invalid params" do
       it "should throw exception if message is missing" do
-        expect{ post(:tweet, payload) }.to raise_error ActionController::ParameterMissing
+        expect{ post(:tweet, params: payload) }.to raise_error ActionController::ParameterMissing
       end
 
       it "should throw exception if message is empty" do
         payload[:message] = ''
-        expect{ post(:tweet, payload) }.to raise_error ActionController::ParameterMissing
+        expect{ post(:tweet, params: payload) }.to raise_error ActionController::ParameterMissing
       end
 
       it "should return 'cannot find' message for invalid session id" do
         payload[:message] = 'x' * 140
         payload[:session_proposal_id] = 0
-        post :tweet, payload
+        post :tweet, params: payload
         expect(response).to have_http_status(400)
         expect(response.header['Message']).to eq "Unable to find session proposal with id '0'"
       end
 
       it "should return 400 Bad Request if message is larger than 140 chars" do
         payload[:message] = 'x' * 141
-        post :tweet, payload
+        post :tweet, params: payload
         expect(response).to have_http_status(422)
         expect(response.header['Message']).to eq "Message is too long (maximum is 140 characters)"
       end
@@ -252,7 +254,7 @@ RSpec.describe NotificationsController, type: :controller do
       it "should return success" do
         allow(TwitterFacade.instance).to receive(:update).and_return(Twitter::Tweet.new(id: 1))
         payload[:message] = 'x' * 135
-        post :tweet, payload
+        post :tweet, params: payload
         expect(response).to have_http_status(200)
       end
     end

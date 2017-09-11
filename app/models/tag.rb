@@ -1,4 +1,4 @@
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   include Searchable
 
   has_and_belongs_to_many :session_proposals
