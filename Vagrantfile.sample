@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = "<%= @cookbook_path %>"
     chef.json = {
       'open_call' => {
-        'ruby_version' => '2.2.1',
+        'ruby_version' => '2.4.1',
         'ruby_gems' => [
           { 'bundler' => '1.9.1' },
           { 'foreman' => '0.78.0' }
