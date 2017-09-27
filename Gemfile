@@ -20,7 +20,7 @@ gem 'marked-rails', '0.3.2.0'
 gem 'momentjs-rails', '2.17.1'
 gem 'ng-toaster-rails', '0.4.15.0'
 gem 'ng-sticky-rails', '1.7.9.0'
-gem 'highcharts-rails', '4.2.5'
+gem 'highcharts-rails', '5.0.7'
 gem 'highcharts-ng-rails', '0.0.7'
 
 gem 'devise', '4.3.0'

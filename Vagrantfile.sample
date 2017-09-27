@@ -7,7 +7,7 @@ Vagrant.require_version '>= 1.5.0'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'open-call-workstation'
-  config.vm.box = "hashicorp/precise64"
+  config.vm.box = "ubuntu/trusty64"
 
   config.omnibus.chef_version = "12.5.1"
   config.berkshelf.enabled = true
@@ -18,14 +18,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.name = "OpenCall"
-    vb.memory = "2048"
+    vb.memory = "3072"
   end
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "<%= @cookbook_path %>"
     chef.json = {
       'open_call' => {
-        'ruby_version' => '2.2.1',
+        'ruby_version' => '2.4.1',
         'ruby_gems' => [
           { 'bundler' => '1.9.1' },
           { 'foreman' => '0.78.0' }
@@ -37,7 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         'oracle' => { 'accept_oracle_download_terms' => true }
       },
       'postgresql' => {
-        'version' => '9.1',
+        'version' => '9.3',
         'password' => { 'postgres' => '' },
         'pg_hba' => [
           {
