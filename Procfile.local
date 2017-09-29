@@ -1,2 +1,3 @@
 web: bundle exec puma -C config/puma.rb
+webpacker: ./bin/webpack-dev-server
 elasticsearch: $ES_TEST_BIN -Ecluster.name=opencall
