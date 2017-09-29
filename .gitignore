@@ -26,9 +26,6 @@ queries.txt
 # coverage reports
 coverage/
 
-# node modules
-node_modules/
-
 .idea
 
 # VM files
@@ -40,3 +37,8 @@ vm_cookbook/
 # terraform
 terraform/terraform.tfvars
 terraform/terraform.tfstate*
+
+# webpacker
+/public/packs
+/public/packs-test
+/node_modules
