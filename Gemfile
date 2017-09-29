@@ -5,6 +5,8 @@ gem 'rails', '5.1.4'
 gem 'puma', '3.10.0'
 gem 'pg', '0.21.0'
 
+gem 'webpacker', '3.0.1'
+
 gem 'jbuilder', '2.7.0'
 gem 'sass-rails', '5.0.6'
 gem 'bootstrap', '4.0.0.alpha3' # watchout for breaking changes on .alpha5
