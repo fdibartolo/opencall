@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+
+const appRoutes: Routes = [
+  { path: '', component:HomeComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes, { useHash: true })
   ],
-  providers: [],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
