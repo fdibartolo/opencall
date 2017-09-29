@@ -14,12 +14,12 @@
 //= require jquery_ujs
 //= require tether
 //= require bootstrap
-//= require twitter/typeahead.min
-//= require marked
-//= require moment
-//= require toaster
-//= require sticky
-//= require highcharts
-//= require highcharts-ng
+// twitter/typeahead.min
+// marked
+// moment
+// toaster
+// sticky
+// highcharts
+// highcharts-ng
 //= require analytics
-//= require_tree .
+// require_tree .
