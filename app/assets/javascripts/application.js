@@ -12,11 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular
-//= require angular-route
-//= require angular-mocks
-//= require angular-animate
-//= require app/open_call
 //= require tether
 //= require bootstrap
 //= require twitter/typeahead.min

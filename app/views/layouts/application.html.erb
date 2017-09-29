@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html ng-app="openCall">
+<!-- <html ng-app="openCall"> -->
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +8,7 @@
   <title>OpenCall</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <%= javascript_pack_tag 'open_call' %>
   <%= csrf_meta_tags %>
   <link href="<%= asset_path('agiles.png') %>" rel='image_src' />
   <link href="<%= asset_path('agiles.png') %>" rel='shortcut icon' type='image/png'>
