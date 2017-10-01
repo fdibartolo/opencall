@@ -27,7 +27,7 @@ es:
       sign_in_to_all: "Inicia sesión y propone tu charla, vota las de otros, marca tus favoritas, y mas!"
       no_search_results: "No hemos podido encontrar resultados <br> que concuerden con la búsqueda... "
       no_sessions: "Está todo tranquilo por aquí...<br> Sé el primero es proponer una sesión!"
-      matching_tags: "tags relevantes <span class='fa fa-tags' style='font-size:120%'>"
+      matching_tags: "tags relevantes <span class='fa fa-tags' style='font-size:120%'></span>"
       new: "¿De qué te gustaría hablar?"
       title: "Título"
       theme: "Temática"

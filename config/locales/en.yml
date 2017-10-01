@@ -47,7 +47,7 @@ en:
       sign_in_to_all: "Sign in and submit your session, vote others, mark your favorite ones, and more!"
       no_search_results: "We couldn't find anything that <br> matches the criteria... "
       no_sessions: "It's lonely here...<br> Be the first one to propose a session!"
-      matching_tags: "relevant tags <span class='fa fa-tags' style='font-size:120%'>"
+      matching_tags: "relevant tags <span class='fa fa-tags' style='font-size:120%'></span>"
       new: "What would you like to talk about?"
       title: "Title"
       theme: "Theme"
