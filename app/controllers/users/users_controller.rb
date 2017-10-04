@@ -45,8 +45,7 @@ class Users::UsersController < ApplicationController
   end
 
   def toggle_session_fav
-    current_user.toggle_session_faved toggle_session_fav_params
-    head :ok
+    render json: current_user.toggle_session_faved(toggle_session_fav_params)
   end
 
   private
