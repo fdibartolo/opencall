@@ -1,24 +1,21 @@
-<div ng-cloak ng-init="getSessionVotedAndFavedIds()" animate-with="fadeIn" class="row"><br>
-  <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="initSearch()">
+<!-- <div ng-cloak ng-init="getSessionVotedAndFavedIds()" animate-with="fadeIn" class="row"><br> -->
+<div class="row" animate-with="fadeIn"><br>
+  <!-- <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="initSearch()"> -->
+  <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked">
     <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
       <div class="input-group searchbox">      
-        <input type="text" class="form-control"
-          ng-model="searchTerms" 
-          ng-model-options="{ debounce: 1000 }"
-          ng-change="search()"
-          helpable="<%= t('sessions.help.search') %>">
+        <input type="text" class="form-control" [(ngModel)]="searchCriteria" (keyup)="searchInput($event)" helpable="<%= t('sessions.help.search') %>"> <!-- ng-model-options="{ debounce: 1000 }" -->
         <div class="input-group-addon">
           <span class="fa fa-search" aria-hidden="true"></span>
         </div>
       </div>
-      <p ng-if="!loading && searchTerms != '' && total != 0" class="text-muted text-xs-center" animate-with="fadeIn">
-        <small><i>{{total}} matching results</i></small>
+      <p *ngIf="!loading && searchCriteria != '' && totalSessions != 0" class="text-muted text-xs-center" animate-with="fadeIn">
+        <small><i>{{totalSessions}} matching results</i></small>
       </p>
     </div>
-
-    <div ng-if="!loading && matched_tags.length > 0 && searchTerms != ''" class="col-sm-12 matched-tags text-xs-center" animate-with="fadeIn">
+    <div *ngIf="!loading && matchedTags.length > 0 && searchCriteria != ''" class="col-sm-12 matched-tags text-xs-center" animate-with="fadeIn">
       <small><span class="text-muted"><%= t('sessions.labels.matching_tags').html_safe %></span></small>
-      <span ng-repeat="tag in matched_tags track by $index" class="tag sm bg-primary clickable" ng-click="search(tag.key)">
+      <span *ngFor="let tag of matchedTags" class="tag sm bg-primary clickable" (click)="searchTag(tag.key)">
         {{tag.key}} <small>({{tag.doc_count}})</small>
       </span>
     </div>
@@ -26,11 +23,83 @@
 
   <div style="position:fixed;top:0">{{availableVotes}}</div>
   <div class="col-md-12">
-    <div ng-if="loading" class="loading">
+    <div *ngIf="loading" class="loading">
       <p class="text-xs-center"><span class="fa fa-spinner fa-pulse"></span></p>
     </div>
-    <div ng-if="!loading" ng-include="'templates/sessions/search_result.html'"></div>
-  </div>
+    <div *ngIf="!loading">
+      <!-- templates/sessions/search_result.html -->
 
-  <div ng-include="'templates/sessions/search_side_bar.html'"></div>
+      <div *ngIf="sessions.length == 0" class="no-search-results">
+        <h4 *ngIf="searchCriteria != ''" class="text-muted text-xs-center">
+          <%= t('sessions.labels.no_search_results').html_safe %>
+          <br><br><span class="fa fa-frown-o"></span>
+        </h4>
+        <h4 *ngIf="searchCriteria == ''" class="text-muted text-xs-center">
+          <%= t('sessions.labels.no_sessions').html_safe %>
+        </h4>
+      </div>
+
+      <div *ngIf="sessions.length > 0" class="cards-container" infinite-scroll="loadMore()">
+        <!-- <div ng-repeat="session in sessions" class="card-placeholder" ng-include="'templates/sessions/card.html'"></div> -->
+
+        <div *ngFor="let session of sessions; let i = index" class="card-placeholder">
+          <div class="card card-animated" helpable="<%= t('sessions.help.session_title') %>" [attr.data-index]="i">
+            <div class="tags" [ngClass]="{visible: session.tagsVisible}">
+              <span *ngFor="let tag of session.tags" class="tag sm bg-primary clickable" (click)="searchTag(tag)">
+                {{tag}}
+              </span>
+            </div>
+            <div class="share" [ngClass]="{visible: session.shareVisible}">
+              <div class="row buttons" *ngIf="session.shareVisible">
+                <div class="col-xs-4 text-xs-right">
+                  tweet
+                  <!-- <span tweet="{{session.id}}" data-text="<%= t('sessions.buttons.tweet') %>" data-twitter-account="<%= TwitterAccount %>"></span> -->
+                </div>
+                <div class="col-xs-4 text-xs-center">
+                  facebook
+                  <!-- <span facebook="{{session.id}}"></span> -->
+                </div>
+                <div class="col-xs-4 text-xs-left">
+                  gplus
+                  <!-- <span google-plus="{{session.id}}"></span> -->
+                </div>
+              </div>
+            </div>
+            <!-- <div class="card-block col-xs-12 clickable" navigate-to="{{session.id}}"> -->
+            <div class="card-block col-xs-12 clickable">
+              <div class="pull-xs-left">
+                <img [src]="session.author.avatar_url" class="avatar img-circle" default-avatar-if-error>
+              </div>
+              <div style="margin-left:50px">
+                <p class="author">{{session.author.name}}</p>
+                <h5 class="title text-primary">{{session.title}}</h5>
+              </div>
+            </div>
+            <div class="card-footer col-xs-12">
+              <span *ngIf="session.tags.length > 0" class="fa fa-tags clickable" [ngClass]="{'text-muted': !session.tagsVisible, 'text-primary': session.tagsVisible}" (click)="session.tagsVisible = !session.tagsVisible" helpable="<%= t('sessions.help.tags') %>" [attr.data-index]="i"></span>
+              <a *ngIf="session.video_link != ''" [href]="session.video_link" target="_blank">
+                <span class="fa fa-video-camera text-muted clickable"></span>
+              </a>
+              <% if current_user %>
+                <!-- templates/sessions/actions.html -->
+                <div class="clickable pull-xs-right">
+                  <span class="fa fa-share-alt clickable" [ngClass]="{'text-muted': !session.shareVisible, 'text-primary': session.shareVisible}" (click)="session.shareVisible = !session.shareVisible" helpable="<%= t('sessions.help.share') %>" [attr.data-index]="i"></span>
+                  <a><span id="vote-btn" helpable="<%= t('sessions.help.vote') %>" [attr.data-index]="i" [attr.data-session-id]="session.id" vote-action *ngIf="session.voted || availableVotes > 0"></span></a>
+                  <a><span helpable="<%= t('sessions.help.fav') %>" [attr.data-index]="i" [(favAction)]="session.faved" [sessionId]="session.id"></span></a>
+                  <% if can? :review, SessionProposal %>
+                    <a id="review-btn" [href]="'#/sessions/review/' + session.id">
+                      <span class="fa fa-pencil-square-o text-primary" tooltip='<%= "top|#{t('sessions.buttons.start_review')}" %>'></span>
+                    </a>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>      
+      </div>
+      <div *ngIf="sessions.length >= total" style="margin-bottom:100px"></div>
+      <div id="bottom-fade"></div>
+    </div>
+  </div>
+  <!-- <div ng-include="'templates/sessions/search_side_bar.html'"></div> -->
 </div>
