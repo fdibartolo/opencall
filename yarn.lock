@@ -110,6 +110,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/http@^4.4.4":
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.4.4.tgz#667faf616bb624168eafae6ee92e5eba23a9d1f2"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/platform-browser-dynamic@^4.4.4":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.4.4.tgz#c3c9eb854a528556a07054127932e527fa932e14"
@@ -3649,6 +3655,10 @@ ncname@1.0.x:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+ngx-sharebuttons@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-sharebuttons/-/ngx-sharebuttons-3.0.0.tgz#942a7610387523ffc9b78bc3b46868ea035ce0a8"
 
 no-case@^2.2.0:
   version "2.3.2"
