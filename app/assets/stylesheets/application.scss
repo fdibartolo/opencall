@@ -1,6 +1,7 @@
 $btn-primary-hover-bg: #286090;
 $btn-info-hover-bg: #31b0d5;
 $color-twitter: rgb(19,138,241);
+$color-facebook: rgb(44,67,136);
 $color-google: rgb(213,54,46);
 $color-linkedin: rgb(21,114,178);
 
@@ -109,13 +110,31 @@ html, body {
 
 .text-twitter { color: $color-twitter; }
 
-.btn-twitter { 
-  background-color: $color-twitter; 
-  color: white;
-  &:hover { background-color: darken($color-twitter, 10%); }
-}
-
 .tweet-box {
   width: 100%;
   resize: none;
+}
+
+.btn-twitter { 
+  background-color: $color-twitter; 
+  color: white;
+  font-size: 85%;
+  &:hover { background-color: darken($color-twitter, 10%); }
+  i { font-size: 130%; }
+}
+
+.btn-facebook { 
+  background-color: $color-facebook; 
+  color: white;
+  font-size: 85%;
+  &:hover { background-color: darken($color-facebook, 10%); }
+  i { font-size: 130%; }
+}
+
+.btn-googleplus { 
+  background-color: red; 
+  color: white;
+  font-size: 85%;
+  &:hover { background-color: darken(red, 10%); }
+  i { font-size: 130%; }
 }

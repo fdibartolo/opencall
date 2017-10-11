@@ -50,19 +50,16 @@
               </span>
             </div>
             <div class="share" [ngClass]="{visible: session.shareVisible}">
-              <div class="row buttons" *ngIf="session.shareVisible">
-                <div class="col-xs-4 text-xs-right">
-                  tweet
-                  <!-- <span tweet="{{session.id}}" data-text="<%= t('sessions.buttons.tweet') %>" data-twitter-account="<%= TwitterAccount %>"></span> -->
-                </div>
-                <div class="col-xs-4 text-xs-center">
-                  facebook
-                  <!-- <span facebook="{{session.id}}"></span> -->
-                </div>
-                <div class="col-xs-4 text-xs-left">
-                  gplus
-                  <!-- <span google-plus="{{session.id}}"></span> -->
-                </div>
+              <div class="row buttons text-xs-center" *ngIf="session.shareVisible">
+                <button class="btn btn-twitter" shareButton="twitter" [sbTitle]="'<%= t('sessions.buttons.tweet') %>'" [sbUrl]="baseUrl + '#/sessions/show/' + session.id">
+                  <i class="fa fa-twitter"></i>&nbsp;Tweet
+                </button>&nbsp;&nbsp;
+                <button class="btn btn-facebook" shareButton="facebook" [sbTitle]="'<%= t('sessions.buttons.tweet') %>'" [sbUrl]="baseUrl + '#/sessions/show/' + session.id">
+                  <i class="fa fa-facebook"></i>&nbsp;Share
+                </button>&nbsp;&nbsp;
+                <button class="btn btn-googleplus" shareButton="googleplus" [sbUrl]="baseUrl + '#/sessions/show/' + session.id">
+                  <i class="fa fa-google-plus"></i>&nbsp;Share
+                </button>
               </div>
             </div>
             <!-- <div class="card-block col-xs-12 clickable" navigate-to="{{session.id}}"> -->

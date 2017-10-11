@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { ShareButtonsModule } from 'ngx-sharebuttons';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -32,7 +34,9 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    ShareButtonsModule.forRoot()
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/'},

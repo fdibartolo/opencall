@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionsService } from '../../services/sessions/sessions.service';
 import { UsersService } from '../../services/users/users.service';
+import { ShareButtonsModule, ShareButtonsService } from 'ngx-sharebuttons';
 
 declare var MAX_SESSION_PROPOSAL_VOTES: any
 declare var CURRENT_USER_EMAIL: any
+declare var BASE_URL: any
+declare var TWITTER_ACCOUNT: any
 
 @Component({
   selector: 'app-sessions',
@@ -11,6 +14,7 @@ declare var CURRENT_USER_EMAIL: any
   // styleUrls: ['./sessions.component.css']
 })
 export class SessionsComponent implements OnInit {
+  baseUrl:string
   sessionVotedIds:string[]
   sessionFavedIds:string[]
   availableVotes:number
@@ -21,9 +25,10 @@ export class SessionsComponent implements OnInit {
   matchedTags
   sessions
 
-  constructor(private sessionsService:SessionsService, private usersService:UsersService) {  }
+  constructor(private sessionsService:SessionsService, private usersService:UsersService, private sbService:ShareButtonsService) {  }
 
   ngOnInit() {
+    this.baseUrl = BASE_URL
     this.sessionVotedIds = []
     this.sessionFavedIds = []
     this.availableVotes = MAX_SESSION_PROPOSAL_VOTES
@@ -32,6 +37,8 @@ export class SessionsComponent implements OnInit {
     this.searchCriteria = ''
     this.matchedTags = []
     this.sessions = []
+
+    this.sbService.twitterAccount = TWITTER_ACCOUNT
 
     this.getSessionVotedAndFavedIds()
     this.initSearch()
