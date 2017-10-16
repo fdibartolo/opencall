@@ -1,7 +1,6 @@
 <!-- <div ng-cloak ng-init="getSessionVotedAndFavedIds()" animate-with="fadeIn" class="row"><br> -->
 <div class="row" animate-with="fadeIn"><br>
-  <!-- <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked" ng-cloak ng-init="initSearch()"> -->
-  <div sticky offset="10" class="row search-unsticked" sticky-class="search-sticked">
+  <sticky [sticky-offset-top]="10" class="row search-unsticked" [sticky-class]="'search-sticked'">
     <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
       <div class="input-group searchbox">      
         <input type="text" class="form-control" [(ngModel)]="searchCriteria" (keyup)="searchInput($event)" helpable="<%= t('sessions.help.search') %>"> <!-- ng-model-options="{ debounce: 1000 }" -->
@@ -19,7 +18,7 @@
         {{tag.key}} <small>({{tag.doc_count}})</small>
       </span>
     </div>
-  </div>
+  </sticky>
 
   <div style="position:fixed;top:0">{{availableVotes}}</div>
   <div class="col-md-12">

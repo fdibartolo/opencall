@@ -145,8 +145,7 @@
 .searchbox {
   input { 
     border-right: none !important;
-
-    &:focus { border-color: none !important; }
+    &:focus { border-color: rgb(204, 204, 204) !important; }
   }
   div.input-group-addon { background-color: white; } 
 }

@@ -1,16 +1,20 @@
 .search-unsticked {
-  z-index:1040;
+  z-index:1040 !important;
   position:relative;
 }
 
 .search-sticked {
-  margin-left: 10px !important;
-  height: 0;
+  left: 350px !important;
   p { display: none !important; }
+  div.form-group {
+    margin: 0;
+    width: 220%;
+  }
 
   .matched-tags {
-    padding: 10px 30px;
+    position: fixed;
     background-color: rgba(255,255,255,0.85);
-    margin-top: -10px;
+    top: 54px;
+    left: 0;
   }
 }

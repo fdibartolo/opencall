@@ -5,7 +5,9 @@ import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+
 import { ShareButtonsModule } from 'ngx-sharebuttons';
+import { StickyModule } from 'ng2-sticky-kit';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     HttpModule,
-    ShareButtonsModule.forRoot()
+    ShareButtonsModule.forRoot(),
+    StickyModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/'},
