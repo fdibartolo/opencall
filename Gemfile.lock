@@ -161,7 +161,7 @@ GEM
     ng-sticky-rails (1.7.9.0)
     ng-toaster-rails (0.4.15.0)
     nio4r (2.1.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
